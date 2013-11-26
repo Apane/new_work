@@ -1,0 +1,156 @@
+@import 'bootstrap';
+
+
+#landing_page {
+  // Top Section
+  .navbar { margin-bottom: 0; }
+  .top-section {
+    &.girls {
+      background: url("background-girls.png") 0% 25% no-repeat;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+    &.guys {
+      background: url("background-guys-game.png") 0% 25% no-repeat;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+    &.neutral {
+      background: url("background-neutral.png") 0% 25% no-repeat;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+    height: 700px;
+  }
+
+
+  h2.main_message {
+    text-align: center;
+    color: white;
+    font-size: 42px;
+    margin-top: 50px;
+    font-weight: 300;
+    text-shadow: 1px 1px 1px #000;
+  }
+
+  .join-screenshot {
+    margin-top: 70px;
+  }
+
+  .join {
+    float: left;
+    margin-top: 75px;
+    margin-left: 35px;
+
+    form {
+      padding: 5px 25px 25px 25px;
+      background-color: white;
+      width: 220px;
+      @include border-radius(10px);
+      @include box-shadow(0px 0px 10px #888);
+      .control-group {
+        margin: 0;
+      }
+      label, input, button {
+        font-family: "lucida grande";
+        font-size: 15px;
+      }
+      label, input {
+        color: #999999;
+      }
+      h3 {
+        text-align: center;
+        font-size: 30px;
+        margin-bottom: 10px;
+        color: #1b60a4;
+        font-weight: 300;
+      }
+      button {
+        margin-top: 15px;
+        width: 200px;
+        margin-left: 10px;
+        background-color: #ffa500;
+        border: none;
+        color: white;
+        padding: 10px;
+        @include border-radius(5px);
+      }
+      input[type="text"], input[type="password"] {
+        box-shadow: none;
+      }
+    }
+  }
+  .screenshot {
+    float: right;
+    height: 400px;
+    margin-left: 20px;
+    margin-right: 0;
+    img {
+      @include box-shadow(0px 0px 10px #888);
+    }
+  }
+
+  // Bottom Section
+  .bottom-section {
+    h3 {
+      font-family: "museo";
+      font-weight: 100;
+    }
+    background-color: #f6f6f6;
+    .container {
+      background-color: white;
+    }
+  }
+
+  .bullet-points {
+    @include box-shadow(0px 0px 0px rgba(0,0,0,0.1));
+  }
+
+  .message {
+    margin-top: 50px;
+  }
+  .bullet {
+    padding: 40px;
+  }
+  .horz_gray {
+    @include gradient-horizontal(#fff, #f3f5f8);
+  }
+
+}
+
+.navbar { margin-bottom: 0px; }
+
+select {
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    width: 100px;
+}
+
+form#new_user {
+    border: 1px solid #DDDDDD;
+    border-radius: 6px;
+    margin: 0 auto;
+    padding: 30px 20px 20px;
+    width: 470px;
+    margin-top: 25px;
+    margin-bottom: 30px;
+}
+
+.pushm {
+      padding-left: 120px;
+      }
+
+.pushf {
+
+      }
+
+.nav > li > a:hover, .nav > li > a:focus {
+  background-color: #FFA500;
+}
+
