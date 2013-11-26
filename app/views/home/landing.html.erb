@@ -1,5 +1,19 @@
 <%= render "shared/header" %>
 
+<%# Begin background image cycler on landing page %>
+<div id="background_cycler" >
+
+<script type="text/javascript">
+$('#background_cycler').hide();//hide the background while the images load, ready to fade in later
+</script>
+
+
+<%= image_tag("background-girls.png", alt: "") %>
+<%= image_tag("background-guys-game.png", alt: "") %>
+<%= image_tag("background-neutral.png", class: "active", alt: "") %>
+</div>
+<%# End of background image cycler on landing page %>
+
 <div id="landing_page">
   <div class="top-section <%= background_image_class %>">
     <div class="container">
