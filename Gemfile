@@ -28,7 +28,7 @@ gem "font-awesome-rails"
 
 gem 'bootstrap-x-editable-rails'
 
-gem 'heroku'
+ruby "2.0.0"
 
 gem 'sass-rails'
 
