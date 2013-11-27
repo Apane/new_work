@@ -2,14 +2,18 @@ Friendiose::Application.routes.draw do
 
   root to: "home#landing"
 
-  devise_for :users, :controllers => {:registrations => "users/registrations", :sessions => "users/sessions", :passwords => "users/passwords"}
+  devise_for :users, :controllers => {:registrations => "users/registrations", 
+    :sessions => "users/sessions", 
+    :passwords => "users/passwords"}
 
   get "welcome", to: "home#landing_welcome"
 
   devise_scope :user do
-    get "edit/edit_account", :to => "devise/registrations#edit_account"
+  #  get "edit/edit_account", :to => "devise/registrations#edit_account", :as => "account_registration"
+    get 'edit/edit_account' => 'users/registrations#account_registration', as: :edit_account
   end
 
+  # duplicates o for devise
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

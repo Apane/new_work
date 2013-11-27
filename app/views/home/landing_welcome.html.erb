@@ -11,7 +11,7 @@
 	<div class="name"></div>
 	Facebook:<%= whitespace %> <%= icon("fa fa-facebook-square") %>
 	<div class="name"></div>
-	Twitter:<%= whitespace %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= icon("fa fa-twitter") %>
+	Twitter:<%= whitespace %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= icon("fa fa-twitter") %>
 	<div class="name"></div>
 	Skype:<%= whitespace %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= icon("fa fa-skype") %>
 	<div class="name"></div>
@@ -26,7 +26,7 @@
 	<span class="name2">
 	<span class="name1">
 	  <% if current_user.first_name.blank? %>
-	    <%= current_user.first_name.present? ? current_user.first_name : link_to('Finish your profile', edit_user_registration_path)%>
+	    <%= current_user.first_name.present? ? current_user.first_name : link_to('Finish your profile', edit_account_path)%>
           <% else %>
             <%= current_user.first_name %> <%= current_user.last_name %>
 	  <% end %>	
@@ -44,18 +44,18 @@
           <%# User occupation %>
 	  <i class="fa fa-usd"></i>:
 	  <a href="#" class="answer" data-type="text" data-pk="1" data-resource="occupation"  data-name="occupation" data-url="/users/<%= current_user.id %>" ></a>
-	  <%= current_user.occupation.present? ? current_user.occupation : link_to('Add Occupation', edit_user_registration_path)%>
+	  <%= current_user.occupation.present? ? current_user.occupation : link_to('Add Occupation', edit_account_path)%>
           </a>
        </div>
 
        <div class="addy"><div class="span2">
            <%# User address %>
 	   <i class="fa fa-home"></i>:
-	   <%= current_user.address.present? ? current_user.address : link_to('Add City', edit_user_registration_path) %>
+	   <%= current_user.address.present? ? current_user.address : link_to('Add City', edit_account_path) %>
        </div></div>
 
        <div class="span6">
-         <%# User interests %>
+         <%# User gender %>
 	 <hr>
 	 <% if current_user.gender == "M" %>
            <i class="fa fa-male"></i> Male
@@ -73,14 +73,20 @@
              d = Date.new(today.year, current_user.birthday.month, current_user.birthday.day)
            age = d.year - current_user.birthday.year - (d > today ? 1 : 0) %>
 	 <% else %>
-	 <%= current_user.birthday.present? ? current_user.birthday.year : link_to('Add Birthday', edit_user_registration_path) %>
+	 <%= current_user.birthday.present? ? current_user.birthday.year : link_to('Add Birthday', edit_account_path) %>
          <% end %>
           </span>
         </div><div class="span8"><div class="name"></div></div> 
 	
 	<div class="span8">
-	  <h5>Interested in hanging out over:</h5>
-	  <h4><i class="fa fa-beer"></i> Beer</h4>
+	  <h5>Interested in:</h5>
+	  <h4>
+	    <% if %>
+	      <%= icon("fa fa-beer") %> Beer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp<%= icon("fa fa-bullseye") %> Hockey
+	    <% else %>
+	      nil
+	    <% end %>
+	  </h4>
 	</div>
 	
 	<div class="span8"><div class="name"></div></div>
@@ -93,7 +99,11 @@
 		</ul>
 		<div class="tab-content">
 		  <div class="tab-pane in active" id="tab1">
-		    <%= lorem %>
+		    <% if current_user.aboutme.present? %>
+		      <%= simple_format(current_user.aboutme) %>
+		    <% else %>
+		    <%= current_user.aboutme.present? ? current_user.aboutme : link_to("Fill out your 'About me", edit_account_path) %>
+		  <% end %>
 		  </div>
 		  <div class="tab-pane" id="tab2">
 		    <%= lorem %> <br /><br /><%= lorem %>		    
@@ -103,10 +113,11 @@
 		  </div>
 		</div>
 	      </div>
-
-      </div>
-    </div>
-  </div>
+	      
+	    </div>
+</div>
+<%= render '/shared/footer' %>
+</div>
 </div>
 
 <script>

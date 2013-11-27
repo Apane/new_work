@@ -2,14 +2,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
 
-  def after_sign_up_path_for(resource)
-    welcome_path
-  end
-
-  def after_update_path_for(resource)
-    welcome_path
-  end
-
   def update
     # For Rails 4
     # account_update_params = devise_parameter_sanitizer.sanitize(:account_update)
@@ -32,5 +24,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
       render "edit"
     end
   end
+
+  def account_registration
+     @user = User.find(current_user.id)
+  end
+
+private
+
+  def after_sign_up_path_for(resource)
+    welcome_path
+  end
+
+  def after_update_path_for(resource)
+    welcome_path
+  end
+
 
 end

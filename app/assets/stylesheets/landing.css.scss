@@ -330,3 +330,22 @@ color: black;
   box-shadow:         0px 3px 5px -2px #ccc;
 }
 
+input[type="checkbox"] {
+    line-height: normal;
+    margin: -2px 0 0;
+}
+
+.box > textarea, .box > input[type="text"], .uneditable-input {
+  background-color: #CAD2D7;
+  padding: 0 6%;
+  width: 85%;
+  height: 150px;
+  background-clip: padding-box;
+  border-radius: 9px;
+  margin-bottom: 20px;
+  -moz-box-sizing: content-box;
+  background-color: rgba(0, 0, .2, .2);
+  box-shadow: none;
+  font-family: "Whitney 4r",Helvetica,Arial,sans-serif;
+  outline: medium none;
+}
