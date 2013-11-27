@@ -12,7 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap
+//= require bootstrap-editable
 //= require_tree .
+
+
+$(".answer").editable()
 
 function cycleImages(){
       var $active = $('#background_cycler .active');
@@ -25,7 +30,7 @@ function cycleImages(){
     }
 
     $(window).load(function(){
-	$('#background_cycler').fadeIn(1500);//fade the background back in once all the images are loaded
+	$('#background_cycler').fadeIn(200);//fade the background back in once all the images are loaded
 	  // run every 7s
-	  setInterval('cycleImages()', 7000);
+	  setInterval('cycleImages()', 5000);
     })

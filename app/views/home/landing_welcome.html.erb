@@ -1,40 +1,111 @@
 <%= render "shared/header" %>
+
 <div id="landing_welcome_page">
   <div class="container">
     <div class="row">
+
       <div class="span4">
 	<%= image_tag("profile-placeholder1.png") %><br />
-	change photo click here
-     </div>
+	<h5>Social Connections</h5>
+	<div class="name"></div>
+	Facebook:<%= whitespace %> <%= icon("fa fa-facebook-square") %>
+	<div class="name"></div>
+	Twitter:<%= whitespace %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= icon("fa fa-twitter") %>
+	<div class="name"></div>
+	Skype:<%= whitespace %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= icon("fa fa-skype") %>
+	<div class="name"></div>
+	LinkedIn:<%= whitespace %>&nbsp;&nbsp; <%= icon("fa fa-linkedin") %>
+	<div class="name"></div>
+	Pinterest:<%= whitespace %>&nbsp; <%= icon("fa fa-pinterest") %>
+	<div class="name"></div>
+      </div>
+
       <div class="span8">
-	<div class="name"><%= current_user.first_name  %> <%= current_user.last_name  %> 
-	<div class="btn btn-success move"><%=link_to "Let's hangout" %> <%= icon("fa fa-comments-o") %></div> 
-	<div class="btn btn-warning move"><%=link_to "Message", "#" %> <%= icon("fa fa-comments")%></div></div>
-     </div>
-       <div class="row">
-	 <br /><br / >
-	 <div class="span6">
-           <%# User occupation %>
-	   
-         </div>
-	 <div class="addy"><div class="span2">
+	<%# User name %>
+	<div class="name">
+	  <% if current_user.first_name.blank? %>
+	    <%= current_user.first_name.present? ? current_user.first_name : link_to('Finish your profile', edit_user_registration_path)%>
+          <% else %>
+            <%= current_user.first_name %> <%= current_user.last_name %>
+	  <% end %>	
+            <div class="btn btn-success move"><%=link_to "Let's hangout" %> <%= icon("fa fa-comments-o") %></div> 
+	    <div class="btn btn-warning move"><%=link_to "Message", "#" %> <%= icon("fa fa-comments")%></div>
+	</div>
+      </div>
+     
+      <div class="row">
+	<br /><br / >
+
+	<div class="span6">
+          <%# User occupation %>
+	  <i class="fa fa-usd"></i>:
+	  <a href="#" class="answer" data-type="text" data-pk="1" data-resource="occupation"  data-name="occupation" data-url="/users/<%= current_user.id %>" ></a>
+	  <%= current_user.occupation.present? ? current_user.occupation : link_to('Add Occupation', edit_user_registration_path)%>
+          </a>
+       </div>
+
+       <div class="addy"><div class="span2">
            <%# User address %>
-           27 Brooklyn Ave</span>
-	 </div></div>
-	 <div class="span6">
-           <%# User interests %>
-            Veracious appetite for knowledge</span>
-         </div>
-	 <div class="span2">
-           <%# Code to calculate age by user birthday %>
-           Age: <%= today = Date.today 
-           d = Date.new(today.year, current_user.birthday.month, current_user.birthday.day)
-           age = d.year - current_user.birthday.year - (d > today ? 1 : 0) %></span>
-	 </div>	 <div class="span8"><div class="name"></div></div> 
+	   <i class="fa fa-home"></i>:
+	   <%= current_user.address.present? ? current_user.address : link_to('Add City', edit_user_registration_path) %>
+       </div></div>
+
+       <div class="span6">
+         <%# User interests %>
+	 <hr>
+	 <% if current_user.gender == "M" %>
+           <i class="fa fa-male"></i> Male
+         <% else %> 
+           <i class="fa fa-female"></i> Female
+	 <% end %>
+       </div>
+	 
+       <div class="span2">
+         <%# Code to calculate age by user birthday %>
+	 <hr>
+	 Age:
+	 <% if current_user.birthday.present? %>
+         <%= today = Date.today 
+             d = Date.new(today.year, current_user.birthday.month, current_user.birthday.day)
+           age = d.year - current_user.birthday.year - (d > today ? 1 : 0) %>
+	 <% else %>
+	 <%= current_user.birthday.present? ? current_user.birthday.year : link_to('Add Birthday', edit_user_registration_path) %>
+         <% end %>
+          </span>
+        </div><div class="span8"><div class="name"></div></div> 
+
+	<div class="span8">
+	  <h5>Interested in hanging out over:</h5>
+	  <h4><i class="fa fa-beer"></i> Beer</h4>
+
+	</div>
+
+	<div class="span8"><div class="name"></div></div>
+	    <div class="span8">
+	      <div class="tabbable"> <!-- Only required for left/right tabs -->
+		<ul class="nav nav-tabs">
+		  <li class="active"><a href="#tab1" data-toggle="tab">About me</a></li>
+		  <li><a href="#tab2" data-toggle="tab">Photos</a></li>
+  		  <li><a href="#tab3" data-toggle="tab">Personality</a></li>
+		</ul>
+		<div class="tab-content">
+		  <div class="tab-pane in active" id="tab1">
+		    <%= lorem %>
+		  </div>
+		  <div class="tab-pane" id="tab2">
+		    <%= lorem %> <br /><br /><%= lorem %>		    
+		  </div>
+		  <div class="tab-pane" id="tab3">
+		    <p>Howdy, I'm in Section 2.</p>
+		  </div>
+		</div>
+	      </div>
+
       </div>
     </div>
   </div>
 </div>
+
 <script>
   
   var fb_param = {};                                                                                                                                 
@@ -49,6 +120,7 @@
   })();                                                                                                                                                    
 
 </script>
+
 <noscript>
   <img height="1" src="https://www.facebook.com/offsite_event.php?id=6009056882201&amp;value=0" style="display:none;" width="1"/>
 </noscript>

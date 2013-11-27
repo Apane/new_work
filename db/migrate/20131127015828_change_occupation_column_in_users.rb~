@@ -1,0 +1,4 @@
+class ChangeOccupationColumnInUsers < ActiveRecord::Migration
+  def change
+  end
+end

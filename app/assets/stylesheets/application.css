@@ -10,42 +10,14 @@
  *
  *= require_self
  *= require font-awesome
+ *= require bootstrap-editable
  *= require_tree .
  */
 
 body h1, body h2, body h3, body h4, body h5, body h6, .name {
-font-family: "museo", helveticaneue, sans-serif;
+  font-family: "museo", helveticaneue, sans-serif;
 }
 
 #background_cycler{padding:0;margin:0;width:100%;position:absolute;top:0;left:0;z-index:-1}
 #background_cycler img{position:absolute;left:0;top:0;width:100%;z-index:1}
 #background_cycler img.active{z-index:3}
-
-#search {
-	padding-top: 4px;
-	padding-left: 10px;
-	padding-right: 10px;
-}
-
-#search input[type="text"] {
-    border: 0 none;
-    font: normal 12px Arial,Helvetica,Sans-serif;
-    color: #5C5858;
-    width: 150px;
-    padding: 6px 15px 6px 15px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    border-radius: 20px;
-    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
-    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
-    -webkit-transition: all 0.7s ease 0s;
-    -moz-transition: all 0.7s ease 0s;
-    -o-transition: all 0.7s ease 0s;
-    transition: all 0.7s ease 0s;
-    }
-
-
-#search input[type="text"]:focus {
-    width: 200px;
-    }

@@ -16,11 +16,17 @@ gem 'sprockets-rails', '~> 2.0.0.rc4'
 
 gem 'bootstrap-sass', '~> 2.3.2.0'
 
+#gem 'bootstrap-sass', '~> 3.0.2.0'
+
+#gem 'sass-rails', '>= 3.2'
+
 #gem "therubyracer"
 #gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 #gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
 gem "font-awesome-rails"
+
+gem 'bootstrap-x-editable-rails'
 
 gem 'sass-rails'
 
