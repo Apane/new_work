@@ -22,15 +22,18 @@
 
       <div class="span8">
 	<%# User name %>
-	<div class="name">
+	<span class="name2">
+	<span class="name1">
 	  <% if current_user.first_name.blank? %>
 	    <%= current_user.first_name.present? ? current_user.first_name : link_to('Finish your profile', edit_user_registration_path)%>
           <% else %>
             <%= current_user.first_name %> <%= current_user.last_name %>
 	  <% end %>	
+	</span>
+	<span class="side-buttons">
             <div class="btn btn-success move"><%=link_to "Let's hangout" %> <%= icon("fa fa-comments-o") %></div> 
 	    <div class="btn btn-warning move"><%=link_to "Message", "#" %> <%= icon("fa fa-comments")%></div>
-	</div>
+	</span></span>
       </div>
      
       <div class="row">

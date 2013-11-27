@@ -166,17 +166,17 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
   margin-top: 8px;
 }
 
-.navbar-right > .active > a:focus, .navbar-right > .active > a {
+.navbar-right > .activa > a:focus, .navbar-right > .activa > a {
   background-color: #363636;
   color: white;
 }
 
-.nav > .active > a:hover, .nav > .active > a:focus, .nav > .active > a {
+.nav > .activa > a:hover, .nav > .active > a:focus, .nav > .activa > a {
   -moz-appearance: none !important;
   -moz-box-shadow: none !important;
   border: none !important;
   background-color: #363636;
-  padding: 5px 20px 5px 20px;
+  padding: 5px 20px 6px 20px;
 }
 
 .nav > .signin > a:hover, .nav > .signin > a:focus, .nav > .signin > a {
@@ -213,6 +213,31 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
   color: #00688B;
   border-bottom: 1px dotted gray;
   padding-bottom: 10px; 
+  font-weight: bold;
+}
+
+.name2 { 
+  padding-bottom: 17px;
+  border-bottom: 1px dotted gray;
+}
+
+.name1 { 
+  font-size: 20px;
+  color: #00688B;
+  padding-bottom: 17px; 
+  font-weight: bold;
+  position: absolute;
+}
+
+.side-buttons {
+  padding-bottom: 15px; 
+  margin-left: 60.5%;
+}
+
+
+.side-buttons a {
+  color: white;
+  text-decoration: none;
 }
 
 .addy {
@@ -296,3 +321,12 @@ color: black;
 .nav-tabs {
     border-bottom: 1px none #DDDDDD;
 }
+
+.edit {
+  background: #EBEBEB;
+  padding: 10px 15px 0px 15px;
+-moz-box-shadow:    0px 3px 5px -2px #ccc;
+  -webkit-box-shadow: 0px 3px 5px -2px #ccc;
+  box-shadow:         0px 3px 5px -2px #ccc;
+}
+

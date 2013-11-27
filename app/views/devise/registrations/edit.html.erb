@@ -3,13 +3,21 @@
 <div id="user">
   <div class="new_user">
     <div class="container">
-      <ul class="nav nav-tabs">
-	<li><%= link_to "Profile", edit_user_registration_path %>
-	<li><%= link_to "Messaging Prefrences", edit_edit_account_path %>
-      </ul>
-      
-      <div class="span8">
+      <div class="row">
+	<div class="edit">
 	<h2>Edit your profile</h2>
+	<ul class="nav nav-pills">
+	  <li><%= link_to "Profile", edit_user_registration_path %></li>
+	  <li><%= link_to "Personal Information", edit_edit_account_path %></li>
+	  <li><%= link_to "Messaging Prefrences", edit_edit_account_path %></li>
+	  <li><%= link_to "Help", edit_edit_account_path %></li>
+	</ul>
+	<div class="name"></div>
+	</div>
+      <div class="span8">
+	<h3>Profile</h3>
+
+	<h4>Change your name and bio, and upload photos of yourself.</h4>
 	<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
 	<%= devise_error_messages! %>
 	
@@ -49,6 +57,7 @@
       </div>
       
       <div class="span4">
+	<br />
 	<%= image_tag("profile-placeholder.jpg") %><br />
 	Update photo: <br /><br />
 
@@ -72,6 +81,7 @@
       </div>
     </div>
   </div>
+</div>
 </div>
 
 

@@ -28,6 +28,8 @@ gem "font-awesome-rails"
 
 gem 'bootstrap-x-editable-rails'
 
+gem 'heroku'
+
 gem 'sass-rails'
 
 gem 'devise', '~> 3.0.0.rc'
