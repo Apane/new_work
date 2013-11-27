@@ -7,7 +7,7 @@
 	<li><%= link_to "Profile", edit_user_registration_path %>
 	<li><%= link_to "Messaging Prefrences", edit_edit_account_path %>
       </ul>
-    <div class="span8">
+    <div class="span6">
 
 <h2>Edit your profile</h2>
   <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
@@ -25,7 +25,7 @@
 
   <div><%= f.input_field :zip, placeholder: "Your zip or postal code", required: true, autocomplete: :off %></div>
 
-  Birthday: 
+  Birthday: <br /><br />
   <%= f.date_select :birthday, 
   {:start_year => Time.now.year,
   :end_year => 1900,
@@ -67,6 +67,7 @@
     </div>
   </div>
 </div>
+
 
 
 

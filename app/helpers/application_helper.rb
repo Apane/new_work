@@ -19,4 +19,12 @@ module ApplicationHelper
     link_to image_tag("logo_2.png"), root_path
   end
 
+  def icon(name)
+    #icon("camera-retro")
+    #<i class="icon-camera-retro"></i> 
+    html = "<i class='#{name}' "
+    html += "></i>"
+    html.html_safe
+  end
+
 end

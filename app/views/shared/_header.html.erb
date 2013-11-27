@@ -5,8 +5,9 @@
     <div class="container">
     <div class="navbar-brand"><%=link_to logo, welcome_path %>
     <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-          <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
+          <li class="loggedin"><%= link_to icon("fa fa-envelope"), edit_user_registration_path %></li>
+          <li class="loggedin"><%= link_to icon("fa fa-cog"), edit_user_registration_path %></li>
+          <li class="loggedina"><%= link_to "Sign out" , destroy_user_session_path, method: :delete %></li>
     </ul>
   </div>
 </div>
@@ -19,7 +20,7 @@
     <div class="navbar-brand"><%=link_to logo, root_path %>
     <ul class="nav navbar-nav navbar-right">
 	  <li class="active"><%= link_to "Sign up", new_user_registration_path %></li>
-          <li class="signin"><%= link_to 'Sign In', new_user_session_path %></li>
+          <li class="signin"><%= link_to "Sign in", new_user_session_path %></li>
     </ul>
   </div>
 </div>

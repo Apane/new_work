@@ -1,7 +1,38 @@
 <%= render "shared/header" %>
 <div id="landing_welcome_page">
   <div class="container">
-    <h3>Thanks for signing up! Unfortunately, we're not quite ready to launch just yet. We'll be sure to let you know as soon as we do.                       </h3>
+    <div class="row">
+      <div class="span4">
+	<%= image_tag("profile-placeholder1.png") %><br />
+	change photo click here
+     </div>
+      <div class="span8">
+	<div class="name"><%= current_user.first_name  %> <%= current_user.last_name  %> 
+	<div class="btn btn-success move"><%=link_to "Let's hangout" %> <%= icon("fa fa-comments-o") %></div> 
+	<div class="btn btn-warning move"><%=link_to "Message", "#" %> <%= icon("fa fa-comments")%></div></div>
+     </div>
+       <div class="row">
+	 <br /><br / >
+	 <div class="span6">
+           <%# User occupation %>
+	   
+         </div>
+	 <div class="addy"><div class="span2">
+           <%# User address %>
+           27 Brooklyn Ave</span>
+	 </div></div>
+	 <div class="span6">
+           <%# User interests %>
+            Veracious appetite for knowledge</span>
+         </div>
+	 <div class="span2">
+           <%# Code to calculate age by user birthday %>
+           Age: <%= today = Date.today 
+           d = Date.new(today.year, current_user.birthday.month, current_user.birthday.day)
+           age = d.year - current_user.birthday.year - (d > today ? 1 : 0) %></span>
+	 </div>	 <div class="span8"><div class="name"></div></div> 
+      </div>
+    </div>
   </div>
 </div>
 <script>

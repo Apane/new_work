@@ -57,6 +57,8 @@ GEM
     erubis (2.7.0)
     execjs (2.0.2)
     ffi (1.9.3)
+    font-awesome-rails (4.0.3.0)
+      railties (>= 3.2, < 5.0)
     haml (4.0.4)
       tilt
     haml-rails (0.4)
@@ -163,6 +165,7 @@ DEPENDENCIES
   capybara (= 2.0.2)
   coffee-rails (~> 4.0.0)
   devise (~> 3.0.0.rc)
+  font-awesome-rails
   haml-rails
   jbuilder (~> 1.0.1)
   jquery-rails

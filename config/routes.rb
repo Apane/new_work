@@ -6,6 +6,10 @@ Friendiose::Application.routes.draw do
 
   get "welcome", to: "home#landing_welcome"
 
+  devise_scope :user do
+    get "edit/edit_account", :to => "devise/registrations#edit_account"
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
