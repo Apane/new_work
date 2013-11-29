@@ -2,13 +2,17 @@ class HomeController < ApplicationController
 
   def landing
     if user_signed_in?
-      render landing_welcome
+      render profile_path
     else
-      puts "not working"
+      puts ""
     end
   end
 
   def landing_welcome
+
+  end
+
+  def welcome
 
   end
 

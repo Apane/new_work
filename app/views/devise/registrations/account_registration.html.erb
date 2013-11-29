@@ -11,7 +11,7 @@
 	    <h3>Personal information</h3>
 	    <h4>This information appears on your public profile, search results, and beyond.</h4>
 	    <div class="name2"></div>
-	    <%= simple_form_for(@user, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+	    <%= simple_form_for(@user, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }, :html => {:multipart => true}) do |f| %>
 	      <%= devise_error_messages! %>
 	     
 	      <h5>First name:</h5>
@@ -44,9 +44,9 @@
       <div class="span5">
 	<div class="side-bg">
 	<br />
-	<%= image_tag("test-img.jpg") %><br />
-	Update photo: <br /><br />
-
+	Profile image:<br />
+	<%= image_tag @user.profile_image_url(:thumb).to_s if @user.profile_image? %>
+	<%= f.file_field :profile_image %>
 	<h5>Gender:</h5>
 	<label class="radio inline">
 	  <span class="pushm"><%= f.radio_button "gender", "M" %>

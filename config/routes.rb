@@ -6,12 +6,14 @@ Friendiose::Application.routes.draw do
     :sessions => "users/sessions", 
     :passwords => "users/passwords"}
 
-  get "welcome", to: "home#landing_welcome"
+   get "welcome", to: "home#landing_welcome", as: 'profile'
 
   devise_scope :user do
   #  get "edit/edit_account", :to => "devise/registrations#edit_account", :as => "account_registration"
     get 'edit/edit_account' => 'users/registrations#account_registration', as: :edit_account
   end
+
+  patch '/users/:id', to: 'users#update', as: 'user'
 
   # duplicates o for devise
   # The priority is based upon order of creation:

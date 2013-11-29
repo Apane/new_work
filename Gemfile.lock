@@ -41,6 +41,10 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (~> 2.0)
       xpath (~> 1.0.0)
+    carrierwave (0.9.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
     childprocess (0.3.9)
       ffi (~> 1.0, >= 1.0.11)
     coffee-rails (4.0.0)
@@ -83,6 +87,7 @@ GEM
     mini_portile (0.5.2)
     minitest (4.7.5)
     multi_json (1.8.2)
+    nested_form (0.3.2)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     orm_adapter (0.5.0)
@@ -107,6 +112,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.1.0)
+    rmagick (2.13.2)
     rspec-core (2.14.7)
     rspec-expectations (2.14.4)
       diff-lcs (>= 1.1.3, < 2.0)
@@ -166,6 +172,7 @@ DEPENDENCIES
   bootstrap-sass (~> 2.3.2.0)
   bootstrap-x-editable-rails
   capybara (= 2.0.2)
+  carrierwave
   coffee-rails (~> 4.0.0)
   devise (~> 3.0.0.rc)
   font-awesome-rails
@@ -173,9 +180,11 @@ DEPENDENCIES
   jbuilder (~> 1.0.1)
   jquery-rails
   json (~> 1.4)
+  nested_form
   pg
   protected_attributes
   rails (= 4.0.0.rc1)
+  rmagick
   rspec-rails (~> 2.12)
   sass-rails
   simple_form

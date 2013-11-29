@@ -3,12 +3,23 @@
 <div id="landing_welcome_page">
   <div class="container">
     <div class="row">
-      
-      <%#= Please bare in mind these are strickly temporary placeholders i.e whitespace  %>
+
+      <%#= Profile image upload  %>
       <div class="span4">
-	<%= image_tag("test-img.jpg") %><br />
-	<h5>Social Connections</h5>
+	<% if current_user.profile_image.present? %>
+        <%= link_to (image_tag current_user.profile_image_url(:thumb).to_s), edit_account_path(current_user)%>
+	<% else %>
+	<%= link_to (image_tag "profile-placeholder1.png"), edit_account_path(current_user) %>
+	<span class="upload">
+	<span class="btn btn-success"><%= link_to "Upload a photo", edit_account_path(current_user)%></span>
+	</span>
+	<% end %>
+
+      <%#= Space w line  %>
 	<div class="name"></div>
+
+      <%#= Please bare in mind these are strickly temporary placeholders i.e whitespace  %>
+	<h5><u>Social Connections</u></h5>
 	Facebook:<%= whitespace %> <%= icon("fa fa-facebook-square") %>
 	<div class="name"></div>
 	Twitter:<%= whitespace %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= icon("fa fa-twitter") %>
@@ -48,11 +59,13 @@
           </a>
        </div>
 
-       <div class="addy"><div class="span2">
+	<div class="addy">
+	<div class="span2">
            <%# User address %>
 	   <i class="fa fa-home"></i>:
 	   <%= current_user.address.present? ? current_user.address : link_to('Add City', edit_account_path) %>
-       </div></div>
+	</div>
+	</div>
 
        <div class="span6">
          <%# User gender %>
@@ -76,18 +89,9 @@
 	 <%= current_user.birthday.present? ? current_user.birthday.year : link_to('Add Birthday', edit_account_path) %>
          <% end %>
           </span>
-        </div><div class="span8"><div class="name"></div></div> 
-	
-	<div class="span8">
-	  <h5>Interested in:</h5>
-	  <h4>
-	    <% if %>
-	      <%= icon("fa fa-beer") %> Beer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp<%= icon("fa fa-bullseye") %> Hockey
-	    <% else %>
-	      nil
-	    <% end %>
-	  </h4>
-	</div>
+        </div>
+
+	<div class="span8"></div> 
 	
 	<div class="span8"><div class="name"></div></div>
 	    <div class="span8">
@@ -106,7 +110,18 @@
 		  <% end %>
 		  </div>
 		  <div class="tab-pane" id="tab2">
-		    <%= lorem %> <br /><br /><%= lorem %>		    
+                  <%= nested_form_for current_user, :html=>{:multipart => true } do |f| %>
+	            <%= f.fields_for :photos do |p|  %>
+	            <p>
+		    <%= image_tag(p.object.file.url) if p.object.file? %>
+	            <%= p.file_field :file %>
+	            </p>
+	            <%= p.link_to_remove "Remove this attachment" %>
+		    <% end %>
+	            <%= f.link_to_add "Add photos to your profile", :photos %>
+	            <br /><br />
+	            <p><%= f.submit %></p>
+		    <% end %>
 		  </div>
 		  <div class="tab-pane" id="tab3">
 		    <p>Howdy, I'm in Section 2.</p>
@@ -115,8 +130,8 @@
 	      </div>
 	      
 	    </div>
-</div>
-<%= render '/shared/footer' %>
+	</div>
+	<%= render '/shared/footer' %>
 </div>
 </div>
 
