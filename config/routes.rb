@@ -1,9 +1,11 @@
 Friendiose::Application.routes.draw do
 
+  get "photos/new"
+  get "photos/create"
   root to: "home#landing"
 
-  devise_for :users, :controllers => {:registrations => "users/registrations", 
-    :sessions => "users/sessions", 
+  devise_for :users, :controllers => {:registrations => "users/registrations",
+    :sessions => "users/sessions",
     :passwords => "users/passwords"}
 
    get "welcome", to: "home#landing_welcome", as: 'profile'
@@ -14,6 +16,7 @@ Friendiose::Application.routes.draw do
   end
 
   patch '/users/:id', to: 'users#update', as: 'user'
+  resources :photos
 
   # duplicates o for devise
   # The priority is based upon order of creation:

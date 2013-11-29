@@ -31,3 +31,4 @@ emacs-config.el
 /.idea/*
 database.yml
 .rvmrc
+public/uploads

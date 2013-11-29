@@ -20,15 +20,15 @@
 
       <%#= Please bare in mind these are strickly temporary placeholders i.e whitespace  %>
 	<h5><u>Social Connections</u></h5>
-	Facebook:<%= whitespace %> <%= icon("fa fa-facebook-square") %>
+	Facebook: <%= icon("fa fa-facebook-square") %>
 	<div class="name"></div>
-	Twitter:<%= whitespace %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= icon("fa fa-twitter") %>
+	Twitter: <%= icon("fa fa-twitter") %>
 	<div class="name"></div>
-	Skype:<%= whitespace %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= icon("fa fa-skype") %>
+	Skype: <%= icon("fa fa-skype") %>
 	<div class="name"></div>
-	LinkedIn:<%= whitespace %>&nbsp;&nbsp; <%= icon("fa fa-linkedin") %>
+	LinkedIn: <%= icon("fa fa-linkedin") %>
 	<div class="name"></div>
-	Pinterest:<%= whitespace %>&nbsp; <%= icon("fa fa-pinterest") %>
+	Pinterest: <%= icon("fa fa-pinterest") %>
 	<div class="name"></div>
       </div>
 
@@ -40,14 +40,14 @@
 	    <%= current_user.first_name.present? ? current_user.first_name : link_to('Finish your profile', edit_account_path)%>
           <% else %>
             <%= current_user.first_name %> <%= current_user.last_name %>
-	  <% end %>	
+	  <% end %>
 	</span>
 	<span class="side-buttons">
-            <div class="btn btn-success move"><%=link_to "Let's hangout" %> <%= icon("fa fa-comments-o") %></div> 
+            <div class="btn btn-success move"><%=link_to "Let's hangout" %> <%= icon("fa fa-comments-o") %></div>
 	    <div class="btn btn-warning move"><%=link_to "Message", "#" %> <%= icon("fa fa-comments")%></div>
 	</span></span>
       </div>
-     
+
       <div class="row">
 	<br /><br / >
 
@@ -72,17 +72,17 @@
 	 <hr>
 	 <% if current_user.gender == "M" %>
            <i class="fa fa-male"></i> Male
-         <% else %> 
+         <% else %>
            <i class="fa fa-female"></i> Female
 	 <% end %>
        </div>
-	 
+
        <div class="span2">
          <%# Code to calculate age by user birthday %>
 	 <hr>
 	 Age:
 	 <% if current_user.birthday.present? %>
-         <%= today = Date.today 
+         <%= today = Date.today
              d = Date.new(today.year, current_user.birthday.month, current_user.birthday.day)
            age = d.year - current_user.birthday.year - (d > today ? 1 : 0) %>
 	 <% else %>
@@ -91,8 +91,8 @@
           </span>
         </div>
 
-	<div class="span8"></div> 
-	
+	<div class="span8"></div>
+
 	<div class="span8"><div class="name"></div></div>
 	    <div class="span8">
 	      <div class="tabbable"> <!-- Only required for left/right tabs -->
@@ -110,43 +110,52 @@
 		  <% end %>
 		  </div>
 		  <div class="tab-pane" id="tab2">
-                  <%= nested_form_for current_user, :html=>{:multipart => true } do |f| %>
-	            <%= f.fields_for :photos do |p|  %>
-	            <p>
-		    <%= image_tag(p.object.file.url) if p.object.file? %>
-	            <%= p.file_field :file %>
-	            </p>
-	            <%= p.link_to_remove "Remove this attachment" %>
-		    <% end %>
-	            <%= f.link_to_add "Add photos to your profile", :photos %>
-	            <br /><br />
-	            <p><%= f.submit %></p>
-		    <% end %>
+        <div class="page-header">
+          <%= form_for Photo.new do |f| %>
+            <span class="btn btn-success fileinput-button">
+              <i class="icon-plus icon-white"></i>
+              <span>Add photos...</span>
+              <%= f.file_field :file, multiple: true, name: "photo[file]" %>
+            </span>
+          <% end %>
+          <div class="clearfix"></div>
+        </div>
+        <div class="photos_cont">
+          <div class="col-sm-6 col-md-3">
+            <span class="gallery"><%= render current_user.photos %></span>
+          </div>
+        </div>
 		  </div>
 		  <div class="tab-pane" id="tab3">
 		    <p>Howdy, I'm in Section 2.</p>
 		  </div>
 		</div>
 	      </div>
-	      
+
 	    </div>
 	</div>
 	<%= render '/shared/footer' %>
 </div>
 </div>
 
+<script id="template-upload" type="text/x-tmpl">
+  <div class="upload">
+    {%=o.name%}
+    <div class="progress"><div class="bar" style="width: 0%;"></div></div>
+  </div>
+</script>
 <script>
-  
-  var fb_param = {};                                                                                                                                 
-  fb_param.pixel_id = '6009056882201';                                                                                                             
-  fb_param.value = '0.00';                                                                                                                                   
-  (function(){                                                                                                                                               
-    var fpw = document.createElement('script');                                                                                                           
-    fpw.async = true;                                                                                                                                      
-    fpw.src = '//connect.facebook.net/en_US/fp.js';                                                                                                         
-    var ref = document.getElementsByTagName('script')[0];                                                                                                   
-    ref.parentNode.insertBefore(fpw, ref);                                                                                                                   
-  })();                                                                                                                                                    
+
+  var fb_param = {};
+  fb_param.pixel_id = '6009056882201';
+  fb_param.value = '0.00';
+  (function(){
+    var fpw = document.createElement('script');
+    fpw.async = true;
+    fpw.src = '//connect.facebook.net/en_US/fp.js';
+    var ref = document.getElementsByTagName('script')[0];
+    ref.parentNode.insertBefore(fpw, ref);
+  })();
 
 </script>
 

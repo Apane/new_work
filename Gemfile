@@ -4,7 +4,7 @@ gem 'rails', '4.0.0.rc1'
 gem 'pg'
 ruby "2.0.0"
 gem 'protected_attributes'
-gem "json", "~> 1.4" 
+gem "json", "~> 1.4"
 
 # core function gems
 gem 'carrierwave'
@@ -27,6 +27,7 @@ gem 'bootstrap-x-editable-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.0.1'
+gem 'jquery-fileupload-rails'
 
 # dev test
 gem 'rspec-rails', "~> 2.12"
@@ -35,6 +36,6 @@ gem 'capybara', "2.0.2"
 # not using
 #gem 'bootstrap-sass', '~> 3.0.2.0'
 #gem 'sass-rails', '>= 3.2'
-#gem "therubyracer"
+gem "therubyracer"
 #gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 #gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
