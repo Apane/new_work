@@ -29,3 +29,5 @@ org-clock-save.el
 emacs-config.el
 
 /.idea/*
+database.yml
+.rvmrc
