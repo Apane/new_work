@@ -7,6 +7,7 @@ gem 'protected_attributes'
 gem "json", "~> 1.4"
 gem 'rails_log_stdout',           github: 'heroku/rails_log_stdout'
 gem 'rails3_serve_static_assets', github: 'heroku/rails3_serve_static_assets'
+gem 'unicorn'
 
 # core function gems
 gem 'carrierwave'
