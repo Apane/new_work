@@ -6,6 +6,11 @@ class PhotosController < ApplicationController
     @photo = current_user.photos.create(params[:photo])
   end
 
+  def destroy
+    @photo = Photo.find(params[:id])
+    @photo.destroy
+  end
+
   private
   # Never trust parameters from the scary internet, only allow the white list through.
   #not needed with protected_attributes gem
