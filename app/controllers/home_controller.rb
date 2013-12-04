@@ -4,7 +4,7 @@ class HomeController < ApplicationController
     if user_signed_in?
       render profile_path
     else
-      puts ""
+      render home_path
     end
   end
 

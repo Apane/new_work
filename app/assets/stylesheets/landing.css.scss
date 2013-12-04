@@ -221,6 +221,26 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
   border-bottom: 1px dotted gray;
 }
 
+.line { 
+  border-bottom: 1px solid #EBEBEB;
+  padding-bottom: 8px;
+  padding-top: 1px;
+  padding-left: 5px;
+  border-right: 1px solid #EBEBEB;
+  border-left: 1px solid #EBEBEB;
+}
+
+.line1 { 
+  border-bottom: 1px solid #EBEBEB;
+  padding-bottom: 8px;
+  padding-top: 1px;
+  padding-left: 10px;
+  border-right: 1px solid #EBEBEB;
+  border-left: 1px solid #EBEBEB;
+  box-shadow: 1px 1px 5px #888888;
+}
+
+
 .name1 { 
   font-size: 20px;
   color: #00688B;
@@ -234,8 +254,12 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
   margin-left: 60.5%;
 }
 
-
 .side-buttons a {
+  color: white;
+  text-decoration: none;
+}
+
+.white a {
   color: white;
   text-decoration: none;
 }

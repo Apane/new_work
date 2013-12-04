@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
                   :profile_image,
                   :photos_attributes
 
+  has_many :events
   has_many :photos, as: :attachable
   accepts_nested_attributes_for :photos
   mount_uploader :profile_image, ProfileImageUploader

@@ -5,6 +5,7 @@
     <div class="container">
     <div class="navbar-brand"><%=link_to logo, profile_path %>
     <ul class="nav navbar-nav navbar-right">
+	  <li class="loggedin"><%= link_to icon("fa fa-calendar-o "), events_path %></li>
           <li class="loggedin"><%= link_to icon("fa fa-envelope"), edit_user_registration_path %></li>
           <li class="loggedin"><%= link_to icon("fa fa-cog"), edit_user_registration_path %></li>
           <li class="loggedina"><%= link_to "Sign out" , destroy_user_session_path, method: :delete %></li>
