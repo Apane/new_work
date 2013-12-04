@@ -1,3 +1,14 @@
 <%= render 'shared/header' %>
 
-<%= render 'form' %>
+<div class="container">
+  <div class="row">
+    <div class="span3">
+      <%= render 'sidebar' %>
+    </div>
+
+    <div class="span8">
+      <div class="line1"><h4>Create an event</h4></div>
+      <%= render 'form' %>
+    </div>
+  </div>
+</div>

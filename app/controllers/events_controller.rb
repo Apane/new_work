@@ -37,7 +37,8 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    @event = Event.find(params[:user_id])
+    @event = Event.find(params[:id])
     @event.destroy
+    redirect_to :back
   end
 end

@@ -7,31 +7,30 @@
     </div>
 
     <div class="span5">
-	 <% @events.each do |e| %>
-	  <h5><%= link_to e.title, event_path(e) %></h5>
-          <% if e.date.present? %>
-	  <h6><%= icon("fa fa-calendar-o ") %> <%= e.date.strftime( "%A, %B %d, %Y" ) %></h6>
-	  <% else %>
-       	    <span class="white"><%= link_to "Create event", new_event_path %></span>
+	  <% @events.each do |e| %>
+	    <h5><%= link_to e.title, event_path(e) %></h5>
+      <% if e.date.present? %>
+	      <h6><%= icon("fa fa-calendar-o ") %> <%= e.date.strftime( "%A, %B %d, %Y" ) %></h6>
+	    <% else %>
+        <span class="white"><%= link_to "Create event", new_event_path %></span>
 	    <% end %>
-          <% if e.date.present? %>
-	  <h6><%= icon("fa fa-clock-o") %> <%= e.date.strftime( "%H:%M" ) %></h6>
-	  <% else %>
-       	    <span class="white"><%= link_to "Create event", new_event_path %></span>
+      <% if e.date.present? %>
+	      <h6><%= icon("fa fa-clock-o") %> <%= e.date.strftime( "%H:%M" ) %></h6>
+	    <% else %>
+        <span class="white"><%= link_to "Create event", new_event_path %></span>
+	    <% end %>
+	    <h6><%= icon("fa fa-map-marker") %> <%= e.location %></h6>
+	    <%= link_to "Show", e %>
+	    <%= link_to "Edit", edit_event_path(e) %>
+	    <%= link_to "Remove", e, method: :delete, data: { confirm: "Are you sure?" } %>
 	  <% end %>
-	  <h6><%= icon("fa fa-map-marker") %> <%= e.location %></h6>
-	  <%= link_to "Show", e %>
-	  <%= link_to "Edit", edit_event_path(e) %>
-	  <%= link_to "Remove", e, method: :delete, data: { confirm: "Are you sure?" } %>
-	<% end %>
     </div>
 
     <div class="span4">
       <span class="btn btn-success fileinput-button">
-	<i class="icon-plus icon-white"></i>
-	<span class="white"><%= link_to "Create event", new_event_path %></span>
+	      <i class="icon-plus icon-white"></i>
+	      <span class="white"><%= link_to "Create event", new_event_path %></span>
       </span>
     </div>
-
   </div>
 </div>

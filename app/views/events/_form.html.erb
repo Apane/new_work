@@ -1,25 +1,11 @@
-<div class="container">
-  <div class="row">
-    <div class="span3">
-      <%= render 'sidebar' %>
-    </div>
-
-    <div class="span8">
-      <div class="line1">
-      <h4>Create an event</h4>
-      </div>
-      	<%= simple_form_for @event do |f| %>
-	  
-	  <h5>Event title:</h5><div><%= f.input_field :title, placeholder: "Event title", required: true, autocomplete: :off %></div>
-
-	  <h5>Event description:</h5><div><%= f.input_field :description, placeholder: "Event description", required: true, autocomplete: :off %></div>
-
-	  <h5>Event date:</h5><div><%= f.input_field :date  %></div>
-
-	  <h5>Event location:</h5><div><%= f.input_field :location, placeholder: "Event location", required: true, autocomplete: :off %></div>
-
-	    <div><%= f.submit "Creat event"  %></div><br />
-  	<% end %>
-    </div>
-  </div>
-</div>
+<%= simple_form_for @event do |f| %>
+  <h5>Event title:</h5>
+  <div><%= f.input_field :title, placeholder: "Event title", required: true, autocomplete: :off %></div>
+  <h5>Event description:</h5>
+  <div><%= f.input_field :description, placeholder: "Event description", required: true, autocomplete: :off %></div>
+  <h5>Event date:</h5>
+  <div><%= f.input_field :date  %></div>
+  <h5>Event location:</h5>
+  <div><%= f.input_field :location, placeholder: "Event location", required: true, autocomplete: :off %></div>
+  <div><%= f.submit @event.new_record? ? "Create event" : "Update event"  %></div><br />
+<% end %>
