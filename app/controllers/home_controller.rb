@@ -1,10 +1,9 @@
 class HomeController < ApplicationController
+  before_filter :authenticate_user!, except: [:landing]
 
   def landing
     if user_signed_in?
-      render profile_path
-    else
-      render home_path
+      redirect_to profile_path
     end
   end
 
