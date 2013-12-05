@@ -29,10 +29,10 @@ GEM
     atomic (1.1.14)
     awesome_print (1.2.0)
     bcrypt-ruby (3.1.2)
+    bootstrap-editable-rails (0.0.5)
+      railties (>= 3.1)
     bootstrap-sass (2.3.2.2)
       sass (~> 3.2)
-    bootstrap-x-editable-rails (1.5.1)
-      railties (>= 3.0)
     builder (3.1.4)
     capybara (2.0.2)
       mime-types (>= 1.16)
@@ -188,8 +188,8 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
+  bootstrap-editable-rails
   bootstrap-sass (~> 2.3.2.0)
-  bootstrap-x-editable-rails
   capybara (= 2.0.2)
   carrierwave
   coffee-rails (~> 4.0.0)

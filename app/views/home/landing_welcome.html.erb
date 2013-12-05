@@ -103,12 +103,14 @@
 		</ul>
 		<div class="tab-content">
 		  <div class="tab-pane in active" id="tab1">
-		    <% if current_user.aboutme.present? %>
-		      <%= simple_format(current_user.aboutme) %>
-		    <% else %>
-		    <%= current_user.aboutme.present? ? current_user.aboutme : link_to("Fill out your 'About me", edit_account_path) %>
-		  <% end %>
-		  </div>
+        <a href="#" class="myeditable editable editable-pre-wrapped editable-click editable-empty" data-type="textarea" data-name="aboutme"  data-url="/users/<%= current_user.id %>" data-resource="user" data-original-title="Enter about you" id='aboutme'><%= textarea_format(current_user.aboutme) %></a>
+      </div>
+
+      <script type="text/javascript">
+        $(document).ready(function() {
+            $('#aboutme').editable();
+        });
+      </script>
 		  <div class="tab-pane" id="tab2">
         <div class="page-header">
           <%= form_for Photo.new do |f| %>

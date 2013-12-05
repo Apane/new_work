@@ -5,12 +5,16 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id]) 
-    if @user.update(params[:user])
-      redirect_to profile_path
-    else
-      flash[:notice] = "Not a valid image file"
-      render profile_path
+    @user = User.find(params[:id])
+
+    respond_to do |format|
+      if @user.update(params[:user])
+        format.html { redirect_to profile_path}
+        format.json { head :no_content } # 204 No Content
+      else
+        flash[:notice] = "Not a valid image file"
+        render profile_path
+      end
     end
   end
 

@@ -145,11 +145,9 @@ form#new_user {
 textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
   background-color: #CAD2D7;
   padding: 0 6%;
-  width: 85%;
   background-clip: padding-box;
   border-radius: 9px;
   margin-bottom: 20px;
-  height: 30px;
   -moz-box-sizing: content-box;
   background-color: rgba(0, 0, .2, .2);
   box-shadow: none;
@@ -208,20 +206,20 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 
 .row { margin-top: 20px; margin-left: 50px; }
 
-.name { 
+.name {
   font-size: 20px;
   color: #00688B;
   border-bottom: 1px dotted gray;
-  padding-bottom: 10px; 
+  padding-bottom: 10px;
   font-weight: bold;
 }
 
-.name2 { 
+.name2 {
   padding-bottom: 17px;
   border-bottom: 1px dotted gray;
 }
 
-.line { 
+.line {
   border-bottom: 1px solid #EBEBEB;
   padding-bottom: 8px;
   padding-top: 1px;
@@ -230,7 +228,7 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
   border-left: 1px solid #EBEBEB;
 }
 
-.line1 { 
+.line1 {
   border-bottom: 1px solid #EBEBEB;
   padding-bottom: 8px;
   padding-top: 1px;
@@ -241,16 +239,16 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 }
 
 
-.name1 { 
+.name1 {
   font-size: 20px;
   color: #00688B;
-  padding-bottom: 17px; 
+  padding-bottom: 17px;
   font-weight: bold;
   position: absolute;
 }
 
 .side-buttons {
-  padding-bottom: 15px; 
+  padding-bottom: 15px;
   margin-left: 60.5%;
 }
 
@@ -311,37 +309,37 @@ hr {
 
 .nav > .active > a:hover, .nav > .active > a:focus, .nav > .active > a {
 -moz-appearance: none !important;
-/* IE10 Consumer Preview */ 
+/* IE10 Consumer Preview */
 background-image: -ms-linear-gradient(right, #FFFFFF 0%, #F5F6F7 100%);
-/* Mozilla Firefox */ 
+/* Mozilla Firefox */
 background-image: -moz-linear-gradient(right, #FFFFFF 0%, #F5F6F7 100%);
-/* Opera */ 
+/* Opera */
 background-image: -o-linear-gradient(right, #FFFFFF 0%, #F5F6F7 100%);
-/* Webkit (Safari/Chrome 10) */ 
+/* Webkit (Safari/Chrome 10) */
 background-image: -webkit-gradient(linear, right top, left top, color-stop(0, #FFFFFF), color-stop(1, #F5F6F7));
-/* Webkit (Chrome 11+) */ 
+/* Webkit (Chrome 11+) */
 background-image: -webkit-linear-gradient(right, #FFFFFF 0%, #F5F6F7 100%);
-/* W3C Markup, IE10 Release Preview */ 
+/* W3C Markup, IE10 Release Preview */
 background-image: linear-gradient(to left, #FFFFFF 0%, #F5F6F7 100%);
 border-top: 3px solid #00BFFF !important;
 padding: 6px 30px 6px 30px;
 font-weight: bold;
-color: #00688B;	 
+color: #00688B;
 }
 
 .nav-tabs > li > a {
 -moz-appearance: none !important;
-/* IE10 Consumer Preview */ 
+/* IE10 Consumer Preview */
 background-image: -ms-linear-gradient(right, #FFFFFF 0%, #F5F6F7 100%);
-/* Mozilla Firefox */ 
+/* Mozilla Firefox */
 background-image: -moz-linear-gradient(right, #FFFFFF 0%, #F5F6F7 100%);
-/* Opera */ 
+/* Opera */
 background-image: -o-linear-gradient(right, #FFFFFF 0%, #F5F6F7 100%);
-/* Webkit (Safari/Chrome 10) */ 
+/* Webkit (Safari/Chrome 10) */
 background-image: -webkit-gradient(linear, right top, left top, color-stop(0, #FFFFFF), color-stop(1, #F5F6F7));
-/* Webkit (Chrome 11+) */ 
+/* Webkit (Chrome 11+) */
 background-image: -webkit-linear-gradient(right, #FFFFFF 0%, #F5F6F7 100%);
-/* W3C Markup, IE10 Release Preview */ 
+/* W3C Markup, IE10 Release Preview */
 background-image: linear-gradient(to left, #FFFFFF 0%, #F5F6F7 100%);
 padding: 8px 30px 8px 30px;
 color: black;

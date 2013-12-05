@@ -15,6 +15,7 @@
 //= require jquery_nested_form
 //= require bootstrap
 //= require bootstrap-editable
+//= require bootstrap-editable-rails
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
 //= require_tree .

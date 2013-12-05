@@ -27,11 +27,12 @@ gem 'awesome_print'
 gem 'sprockets-rails', '~> 2.0.0.rc4'
 gem 'bootstrap-sass', '~> 2.3.2.0'
 gem "font-awesome-rails"
-gem 'bootstrap-x-editable-rails'
+# gem 'bootstrap-x-editable-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.0.1'
 gem 'jquery-fileupload-rails'
+gem 'bootstrap-editable-rails'
 
 # dev test
 gem 'rspec-rails', "~> 2.12"

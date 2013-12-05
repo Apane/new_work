@@ -103,11 +103,9 @@
 		</ul>
 		<div class="tab-content">
 		  <div class="tab-pane in active" id="tab1">
-		    <% if current_user.aboutme.present? %>
-		      <%= simple_format(current_user.aboutme) %>
-		    <% else %>
-		    <%= current_user.aboutme.present? ? current_user.aboutme : link_to("Fill out your 'About me", edit_account_path) %>
-		  <% end %>
+		    <a href="#" id="body" data-type="textarea" data-resource="user" data-name="body" data-url="/users/<%= current_user.id %>" data-original-title="Enter body">
+          <%= textarea_format(current_user.aboutme) %>
+        </a>
 		  </div>
 		  <div class="tab-pane" id="tab2">
         <div class="page-header">
