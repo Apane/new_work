@@ -9,7 +9,7 @@
     <div class="span7">
       <div class="new_event_form">
         <div class="line1"><h4>Create event</h4></div>
-        <%= form_for current_user.events.new do |f| %>
+        <%= form_for current_user.events.new, remote: true do |f| %>
           <h5>Event title:</h5>
           <div><%= f.text_field :title, placeholder: "Event title", required: true, autocomplete: :off %></div>
           <h5>Event description:</h5>
@@ -18,45 +18,31 @@
           <div><%= f.text_field :date  %></div>
           <h5>Event location:</h5>
           <div><%= f.text_field :location, placeholder: "Event location", required: true, autocomplete: :off %></div>
-          <div><%= f.submit "Create event", class: 'btn btn-primary' %></div><br />
+          <div>
+            <%= f.submit "Create event", class: 'btn btn-primary' %>
+            <%= link_to "Cancel", '#', class: 'btn cancel_event' %>
+          </div><br />
         <% end %>
       </div>
-      <% @events.each do |event| %>
-        <div class="span2">
-        <% if event.user.profile_image.present? %>
-          <%= image_tag event.user.profile_image_url(:thumb), class: 'img-polaroid' %>
-        <% else %>
-          <%= image_tag "profile-placeholder1.png" %>
-        <% end %>
-        </div>
-        <div class="span3">
-          <div id="event_<%= event.id %>">
-            <h5><%= link_to event.user.short_name, event.user %> created an event</h5>
-            <p><%= event.date.strftime("%A, %B %d, %Y") %></p>
-            <h6><i class="fa fa-map-marker"></i><%= event.location %></h6>
-            <%= link_to "Show", event %>
-            <%= link_to "Edit", edit_event_path(event) %>
-            <%= link_to "Remove", event, method: :delete, data: { confirm: "Are you sure?" }, remote: true %>
-          </div>
-        </div>
-      <% end %>
+      <div class="events_list">
+        <!-- look in events/event.hmlt.erb -->
+        <%= render @events %>
+      </div>
     </div>
 
     <div class="span2">
       <span class="btn btn-success fileinput-button">
 	      <i class="icon-plus icon-white"></i>
-	      <span class="white"><%= link_to "Create event", new_event_path, remote: true %></span>
+	      <span class="white"><%= link_to "Create event", '#', class: 'add_event' %></span>
       </span>
     </div>
   </div>
 </div>
 <script type="text/javascript">
-(function() {
-  jQuery(function() {
-    return $('#event_date').datepicker({
-      dateFormat: 'yy-mm-dd'
-    });
-  });
-
-}).call(this);
+$('.add_event').click(function(event) {
+  $('.new_event_form').css('display', 'block');
+});
+$('.cancel_event').click(function(event) {
+  $('.new_event_form').css('display', 'none');
+});
 </script>

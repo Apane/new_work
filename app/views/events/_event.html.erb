@@ -1,0 +1,20 @@
+<div id="event_<%= event.id %>">
+  <div class="span2">
+  <% if event.user.profile_image.present? %>
+    <%= image_tag event.user.profile_image_url(:thumb), class: 'img-polaroid' %>
+  <% else %>
+    <%= image_tag "profile-placeholder1.png" %>
+  <% end %>
+  </div>
+  <div class="span3">
+    <h5><%= link_to event.user.short_name, event.user %> created an event</h5>
+    <p><%= event.title %></p>
+    <p><%= event.date.strftime("%A, %B %d, %Y") %></p>
+    <h6><i class="fa fa-map-marker"></i><%= event.location %></h6>
+    <%= link_to "Show", event %>
+    <%= link_to "Edit", edit_event_path(event) %>
+    <%= link_to "Remove", event, method: :delete, data: { confirm: "Are you sure?" }, remote: true %>
+  </div>
+</div>
+<div class="clearfix"></div>
+<p></p>

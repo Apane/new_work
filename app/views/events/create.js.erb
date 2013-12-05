@@ -1,0 +1,6 @@
+<% if @event.valid? %>
+  $("#new_event")[0].reset();
+  $('.events_list').prepend("<%= j render @event %>");
+<% else %>
+  alert("Can't save event!")
+<% end %>
