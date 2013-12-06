@@ -11,6 +11,8 @@
  *
  *= require_self
  *= require bootstrap
+ *= require datepicker                                                                                                                             
+ *= require jquery.timepicker
  *= require font-awesome
  *= require jquery.fileupload-ui
   *= require_tree .

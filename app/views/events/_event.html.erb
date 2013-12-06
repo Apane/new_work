@@ -7,10 +7,11 @@
   <% end %>
   </div>
   <div class="span3">
-    <h5><%= link_to event.user.short_name, event.user %> created an event</h5>
-    <p><%= event.title %></p>
-    <p><%= event.date.strftime("%A, %B %d, %Y") %></p>
-    <h6><i class="fa fa-map-marker"></i><%= event.location %></h6>
+    <h5><%= link_to event.user.short_name, event.user %> Created an Event</h5>
+    <h4><%= link_to event.title, event %></h4>
+    <h5><i class="fa fa-map-marker"></i> <%= event.location %></h5>
+    <h5><i class="fa fa-calendar-o"></i> <%= event.date.strftime("%A, %B %d, %Y") %></h5>                                                                
+    <h5><i class="fa fa-clock-o"></i> <%= event.time.strftime("%l:%M %P") %></h5>                                                                           
     <%= link_to "Show", event %>
     <%= link_to "Edit", edit_event_path(event) %>
     <%= link_to "Remove", event, method: :delete, data: { confirm: "Are you sure?" }, remote: true %>
