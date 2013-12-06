@@ -45,4 +45,14 @@ class User < ActiveRecord::Base
   def short_name
     self.first_name + ' ' + self.last_name[0,1] + '.'
   end
+
+  def format_date
+    if self.birthday.present?
+      today = Date.today
+      d = Date.new(today.year, self.birthday.month, self.birthday.day)
+      age = d.year - self.birthday.year - (d > today ? 1 : 0)
+    else
+      self.birthday.present? ? self.birthday.year : link_to('Add Birthday', edit_account_path)
+    end
+  end
 end
