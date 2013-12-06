@@ -1,5 +1,5 @@
 class Question < ActiveRecord::Base
-  attr_accessible :question, :answer
+  attr_accessible :question, :answer, :for_about, :for_personality
   belongs_to :user
   scope :for_about, -> { where(for_about: true) }
   scope :for_personality, -> { where(for_personality: true) }
