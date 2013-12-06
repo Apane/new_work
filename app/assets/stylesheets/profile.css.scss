@@ -10,6 +10,10 @@
       cursor: pointer;
     }
   }
+  .answer{min-height: 50px;}
   p{min-height: 100px;}
-  textarea{width: 95%;padding: 3px 5px;margin: 0px 0px 5px;}
+  textarea{width: 95%;padding: 5px 10px;margin: 0px 0px 5px;min-height: 50px;}
+}
+.birthday{
+  width: 75px;
 }

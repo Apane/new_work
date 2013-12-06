@@ -17,7 +17,9 @@ Friendiose::Application.routes.draw do
   patch '/users/:id', to: 'users#update', as: 'user'
   get '/events/:id', to: 'events#create', as: 'event'
 
-  resources :users
+  resources :users do
+    resources :questions
+  end
   resources :photos
   resources :events
   resources :questions

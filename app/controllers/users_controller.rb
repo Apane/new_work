@@ -10,10 +10,11 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update(params[:user])
         format.html { redirect_to profile_path}
-        format.json { head :no_content } # 204 No Content
+        format.json { respond_with_bip(@user) }
       else
-        flash[:notice] = "Not a valid image file"
-        render profile_path
+        format.html { render edit}
+        # render profile_path
+        format.json { respond_with_bip(@user) }
       end
     end
   end

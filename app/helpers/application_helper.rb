@@ -21,7 +21,7 @@ module ApplicationHelper
 
   def icon(name)
     #icon("camera-retro")
-    #<i class="icon-camera-retro"></i> 
+    #<i class="icon-camera-retro"></i>
     html = "<i class='#{name}' "
     html += "></i>"
     html.html_safe

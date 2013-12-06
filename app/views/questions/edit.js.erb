@@ -1,0 +1,3 @@
+$('.edit_link_<%= @question.id %>').hide();
+$('#answer_<%= @question.id %>').html("<%= j render 'form' %>");
+$('.answer_textarea').elastic().trigger('blur');
