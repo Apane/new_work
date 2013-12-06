@@ -20,6 +20,7 @@ Friendiose::Application.routes.draw do
   resources :users
   resources :photos
   resources :events
+  resources :questions
 
   # duplicates o for devise
   # The priority is based upon order of creation:

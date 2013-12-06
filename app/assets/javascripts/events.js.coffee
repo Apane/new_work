@@ -2,5 +2,6 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery ->
-  $('#event_date').datepicker
-    format: 'yyyy-mm-dd'
+  if $('#event_date').length > 0
+    $('#event_date').datepicker
+      format: 'yyyy-mm-dd'

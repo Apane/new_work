@@ -8,7 +8,8 @@ class HomeController < ApplicationController
   end
 
   def landing_welcome
-
+    @questions_for_about = current_user.questions.for_about.order('id asc')
+    @questions_for_personality = current_user.questions.for_personality.order('id asc')
   end
 
   def welcome

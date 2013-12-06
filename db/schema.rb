@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131204162051) do
+ActiveRecord::Schema.define(version: 20131205230529) do
 
   create_table "events", force: true do |t|
     t.string   "title"
@@ -38,6 +38,16 @@ ActiveRecord::Schema.define(version: 20131204162051) do
 
   add_index "photos", ["attachable_id"], name: "index_photos_on_attachable_id", using: :btree
   add_index "photos", ["attachable_type"], name: "index_photos_on_attachable_type", using: :btree
+
+  create_table "questions", force: true do |t|
+    t.string   "question"
+    t.text     "answer"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "for_about"
+    t.boolean  "for_personality"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
