@@ -7,6 +7,8 @@
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
 // the compiled file.
 //
+// require bootstrap-editable
+// bootstrap-editable-rails
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
@@ -14,14 +16,10 @@
 //= require jquery_ujs
 //= require jquery_nested_form
 //= require bootstrap
-//= require bootstrap-editable
-//= require bootstrap-editable-rails
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
+//= require best_in_place
 //= require_tree .
-
-
-$(".answer").editable()
 
 function cycleImages(){
   var $active = $('#background_cycler .active');

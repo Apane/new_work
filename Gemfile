@@ -32,7 +32,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.0.1'
 gem 'jquery-fileupload-rails'
-gem 'bootstrap-editable-rails'
+# gem 'bootstrap-editable-rails'
+gem 'best_in_place', :git => 'https://github.com/bernat/best_in_place.git'
 
 # dev test
 gem 'rspec-rails', "~> 2.12"

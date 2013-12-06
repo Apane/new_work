@@ -6,159 +6,180 @@
 
       <%#= Profile image upload  %>
       <div class="span4">
-	<% if current_user.profile_image.present? %>
+        <% if current_user.profile_image.present? %>
         <%= link_to (image_tag current_user.profile_image_url(:thumb).to_s), edit_account_path(current_user)%>
-	<% else %>
-	<%= link_to (image_tag "profile-placeholder1.png"), edit_account_path(current_user) %>
-	<span class="upload">
-	<span class="btn btn-success"><%= link_to "Upload a photo", edit_account_path(current_user)%></span>
-	</span>
-	<% end %>
+        <% else %>
+        <%= link_to (image_tag "profile-placeholder1.png"), edit_account_path(current_user) %>
+        <span class="upload">
+          <span class="btn btn-success"><%= link_to "Upload a photo", edit_account_path(current_user)%></span>
+        </span>
+        <% end %>
 
-      <%#= Space w line  %>
-	<div class="name"></div>
+        <%#= Space w line  %>
+        <div class="name"></div>
 
-      <%#= Please bare in mind these are strickly temporary placeholders i.e whitespace  %>
-	<h5><u>Social Connections</u></h5>
-	Facebook: <%= icon("fa fa-facebook-square") %>
-	<div class="name"></div>
-	Twitter: <%= icon("fa fa-twitter") %>
-	<div class="name"></div>
-	Skype: <%= icon("fa fa-skype") %>
-	<div class="name"></div>
-	LinkedIn: <%= icon("fa fa-linkedin") %>
-	<div class="name"></div>
-	Pinterest: <%= icon("fa fa-pinterest") %>
-	<div class="name"></div>
+        <%#= Please bare in mind these are strickly temporary placeholders i.e whitespace  %>
+        <h5><u>Social Connections</u></h5>
+        Facebook: <%= icon("fa fa-facebook-square") %>
+        <div class="name"></div>
+        Twitter: <%= icon("fa fa-twitter") %>
+        <div class="name"></div>
+        Skype: <%= icon("fa fa-skype") %>
+        <div class="name"></div>
+        LinkedIn: <%= icon("fa fa-linkedin") %>
+        <div class="name"></div>
+        Pinterest: <%= icon("fa fa-pinterest") %>
+        <div class="name"></div>
       </div>
 
       <div class="span8">
-	<%# User name %>
-	<span class="name2">
-	<span class="name1">
-	  <% if current_user.first_name.blank? %>
-	    <%= current_user.first_name.present? ? current_user.first_name : link_to('Finish your profile', edit_account_path)%>
-          <% else %>
+        <%# User name %>
+        <span class="name2">
+          <span class="name1">
+            <% if current_user.first_name.blank? %>
+            <%= current_user.first_name.present? ? current_user.first_name : link_to('Finish your profile', edit_account_path)%>
+            <% else %>
             <%= current_user.first_name %> <%= current_user.last_name %>
-	  <% end %>
-	</span>
-	<span class="side-buttons">
+            <% end %>
+          </span>
+          <span class="side-buttons">
             <div class="btn btn-success move"><%=link_to "Let's hangout" %> <%= icon("fa fa-comments-o") %></div>
-	    <div class="btn btn-warning move"><%=link_to "Message", "#" %> <%= icon("fa fa-comments")%></div>
-	</span></span>
+            <div class="btn btn-warning move"><%=link_to "Message", "#" %> <%= icon("fa fa-comments")%></div>
+          </span>
+        </span>
       </div>
 
       <div class="row">
-	<br /><br / >
+        <br /><br / >
 
-	<div class="span6">
+        <div class="span6">
           <%# User occupation %>
-	  <i class="fa fa-usd"></i>:
-	  <a href="#" class="answer" data-type="text" data-pk="1" data-resource="occupation"  data-name="occupation" data-url="/users/<%= current_user.id %>" ></a>
-	  <%= current_user.occupation.present? ? current_user.occupation : link_to('Add Occupation', edit_account_path)%>
-          </a>
-       </div>
-
-	<div class="addy">
-	<div class="span2">
-           <%# User address %>
-	   <i class="fa fa-home"></i>:
-	   <%= current_user.address.present? ? current_user.address : link_to('Add City', edit_account_path) %>
-	</div>
-	</div>
-
-       <div class="span6">
-         <%# User gender %>
-	 <hr>
-	 <% if current_user.gender == "M" %>
-           <i class="fa fa-male"></i> Male
-         <% else %>
-           <i class="fa fa-female"></i> Female
-	 <% end %>
-       </div>
-
-       <div class="span2">
-         <%# Code to calculate age by user birthday %>
-	 <hr>
-	 Age:
-	 <% if current_user.birthday.present? %>
-         <%= today = Date.today
-             d = Date.new(today.year, current_user.birthday.month, current_user.birthday.day)
-           age = d.year - current_user.birthday.year - (d > today ? 1 : 0) %>
-	 <% else %>
-	 <%= current_user.birthday.present? ? current_user.birthday.year : link_to('Add Birthday', edit_account_path) %>
-         <% end %>
-          </span>
-        </div>
-
-	<div class="span8"></div>
-
-	<div class="span8"><div class="name"></div></div>
-	    <div class="span8">
-	      <div class="tabbable"> <!-- Only required for left/right tabs -->
-		<ul class="nav nav-tabs">
-		  <li class="active"><a href="#tab1" data-toggle="tab">About me</a></li>
-		  <li><a href="#tab2" data-toggle="tab">Photos</a></li>
-  		  <li><a href="#tab3" data-toggle="tab">Personality</a></li>
-		</ul>
-		<div class="tab-content">
-		  <div class="tab-pane in active" id="tab1">
-        <a href="#" class="myeditable editable editable-pre-wrapped editable-click editable-empty" data-type="textarea" data-name="aboutme"  data-url="/users/<%= current_user.id %>" data-resource="user" data-original-title="Enter about you" id='aboutme'><%= textarea_format(current_user.aboutme) %></a>
+          <i class="fa fa-usd"></i>:
+          <a href="#" class="answer" data-type="text" data-pk="1" data-resource="occupation"  data-name="occupation" data-url="/users/<%= current_user.id %>" ></a>
+          <%= current_user.occupation.present? ? current_user.occupation : link_to('Add Occupation', edit_account_path)%>
+        </a>
       </div>
 
-      <script type="text/javascript">
-        $(document).ready(function() {
-            $('#aboutme').editable();
-        });
-      </script>
-		  <div class="tab-pane" id="tab2">
-        <div class="page-header">
-          <%= form_for Photo.new do |f| %>
-            <span class="btn btn-success fileinput-button">
-              <i class="icon-plus icon-white"></i>
-              <span>Add photos...</span>
-              <%= f.file_field :file, multiple: true, name: "photo[file]" %>
-            </span>
-          <% end %>
-          <div class="clearfix"></div>
-        </div>
-        <div class="photos_cont">
-          <div class="col-sm-6 col-md-3">
-            <span class="gallery"><%= render current_user.photos %></span>
+      <div class="addy">
+        <div class="span2">
+         <%# User address %>
+         <i class="fa fa-home"></i>:
+         <%= current_user.address.present? ? current_user.address : link_to('Add City', edit_account_path) %>
+       </div>
+     </div>
+
+     <div class="span6">
+       <%# User gender %>
+       <hr>
+       <% if current_user.gender == "M" %>
+       <i class="fa fa-male"></i> Male
+       <% else %>
+       <i class="fa fa-female"></i> Female
+       <% end %>
+     </div>
+
+     <div class="span2">
+       <%# Code to calculate age by user birthday %>
+       <hr>
+       Age:
+       <% if current_user.birthday.present? %>
+       <%= today = Date.today
+       d = Date.new(today.year, current_user.birthday.month, current_user.birthday.day)
+       age = d.year - current_user.birthday.year - (d > today ? 1 : 0) %>
+       <% else %>
+       <%= current_user.birthday.present? ? current_user.birthday.year : link_to('Add Birthday', edit_account_path) %>
+       <% end %>
+     </div>
+
+     <div class="span8"></div>
+
+     <div class="span8"><div class="name"></div></div>
+     <div class="span8">
+      <div class="tabbable"> <!-- Only required for left/right tabs -->
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#tab1" data-toggle="tab">About me</a></li>
+          <li><a href="#tab2" data-toggle="tab">Photos</a></li>
+          <li><a href="#tab3" data-toggle="tab">Personality</a></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane in active" id="tab1">
+            <% @questions_for_about.each_with_index do |question, index| %>
+              <div class="question">
+                <h4 class="user_questions"><%= index + 1 %>. <%= question.question %> <i class="icon-edit question_<%= question.id %>"></i></h4>
+                <p>
+                  <%= best_in_place question, :answer, {
+                    nil: 'I’m an empty essay... fill me out!',
+                    inner_class: "input-xxxlarge",
+                    type: :textarea,
+                    activator: ".question_#{question.id}",
+                    cancel_button: 'Cancel',
+                    ok_button: 'Save',
+                    use_confirm: false
+                  }%>
+                </p>
+              </div>
+            <% end %>
+          </div>
+          <div class="tab-pane" id="tab2">
+            <div class="page-header">
+              <%= form_for Photo.new do |f| %>
+              <span class="btn btn-success fileinput-button">
+                <i class="icon-plus icon-white"></i>
+                <span>Add photos...</span>
+                <%= f.file_field :file, multiple: true, name: "photo[file]" %>
+              </span>
+              <% end %>
+              <div class="clearfix"></div>
+            </div>
+            <div class="photos_cont">
+              <div class="col-sm-6 col-md-3">
+                <span class="gallery"><%= render current_user.photos %></span>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" id="tab3">
+            <% @questions_for_personality.each_with_index do |question, index| %>
+              <div class="question">
+                <h4 class="user_questions"><%= index + 1 %>. <%= question.question %> <i class="icon-edit question_<%= question.id %>"></i></h4>
+                <p>
+                  <%= best_in_place question, :answer, {
+                    nil: 'I’m an empty essay... fill me out!',
+                    inner_class: "input-xxxlarge",
+                    type: :textarea,
+                    activator: ".question_#{question.id}",
+                    cancel_button: 'Cancel',
+                    ok_button: 'Save',
+                    use_confirm: false
+                  }%>
+                </p>
+              </div>
+            <% end %>
           </div>
         </div>
-		  </div>
-		  <div class="tab-pane" id="tab3">
-		    <p>Howdy, I'm in Section 2.</p>
-		  </div>
-		</div>
-	      </div>
-
-	    </div>
-	</div>
-	<%= render '/shared/footer' %>
+      </div>
+    </div>
+  </div>
+  <%= render '/shared/footer' %>
 </div>
 </div>
 
 <script id="template-upload" type="text/x-tmpl">
-  <div class="upload">
-    {%=o.name%}
-    <div class="progress"><div class="bar" style="width: 0%;"></div></div>
-  </div>
+<div class="upload">
+{%=o.name%}
+<div class="progress"><div class="bar" style="width: 0%;"></div></div>
+</div>
 </script>
 <script>
-
-  var fb_param = {};
-  fb_param.pixel_id = '6009056882201';
-  fb_param.value = '0.00';
-  (function(){
-    var fpw = document.createElement('script');
-    fpw.async = true;
-    fpw.src = '//connect.facebook.net/en_US/fp.js';
-    var ref = document.getElementsByTagName('script')[0];
-    ref.parentNode.insertBefore(fpw, ref);
-  })();
-
+var fb_param = {};
+fb_param.pixel_id = '6009056882201';
+fb_param.value = '0.00';
+(function(){
+  var fpw = document.createElement('script');
+  fpw.async = true;
+  fpw.src = '//connect.facebook.net/en_US/fp.js';
+  var ref = document.getElementsByTagName('script')[0];
+  ref.parentNode.insertBefore(fpw, ref);
+})();
 </script>
 
 <noscript>

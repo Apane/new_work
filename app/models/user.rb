@@ -21,10 +21,18 @@ class User < ActiveRecord::Base
 
   has_many :events
   has_many :photos, as: :attachable
+  has_many :questions
   accepts_nested_attributes_for :photos
   mount_uploader :profile_image, ProfileImageUploader
 
   validates :gender, :presence => true
+
+  after_create :create_questions
+
+  def create_questions
+    Question::QUESTIONS_FOR_ABOUT.map{|q| self.questions.create(question: q, for_about: true)}
+    Question::QUESTIONS_FOR_PERSONALITY.map{|q| self.questions.create(question: q, for_personality: true)}
+  end
 
   def number_of_users
     User.all.count
