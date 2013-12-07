@@ -18,7 +18,7 @@ $('#background_cycler').hide();//hide the background while the images load, read
   <div class="top-section <%= background_image_class %>">
     <div class="container">
       <h2 class="main_message">
-        Hang out with people like you
+	Meet people like you near you
       </h2>
       <div class="join-screenshot">
         <div class="join">
@@ -109,6 +109,15 @@ $('#background_cycler').hide();//hide the background while the images load, read
           </div>
         </div>
       </div>
+      <div class="line2"></div>
+      <br />
+      <h2 id="join1">
+	Meet people like you near you
+      </h2>
+      <br />
+	<div id="join"><h1><%=link_to "Join Now", new_user_registration_path, class: "btn btn-warning" %></h1></div>
+      <br />
+      <div class="line2"></div>
       <%= render '/shared/footer' %>
     </div>
   </div>

@@ -137,9 +137,67 @@ form#new_user {
   border-radius: 6px;
   margin: 0 auto;
   padding: 30px 20px 20px;
-  width: 470px;
+  width: 600px;
   margin-top: 25px;
   margin-bottom: 30px;
+  background: none repeat scroll 0 0 #FFFFFF;
+  box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+padding-top: 4%;
+margin-left: 25%;
+}
+
+#formbox-login div.tips {
+    padding-top: 0;
+    width: 100px;
+}
+#formbox-login div.tips {
+    line-height: 1.5;
+    padding-top: 12px;
+    width: auto;
+}
+#formbox-login-tips {
+    height: 120px;
+}
+div.tips {
+    color: #666666;
+    font-size: 12px;
+}
+div.tips {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border-left: 1px solid #DDDDDD;
+    padding: 0 0 0 15px;
+    right: 0;
+    top: 0;
+    width: 200px;
+}
+div.tips {
+
+    color: #8B8078;
+    float: right;
+    padding: 25px;
+    width: 150px;
+}
+
+#join a {
+      font-size: 22px;
+      text-align: center;
+      padding: 15px 15px 15px 15px;
+}
+
+#join {     
+      text-align: center;
+      margin: 0 auto;
+}
+
+
+#join1 {     
+      text-align: center;
+      margin: 0 auto;
+      color: #209DE3;
+      font-size: 25px;
 }
 
 textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
@@ -249,7 +307,7 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 
 .side-buttons {
   padding-bottom: 15px;
-  margin-left: 60.5%;
+  margin-left: 82.5%;
 }
 
 .side-buttons a {
@@ -376,3 +434,18 @@ input[type="checkbox"] {
   font-family: "Whitney 4r",Helvetica,Arial,sans-serif;
   outline: medium none;
 }
+
+#brand {
+       display: block;
+       clear: both;
+       position: absolute;
+       margin-left: 1.5%;
+}
+
+#brand1 {
+       display: block;
+       clear: both;
+       position: absolute;
+       margin-left: 4.5%;
+}
+

@@ -40,7 +40,6 @@
             <% end %>
           </span>
           <span class="side-buttons">
-            <div class="btn btn-success move"><%=link_to "Let's hangout" %> <%= icon("fa fa-comments-o") %></div>
             <div class="btn btn-warning move"><%=link_to "Message", "#" %> <%= icon("fa fa-comments")%></div>
           </span>
         </span>
@@ -114,9 +113,9 @@
               <div class="col-sm-6 col-md-3">
 		<% if @user.photos.present? %>
                 <span class="gallery"><%= render @user.photos %></span>
-	      <% else %>
-	      <h5><%= @user.first_name %> hasn't uploaded any photos..</h5>
-	    <% end %>
+		<% else %>
+		<h5><%= @user.first_name %> hasn't uploaded any photos..</h5>
+		<% end %>
               </div>
               <div class="clearfix"></div>
             </div>

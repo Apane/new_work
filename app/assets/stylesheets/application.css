@@ -23,6 +23,17 @@ body h1, body h2, body h3, body h4, body h5, body h6, .name {
   font-family: "museo", helveticaneue, sans-serif;
 }
 
+body.background-gradient {
+background:no-repeat scroll center top rgba(163,212,255,1);
+background:no-repeat scroll center top -moz-linear-gradient(top, rgba(163,212,255,1) 0%, rgba(255,255,255,0.38) 100%);
+background:no-repeat scroll center top -webkit-gradient(left top, left bottom, color-stop(0%, rgba(163,212,255,1)), color-stop(100%, rgba(255,255,255,0.38)));
+background:no-repeat scroll center top -webkit-linear-gradient(top, rgba(163,212,255,1) 0%, rgba(255,255,255,0.38) 100%);
+background:no-repeat scroll center top -o-linear-gradient(top, rgba(163,212,255,1) 0%, rgba(255,255,255,0.38) 100%);
+background:no-repeat scroll center top -ms-linear-gradient(top, rgba(163,212,255,1) 0%, rgba(255,255,255,0.38) 100%);
+background:no-repeat scroll center top linear-gradient(to bottom, rgba(163,212,255,1) 0%, rgba(255,255,255,0.38) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a3d4ff', endColorstr='#ffffff', GradientType=0 );
+}
+
 #background_cycler{padding:0;margin:0;width:100%;position:absolute;top:0;left:0;z-index:-1}
 #background_cycler img{position:absolute;left:0;top:0;width:100%;z-index:1}
 #background_cycler img.active{z-index:3}
