@@ -1,6 +1,7 @@
 <div class="background-gradient">
 <div id="user">
-  <div class="logo"><%= logo2 %></div>
+      <div class="logo"><%= link_to logo, home_path %></div>
+
   <div class="new_user">
 
     <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
