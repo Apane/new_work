@@ -6,7 +6,7 @@ Friendiose::Application.routes.draw do
     :sessions => "users/sessions",
     :passwords => "users/passwords"}
 
-  get "welcome", to: "home#landing_welcome", as: 'profile'
+  get "welcome", to: "home#landing_welcome", as: 'welcome'
   get "home", to: "home#landing", as: 'home'
 
   devise_scope :user do
@@ -15,7 +15,7 @@ Friendiose::Application.routes.draw do
   end
 
   patch '/users/:id', to: 'users#update', as: 'user'
-  get '/events/:id', to: 'events#create', as: 'event'
+  get 'profile/:id' => "users#show", as: :profile
 
   resources :users do
     resources :questions
