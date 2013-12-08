@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131206193701) do
+ActiveRecord::Schema.define(version: 20131208141852) do
 
   create_table "events", force: true do |t|
     t.string   "title"
@@ -22,11 +22,10 @@ ActiveRecord::Schema.define(version: 20131206193701) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "time"
+    t.string   "time"
+    t.datetime "event_date"
   end
 
-  add_index "events", ["date"], name: "index_events_on_date", unique: true, using: :btree
-  add_index "events", ["location"], name: "index_events_on_location", unique: true, using: :btree
   add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
 
   create_table "photos", force: true do |t|

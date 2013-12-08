@@ -12,7 +12,7 @@
     <h4><%= link_to event.title, event %></h4>
     <h5><i class="fa fa-map-marker"></i> <%= event.location %></h5>
     <h5><i class="fa fa-calendar-o"></i> <%= event.date.strftime("%A, %B %d, %Y") %></h5>
-    <h5><i class="fa fa-clock-o"></i> <%= event.time.strftime("%l:%M %P") %></h5>
+    <h5><i class="fa fa-clock-o"></i> <%= event.time %></h5>
     <%= link_to "Show", event %>
     <%= link_to "Edit", edit_event_path(event) %>
     <%= link_to "Remove", event, method: :delete, data: { confirm: "Are you sure?" }, remote: true %>

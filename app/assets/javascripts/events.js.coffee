@@ -6,5 +6,5 @@ jQuery ->
     $('#event_date').datepicker
       format: 'yyyy-mm-dd'
 
-jQuery ->
-  $('#event_time').timepicker({ 'scrollDefaultNow': true });
+  $('#event_time').timepicker
+    scrollDefaultNow: true
