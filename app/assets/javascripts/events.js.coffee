@@ -7,4 +7,6 @@ jQuery ->
       format: 'yyyy-mm-dd'
 
   $('#event_time').timepicker
-    scrollDefaultNow: true
+    minuteStep: 15,
+    showInputs: false,
+    disableFocus: true
