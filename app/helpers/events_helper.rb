@@ -3,7 +3,7 @@ module EventsHelper
     if user == current_user
       link_to 'You',  welcome_path
     else
-      link_to user.short_name,  profile_path(event.user)
+      link_to user.short_name,  profile_path(user)
     end
   end
 end
