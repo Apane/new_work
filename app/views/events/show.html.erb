@@ -1,1 +1,49 @@
 <%= render 'shared/header' %>
+
+<div class="container">                                                                                                                                      
+  <div class="row">                                                                                                                                          
+    <div class="span3">                                                                                                                                      
+      <%= render 'sidebar' %>                                                                                                                                
+    </div>                                                                                                                                                                                                                                                                                                                
+    <div class="span5">                                                                                                                                      
+      <div class="new_event_form">                                                                                                                           
+        <div class="line1"><h4>Create event</h4></div>                                                                                                       
+        <%= form_for current_user.events.new, remote: true do |f| %>                                                                                         
+          <h5>Event title:</h5>                                                                                                                              
+          <div><%= f.text_field :title, placeholder: "Event title", required: true, autocomplete: :off %></div>                                              
+          <h5>Event description:</h5>                                                                                                                        
+          <div><%= f.text_area :description, placeholder: "Event description", required: true, autocomplete: :off %></div>                                   
+          <h5>Event date:</h5>                                                                                                                               
+          <div><%= f.text_field :date  %></div>                                                                                                              
+          <h5>Event location:</h5>                                                                                                                           
+          <div><%= f.text_field :location, placeholder: "Event location", required: true, autocomplete: :off %></div>                                        
+          <div>                                                                                                                                              
+            <%= f.submit "Create event", class: 'btn btn-primary' %>                                                                                         
+            <%= link_to "Cancel", '#', class: 'btn cancel_event' %>                                                                                          
+          </div><br />                                                                                                                                       
+        <% end %>                                                                                                                                            
+      </div>                                                                                                                                                 
+      <div class="events_list">                                                                                                                              
+        <!-- look in events/event.hmlt.erb -->                                                                                                               
+        <h4><%= @event.title %> at <%= @event.location %></h4>                                                                                               
+        <p><%= @event.description %></p>                                                                                                                     
+        <h5><i class="fa fa-calendar-o"></i> <%= @event.date.strftime("%A, %B %d, %Y") %></h5>                                                               
+        <h5><i class="fa fa-clock-o"></i> <%= @event.date.strftime("%H:%M") %></h5>                                                                          
+        <h5><i class="fa fa-map-marker"></i> <%= @event.location %></h5>                                                                                     
+      </div>                                                                                                                                                 
+    </div>                                   
+ <div class="span4">                                                                                                                                       
+      <%= image_tag("http://www.nicholasroussos.com/images/google-maps-hack.jpg", size: "1000x1000") %>                                                      
+      </span>                                                                                                                                                
+    </div>                                                                                                                                                   
+  </div>                                                                                                                                                     
+</div>                                                                                                                                                      
+
+<script type="text/javascript">                                                                                                                              
+$('.add_event').click(function(event) {                                                                                                                      
+  $('.new_event_form').css('display', 'block');                                                                                                              
+});                                                                                                                                                          
+$('.cancel_event').click(function(event) {                                                                                                                   
+  $('.new_event_form').css('display', 'none');                                                                                                               
+});                                                                                                                                                          
+</script>

@@ -1,33 +1,40 @@
-<div id="user">
-<div class="new_user">
-<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+<div class="background-gradient">
+  <div id="user">
+    <div class="main1">
+      <div class="logo"><%= link_to logo, home_path %></div>
+      <div class="new_user">
 
-  <div align="right">
-Don't have an account? 
+	<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+	  <div id="formbox-login-tips" class="tips">
+	    Don't have an account? 
 
-  <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "Sign up", new_registration_path(resource_name) %> 
+	    <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+              <%= link_to "Sign up", new_registration_path(resource_name) %> 
+	      <br />	      <br />
+	    <%= render "devise/shared/links" %>
+	  </div>
+
+	  <div class="signup-body">
+	  <h3>Log in to Friendiose</h3>
+	  <div><%= f.input_field :email, placeholder: "Your email", required: true, autocomplete: :off %></div>
+
+	  <div><%= f.input_field :password, placeholder: "Password", required: true, autocomplete: :off  %></div>
+
+
+	  <% if devise_mapping.rememberable? -%>
+            <div><%= f.check_box :remember_me, checked: true %> Remember my email on this computer</div>
+	  <% end -%><br />
+
+	    <div class="Form_Field Form_Field_Text marketing"><%= f.submit "Sign in", class: "btn btn-warning"  %></div><br />
+
+	  <% end %>
+
+	<% end -%>
+
+      </div>
+    </div>
   </div>
-
-  <%= logo2 %>
-
-  <br /><br />
-
- <div><%= f.input_field :email, placeholder: "Your email", required: true, autocomplete: :off %></div>
-
- <div><%= f.input_field :password, placeholder: "Password", required: true, autocomplete: :off  %></div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me, checked: true %> <%= f.label :remember_me %></div>
-  <% end -%><br />
-
-    <div class="Form_Field Form_Field_Text marketing"><%= f.submit "Sign in", class: "btn btn-warning"  %></div><br />
-
-<%= render "devise/shared/links" %>
-
-<% end %>
-
-<% end -%></div>
-
 </div>
 </div>
+
+<%= render 'shared/footer' %>

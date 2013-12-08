@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class Question < ActiveRecord::Base
   attr_accessible :question, :answer, :for_about, :for_personality
   belongs_to :user

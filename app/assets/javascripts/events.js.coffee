@@ -5,3 +5,6 @@ jQuery ->
   if $('#event_date').length > 0
     $('#event_date').datepicker
       format: 'yyyy-mm-dd'
+
+jQuery ->
+  $('#event_time').timepicker({ 'scrollDefaultNow': true });

@@ -6,13 +6,10 @@
 
       <%#= Profile image upload  %>
       <div class="span4">
-        <% if current_user.profile_image.present? %>
-        <%= link_to (image_tag current_user.profile_image_url(:thumb).to_s), edit_account_path(current_user)%>
+        <% if @user.profile_image.present? %>
+        <%= image_tag @user.profile_image_url(:thumb).to_s%>
         <% else %>
-        <%= link_to (image_tag "profile-placeholder1.png"), edit_account_path(current_user) %>
-        <span class="upload">
-          <span class="btn btn-success"><%= link_to "Upload a photo", edit_account_path(current_user)%></span>
-        </span>
+	<%= image_tag "profile-placeholder1.png" %>
         <% end %>
 
         <%#= Space w line  %>
@@ -31,14 +28,15 @@
         Pinterest: <%= icon("fa fa-pinterest") %>
         <div class="name"></div>
       </div>
+
       <div class="span8">
         <%# User name %>
         <span class="name2">
           <span class="name1">
-            <% if current_user.first_name.blank? %>
-            <%= current_user.first_name.present? ? current_user.first_name : link_to('Finish your profile', edit_account_path)%>
+            <% if @user.first_name.blank? %>
+            <%= @user.first_name.present? ? @user.first_name : "N/A" %>
             <% else %>
-            <%= current_user.first_name %> <%= current_user.last_name %>
+            <%= @user.first_name %> <%= @user.last_name %>
             <% end %>
           </span>
           <span class="side-buttons">
@@ -53,21 +51,21 @@
         <div class="span6">
           <%# User occupation %>
           <i class="fa fa-usd"></i>:
-          <%= best_in_place current_user, :occupation, nil: 'Add occupation' %>
+          <%= @user.occupation.present? ? @user.occupation : "N/A" %>
       </div>
 
       <div class="addy">
         <div class="span2">
          <%# User address %>
          <i class="fa fa-home"></i>:
-         <%= current_user.address.present? ? current_user.address : link_to('Add City', edit_account_path) %>
+         <%= @user.address.present? ? @user.address : "N/A" %>
        </div>
      </div>
 
      <div class="span6">
        <%# User gender %>
        <hr>
-       <% if current_user.gender == "M" %>
+       <% if @user.gender == "M" %>
        <i class="fa fa-male"></i> Male
        <% else %>
        <i class="fa fa-female"></i> Female
@@ -77,7 +75,14 @@
      <div class="span2">
        <!-- Code to calculate age by user birthday -->
        <hr>
-       Age: <%= user_birthday %>
+       Age:
+       <% if @user.birthday.present? %>                                                                                                               
+       <%= today = Date.today                                                                                                                                
+	   d = Date.new(today.year, @user.birthday.month, @user.birthday.day)                                                                  
+       age = d.year - @user.birthday.year - (d > today ? 1 : 0) %>                                                                                    
+       <% else %>                                                                                                                                            
+       <%= @user.birthday.present? ? @user.birthday.year : "N/A" %>                                       
+       <% end %>            
      </div>
 
      <div class="span8"></div>
@@ -96,9 +101,6 @@
               <div class="question">
                 <h4 class="user_questions">
                   <%= index + 1 %>. <%= question.question %>
-                  <%= link_to ("<i class='icon-edit'></i>".html_safe),
-                        edit_user_question_path(current_user, question),
-                        remote: true, class: "edit_link_#{question.id}" %>
                 </h4>
                 <div class="answer" id="answer_<%= question.id %>">
                   <%= answer_for(question) %>
@@ -108,19 +110,16 @@
           </div>
           <div class="tab-pane" id="tab2">
             <div class="page-header">
-              <%= form_for Photo.new do |f| %>
-              <span class="btn btn-success fileinput-button">
-                <i class="icon-plus icon-white"></i>
-                <span>Add photos...</span>
-                <%= f.file_field :file, multiple: true, name: "photo[file]" %>
-              </span>
-              <% end %>
+              <div class="col-sm-6 col-md-3">
+		<% if @user.photos.present? %>
+                <span class="gallery"><%= render @user.photos %></span>
+		<% else %>
+		<h5><%= @user.first_name %> hasn't uploaded any photos..</h5>
+		<% end %>
+              </div>
               <div class="clearfix"></div>
             </div>
             <div class="photos_cont">
-              <div class="col-sm-6 col-md-3">
-                <span class="gallery"><%= render current_user.photos %></span>
-              </div>
             </div>
           </div>
           <div class="tab-pane" id="tab3">
@@ -128,9 +127,6 @@
               <div class="question">
                 <h4 class="user_questions">
                   <%= index + 1 %>. <%= question.question %>
-                  <%= link_to ("<i class='icon-edit'></i>".html_safe),
-                        edit_user_question_path(current_user, question),
-                        remote: true, class: "edit_link_#{question.id}" %>
                 </h4>
                 <div class="answer" id="answer_<%= question.id %>">
                   <%= answer_for(question) %>

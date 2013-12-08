@@ -13,6 +13,8 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery.timepicker
+//= require bootstrap-datepicker
 //= require jquery_ujs
 //= require jquery_nested_form
 //= require bootstrap
@@ -34,5 +36,5 @@ function cycleImages(){
 $(window).load(function(){
   $('#background_cycler').show(0);//fade the background back in once all the images are loaded
     // run every 7s
-  setInterval('cycleImages()', 5000);
+  setInterval('cycleImages()', 2100);
 })

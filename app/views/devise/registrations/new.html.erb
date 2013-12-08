@@ -1,52 +1,61 @@
+<div class="background-gradient">
 <div id="user">
-<div class="new_user">
+      <div class="logo"><%= link_to logo, home_path %></div>
 
-  <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <div class="new_user">
 
-  <%= devise_error_messages! %>
+    <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
 
-  <%= logo2 %>
+      <%= devise_error_messages! %>
 
-  <br /><br />
+      <div id="formbox-login-tips" class="tips">
+	<h4>Meet people like you, near you.</h4>
+	<div class="line"></div>
+	<ul>
+	  <li><h5>Publish new events</h5></li>
+	  <li><h5>Get others to join</h5></li>
+	  <li><h5>Find people with shared interests.</h5></li>
+	</ul>
+      </div>
+      <div class="signup-body">
+	<h3>Create a new account</h3>
+	<div><%= f.input_field :email, placeholder: "Your email", required: true, autocomplete: :off %></div>
+	<div><%= f.input_field :password, placeholder: "Password", required: true, autocomplete: :off %></div>
+	<div><%= f.input_field :password_confirmation, placeholder: "Password confirmation", required: true, autocomplete: :off %></div>
+	<div><%= f.input_field :first_name, placeholder: "Your first name", required: true, autocomplete: :off %></div>
+	<div><%= f.input_field :last_name, placeholder: "Your last name", required: true, autocomplete: :off %></div>
+	<div><%= f.input_field :zip, placeholder: "Your zip or postal code", required: true, autocomplete: :off %></div>
 
-  <div><%= f.input_field :email, placeholder: "Your email", required: true, autocomplete: :off %></div>
-
-  <div><%= f.input_field :password, placeholder: "Password", required: true, autocomplete: :off %></div>
-
-  <div><%= f.input_field :password_confirmation, placeholder: "Password confirmation", required: true, autocomplete: :off %></div>
-
-  <div><%= f.input_field :first_name, placeholder: "Your first name", required: true, autocomplete: :off %></div>
-
-  <div><%= f.input_field :last_name, placeholder: "Your last name", required: true, autocomplete: :off %></div>
-
-  <div><%= f.input_field :zip, placeholder: "Your zip or postal code", required: true, autocomplete: :off %></div>
-
-  Birthday: <br /><br />
-  <%= f.date_select :birthday, 
-  {:start_year => Time.now.year,
-  :end_year => 1900,
-  :use_short_month => true,
-  :order => [:month, :day, :year],
-  :prompt => {:month => 'Month', :day => 'Day', :year => 'Year'}},
+	Birthday: <br /><br />
+	<%= f.date_select :birthday, 
+          {:start_year => Time.now.year,
+    :end_year => 1900,
+    :use_short_month => true,
+    :order => [:month, :day, :year],
+    :prompt => {:month => 'Month', :day => 'Day', :year => 'Year'}},
   {:class => 'year',
-  :id => 'user_birthday'}
-%><br />
-  Gender: <br />
-  <label class="radio inline">
-  <div class="pushm"><%= f.radio_button "gender", "M" %>
-  Male
+    :id => 'user_birthday'}
+%>
+	<br />
+	Gender: 
+	<br />
+	<label class="radio inline">
+	  <div class="pushm"><%= f.radio_button "gender", "M" %>
+	    Male
+	  </div>
+	</label>
+	<label class="radio inline">
+	  <div class="pushf">
+	    <%= f.radio_button "gender", "F" %>
+	    Female
+	  </div>
+	</label>
+	<br /><br />
+	<div><%= f.submit "Sign up", class: "btn btn-warning"  %></div><br />
+	
+      <% end %>
+      </div>
   </div>
-  </label>
-  <label class="radio inline">
-  <div class="pushf">
-  <%= f.radio_button "gender", "F" %>
-  Female
-  </div>
-  </label><br /><br />
- 
-  <div><%= f.submit "Sign up", class: "btn btn-warning"  %></div><br />
-
-<% end %>
-
 </div>
 </div>
+<%= render 'shared/footer' %>
