@@ -1,6 +1,6 @@
 <div class="background-gradient">
 <div id="user">
-      <div class="logo"><%= link_to logo, home_path %></div>
+      <div class="logo"><%= link_to logo, root_path %></div>
 
   <div class="new_user">
 
@@ -27,7 +27,7 @@
 	<div><%= f.input_field :zip, placeholder: "Your zip or postal code", required: true, autocomplete: :off %></div>
 
 	Birthday: <br /><br />
-	<%= f.date_select :birthday, 
+	<%= f.date_select :birthday,
           {:start_year => Time.now.year,
     :end_year => 1900,
     :use_short_month => true,
@@ -37,7 +37,7 @@
     :id => 'user_birthday'}
 %>
 	<br />
-	Gender: 
+	Gender:
 	<br />
 	<label class="radio inline">
 	  <div class="pushm"><%= f.radio_button "gender", "M" %>
@@ -52,7 +52,7 @@
 	</label>
 	<br /><br />
 	<div><%= f.submit "Sign up", class: "btn btn-warning"  %></div><br />
-	
+
       <% end %>
       </div>
   </div>

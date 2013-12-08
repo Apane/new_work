@@ -5,7 +5,7 @@ class Users::SessionsController < Devise::SessionsController
 
   def after_sign_in_path_for(resource)
     if user_signed_in?
-      profile_path
+      welcome_path
     else
       new_user_registration_path
     end

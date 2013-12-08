@@ -1,15 +1,15 @@
 <div class="background-gradient">
   <div id="user">
     <div class="main1">
-      <div class="logo"><%= link_to logo, home_path %></div>
+      <div class="logo"><%= link_to logo, root_path %></div>
       <div class="new_user">
 
 	<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 	  <div id="formbox-login-tips" class="tips">
-	    Don't have an account? 
+	    Don't have an account?
 
 	    <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-              <%= link_to "Sign up", new_registration_path(resource_name) %> 
+              <%= link_to "Sign up", new_registration_path(resource_name) %>
 	      <br />	      <br />
 	    <%= render "devise/shared/links" %>
 	  </div>

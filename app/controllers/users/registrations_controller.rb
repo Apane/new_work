@@ -32,11 +32,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 private
 
   def after_sign_up_path_for(resource)
-    profile_path
+    welcome_path
   end
 
   def after_update_path_for(resource)
-    profile_path
+    welcome_path
   end
 
 

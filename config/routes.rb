@@ -6,15 +6,14 @@ Friendiose::Application.routes.draw do
     :sessions => "users/sessions",
     :passwords => "users/passwords"}
 
-  get "welcome", to: "home#landing_welcome", as: 'welcome'
-  get "home", to: "home#landing", as: 'home'
+  get "welcome", to: "home#welcome", as: 'welcome'
 
   devise_scope :user do
   #  get "edit/edit_account", :to => "devise/registrations#edit_account", :as => "account_registration"
     get 'edit/edit_account' => 'users/registrations#account_registration', as: :edit_account
   end
 
-  patch '/users/:id', to: 'users#update', as: 'user'
+  # patch '/users/:id', to: 'users#update', as: 'user'
   get 'profile/:id' => "users#show", as: :profile
 
   resources :users do
