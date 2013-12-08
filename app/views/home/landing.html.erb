@@ -3,7 +3,7 @@
 <%# Begin background image cycler on landing page %>
 <div id="background_cycler" >
 
-<script type="text/javascript">
+  <script type="text/javascript">
 $('#background_cycler').hide();//hide the background while the images load, ready to fade in later
 </script>
 
@@ -18,109 +18,108 @@ $('#background_cycler').hide();//hide the background while the images load, read
   <div class="top-section <%= background_image_class %>">
     <div class="container">
       <h2 class="main_message">
-	Meet people like you near you
-      </h2>
-      <div class="join-screenshot">
-        <div class="join">
-          <%= form_for User.new, url: user_registration_path(User.new) do |f| %>
-            <h3>Join Now</h3>
-            <div class="fieldset">
-              <div class="control-group">
-                <%= f.text_field "email", placeholder: "Your Email", required: true, autocomplete: :off %>
-              </div>
-              <div class="control-group">
-                <%= f.password_field "password", placeholder: "Your Password", required: true, autocomplete: :off %>
-              </div>
-              <div class="control-group">
-                <%= f.text_field "zip", placeholder: "Zip Code", required: true %>
-              </div>
-              <div class="control-group">
-                <div class="radio-group-row">
-                  <label class="radio-group-title">
-                    Gender:
-                  </label>
-                  <label class="radio inline">
-                    <%= f.radio_button "gender", "M" %>
-                    Male
-                  </label>
-                  <label class="radio inline">
-                    <%= f.radio_button "gender", "F" %>
-                    Female
-                  </label>
-                </div>
-              </div>
-              <div class="control-group submit">
-                <button type="submit">
-                  SIGN UP
-                </button>
-              </div>
+       Meet people like you near you
+     </h2>
+     <div class="join-screenshot">
+      <div class="join">
+        <%= form_for User.new, url: user_registration_path(User.new) do |f| %>
+        <h3>Join Now</h3>
+        <div class="fieldset">
+          <div class="control-group">
+            <%= f.text_field "email", placeholder: "Your Email", required: true, autocomplete: :off %>
+          </div>
+          <div class="control-group">
+            <%= f.password_field "password", placeholder: "Your Password", required: true, autocomplete: :off %>
+          </div>
+          <div class="control-group">
+            <%= f.text_field "zip", placeholder: "Zip Code", required: true %>
+          </div>
+          <div class="control-group">
+            <div class="radio-group-row">
+              <label class="radio-group-title">
+                Gender:
+              </label>
+              <label class="radio inline">
+                <%= f.radio_button "gender", "M" %>
+                Male
+              </label>
+              <label class="radio inline">
+                <%= f.radio_button "gender", "F" %>
+                Female
+              </label>
             </div>
-          <% end %>
+          </div>
+          <div class="control-group submit">
+            <button type="submit">
+              SIGN UP
+            </button>
+          </div>
+          <h5><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %></h5>
         </div>
-        <div class="screenshot">
-          <%= image_tag "screenshot-filled.png" %>
-        </div>
+        <% end %>
       </div>
-    </div>
-  </div>
-  <div class="bottom-section">
-    <div class="container">
-      <div class="bullet-points">
-        <div class="bullet clearfix">
-          <div class="message pull-right">
-            <h3>Sign up and fill out your interests</h3>
-          </div>
-          <div class="icon pull-left">
-            <%= image_tag "interests_icon.png" %>
-          </div>
-        </div>
-        <div class="bullet clearfix horz_gray">
-          <div class="message pull-left">
-            <h3>
-              Discover people who share your
-              <br/>
-              interests
-            </h3>
-          </div>
-          <div class="icon pull-right">
-            <%= image_tag "share_interests.png" %>
-          </div>
-        </div>
-        <div class="bullet clearfix">
-          <div class="message pull-right">
-            <h3>
-              Set up a time to go hang out
-            </h3>
-          </div>
-          <div class="icon pull-left">
-            <%= image_tag "calendar-icon.png" %>
-          </div>
-        </div>
-        <div class="bullet clearfix horz_gray">
-          <div class="message pull-left">
-            <h3>
-              Break the ice online.
-              <br/>
-              Hang out offline
-            </h3>
-          </div>
-          <div class="icon pull-right">
-            <%= image_tag "break-ice-icon.png" %>
-          </div>
-        </div>
+      <div class="screenshot">
+        <%= image_tag "screenshot-filled.png" %>
       </div>
-      <div class="line2"></div>
-      <br />
-      <h2 id="join1">
-	Meet people like you near you
-      </h2>
-      <br />
-	<div id="join"><h1><%=link_to "Join Now", new_user_registration_path, class: "btn btn-warning" %></h1></div>
-      <br />
-      <div class="line2"></div>
-      <%= render '/shared/footer' %>
     </div>
   </div>
 </div>
-
-
+<div class="bottom-section">
+  <div class="container">
+    <div class="bullet-points">
+      <div class="bullet clearfix">
+        <div class="message pull-right">
+          <h3>Sign up and fill out your interests</h3>
+        </div>
+        <div class="icon pull-left">
+          <%= image_tag "interests_icon.png" %>
+        </div>
+      </div>
+      <div class="bullet clearfix horz_gray">
+        <div class="message pull-left">
+          <h3>
+            Discover people who share your
+            <br/>
+            interests
+          </h3>
+        </div>
+        <div class="icon pull-right">
+          <%= image_tag "share_interests.png" %>
+        </div>
+      </div>
+      <div class="bullet clearfix">
+        <div class="message pull-right">
+          <h3>
+            Set up a time to go hang out
+          </h3>
+        </div>
+        <div class="icon pull-left">
+          <%= image_tag "calendar-icon.png" %>
+        </div>
+      </div>
+      <div class="bullet clearfix horz_gray">
+        <div class="message pull-left">
+          <h3>
+            Break the ice online.
+            <br/>
+            Hang out offline
+          </h3>
+        </div>
+        <div class="icon pull-right">
+          <%= image_tag "break-ice-icon.png" %>
+        </div>
+      </div>
+    </div>
+    <div class="line2"></div>
+    <br />
+    <h2 id="join1">
+     Meet people like you near you
+   </h2>
+   <br />
+   <div id="join"><h1><%=link_to "Join Now", new_user_registration_path, class: "btn btn-warning" %></h1></div>
+   <br />
+   <div class="line2"></div>
+   <%= render '/shared/footer' %>
+ </div>
+</div>
+</div>

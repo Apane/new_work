@@ -1,5 +1,8 @@
 Friendiose::Application.routes.draw do
 
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
+
   root to: "home#landing"
 
   devise_for :users, :controllers => {:registrations => "users/registrations",

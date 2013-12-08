@@ -6,21 +6,13 @@
 
       <%#= Profile image upload  %>
       <div class="span4">
-        <% if current_user.profile_image.present? %>
-        <%= link_to (image_tag current_user.profile_image_url(:thumb).to_s), edit_account_path(current_user)%>
-        <% else %>
-        <%= link_to (image_tag "profile-placeholder1.png"), edit_account_path(current_user) %>
-        <span class="upload">
-          <span class="btn btn-success"><%= link_to "Upload a photo", edit_account_path(current_user)%></span>
-        </span>
-        <% end %>
-
+        <%= user_avatar(current_user) %>
         <%#= Space w line  %>
         <div class="name"></div>
 
         <%#= Please bare in mind these are strickly temporary placeholders i.e whitespace  %>
         <h5><u>Social Connections</u></h5>
-        Facebook: <%= icon("fa fa-facebook-square") %>
+        Facebook: <%= icon("fa fa-facebook-square") %> - <%= current_user.has_fb_connection? ? 'Connected' : '' %>
         <div class="name"></div>
         Twitter: <%= icon("fa fa-twitter") %>
         <div class="name"></div>

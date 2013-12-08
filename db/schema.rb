@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131208141852) do
+ActiveRecord::Schema.define(version: 20131208221804) do
 
   create_table "events", force: true do |t|
     t.string   "title"
@@ -71,6 +71,11 @@ ActiveRecord::Schema.define(version: 20131208141852) do
     t.string   "address"
     t.text     "aboutme"
     t.string   "profile_image"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
+    t.string   "fb_avatar_url"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
