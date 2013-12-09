@@ -32,3 +32,6 @@ emacs-config.el
 database.yml
 .rvmrc
 public/uploads
+
+# Ignore application configuration
+/config/application.yml

@@ -17,6 +17,7 @@ gem 'sass-rails'
 gem 'devise', '~> 3.0.0.rc'
 gem 'simple_form'
 gem 'nested_form'
+gem "figaro"
 
 # asset gems
 gem 'uglifier', '>= 1.0.3'
