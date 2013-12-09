@@ -24,7 +24,8 @@
 	<div class="name2"></div>
 	<p>
     <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %><br>
-    <%= link_to 'Disconnect Facebook', disconnect_path(social: 'facebook') if current_user.has_fb_connection? %>
+    <%= link_to 'Disconnect Facebook', disconnect_path(social: 'facebook') if current_user.has_fb_connection? %><br>
+    <%= link_to 'Disconnect Twitter', disconnect_path(social: 'twitter') if current_user.has_tw_connection? %>
   </p>
 
       </div>

@@ -35,7 +35,11 @@ gem 'jbuilder', '~> 1.0.1'
 gem 'jquery-fileupload-rails'
 # gem 'bootstrap-editable-rails'
 gem 'best_in_place', :git => 'https://github.com/bernat/best_in_place.git'
+# gem 'oa-oauth', :require => 'omniauth/oauth'
+# gem 'omniauth'
+gem 'omniauth-twitter'
 gem 'omniauth-facebook'
+gem 'uuidtools'
 
 # dev test
 gem 'rspec-rails', "~> 2.12"

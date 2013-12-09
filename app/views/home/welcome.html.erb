@@ -13,9 +13,10 @@
         <%#= Please bare in mind these are strickly temporary placeholders i.e whitespace  %>
         <h5><u>Social Connections</u></h5>
         Facebook: <i class="fa fa-facebook-square"></i>
-        <%= current_user.has_fb_connection? ? (link_to 'Disconnect', disconnect_path(social: 'facebook')) : (link_to "connect", "/auth/facebook") %>
+        <%= current_user.has_fb_connection? ? (link_to 'Disconnect', disconnect_path(social: 'facebook')) : (link_to "Connect", user_omniauth_authorize_path(provider: 'facebook')) %>
         <div class="name"></div>
         Twitter: <%= icon("fa fa-twitter") %>
+        <%= current_user.has_tw_connection? ? (link_to 'Disconnect', disconnect_path(social: 'twitter')) : (link_to "Connect", user_omniauth_authorize_path(provider: 'twitter')) %>
         <div class="name"></div>
         Skype: <%= icon("fa fa-skype") %>
         <div class="name"></div>

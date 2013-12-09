@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
+         :omniauth_providers => [:facebook, :twitter]
 
   attr_accessible :email,
                   :password,
@@ -19,6 +20,7 @@ class User < ActiveRecord::Base
                   :profile_image,
                   :photos_attributes
 
+  has_many :authorizations, :dependent => :destroy
   has_many :events
   has_many :photos, as: :attachable
   has_many :questions
@@ -55,7 +57,7 @@ class User < ActiveRecord::Base
     self.first_name = auth.info.first_name unless self.first_name.present?
     self.last_name = auth.info.last_name unless self.last_name.present?
     self.oauth_token = auth.credentials.token
-    self.oauth_expires_at = Time.at(auth.credentials.expires_at)
+    # self.oauth_expires_at = Time.at(auth.credentials.expires_at)
     self.gender = auth.extra.raw_info.gender unless self.gender.present?
     self.email = auth.info.email unless self.email.present?
     self.address = auth.info.location unless self.address.present?
@@ -93,13 +95,21 @@ class User < ActiveRecord::Base
 
   def disconnect(social)
     if social == 'facebook'
-      self.uid = nil
-      self.oauth_token = nil
-      self.save!
+      auth = self.authorizations.where(provider: 'Facebook').first
+      auth.update_attributes(token: nil, secret: nil)
+    elsif social == 'twitter'
+      auth = self.authorizations.where(provider: 'Twitter').first
+      auth.update_attributes(token: nil, secret: nil)
     end
   end
 
   def has_fb_connection?
-    self.uid.present?
+    auth = self.authorizations.where(provider: 'Facebook').first
+    auth.token.present?
+  end
+
+  def has_tw_connection?
+    auth = self.authorizations.where(provider: 'Twitter').first
+    auth.token.present?
   end
 end
