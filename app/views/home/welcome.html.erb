@@ -12,7 +12,8 @@
 
         <%#= Please bare in mind these are strickly temporary placeholders i.e whitespace  %>
         <h5><u>Social Connections</u></h5>
-        Facebook: <%= icon("fa fa-facebook-square") %> - <%= current_user.has_fb_connection? ? 'Connected' : '' %>
+        Facebook: <i class="fa fa-facebook-square"></i>
+        <%= current_user.has_fb_connection? ? (link_to 'Disconnect', disconnect_path(social: 'facebook')) : (link_to "connect", "/auth/facebook") %>
         <div class="name"></div>
         Twitter: <%= icon("fa fa-twitter") %>
         <div class="name"></div>
@@ -52,14 +53,14 @@
         <div class="span2">
          <%# User address %>
          <i class="fa fa-home"></i>:
-         <%= current_user.address.present? ? current_user.address : link_to('Add City', edit_account_path) %>
+         <%= current_user.address.present? ? current_user.address : link_to('Add Address', edit_account_path) %>
        </div>
      </div>
 
      <div class="span6">
        <%# User gender %>
        <hr>
-       <% if current_user.gender == "M" %>
+       <% if current_user.gender == "M" || "male" %>
        <i class="fa fa-male"></i> Male
        <% else %>
        <i class="fa fa-female"></i> Female

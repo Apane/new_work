@@ -22,9 +22,12 @@
 	<h5>Password confirmation:</h5>
 	<%= f.input_field :password_confirmation, placeholder: "Password confirmation", autocomplete: :off %>
 	<div class="name2"></div>
-	<p><%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
-	
-      </div>      
+	<p>
+    <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %><br>
+    <%= link_to 'Disconnect Facebook', disconnect_path(social: 'facebook') if current_user.has_fb_connection? %>
+  </p>
+
+      </div>
       </div>
       <span class="span4">
       <div class="side-bg">
@@ -33,7 +36,7 @@
       </div>
       </span>
       <% end %>
-      
+
       </div>
     </div>
   </div>
