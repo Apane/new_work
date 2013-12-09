@@ -8,18 +8,20 @@
       <div class="span4">
         <%= user_avatar(current_user) %>
         <%#= Space w line  %>
-        <div class="name"></div>
+        <div class="name"></div><hr /><hr />
 
         <%#= Please bare in mind these are strickly temporary placeholders i.e whitespace  %>
-        <h5><u>Social Connections</u></h5>
+	<h5>Social Connections</h5>
+	<div class="name"></div><hr /><hr />
 	<i class="fa fa-facebook-square"></i> Facebook:
         <div class="btn"><%= current_user.has_fb_connection? ? (link_to 'Disconnect', disconnect_path(social: 'facebook')) : (link_to "Connect", user_omniauth_authorize_path(provider: 'facebook')) %></div>
-        <div class="name"></div>
+        <div class="name"></div><hr /><hr />
 	<%= icon("fa fa-twitter") %> Twitter:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="btn"><%= current_user.has_tw_connection? ? (link_to 'Disconnect', disconnect_path(social: 'twitter')) : (link_to "Connect", user_omniauth_authorize_path(provider: 'twitter')) %></div> 
-        <div class="name"></div>
+        <div class="name"></div><hr /><hr />
 	<%= icon("fa fa-linkedin") %> LinkedIn:&nbsp;&nbsp;&nbsp;<div class="btn"><%= current_user.has_tw_connection? ? (link_to 'Disconnect', disconnect_path(social: 'twitter')) : (link_to "Connect", user_omniauth_authorize_path(provider: 'twitter')) %></div> 
         <div class="name"></div>
       </div>
+
       <div class="span8">
         <%# User name %>
         <span class="name2">
