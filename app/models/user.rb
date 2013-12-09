@@ -105,11 +105,19 @@ class User < ActiveRecord::Base
 
   def has_fb_connection?
     auth = self.authorizations.where(provider: 'Facebook').first
-    auth.token.present?
+    if auth.present?
+      auth.token.present?
+    else
+      false
+    end
   end
 
   def has_tw_connection?
     auth = self.authorizations.where(provider: 'Twitter').first
-    auth.token.present?
+    if auth.present?
+      auth.token.present?
+    else
+      false
+    end
   end
 end
