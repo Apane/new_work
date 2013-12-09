@@ -23,19 +23,35 @@
 	<%= f.input_field :password_confirmation, placeholder: "Password confirmation", autocomplete: :off %>
 	<div class="name2"></div>
 	<p>
-    <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %><br>
-    <%= link_to 'Disconnect Facebook', disconnect_path(social: 'facebook') if current_user.has_fb_connection? %><br>
-    <%= link_to 'Disconnect Twitter', disconnect_path(social: 'twitter') if current_user.has_tw_connection? %>
-  </p>
+	  <%= link_to 'Disconnect Facebook', disconnect_path(social: 'facebook') if current_user.has_fb_connection? %><br>
+	  <%= link_to 'Disconnect Twitter', disconnect_path(social: 'twitter') if current_user.has_tw_connection? %>
+	</p>
+	<h3>Validations</h3>
+	<i class="fa fa-facebook-square"></i> Facebook:<br /><hr />
+	<p>Sign in with Facebook and discover your trusted connections to hosts and guests all over the world.</p>
+        <div class="btn"><%= current_user.has_fb_connection? ? (link_to 'Disconnect', disconnect_path(social: 'facebook')) : (link_to "Connect", user_omniauth_authorize_path(provider: 'facebook')) %></div>
+        <div class="name"></div><hr />
+	<%= icon("fa fa-twitter") %> Twitter:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br /><hr />
+	<p>Sign in with Twitter and merge your connections to your followers.</p>
+	<div class="btn"><%= current_user.has_tw_connection? ? (link_to 'Disconnect', disconnect_path(social: 'twitter')) : (link_to "Connect", user_omniauth_authorize_path(provider: 'twitter')) %></div> 
+        <div class="name"></div><hr />
+	<%= icon("fa fa-linkedin") %> LinkedIn:&nbsp;&nbsp;&nbsp;<br /><hr />
+	<p>You can now connect your Friendiose account with the world’s largest professional network. Connecting with LinkedIn builds confidence between guests and hosts by establishing a link to your professional life.</p>
+	<div class="btn"><%= current_user.has_tw_connection? ? (link_to 'Disconnect', disconnect_path(social: 'twitter')) : (link_to "Connect", user_omniauth_authorize_path(provider: 'twitter')) %></div><hr /> 
+	<div class="name"></div><br />
+	<div class="name2">
+	  <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>
+	  <br>
+	</div>
 
       </div>
-      </div>
-      <span class="span4">
-      <div class="side-bg">
-	<h6>Note: You can change your password by simply typing a new one in the password fields.</h6>
-	<div><%= f.submit "Update account", class: "btn btn-warning" %></div>
-      </div>
-      </span>
+	</div>
+	<span class="span4">
+	  <div class="side-bg">
+	    <h6>Note: You can change your password by simply typing a new one in the password fields.</h6>
+	    <div><%= f.submit "Update account", class: "btn btn-warning" %></div>
+	  </div>
+	</span>
       <% end %>
 
       </div>
