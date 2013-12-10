@@ -201,21 +201,13 @@ div.tips {
 }
 
 textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
-  background-color: #CAD2D7;
-  padding: 0 6%;
-  background-clip: padding-box;
+  padding: 0 1;
   border-radius: 9px;
   margin-bottom: 20px;
   -moz-box-sizing: content-box;
-  background-color: rgba(0, 0, .2, .2);
   box-shadow: none;
   font-family: "Whitney 4r",Helvetica,Arial,sans-serif;
   outline: medium none;
-}
-
-.pushm {
-  margin-top: 8px;
-  padding-left: 15%;
 }
 
 .pushf {
@@ -251,7 +243,6 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
   color: #F0FFFF;
   padding: 0 0 0 0;
 }
-
 
 .nav > .loggedina > a:focus, .nav > .loggedina > a:hover, .nav > .loggedina > a {
   -moz-appearance: none !important;

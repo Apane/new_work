@@ -18,6 +18,7 @@ gem 'devise', '~> 3.0.0.rc'
 gem 'simple_form'
 gem 'nested_form'
 gem "figaro"
+gem 'acts_as_commentable_with_threading', git: "https://github.com/elight/acts_as_commentable_with_threading.git"
 
 # asset gems
 gem 'uglifier', '>= 1.0.3'

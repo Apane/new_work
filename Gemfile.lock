@@ -6,6 +6,15 @@ GIT
       jquery-rails
       rails (>= 3.1)
 
+GIT
+  remote: https://github.com/elight/acts_as_commentable_with_threading.git
+  revision: 38345f219a3974a53475ffa4cfdfbc8843deb3b9
+  specs:
+    acts_as_commentable_with_threading (1.1.2)
+      activerecord (>= 3.0)
+      activesupport (>= 3.0)
+      awesome_nested_set (>= 2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -35,6 +44,8 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.1)
     atomic (1.1.14)
+    awesome_nested_set (2.1.6)
+      activerecord (>= 3.0.0)
     awesome_print (1.2.0)
     bcrypt-ruby (3.1.2)
     bootstrap-sass (2.3.2.2)
@@ -227,6 +238,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_commentable_with_threading!
   awesome_print
   best_in_place!
   bootstrap-sass (~> 2.3.2.0)

@@ -1,6 +1,8 @@
 class Event < ActiveRecord::Base
   attr_accessible :title, :description, :location, :date, :time, :event_date
 
+  acts_as_commentable
+  has_many :comments, as: :commentable
   belongs_to :user
 
   after_create :update_event_date

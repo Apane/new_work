@@ -26,7 +26,13 @@ Friendiose::Application.routes.draw do
     resources :questions
   end
   resources :photos
-  resources :events
+
+  resources :events do
+    resources :comments
+  end
+
+  post "/events/add_new_comment" => "events#add_new_comment", :as => "add_new_comment_to_events", :via => [:event]
+
   resources :questions
 
   # duplicates o for devise

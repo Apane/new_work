@@ -1,0 +1,18 @@
+<%= form_for [@commentable, @comment] do |f| %>
+<% if @comment.errors.any? %>
+<div class="error_messages">
+  <h3>Please correct the following errors.</h3>
+  <ul>
+    <% @comment.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  </ul>
+</div>
+<% end %>
+<div class="field">
+  <%= f.text_field :body, rows: 10, placeholder: "Leave a comment" %>
+</div>
+
+<div class="actions">
+  <%= f.submit "Post comment", class: "btn" %>
+</div>
+<% end %>

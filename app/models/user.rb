@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
                   :photos_attributes
 
   has_many :authorizations, :dependent => :destroy
+  has_many :comments, as: :commentable
   has_many :events
   has_many :photos, as: :attachable
   has_many :questions
