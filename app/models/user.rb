@@ -32,41 +32,6 @@ class User < ActiveRecord::Base
 
   after_create :create_questions
 
-  def self.from_omniauth(auth)
-    where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
-      user.provider = auth.provider
-      user.uid = auth.uid
-      user.first_name = auth.info.first_name
-      user.last_name = auth.info.last_name
-      user.oauth_token = auth.credentials.token
-      user.oauth_expires_at = Time.at(auth.credentials.expires_at)
-      user.gender = auth.extra.raw_info.gender
-      user.email = auth.info.email
-      user.address = auth.info.location
-      user.birthday = Date.strptime(auth.extra.raw_info.birthday,'%m/%d/%Y')
-      user.fb_avatar_url = auth.info.image
-      pass = Random.rand(1_000_000_000) # give a random password to pass validation
-      user.password = pass
-      user.password_confirmation = pass
-      user.save!
-    end
-  end
-
-  def update_from_omniauth(auth)
-    self.provider = auth.provider
-    self.uid = auth.uid
-    self.first_name = auth.info.first_name unless self.first_name.present?
-    self.last_name = auth.info.last_name unless self.last_name.present?
-    self.oauth_token = auth.credentials.token
-    # self.oauth_expires_at = Time.at(auth.credentials.expires_at)
-    self.gender = auth.extra.raw_info.gender unless self.gender.present?
-    self.email = auth.info.email unless self.email.present?
-    self.address = auth.info.location unless self.address.present?
-    self.birthday = Date.strptime(auth.extra.raw_info.birthday,'%m/%d/%Y') unless self.birthday.present?
-    self.fb_avatar_url = auth.info.image unless self.profile_image.present?
-    self.save!
-  end
-
   def create_questions
     Question::QUESTIONS_FOR_ABOUT.map{|q| self.questions.create(question: q, for_about: true)}
     Question::QUESTIONS_FOR_PERSONALITY.map{|q| self.questions.create(question: q, for_personality: true)}
