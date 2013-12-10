@@ -34,17 +34,21 @@
 
     <div class="span2">
       <span class="btn btn-success fileinput-button">
-	      <i class="icon-plus icon-white"></i>
-	      <span class="white"><%= link_to "Create event", '#', class: 'add_event' %></span>
+	      <span class="white">
+          <%= link_to '#', class: 'add_event' do %>
+            <i class="icon-plus icon-white"></i>
+            Create event
+          <% end %>
+        </span>
       </span>
     </div>
   </div>
 </div>
 <script type="text/javascript">
 $('.add_event').click(function(event) {
-  $('.new_event_form').css('display', 'block');
+  $('.new_event_form').fadeIn('400', function() {});
 });
 $('.cancel_event').click(function(event) {
-  $('.new_event_form').css('display', 'none');
+  $('.new_event_form').fadeOut('400', function() {});
 });
 </script>
