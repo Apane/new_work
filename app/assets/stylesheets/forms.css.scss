@@ -27,12 +27,13 @@
   input.radio_buttons, input.check_boxes {
     margin-right: 5px;
   }
-  .btn {
-    margin-left: 0px;
-    width: 20%;
-    height: 30px;
-    font-size: 16px;
-  }
+  //  Rename this class to something else if you want to use it, cause this one overrides the boostrap buton class
+  // .btn {
+  //   margin-left: 0px;
+  //   width: 20%;
+  //   height: 30px;
+  //   font-size: 16px;
+  // }
   .alert-error {
     color: #D00;
     margin-bottom: 10px;

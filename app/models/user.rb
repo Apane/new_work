@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
-         :omniauth_providers => [:facebook, :twitter]
+         :omniauth_providers => [:facebook, :twitter, :linkedin]
 
   attr_accessible :email,
                   :password,
@@ -115,6 +115,15 @@ class User < ActiveRecord::Base
 
   def has_tw_connection?
     auth = self.authorizations.where(provider: 'Twitter').first
+    if auth.present?
+      auth.token.present?
+    else
+      false
+    end
+  end
+
+  def has_li_connection?
+    auth = self.authorizations.where(provider: 'LinkedIn').first
     if auth.present?
       auth.token.present?
     else

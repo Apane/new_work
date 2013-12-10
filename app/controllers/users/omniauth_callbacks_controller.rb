@@ -10,7 +10,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     oauthorize "Twitter"
   end
 
-  def linked_in
+  def linkedin
     oauthorize "LinkedIn"
   end
 
@@ -48,8 +48,11 @@ private
         :link => "http://twitter.com/#{name}" }
     when 'LinkedIn'
       uid = access_token['uid']
-      name = access_token['user_info']['name']
-      auth_attr = { :uid => uid, :token => access_token['credentials']['token'], :secret => access_token['credentials']['secret'], :name => name, :link => access_token['user_info']['public_profile_url'] }
+      name = access_token['info']['name']
+      auth_attr = { :uid => uid, :token => access_token['credentials']['token'],
+        :secret => access_token['credentials']['secret'], :first_name => access_token['info']['first_name'],
+        :last_name => access_token['info']['last_name'],
+        :link => access_token['info']['public_profile_url'] }
     else
       raise 'Provider #{provider} not handled'
     end

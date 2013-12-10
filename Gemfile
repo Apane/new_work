@@ -41,6 +41,7 @@ gem 'best_in_place', :git => 'https://github.com/bernat/best_in_place.git'
 # gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
+gem 'omniauth-linkedin'
 gem 'uuidtools'
 
 # dev test
