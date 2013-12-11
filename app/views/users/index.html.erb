@@ -1,0 +1,35 @@
+<%= render 'shared/header' %>
+
+<div class="container">
+  <div class="row">
+    <div class="span3">
+      <%= render 'events/sidebar' %>
+    </div>
+
+    <div class="span6">
+      <div class="new_event_form">
+        <div class="line1"><h4>Create event</h4></div>
+        
+      </div>
+      <div class="span12">
+        <!-- look in events/event.hmlt.erb -->
+	<u><h2>Everyone!</h2></u>
+        <% @users.each do |u| %>
+	  <%= all_user_avatar(u) %>
+	  <% if u.first_name && u.last_name %>
+	    <h5><%= u.first_name + ' ' + u.last_name %></h5>
+	    <div class="name"></div><br />
+	  <% else %>
+	    <h5><%= link_to "Unfinished profile", u %></h5>
+	    <div class="name"></div>
+	  <% end %>
+	<% end %>
+      </div>
+    </div>
+
+    <div class="span2">
+        </span>
+      </span>
+    </div>
+  </div>
+</div>

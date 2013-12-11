@@ -36,6 +36,15 @@ module UsersHelper
     return html
   end
 
+  def all_user_avatar(user)
+    if user.profile_image.present?
+      html = link_to (image_tag user.profile_image_url(:all).to_s), user
+    else
+      html = link_to (image_tag "profile-placeholder1.png", size: '50x50'), user
+    end
+    return html
+  end
+
   def check_fb_connection
     current_user.has_fb_connection? ? (link_to 'Disconnect', disconnect_path(social: 'facebook')) : (link_to "Connect", user_omniauth_authorize_path(provider: 'facebook'))
   end
