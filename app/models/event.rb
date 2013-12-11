@@ -4,6 +4,8 @@ class Event < ActiveRecord::Base
   acts_as_commentable
   has_many :comments, as: :commentable
   belongs_to :user
+  has_many :event_participants
+  has_many :participants, through: :event_participants, source: :user
 
   after_create :update_event_date
 

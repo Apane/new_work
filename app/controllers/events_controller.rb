@@ -9,7 +9,31 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
   end
-
+  
+  def attend
+    @event = Event.find(params[:id])
+    @event.participants << current_user
+    if @event.save
+      redirect_to @event
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @event_participant.errors, status: :unprocessable_entity }
+        format.js
+      end
+  end
+  
+  def stop_attend
+    @event = Event.find(params[:id])
+    @event.participants.each do |user|
+      if user == current_user
+        puts user
+      @event.participants.delete(user)
+    end
+    end 
+    @event.save
+    redirect_to @event
+  end
+  
   # def create
   #   @event = Event.new(params[:event])
   #   if @event.save

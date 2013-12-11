@@ -29,9 +29,12 @@ Friendiose::Application.routes.draw do
 
   resources :events do #events/1/comments
     resources :comments
+    post 'attend', on: :member
+    put 'stop_attend', on: :member 
   end
-
+  
   resources :questions
+    
 
   # duplicates o for devise
   # The priority is based upon order of creation:
