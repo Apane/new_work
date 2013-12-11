@@ -27,11 +27,9 @@ Friendiose::Application.routes.draw do
   end
   resources :photos
 
-  resources :events do
+  resources :events do #events/1/comments
     resources :comments
   end
-
-  post "/events/add_new_comment" => "events#add_new_comment", :as => "add_new_comment_to_events", :via => [:event]
 
   resources :questions
 

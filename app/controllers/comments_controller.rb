@@ -1,18 +1,19 @@
 class CommentsController < ApplicationController
+  before_filter :authenticate_user!
   before_filter :load_commentable
 
   def index
-    @comments = @commentable.current_user.comments
+    @comments = @commentable.comments
   end
 
   def new
-    @comment = @commentable.current_user.comments.new
+    @comment = @commentable.comments.new
   end
 
   def create
-    @comment = @commentable.current_user.comments.new(params[:comment])
+    @comment = @commentable.comments.new(params[:comment])
     if @comment.save
-      redirect_to @commentable, notice: "Comment created."
+      redirect_to :back, notice: "Comment created."
     else
       render :new
     end

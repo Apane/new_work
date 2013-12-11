@@ -38,6 +38,8 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])    
+    @commentable = @event
+    @comment = @event.comments.new
   end
 
   def edit
