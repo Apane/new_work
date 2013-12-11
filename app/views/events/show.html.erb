@@ -32,12 +32,16 @@
         <h5><i class="fa fa-map-marker"></i> <%= @event.location %></h5>
       </div>
       <div class="name"></div>
-      <div id="comments">
-	    <%= form_for [@commentable, @comment] do |f| %>
+      
+	    <%= form_for [@commentable, @comment], remote: true do |f| %>
           <div><%= f.hidden_field :user_id, value: current_user.id %></div>
-	      <div><%= f.text_area :body, row: 20,  placeholder: "Leave a comment"  %></div>
-	      <%= f.submit "Post Comment" %>
+	      <div>
+	        <%= f.text_area :body, rows: 5,  placeholder: "Leave a comment", class: 'comment-area'  %>
+	        <div class="comment_errors"></div>
+	      </div>
+	      <%= f.submit "Post Comment", class: 'btn btn-primary pull-right' %>
      	<% end %>
+      <div id="comments">
         <%= render @event.root_comments %>
       </div>
     </div>

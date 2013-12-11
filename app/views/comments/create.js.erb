@@ -1,0 +1,8 @@
+<% if @comment.valid? %>
+  $("#new_comment")[0].reset();
+  $('#comments').prepend("<%= j render @comment %>");
+  $('.comment_errors').html("");
+<% else %>
+  //alert("Can't save an empty comment!")
+  $('.comment_errors').html("Can't save an empty comment!");
+<% end %>

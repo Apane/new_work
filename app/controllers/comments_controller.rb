@@ -12,10 +12,14 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @commentable.comments.new(params[:comment])
-    if @comment.save
-      redirect_to :back, notice: "Comment created."
-    else
-      render :new
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to :back, notice: 'Comment was successfully created.' }
+        format.js
+      else
+        format.html { render action: 'new' }
+        format.js
+      end
     end
   end
   
