@@ -33,7 +33,7 @@
       </div>
       <div class="name"></div>
 	    <br />
-		<medium><strong align-"center"><%= pluralize(@event.participants.size.to_s, 'person') %> are attending this event</strong></medium>	<br /><br />
+		<medium><strong align-"center"><%= pluralize(@event.participants.size.to_s, 'person') %> attending this event</strong></medium>	<br /><br />
 		<% @event.participants.each do |p| %>
 		<%= simple_user_avatar(current_user) %>
 		<% end %>
