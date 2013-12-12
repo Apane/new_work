@@ -45,7 +45,7 @@
 
   .join {
     float: left;
-    margin-top: 75px;
+
     margin-left: 35px;
 
     form {
@@ -208,6 +208,10 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
   box-shadow: none;
   font-family: "museo", helveticaneue, sans-serif;
   outline: medium none;
+}
+
+.blue-border {
+    border: 1px solid blue;
 }
 
 .pushf {
