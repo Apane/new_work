@@ -9,40 +9,6 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
   end
-  
-  def attend
-    @event = Event.find(params[:id])
-    @event.participants << current_user
-    if @event.save
-      redirect_to @event
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @event_participant.errors, status: :unprocessable_entity }
-        format.js
-      end
-  end
-  
-  def stop_attend
-    @event = Event.find(params[:id])
-    @event.participants.each do |user|
-      if user == current_user
-        puts user
-      @event.participants.delete(user)
-    end
-    end 
-    @event.save
-    redirect_to @event
-  end
-  
-  # def create
-  #   @event = Event.new(params[:event])
-  #   if @event.save
-  #     redirect_to :action => 'index'
-  #   else
-  #     @events = Event.find(:all)
-  #     render :action => 'new'
-  #   end
-  # end
 
   def create
     @event = current_user.events.new(event_params)
@@ -61,8 +27,8 @@ class EventsController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id]) || User.find(current_user.id)
-    @event = Event.find(params[:id])    
+    @user = current_user
+    @event = Event.find(params[:id])
     @commentable = @event
     @comment = @event.comments.new
   end
@@ -87,6 +53,33 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       format.html {redirect_to :back}
+      format.js
+    end
+  end
+
+  def attend
+    @event = Event.find(params[:id])
+    @event.event_participants.create(event_id: @event.id, user_id: current_user.id)
+    @participant = current_user
+
+    respond_to do |format|
+      if @event.save
+        format.html {redirect_to @event}
+        format.js {}
+      else
+        format.html {redirect_to @event}
+        format.js {}
+      end
+    end
+  end
+
+  def stop_attend
+    @event = Event.find(params[:id])
+    @participant = @event.event_participants.where(user_id: current_user.id, event_id: @event.id).first
+    @participant.destroy
+
+    respond_to do |format|
+      format.html {redirect_to @event}
       format.js
     end
   end

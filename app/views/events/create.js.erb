@@ -1,7 +1,7 @@
 <% if @event.valid? %>
   $("#new_event")[0].reset();
-  $('.events_list').prepend("<%= j render @event %>");
   $('.new_event_form').fadeOut('400', function() {});
+  $('.events_list').prepend("<%= j render @event %>");
 <% else %>
   alert("Can't save event!")
 <% end %>
