@@ -47,6 +47,10 @@ GEM
     awesome_nested_set (2.1.6)
       activerecord (>= 3.0.0)
     awesome_print (1.2.0)
+    aws-sdk (1.29.1)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
+      uuidtools (~> 2.1)
     bcrypt-ruby (3.1.2)
     bootstrap-sass (2.3.2.2)
       sass (~> 3.2)
@@ -62,6 +66,9 @@ GEM
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
       json (>= 1.7)
+    carrierwave-aws (0.3.2)
+      aws-sdk (>= 1.8.0)
+      carrierwave (>= 0.7.0)
     childprocess (0.3.9)
       ffi (~> 1.0, >= 1.0.11)
     coffee-rails (4.0.0)
@@ -246,6 +253,7 @@ DEPENDENCIES
   bootstrap-sass (~> 2.3.2.0)
   capybara (= 2.0.2)
   carrierwave
+  carrierwave-aws
   coffee-rails (~> 4.0.0)
   devise (~> 3.0.0.rc)
   figaro
