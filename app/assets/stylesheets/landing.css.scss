@@ -58,7 +58,7 @@
         margin: 0;
       }
       label, input, button {
-        font-family: "lucida grande";
+      font-family: "museo", helveticaneue, sans-serif;
         font-size: 15px;
       }
       label, input {
@@ -99,7 +99,7 @@
   // Bottom Section
   .bottom-section {
     h3 {
-      font-family: "museo";
+    font-family: "museo", helveticaneue, sans-serif;
       font-weight: 100;
     }
     background-color: #f6f6f6;
@@ -206,7 +206,7 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
   margin-bottom: 20px;
   -moz-box-sizing: content-box;
   box-shadow: none;
-  font-family: "Whitney 4r",Helvetica,Arial,sans-serif;
+  font-family: "museo", helveticaneue, sans-serif;
   outline: medium none;
 }
 
@@ -422,7 +422,7 @@ input[type="checkbox"] {
   -moz-box-sizing: content-box;
   background-color: rgba(0, 0, .2, .2);
   box-shadow: none;
-  font-family: "Whitney 4r",Helvetica,Arial,sans-serif;
+  font-family: "museo", helveticaneue, sans-serif;
   outline: medium none;
 }
 
