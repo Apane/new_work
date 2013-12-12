@@ -61,6 +61,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id]) || User.find(current_user.id)
     @event = Event.find(params[:id])    
     @commentable = @event
     @comment = @event.comments.new

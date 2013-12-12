@@ -2,7 +2,7 @@
 <div class="name"></div>
 <br />
 <div class="comment">
-  <%= simple_user_avatar(current_user) %> <%= comment.user.name %> (<small><%= time_ago_in_words(comment.created_at) + " ago" %></small>):<br /><br />
+  <%= simple_user_avatar(comment.user) %> <%= comment.user.name %> (<small><%= time_ago_in_words(comment.created_at) + " ago" %></small>):<br /><br />
   <div><%= simple_format comment.body %></div>
 </div>
 

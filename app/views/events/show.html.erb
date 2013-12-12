@@ -35,7 +35,7 @@
 	    <br />
 		<medium><strong align-"center"><%= pluralize(@event.participants.size.to_s, 'person') %> attending this event</strong></medium>	<br /><br />
 		<% @event.participants.each do |p| %>
-		<%= simple_user_avatar(current_user) %>
+		<%= simple_user_avatar(p) %>
 		<% end %>
 		<br /><br />
 		  <div class="name"></div>      
@@ -52,6 +52,7 @@
       </div>
     </div>
     <div class="span4">
+
 		<% if @event.participants.include?(current_user)%>
 			  <%= button_to 'Stop attending this event', stop_attend_event_path(@event), method: :put, confirm: 'Are you sure you want to stop attending this event?', class: 'btn btn-warning pull-right' %><br /><br />
 			<div class="comment_errors"></div>
