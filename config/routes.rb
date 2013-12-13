@@ -19,8 +19,9 @@ Friendiose::Application.routes.draw do
   end
 
   # patch '/users/:id', to: 'users#update', as: 'user'
-  get 'profile/:id' => "users#show", as: :profile
+  get 'profile/:id' => "profiles#show", as: :profile
   get 'disconnect' => 'users#disconnect'
+  get 'profiles' => "profiles#index"
 
   resources :users do
     resources :questions

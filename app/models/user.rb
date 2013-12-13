@@ -49,6 +49,10 @@ class User < ActiveRecord::Base
     self.first_name + ' ' + self.last_name[0,1] + '.'
   end
 
+  def about_user
+    self.questions.order('created_at asc').first.answer
+  end
+
   def format_date
     if self.birthday.present?
       today = Date.today
