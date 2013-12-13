@@ -187,13 +187,13 @@ div.tips {
       padding: 15px 15px 15px 15px;
 }
 
-#join {     
+#join {
       text-align: center;
       margin: 0 auto;
 }
 
 
-#join1 {     
+#join1 {
       text-align: center;
       margin: 0 auto;
       color: #209DE3;
@@ -353,12 +353,15 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
   border-bottom: 1px solid black;
 }
 
-hr {
-  margin: 2px 0;
-  border: 0;
-  border-top: 1px solid white;
-  border-bottom: 1px solid white;
-}
+
+// Do not override default styles!
+// If you want different styles for hr element add class to your hr and write your styles
+// hr {
+//   margin: 2px 0;
+//   border: 0;
+//   border-top: 1px solid white;
+//   border-bottom: 1px solid white;
+// }
 
 .nav > .active > a:hover, .nav > .active > a:focus, .nav > .active > a {
 -moz-appearance: none !important;

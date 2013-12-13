@@ -1,0 +1,24 @@
+<!-- used in profile/index - domain/profiles -->
+<div class="profile_unit profile_<%= user.id %>">
+  <div class="span3">
+    <% if user.profile_image.present? %>
+      <%= image_tag user.profile_image_url(:thumb), class: 'img-polaroid', size: '100x60' %>
+    <% else %>
+      <%= image_tag "profile-placeholder1.png" %>
+    <% end %>
+  </div>
+  <div class="span6">
+    <div class="user_name">
+      <%= user.name %>
+    </div>
+    <div class="about_user">
+      <%= user.about_user %>
+    </div>
+  </div>
+  <div class="span3">
+    <%= user.address %><br>
+    Age: <%= user_age(current_user) %>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<hr>
