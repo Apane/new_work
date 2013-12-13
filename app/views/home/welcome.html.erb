@@ -16,7 +16,7 @@
 
       <div class="span8">
         <%# User name %>
-        <span class="name2">
+
           <span class="name1">
             <% if current_user.first_name.blank? %>
             <%= current_user.first_name.present? ? current_user.first_name : link_to('Finish your profile', edit_account_path)%>
@@ -25,15 +25,13 @@
             <% end %>
           </span>
           <span class="side-buttons">
-	    <br /><br />
 	    <div class="name"></div>
           </span>
         </span>
       </div>
 
       <div class="row">
-        <br /><br / >
-
+        <br />
         <div class="span6">
           <%# User occupation %>
           <i class="fa fa-usd"></i>:
@@ -50,7 +48,7 @@
 
        <div class="span6">
          <%# User gender %>
-         <hr>
+	 <br />
          <% if current_user.gender == "M" || "male" %>
          <i class="fa fa-male"></i> Male
          <% else %>
@@ -60,7 +58,7 @@
 
        <div class="span2">
          <!-- Code to calculate age by user birthday -->
-         <hr>
+	 <br />
          Age: <%= user_birthday %>
        </div>
 
