@@ -1,5 +1,5 @@
 .search{
-  .top{
+  .search_head{
     min-height: 35px;
     background: #E6E6E6;
     color: #1b60a4;
@@ -33,5 +33,13 @@
     position: absolute;
     margin-top: 14px;
     z-index: 999999;
+  }
+}
+.advanced_search{
+  .age_fields{
+    margin-top: 15px;
+    padding: 0 10px;
+    .age, .zipcode, .distance{border-radius: 0;}
+    #distance{margin-left: 20px;}
   }
 }

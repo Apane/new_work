@@ -4,9 +4,41 @@
     <div class="span12">
       <div class="span3">
         <div class="search">
-          <div class="top">
-            Search
-          </div>
+          <%= form_tag profiles_path, class: 'form-inline advanced_search', method: :get do %>
+            <%= hidden_field_tag :terms, "#{params[:search][:terms] if params[:search][:terms].present?}", name: 'search[terms]' %>
+            <div class="search_head top">
+              Search
+            </div>
+            <div class="age_fields">
+              <p>Age:</p>
+              <div class="span12">
+                <div class="span5">
+                  <%= number_field_tag :min_age, "#{params[:search][:min_age] if params[:search][:min_age].present?}", class: 'input-mini age', placeholder: 'from', min: 18, max: 100, name: 'search[min_age]' %>
+                </div>
+                <div class="span2"> to </div>
+                <div class="span5">
+                  <%= number_field_tag :max_age, "#{params[:search][:max_age] if params[:search][:max_age].present?}", class: 'input-mini age', placeholder: 'from', min: 18, max: 100, name: 'search[max_age]' %>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="search_head location">
+              Location
+            </div>
+            <div class="age_fields">
+              <div class="span12">
+                <div class="span6">
+                  <label for="search[zipcode]">Zipcode:</label>
+                  <%= number_field_tag :zipcode, "#{params[:search][:zipcode] if params[:search][:zipcode].present?}", class: 'input-small zipcode', placeholder: 'zipcode', min: 0, name: 'search[zipcode]' %>
+                </div>
+                <div class="span6">
+                  <label for="search[distance]">Within:</label>
+                  <%= number_field_tag :distance, "#{params[:search][:distance] if params[:search][:distance].present?}", class: 'input-mini distance', placeholder: 'miles', min: 1, name: 'search[distance]' %>
+                </div>
+              </div>
+            </div>
+            <%= submit_tag 'Search', name: nil, class: 'btn'  %>
+          <% end %>
         </div>
       </div>
       <div class="span9">

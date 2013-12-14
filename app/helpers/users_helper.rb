@@ -13,14 +13,6 @@ module UsersHelper
     #                            :display_as => :format_date, :data => {'date-format' => 'yyyy-mm-dd'}}
   end
 
-  def user_age(user)
-    if user.birthday.present?
-      today = Date.today
-      d = Date.new(today.year, user.birthday.month, user.birthday.day)
-      age = d.year - user.birthday.year - (d > today ? 1 : 0)
-    end
-  end
-
   def user_avatar(user)
     if user.profile_image.present?
       html = link_to (image_tag user.profile_image_url(:thumb).to_s), edit_account_path
