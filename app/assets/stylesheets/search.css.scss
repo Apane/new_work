@@ -20,3 +20,18 @@
     margin-bottom: 15px;
   }
 }
+.search_form {
+  margin-left: 50px;
+  margin-top: 10px;
+  .input{border-radius: 0;}
+  .search_button{
+    background: transparent;
+    border: 0px;
+    outline: 0px;
+    outline-offset: 0px;
+    margin-left: -40px;
+    position: absolute;
+    margin-top: 3px;
+    z-index: 999999;
+  }
+}

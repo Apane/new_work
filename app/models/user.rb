@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include PgSearch
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
          :omniauth_providers => [:facebook, :twitter, :linkedin]
@@ -19,6 +21,12 @@ class User < ActiveRecord::Base
 
   after_create :create_questions
   before_save :set_age
+
+  # pg_search_scope :search_by_full_name, :against => [:first_name, :last_name], :using => [:tsearch]
+
+  pg_search_scope :search, against: [:first_name, :last_name],
+    using: {tsearch: {dictionary: "english"}},
+    associated_against: {questions: [:answer]}
 
   def create_questions
     Question::QUESTIONS_FOR_ABOUT.map{|q| self.questions.create(question: q, for_about: true)}
@@ -95,5 +103,9 @@ class User < ActiveRecord::Base
     else
       false
     end
+  end
+
+  def self.scoped_by_search(terms)
+    User.search(terms)
   end
 end

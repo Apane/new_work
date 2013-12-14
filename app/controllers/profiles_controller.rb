@@ -2,7 +2,12 @@ class ProfilesController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @users = User.all
+    if params[:search]
+      terms = params[:search][:terms]
+      @users = User.scoped_by_search(terms)
+    else
+      @users = User.all
+    end
   end
 
   def show
