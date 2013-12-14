@@ -7,7 +7,9 @@
       <hr>
       <h5>Interesting people</h5>
        <% @interesting_people.each do |person| %>
+         <% if person.first_name.present? %>
          <%= simple_user_avatar(person) %>
+        <% end %>
       <% end %>
       <hr>
     </div>
