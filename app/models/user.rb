@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   # pg_search_scope :search_by_full_name, :against => [:first_name, :last_name], :using => [:tsearch]
 
   pg_search_scope :search, against: [:first_name, :last_name],
-    using: {tsearch: {dictionary: "english"}},
+    using: {tsearch: {prefix: true, dictionary: "english"}},
     associated_against: {questions: [:answer]}
 
   def create_questions
@@ -74,6 +74,9 @@ class User < ActiveRecord::Base
       auth.update_attributes(token: nil, secret: nil)
     elsif social == 'twitter'
       auth = self.authorizations.where(provider: 'Twitter').first
+      auth.update_attributes(token: nil, secret: nil)
+    elsif 'linkedin'
+      auth = self.authorizations.where(provider: 'LinkedIn').first
       auth.update_attributes(token: nil, secret: nil)
     end
   end
