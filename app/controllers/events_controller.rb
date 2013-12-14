@@ -2,8 +2,11 @@ class EventsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
+    @users = User.all
     @user = current_user
     @events = Event.all
+    @interesting_people = @users.order("random()").first(5)
+
   end
 
   def new
