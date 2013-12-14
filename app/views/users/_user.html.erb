@@ -2,14 +2,14 @@
 <div class="profile_unit profile_<%= user.id %>">
   <div class="span3">
     <% if user.profile_image.present? %>
-      <%= image_tag user.profile_image_url(:thumb), class: 'img-polaroid', size: '100x60' %>
+      <%= link_to image_tag(user.profile_image_url(:thumb), class: 'img-polaroid', size: '100x60'), profile_path(user) %>
     <% else %>
-      <%= image_tag "profile-placeholder1.png" %>
+      <%= link_to image_tag("profile-placeholder1.png"), profile_path(user) %>
     <% end %>
   </div>
   <div class="span6">
     <div class="user_name">
-      <%= user.name %>
+      <%= link_to user.name, profile_path(user) %>
     </div>
     <div class="about_user">
       <%= user.about_user %>
