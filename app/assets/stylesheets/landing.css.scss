@@ -210,6 +210,12 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
   outline: medium none;
 }
 
+.search_form .input {
+margin-left: 50%;
+}
+
+
+
 .blue-border {
     border: 1px solid blue;
 }
@@ -438,6 +444,7 @@ input[type="checkbox"] {
        clear: both;
        position: absolute;
        margin-left: 1.5%;
+    
 }
 
 #brand1 {
