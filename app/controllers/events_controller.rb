@@ -27,10 +27,12 @@ class EventsController < ApplicationController
   end
 
   def show
+    @users = User.all
     @user = current_user
     @event = Event.find(params[:id])
     @commentable = @event
     @comment = @event.comments.new
+    @interesting_people = @users.order("random()").first(5)
   end
 
   def edit
