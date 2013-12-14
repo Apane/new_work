@@ -3,22 +3,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
          :omniauth_providers => [:facebook, :twitter, :linkedin]
 
-  attr_accessible :email,
-                  :password,
-                  :password_confirmation,
-                  :zip,
-                  :gender,
-                  :remember_me,
-                  :first_name,
-                  :last_name,
-                  :birthday,
-                  :current_password,
-                  :occupation,
-                  :address,
-                  :interests,
-                  :aboutme,
-                  :profile_image,
-                  :photos_attributes
+  attr_accessible :email, :password, :password_confirmation, :zip, :gender, :remember_me, :first_name, :last_name,
+                  :birthday, :current_password, :occupation, :address, :interests, :aboutme, :profile_image,
+                  :photos_attributes, :age
 
   has_many :authorizations, :dependent => :destroy
   has_many :comments
@@ -31,6 +18,7 @@ class User < ActiveRecord::Base
   validates :gender, :presence => true
 
   after_create :create_questions
+  before_save :set_age
 
   def create_questions
     Question::QUESTIONS_FOR_ABOUT.map{|q| self.questions.create(question: q, for_about: true)}
@@ -51,6 +39,15 @@ class User < ActiveRecord::Base
 
   def about_user
     self.questions.order('created_at asc').first.answer
+  end
+
+  def set_age
+    if self.birthday.present?
+      today = Date.today
+      d = Date.new(today.year, self.birthday.month, self.birthday.day)
+      age = d.year - self.birthday.year - (d > today ? 1 : 0)
+      self.age = age
+    end
   end
 
   def format_date
