@@ -19,8 +19,8 @@ class User < ActiveRecord::Base
 
   validates :gender, :presence => true
 
-  after_create :create_questions
-  after_save :set_age
+  after_create :create_questions, :set_age
+  before_save :set_age
 
   # pg_search_scope :search_by_full_name, :against => [:first_name, :last_name], :using => [:tsearch]
 
@@ -111,9 +111,9 @@ class User < ActiveRecord::Base
   def self.scoped_by_search(terms, min_age, max_age)
     min = min_age.present? ? min_age : 18
     max = max_age.present? ? max_age : 100
-    users = User.search(terms)
-    users = users.where('age >= ?', min)
-    users = users.where('age <= ?', max)
+    #TODO find a way to limit the number of users loaded - replace User.all below.
+    users = terms.present? ? User.search(terms) : User.all
+    users = users.where('age >= ? and age <= ?', min, max)
     users
   end
 end
