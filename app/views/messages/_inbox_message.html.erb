@@ -1,0 +1,15 @@
+<div class="message">
+  <div class="media">
+    <%= link_to avatar(message.sender), profile_path(message.sender), class: 'pull-left' %>
+    <div class="media-body">
+      <h4 class="media-heading">Message from <%= message.sender.name %></h4>
+      <div class="pull-right">
+        <%= link_to 'Open', message %><br>
+        <%= link_to 'Delete', delete_message_path(message), remote: true %>
+      </div>
+      <%= sanitize(message.body.truncate(100, omision: "...")) %>
+    </div>
+    <small class="time pull-right"><%= time_ago_in_words(message.created_at) %> ago</small>
+  </div>
+</div>
+<hr>

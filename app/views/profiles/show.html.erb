@@ -16,7 +16,7 @@
         <div class="name"></div>
 
         <%#= Please bare in mind these are strickly temporary placeholders i.e whitespace  %>
-	<%= render '/events/sidebar' %>
+	<%= render '/home/sidebar' %>
         <h5><u>Verifications</u></h5>
 	<%= icon("fa fa-facebook-square") %> Facebook: <small>158 Friends</small>
         <div class="name"></div>
@@ -37,7 +37,7 @@
             <% end %>
           </span>
           <span class="side-buttons">
-            <div class="btn btn-warning move"><%=link_to "Message", "#" %> <%= icon("fa fa-comments")%></div>
+            <div class="btn btn-warning move"><%= link_to "Message", new_message_path, remote: true %> <%= icon("fa fa-comments")%></div>
           </span>
         </span>
       </div>
@@ -136,6 +136,7 @@
     </div>
   </div>
   <%= render '/shared/footer' %>
+  <%= render 'shared/message_modal' %>
 </div>
 </div>
 

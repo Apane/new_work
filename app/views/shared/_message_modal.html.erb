@@ -1,0 +1,17 @@
+<!-- Modal -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Send message to <%= @user.name %></h3>
+  </div>
+  <%= form_for current_user.sent_messages.new do |f| %>
+    <div class="modal-body">
+      <%= f.text_area :body, rows: 5 %>
+    </div>
+    <div class="modal-footer">
+      <div><%= f.hidden_field :receiver_id, value: @user.id %></div>
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+      <%= f.submit 'Send', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

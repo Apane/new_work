@@ -16,7 +16,7 @@
         <div class="name"></div>
 
         <%#= Please bare in mind these are strickly temporary placeholders i.e whitespace  %>
-	<%= render '/events/sidebar' %>
+	<%= render '/home/sidebar' %>
         <h5><u>Verifications</u></h5>
 	<%= icon("fa fa-facebook-square") %> Facebook: <small>158 Friends</small>
         <div class="name"></div>
@@ -73,13 +73,13 @@
        <!-- Code to calculate age by user birthday -->
        <hr>
        Age:
-       <% if @user.birthday.present? %>                                                                                                               
-       <%= today = Date.today                                                                                                                                
-	   d = Date.new(today.year, @user.birthday.month, @user.birthday.day)                                                                  
-       age = d.year - @user.birthday.year - (d > today ? 1 : 0) %>                                                                                    
-       <% else %>                                                                                                                                            
-       <%= @user.birthday.present? ? @user.birthday.year : "N/A" %>                                       
-       <% end %>            
+       <% if @user.birthday.present? %>
+       <%= today = Date.today
+	   d = Date.new(today.year, @user.birthday.month, @user.birthday.day)
+       age = d.year - @user.birthday.year - (d > today ? 1 : 0) %>
+       <% else %>
+       <%= @user.birthday.present? ? @user.birthday.year : "N/A" %>
+       <% end %>
      </div>
 
      <div class="span8"></div>

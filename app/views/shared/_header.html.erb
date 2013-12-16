@@ -1,38 +1,37 @@
 <% if user_signed_in? %>
-
-<nav>
-  <div class="navbar-header">
-    <div class="navbar-brand">
-      <span id="brand"><%=link_to logo, welcome_path %></span>
-      <div class="container" id="head">
-        <%= form_tag profiles_path, class: 'form-inline pull-left search_form', method: :get do %>
-          <div class="input-append">
-          <%= text_field_tag :terms, "#{@terms if @terms.present?}", name: 'search[terms]', class: 'input-xlarge input', placeholder: 'Search by name or interests' %>
-          <%= button_tag '<i class="icon-search search_icon"></i>'.html_safe, class: 'btn search_button',
-                    name: nil %>
-          </div>
-        <% end %>
-        <ul class="nav navbar-nav navbar-right">
-          <li class="loggedin"><%= link_to icon("fa fa-calendar-o "), events_path %></li>
-          <li class="loggedin"><%= link_to icon("fa fa-envelope"), edit_user_registration_path %></li>
-          <li class="loggedin"><%= link_to icon("fa fa-cog"), edit_user_registration_path %></li>
-          <li class="loggedina"><%= link_to "Sign out" , destroy_user_session_path, method: :delete %></li>
-        </ul>
+  <nav>
+    <div class="navbar-header">
+      <div class="navbar-brand">
+        <span id="brand"><%=link_to logo, welcome_path %></span>
+        <div class="container" id="head">
+          <%= form_tag profiles_path, class: 'form-inline pull-left search_form', method: :get do %>
+            <div class="input-append">
+            <%= text_field_tag :terms, "#{@terms if @terms.present?}", name: 'search[terms]', class: 'input-xlarge input', placeholder: 'Search by name or interests' %>
+            <%= button_tag '<i class="icon-search search_icon"></i>'.html_safe, class: 'btn search_button',
+                      name: nil %>
+            </div>
+          <% end %>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="loggedin"><%= link_to icon("fa fa-calendar-o "), events_path %></li>
+            <li class="loggedin"><%= link_to icon("fa fa-envelope"), inbox_path %></li>
+            <li class="loggedin"><%= link_to icon("fa fa-cog"), edit_user_registration_path %></li>
+            <li class="loggedina"><%= link_to "Sign out" , destroy_user_session_path, method: :delete %></li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-</nav>
+  </nav>
 <% else %>
-<nav>
-  <div class="navbar-header">
-    <div class="navbar-brand"><span id="brand1"><%=link_to logo, root_path %></span>
-      <div class="container" id="head">
-        <ul class="nav navbar-nav navbar-right">
-         <li class="activa"><%= link_to "Sign up", new_user_registration_path %></li>
-         <li class="signin"><%= link_to "Sign in", new_user_session_path %></li>
-       </ul>
-     </div>
+  <nav>
+    <div class="navbar-header">
+      <div class="navbar-brand"><span id="brand1"><%=link_to logo, root_path %></span>
+        <div class="container" id="head">
+          <ul class="nav navbar-nav navbar-right">
+           <li class="activa"><%= link_to "Sign up", new_user_registration_path %></li>
+           <li class="signin"><%= link_to "Sign in", new_user_session_path %></li>
+         </ul>
+       </div>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 <% end %>

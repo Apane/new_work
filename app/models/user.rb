@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   has_many :events
   has_many :photos, as: :attachable
   has_many :questions
+  has_many :sent_messages, class_name: 'Message', foreign_key: :sender_id
+  has_many :received_messages, class_name: 'Message', foreign_key: :receiver_id
   accepts_nested_attributes_for :photos
   mount_uploader :profile_image, ProfileImageUploader
 

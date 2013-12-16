@@ -1,16 +1,10 @@
 module UsersHelper
   def user_birthday
     if current_user.age.present?
-      # today = Date.today
-      # d = Date.new(today.year, current_user.birthday.month, current_user.birthday.day)
-      # age = d.year - current_user.birthday.year - (d > today ? 1 : 0)
-      # link_to(age, edit_account_path)
       link_to(current_user.age, edit_account_path)
     else
       link_to('Add Birthday', edit_account_path)
     end
-    #best_in_place current_user, :birthday, {:type => :date, :inner_class => 'birthday',
-    #                            :display_as => :format_date, :data => {'date-format' => 'yyyy-mm-dd'}}
   end
 
   def user_avatar(user)
@@ -33,6 +27,15 @@ module UsersHelper
       html = link_to (image_tag user.profile_image_url(:small).to_s, class: 'img-polaroid', size: '50x50'), user
     else
       html = link_to (image_tag "profile-placeholder1.png", size: '50x50'), user
+    end
+    return html
+  end
+
+  def avatar(user)
+    if user.profile_image.present?
+      html = image_tag user.profile_image_url(:small).to_s, class: 'media-object', size: '50x50'
+    else
+      html = image_tag "profile-placeholder1.png", class: 'media-object', size: '50x50'
     end
     return html
   end

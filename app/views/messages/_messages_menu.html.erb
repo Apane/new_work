@@ -1,0 +1,17 @@
+<ul class="breadcrumb">
+  <li class="<%= 'active' if action_name == 'inbox' %>">
+    <%= link_to 'Inbox', inbox_path if action_name != 'inbox' %>
+    <%= 'Inbox' if action_name == 'inbox' %>
+    <span class="divider">|</span>
+  </li>
+  <li class="<%= 'active' if action_name == 'outbox' %>">
+    <%= link_to 'Outbox', outbox_path if action_name != 'outbox' %>
+    <%= 'Outbox' if action_name == 'outbox' %>
+    <span class="divider">|</span>
+  </li>
+  <!-- <li class="<%#= 'active' if action_name == 'trash' %>">
+    <%#= link_to 'Trash', trash_path if action_name != 'trash' %>
+    <%#= 'Trash' if action_name == 'trash' %>
+    <span class="divider">|</span>
+  </li> -->
+</ul>

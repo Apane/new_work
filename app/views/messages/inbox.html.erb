@@ -1,0 +1,21 @@
+<%= render "shared/header" %>
+<div class="container">
+  <div class="row">
+    <div class="span3">
+      <%= render 'home/sidebar' %>
+    </div>
+    <div class="span6">
+      <%= render 'messages_menu' %>
+
+      <div class="messages">
+        <hr>
+        <% for message in @messages %>
+          <%= render 'inbox_message', message: message %>
+        <% end %>
+      </div>
+    </div>
+    <div class="span3">
+
+    </div>
+  </div>
+</div>
