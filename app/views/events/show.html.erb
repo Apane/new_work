@@ -47,6 +47,7 @@
           <div class="event_particpant participant_<%= p.id %>">
             <%= simple_user_avatar(p) %>
             <p><%= p.name %></p>
+            <div><%= "Owner" if @event.owner_is?(p) %></div>
           </div>
         <% end %>
       </div>
