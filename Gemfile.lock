@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/elight/acts_as_commentable_with_threading.git
-  revision: 38345f219a3974a53475ffa4cfdfbc8843deb3b9
+  revision: 10246564e7dd3c8180807c2bbc7cd57bc58426e7
   specs:
     acts_as_commentable_with_threading (1.1.2)
       activerecord (>= 3.0)
@@ -113,7 +113,7 @@ GEM
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
-    jquery-ui-rails (4.1.0)
+    jquery-ui-rails (4.1.1)
       railties (>= 3.1.0)
     json (1.8.1)
     jwt (0.1.8)
@@ -129,7 +129,7 @@ GEM
     multi_json (1.8.2)
     multipart-post (1.2.0)
     nested_form (0.3.2)
-    nokogiri (1.6.0)
+    nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     oauth (0.4.7)
     oauth2 (0.8.1)
