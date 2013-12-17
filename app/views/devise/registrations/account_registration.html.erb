@@ -13,7 +13,7 @@
 	    <div class="name2"></div>
 	    <%= simple_form_for(@user, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }, :html => {:multipart => true}) do |f| %>
 	      <%= devise_error_messages! %>
-	     
+
 	      <h5>First name:</h5>
 	      <%= f.input_field :first_name, placeholder: "Your first name", required: true, autocomplete: :off %>
 
@@ -29,8 +29,8 @@
 	      <h5>Occupation:</h5>
 	      <%= f.input_field :occupation, placeholder: "Occupation", autocomplete: :off %>
 
-	      <h5>Birthday:</h5> 
-	      <%= f.date_select :birthday, 
+	      <h5>Birthday:</h5>
+	      <%= f.date_select :birthday,
                 {:start_year => Time.now.year,
         :end_year => 1900,
         :use_short_month => true,
@@ -59,6 +59,17 @@
 	    Female
 	  </span>
 	</label><br /><br />
+   <br />
+       Ethnicity:
+      <br />
+      <br />
+      <div><%= f.select :ethnicity, options_for_select(%w[Asian Middle-Eastern Black Native-American Indian Pacific-Islander Hispanic/Latin White Other]) %></div>
+      <br />
+       Education:
+       <br />
+       <br />
+       <div><%= f.select :education, options_for_select(%w[High-School GED Bachelors Masters PhD]) %></div>
+       <br />
 
 	<div><%= f.submit "Update profile", class: "btn btn-warning" %></div>
 

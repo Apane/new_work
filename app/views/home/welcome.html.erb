@@ -29,7 +29,7 @@
 
     <div class="row">
      <br/><br/>
-     <div class="span6">
+     <div class="span3">
       <%# User occupation %>
       <i class="fa fa-usd"></i>:
       <%= best_in_place current_user, :occupation, nil: 'Add occupation' %>
@@ -43,23 +43,53 @@
      </div>
    </div>
 
-   <div class="span6">
+      <div class="addy">
+      <div class="span4">
+       <%# User address %>
+       Last online:
+       <%= time_ago_in_words(current_user.last_sign_in_at) + ' ago' %>
+     </div>
+     </div>
+
+     <div class="span3">
+      <%# User occupation %>
+    </div>
+
+   <div class="span2">
      <%# User gender %>
-     <hr>
      <% if current_user.gender == "M" || "male" %>
-     <i class="fa fa-male"></i> Male
+     Gender: <i class=""></i> Male
      <% else %>
-     <i class="fa fa-female"></i> Female
+    Gender:  <i class="fa fa-female"></i> Female
      <% end %>
      <br/>
    </div>
 
    <div class="span2">
+    <%# User occupation %>
+   </div>
+
+     <div class="span3">
+       <%# User address %>
+       Ethinicity:
+       <%= current_user.ethnicity.present? ? current_user.ethnicity : link_to('Add Ethnicity', edit_account_path) %>
+     </div>
+
+        <div class="span3">
+    <%# User occupation %>
+   </div>
+
+   <div class="span2">
      <!-- Code to calculate age by user birthday -->
-     <hr>
      Age: <%= user_birthday %>
      <br/>
    </div>
+
+     <div class="span4">
+       <%# User address %>
+       Education:
+       <%= current_user.education.present? ? current_user.education : link_to('Add Education', edit_account_path) %>
+     </div>
 
    <div class="span8"><div class="name"></div></div>
    <div class="span8">
