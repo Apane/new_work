@@ -45,7 +45,7 @@
       <div class="row">
         <br /><br / >
 
-        <div class="span6">
+        <div class="span3">
           <%# User occupation %>
           <i class="fa fa-usd"></i>:
           <%= @user.occupation.present? ? @user.occupation : "N/A" %>
@@ -59,9 +59,20 @@
        </div>
      </div>
 
-     <div class="span6">
+    <div class="addy">
+      <div class="span4">
+       <%# User last online %>
+       Last online:
+       <%= time_ago_in_words(@user.last_sign_in_at) + ' ago' %>
+     </div>
+   </div>
+
+    <div class="span3">
+      <%# space %>
+    </div>
+
+     <div class="span2">
        <%# User gender %>
-       <hr>
        <% if @user.gender == "M" %>
        <i class="fa fa-male"></i> Male
        <% else %>
@@ -69,9 +80,26 @@
        <% end %>
      </div>
 
+    <div class="span3">
+      <%# space %>
+    </div>
+
+     <div class="span3">
+       <%# User ethnicity %>
+       Ethinicity:
+       <% if current_user.ethnicity.blank? %>
+        <%= current_user.ethnicity.present? ? current_user.ethnicity : link_to('Add Ethnicity', edit_account_path) %>
+       <% else %>
+        <%= current_user.ethnicity %>
+       <% end %>
+     </div>
+
+    <div class="span3">
+      <%# space %>
+    </div>
+
      <div class="span2">
        <!-- Code to calculate age by user birthday -->
-       <hr>
        Age:
        <% if @user.birthday.present? %>
        <%= today = Date.today
@@ -79,6 +107,16 @@
        age = d.year - @user.birthday.year - (d > today ? 1 : 0) %>
        <% else %>
        <%= @user.birthday.present? ? @user.birthday.year : "N/A" %>
+       <% end %>
+     </div>
+
+      <div class="span4">
+       <%# User Education %>
+       Education:
+       <% if current_user.education.blank? %>
+        <%= current_user.education.present? ? current_user.education : link_to('Add Education', edit_account_path) %>
+       <% else %>
+        <%= current_user.education %>
        <% end %>
      </div>
 
