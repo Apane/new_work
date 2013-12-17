@@ -31,7 +31,7 @@
         <span class="name2">
           <span class="name1">
             <% if @user.first_name.blank? %>
-            <%= @user.first_name.present? ? @user.first_name : "N/A" %>
+            <%= @user.first_name.present? ? @user.first_name : "" %>
             <% else %>
             <%= @user.first_name %> <%= @user.last_name %>
             <% end %>
@@ -48,14 +48,14 @@
         <div class="span3">
           <%# User occupation %>
           <i class="fa fa-usd"></i>:
-          <%= @user.occupation.present? ? @user.occupation : "N/A" %>
+          <%= @user.occupation.present? ? @user.occupation : "" %>
       </div>
 
       <div class="addy">
         <div class="span2">
          <%# User address %>
          <i class="fa fa-home"></i>:
-         <%= @user.address.present? ? @user.address : "N/A" %>
+         <%= @user.address.present? ? @user.address : "" %>
        </div>
      </div>
 
@@ -87,10 +87,10 @@
      <div class="span3">
        <%# User ethnicity %>
        Ethinicity:
-       <% if current_user.ethnicity.blank? %>
-        <%= current_user.ethnicity.present? ? current_user.ethnicity : link_to('Add Ethnicity', edit_account_path) %>
+       <% if @user.ethnicity.blank? %>
+        <%= @user.ethnicity.present? ? @user.ethnicity : '' %>
        <% else %>
-        <%= current_user.ethnicity %>
+        <%= @user.ethnicity %>
        <% end %>
      </div>
 
@@ -106,17 +106,17 @@
 	   d = Date.new(today.year, @user.birthday.month, @user.birthday.day)
        age = d.year - @user.birthday.year - (d > today ? 1 : 0) %>
        <% else %>
-       <%= @user.birthday.present? ? @user.birthday.year : "N/A" %>
+       <%= @user.birthday.present? ? @user.birthday.year : "" %>
        <% end %>
      </div>
 
       <div class="span4">
        <%# User Education %>
        Education:
-       <% if current_user.education.blank? %>
-        <%= current_user.education.present? ? current_user.education : link_to('Add Education', edit_account_path) %>
+       <% if @user.education.blank? %>
+        <%= @user.education.present? ? @user.education : "" %>
        <% else %>
-        <%= current_user.education %>
+        <%= @user.education %>
        <% end %>
      </div>
 
