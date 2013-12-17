@@ -6,10 +6,8 @@ class Question < ActiveRecord::Base
   scope :for_personality, -> { where(for_personality: true) }
 
   QUESTIONS_FOR_ABOUT = [
-    "My self-summary", "What I’m doing with my life", "I’m really good at",
-    "The first things people usually notice about me", "Favorite books, movies, shows, music, and food",
-    "The six things I could never do without", "I spend a lot of time thinking about",
-    "On a typical Friday night I am"
+    "What do I do for fun on my free time?", "What kind of things am I into?", "How do I describe my personality?",
+    "What am I doing with my life right now"
   ]
 
   QUESTIONS_FOR_PERSONALITY = [
