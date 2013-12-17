@@ -9,9 +9,9 @@
       <%#= Profile image upload  %>
       <div class="span4">
         <% if @user.profile_image.present? %>
-        <%= image_tag @user.profile_image_url(:thumb).to_s%>
+          <%= image_tag @user.profile_image_url(:thumb).to_s%>
         <% else %>
-  <%= image_tag "profile-placeholder1.png" %>
+        <%= image_tag "profile-placeholder1.png" %>
         <% end %>
 
         <%#= Space w line  %>
@@ -20,11 +20,11 @@
         <%#= Please bare in mind these are strickly temporary placeholders i.e whitespace  %>
   <%#= render '/home/sidebar' %>
         <h5><u>Verifications</u></h5>
-  <%= icon("fa fa-facebook-square") %> Facebook: <small>158 Friends</small>
+          <%= icon("fa fa-facebook-square") %> Facebook: <small>158 Friends</small>
         <div class="name"></div>
-  <%= icon("fa fa-twitter") %> Twitter: <small>2,300 Followers</small>
+          <%= icon("fa fa-twitter") %> Twitter: <small>2,300 Followers</small>
         <div class="name"></div>
-  <%= icon("fa fa-linkedin") %> LinkedIn: <small>82 Connections</small>
+          <%= icon("fa fa-linkedin") %> LinkedIn: <small>82 Connections</small>
         <div class="name"></div>
       </div>
 

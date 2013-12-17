@@ -9,13 +9,16 @@
 	    Don't have an account?
 
 	    <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-              <%= link_to "Sign up", new_registration_path(resource_name) %>
+        <%= link_to "Sign up", new_registration_path(resource_name) %>
 	      <br />	      <br />
 	    <%= render "devise/shared/links" %>
 	  </div>
 
 	  <div class="signup-body">
 	  <h3>Log in to Friendiose</h3>
+
+    <%= devise_error_messages! %>
+
 	  <div><%= f.input_field :email, placeholder: "Your email", required: true, autocomplete: :off %></div>
 
 	  <div><%= f.input_field :password, placeholder: "Password", required: true, autocomplete: :off  %></div>

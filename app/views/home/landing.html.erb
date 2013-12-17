@@ -28,6 +28,13 @@ $('#background_cycler').hide();//hide the background while the images load, read
      <div class="join-screenshot">
       <div class="join">
         <%= form_for User.new, url: user_registration_path(User.new) do |f| %>
+          <% if User.new.errors.any? %>
+            <ul>
+              <% User.new.errors.full_messages.each do |msg| %>
+               <li><%= msg %></li>
+              <% end %>
+            </ul>
+          <% end %>
         <h3>Join Now</h3>
         <div class="fieldset">
           <div class="control-group">
