@@ -5,19 +5,27 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
+    @users = User.all
+    @interesting_people = @users.order("random()").first(5)
     @messages = Message.all
   end
 
   # GET /messages/1
   # GET /messages/1.json
   def show
+    @users = User.all
+    @interesting_people = @users.order("random()").first(5)
   end
 
   def inbox
+    @users = User.all
+    @interesting_people = @users.order("random()").first(5)
     @messages = current_user.received_messages.order('created_at desc')
   end
 
   def outbox
+    @users = User.all
+    @interesting_people = @users.order("random()").first(5)
     @messages = current_user.sent_messages.order('created_at desc')
   end
 
