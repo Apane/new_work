@@ -70,12 +70,16 @@
    </div>
 
      <div class="span3">
-       <%# User address %>
+       <%# User ethnicity %>
        Ethinicity:
-       <%= current_user.ethnicity.present? ? current_user.ethnicity : link_to('Add Ethnicity', edit_account_path) %>
+       <% if current_user.ethnicity.blank? %>
+        <%= current_user.ethnicity.present? ? current_user.ethnicity : link_to('Add Ethnicity', edit_account_path) %>
+       <% else %>
+        <%= current_user.ethnicity %>
+       <% end %>
      </div>
 
-        <div class="span3">
+   <div class="span3">
     <%# User occupation %>
    </div>
 
@@ -86,9 +90,13 @@
    </div>
 
      <div class="span4">
-       <%# User address %>
+       <%# User Education %>
        Education:
-       <%= current_user.education.present? ? current_user.education : link_to('Add Education', edit_account_path) %>
+       <% if current_user.education.blank? %>
+        <%= current_user.education.present? ? current_user.education : link_to('Add Education', edit_account_path) %>
+       <% else %>
+        <%= current_user.education %>
+       <% end %>
      </div>
 
    <div class="span8"><div class="name"></div></div>
