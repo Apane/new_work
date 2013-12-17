@@ -8,7 +8,7 @@
 
       <%= devise_error_messages! %>
 
-      <div id="formbox-login-tips" class="tips">
+  <div id="formbox-login-tips" class="tips">
 	<h4>Meet people like you, near you.</h4>
 	<div class="line"></div>
 	<ul>
@@ -25,6 +25,13 @@
 	<div><%= f.input_field :first_name, placeholder: "Your first name", required: true, autocomplete: :off %></div>
 	<div><%= f.input_field :last_name, placeholder: "Your last name", required: true, autocomplete: :off %></div>
 	<div><%= f.input_field :zip, placeholder: "Your zip or postal code", required: true, autocomplete: :off %></div>
+
+  <br />
+  Profile image:<br /><br />
+  <%= image_tag @user.profile_image_url(:thumb).to_s if @user.profile_image? %>
+  <%= f.file_field :profile_image %>
+  <br />
+  <br />
 
 	Birthday: <br /><br />
 	<%= f.date_select :birthday,
