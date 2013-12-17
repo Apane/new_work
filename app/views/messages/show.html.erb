@@ -13,35 +13,16 @@
       <% end %>
     </div>
     <div class="span6">
-      <%= render 'messages_menu' %>
-
+      <%#= render 'messages_menu' %>
       <div class="messages">
         <hr>
-        <div class="message">
-          <div class="media">
-            <% if @message.type_of_sent?(current_user) %>
-              <%= link_to avatar(@message.receiver), profile_path(@message.receiver), class: 'pull-left' %>
-              <div class="media-body">
-                <h6 class="media-heading">Message sent to <%= @message.receiver.name %></h6>
-                <%= sanitize(@message.body) %>
-                <div class="pull-right">
-                  <%= link_to 'Delete', delete_message_path(@message), remote: true %>
-                </div>
-              </div>
-            <% elsif @message.type_of_received?(current_user) %>
-              <%= link_to avatar(@message.sender), profile_path(@message.sender), class: 'pull-left' %>
-              <div class="media-body">
-                <h6 class="media-heading">Message from <%= @message.sender.name %></h6>
-                <%= sanitize(@message.body) %>
-                <div class="pull-right">
-                  <%= link_to 'Delete', delete_message_path(@message), remote: true %>
-                </div>
-              </div>
-            <% end %>
-          </div>
-        </div>
-        <hr>
+        <%= render @messages %>
       </div>
+      <%= form_for current_user.sent_messages.new, class: 'form', remote: true do |f| %>
+        <%= f.text_area :body, rows: 5, placeholder: 'Write a reply...' %>
+        <div><%= f.hidden_field :receiver_id, value: @sender.id %></div>
+        <%= f.submit 'Reply', class: 'btn btn-primary pull-right' %>
+      <% end %>
     </div>
     <div class="span3">
 

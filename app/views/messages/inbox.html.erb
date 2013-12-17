@@ -13,12 +13,13 @@
       <% end %>
     </div>
     <div class="span6">
-      <%= render 'messages_menu' %>
+      <%#= render 'messages_menu' %>
 
       <div class="messages">
         <hr>
-        <% for message in @messages %>
-          <%= render 'inbox_message', message: message %>
+        <% @messages.each do |sender, message| %>
+          <%= sender %>
+          <%#= render 'inbox_message', message: message %>
         <% end %>
       </div>
     </div>

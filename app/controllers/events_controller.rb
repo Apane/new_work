@@ -2,11 +2,8 @@ class EventsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @users = User.all
     @user = current_user
     @events = Event.all
-    @interesting_people = @users.order("random()").first(5)
-
   end
 
   def new
@@ -30,12 +27,10 @@ class EventsController < ApplicationController
   end
 
   def show
-    @users = User.all
     @user = current_user
     @event = Event.find(params[:id])
     @commentable = @event
     @comment = @event.comments.new
-    @interesting_people = @users.order("random()").first(5)
   end
 
   def edit

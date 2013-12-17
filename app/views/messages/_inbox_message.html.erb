@@ -1,15 +1,13 @@
-<div class="message">
+<%= link_to message_path(messages.last.sender), class: 'message_link' do %>
+<div class="message" style="<%= 'background: #E7F0FF;' if messages.last.new? %>">
   <div class="media">
-    <%= link_to avatar(message.sender), profile_path(message.sender), class: 'pull-left' %>
+    <div class="pull-left"><%= avatar(messages.last.sender) %></div>
     <div class="media-body">
-      <h6 class="media-heading">Message from <%= message.sender.name %></h6>
-      <div class="pull-right">
-        <%= link_to 'Open', message %><br>
-        <%= link_to 'Delete', delete_message_path(message), remote: true %>
-      </div>
-      <%= sanitize(message.body.truncate(100, omision: "...")) %>
+      <h6 class="media-heading"><%= messages.last.sender.name %></h6>
+      <p><%= sanitize(messages.last.body.truncate(100, omision: "...")) %></p>
     </div>
-    <small class="time pull-right"><%= time_ago_in_words(message.created_at) %> ago</small>
+    <small class="time pull-right"><%= time_ago_in_words(messages.last.created_at) %> ago</small>
   </div>
 </div>
+<% end %>
 <hr>
