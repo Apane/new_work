@@ -18,6 +18,7 @@
         <div class="name"></div>
 
         <%#= Please bare in mind these are strickly temporary placeholders i.e whitespace  %>
+	<%#= render '/home/sidebar' %>
         <h5><u>Verifications</u></h5>
 	<%= icon("fa fa-facebook-square") %> Facebook: <small>158 Friends</small>
         <div class="name"></div>
@@ -174,7 +175,7 @@
       </div>
     </div>
   </div>
-  <%= render '/shared/footer' %>
+  <%#= render '/shared/footer' %>
   <%= render 'shared/message_modal' %>
 </div>
 </div>
@@ -201,6 +202,8 @@ fb_param.value = '0.00';
 <noscript>
   <img height="1" src="https://www.facebook.com/offsite_event.php?id=6009056882201&amp;value=0" style="display:none;" width="1"/>
 </noscript>
+<%= render '/shared/footer' %>
+
 <script type="text/javascript">
 // remove default datepicker event
 jQuery(document).off('best_in_place:datepicker');
