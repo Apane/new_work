@@ -13,6 +13,10 @@
         <% end %>
       <% end %>
       <hr>
+      <h5>Recently visited</h5>
+      <% @event.event_participants.order('created_at desc').limit(5).map(&:user).each do |p| %>
+      <%= simple_user_avatar(p) %>
+      <% end %>
     </div>
     <div class="span5">
       <div class="new_event_form">
