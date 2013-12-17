@@ -1,4 +1,6 @@
 <%= render "shared/header" %>
+<%= render "home/breadcrumbs" %>
+
 
 <div id="landing_welcome_page">
   <div class="container">
@@ -9,20 +11,20 @@
         <% if @user.profile_image.present? %>
         <%= image_tag @user.profile_image_url(:thumb).to_s%>
         <% else %>
-	<%= image_tag "profile-placeholder1.png" %>
+  <%= image_tag "profile-placeholder1.png" %>
         <% end %>
 
         <%#= Space w line  %>
         <div class="name"></div>
 
         <%#= Please bare in mind these are strickly temporary placeholders i.e whitespace  %>
-	<%= render '/home/sidebar' %>
+  <%#= render '/home/sidebar' %>
         <h5><u>Verifications</u></h5>
-	<%= icon("fa fa-facebook-square") %> Facebook: <small>158 Friends</small>
+  <%= icon("fa fa-facebook-square") %> Facebook: <small>158 Friends</small>
         <div class="name"></div>
-	<%= icon("fa fa-twitter") %> Twitter: <small>2,300 Followers</small>
+  <%= icon("fa fa-twitter") %> Twitter: <small>2,300 Followers</small>
         <div class="name"></div>
-	<%= icon("fa fa-linkedin") %> LinkedIn: <small>82 Connections</small>
+  <%= icon("fa fa-linkedin") %> LinkedIn: <small>82 Connections</small>
         <div class="name"></div>
       </div>
 
@@ -31,13 +33,13 @@
         <span class="name2">
           <span class="name1">
             <% if @user.first_name.blank? %>
-            <%= @user.first_name.present? ? @user.first_name : "N/A" %>
+            <%= @user.first_name.present? ? @user.first_name : "" %>
             <% else %>
             <%= @user.first_name %> <%= @user.last_name %>
             <% end %>
           </span>
           <span class="side-buttons">
-            <div class="btn btn-warning move"><%=link_to "Message", "#" %> <%= icon("fa fa-comments")%></div>
+            <div class="btn btn-warning move"><%= link_to "Message", new_message_path, remote: true %> <%= icon("fa fa-comments")%></div>
           </span>
         </span>
       </div>
@@ -45,23 +47,34 @@
       <div class="row">
         <br /><br / >
 
-        <div class="span6">
+        <div class="span3">
           <%# User occupation %>
           <i class="fa fa-usd"></i>:
-          <%= @user.occupation.present? ? @user.occupation : "N/A" %>
+          <%= @user.occupation.present? ? @user.occupation : "" %>
       </div>
 
       <div class="addy">
         <div class="span2">
          <%# User address %>
          <i class="fa fa-home"></i>:
-         <%= @user.address.present? ? @user.address : "N/A" %>
+         <%= @user.address.present? ? @user.address : "" %>
        </div>
      </div>
 
-     <div class="span6">
+    <div class="addy">
+      <div class="span4">
+       <%# User last online %>
+       Last online:
+       <%= time_ago_in_words(@user.last_sign_in_at) + ' ago' %>
+     </div>
+   </div>
+
+    <div class="span3">
+      <%# space %>
+    </div>
+
+     <div class="span2">
        <%# User gender %>
-       <hr>
        <% if @user.gender == "M" %>
        <i class="fa fa-male"></i> Male
        <% else %>
@@ -69,19 +82,46 @@
        <% end %>
      </div>
 
-     <div class="span2">
-       <!-- Code to calculate age by user birthday -->
-       <hr>
-       Age:
-       <% if @user.birthday.present? %>
-       <%= today = Date.today
-	   d = Date.new(today.year, @user.birthday.month, @user.birthday.day)
-       age = d.year - @user.birthday.year - (d > today ? 1 : 0) %>
+    <div class="span3">
+      <%# space %>
+    </div>
+
+     <div class="span3">
+       <%# User ethnicity %>
+       Ethinicity:
+       <% if @user.ethnicity.blank? %>
+        <%= @user.ethnicity.present? ? @user.ethnicity : '' %>
        <% else %>
-       <%= @user.birthday.present? ? @user.birthday.year : "N/A" %>
+        <%= @user.ethnicity %>
        <% end %>
      </div>
 
+    <div class="span3">
+      <%# space %>
+    </div>
+
+     <div class="span2">
+       <!-- Code to calculate age by user birthday -->
+       Age:
+       <% if @user.birthday.present? %>
+       <%= today = Date.today
+     d = Date.new(today.year, @user.birthday.month, @user.birthday.day)
+       age = d.year - @user.birthday.year - (d > today ? 1 : 0) %>
+       <% else %>
+       <%= @user.birthday.present? ? @user.birthday.year : "" %>
+       <% end %>
+     </div>
+
+      <div class="span4">
+       <%# User Education %>
+       Education:
+       <% if @user.education.blank? %>
+        <%= @user.education.present? ? @user.education : "" %>
+       <% else %>
+        <%= @user.education %>
+       <% end %>
+       <br /><br />
+     </div>
      <div class="span8"></div>
 
      <div class="span8"><div class="name"></div></div>
@@ -108,11 +148,11 @@
           <div class="tab-pane" id="tab2">
             <div class="page-header">
               <div class="col-sm-6 col-md-3">
-		<% if @user.photos.present? %>
+    <% if @user.photos.present? %>
                 <span class="gallery"><%= render @user.photos %></span>
-		<% else %>
-		<h5><%= @user.first_name %> hasn't uploaded any photos..</h5>
-		<% end %>
+    <% else %>
+    <h5><%= @user.first_name %> hasn't uploaded any photos..</h5>
+    <% end %>
               </div>
               <div class="clearfix"></div>
             </div>
@@ -135,7 +175,8 @@
       </div>
     </div>
   </div>
-  <%= render '/shared/footer' %>
+  <%#= render '/shared/footer' %>
+  <%= render 'shared/message_modal' %>
 </div>
 </div>
 
@@ -161,6 +202,8 @@ fb_param.value = '0.00';
 <noscript>
   <img height="1" src="https://www.facebook.com/offsite_event.php?id=6009056882201&amp;value=0" style="display:none;" width="1"/>
 </noscript>
+<%= render '/shared/footer' %>
+
 <script type="text/javascript">
 // remove default datepicker event
 jQuery(document).off('best_in_place:datepicker');
