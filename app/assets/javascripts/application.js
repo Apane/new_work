@@ -38,3 +38,21 @@ $(window).load(function(){
   setInterval('cycleImages()', 3000);
 })
 
+$(function(){
+
+    $('.breadcrumb li a').on('click', function(e){
+
+
+        var $thisA = $(this);
+        var $li = $thisA.parents('ul');
+
+        if (!$thisA.hasClass('active'))
+        {
+            $li.find('a.active').removeClass('active');
+                $thisA.addClass('active');
+        }
+
+    })
+
+})
+
