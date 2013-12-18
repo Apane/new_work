@@ -49,15 +49,7 @@ module UsersHelper
     return html
   end
 
-  def check_fb_connection
-    current_user.has_fb_connection? ? (link_to 'Validated', disconnect_path(social: 'facebook')) : (link_to "Validate", user_omniauth_authorize_path(provider: 'facebook'))
-  end
-
-  def check_tw_connection
-    current_user.has_tw_connection? ? (link_to 'Validated', disconnect_path(social: 'twitter')) : (link_to "Validate", user_omniauth_authorize_path(provider: 'twitter'))
-  end
-
-  def check_li_connection
-    current_user.has_li_connection? ? (link_to 'Validated', disconnect_path(social: 'linkedin')) : (link_to "Validate", user_omniauth_authorize_path(provider: 'linkedin'))
+  def check_connection(provider)
+    current_user.has_connection_with(provider) ? (link_to 'Validated', disconnect_path(social: provider.downcase)) : (link_to "Validate", user_omniauth_authorize_path(provider: provider.downcase))
   end
 end

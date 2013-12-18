@@ -27,17 +27,17 @@
 
             <h3>Validations</h3>
             <i class="fa fa-facebook-square"></i> Facebook:<br>
-            <p><%= current_user.has_fb_connection? ? 'Your Facebook account is now connected' : "Sign in with Facebook and discover your trusted connections to hosts and guests all over the world." %></p>
+            <p><%= current_user.has_connection_with('Facebook') ? 'Your Facebook account is now connected' : "Sign in with Facebook and discover your trusted connections to hosts and guests all over the world." %></p>
             <div class="btn"><%= check_fb_connection %></div>
             <div class="name"></div><br>
 
             <%= icon("fa fa-twitter") %> Twitter:<br>
-            <p><%= current_user.has_tw_connection? ? 'Your Twitter account is now connected' : 'Sign in with Twitter and merge your connections to your followers.' %></p>
+            <p><%= current_user.has_connection_with('Twitter') ? 'Your Twitter account is now connected' : 'Sign in with Twitter and merge your connections to your followers.' %></p>
             <div class="btn"><%= check_tw_connection %></div>
             <div class="name"></div><br>
 
             <%= icon("fa fa-linkedin") %> LinkedIn:<br>
-            <p><%= current_user.has_li_connection? ? 'Your LinkedIn account is now connected' : "You can now connect your Friendiose account with the world’s largest professional network. Connecting with LinkedIn builds confidence between guests and hosts by establishing a link to your professional life." %></p>
+            <p><%= current_user.has_connection_with('LinkedIn') ? 'Your LinkedIn account is now connected' : "You can now connect your Friendiose account with the world’s largest professional network. Connecting with LinkedIn builds confidence between guests and hosts by establishing a link to your professional life." %></p>
             <div class="btn"><%= check_li_connection %></div>
             <div class="name"></div><br>
 

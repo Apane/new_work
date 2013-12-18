@@ -66,15 +66,16 @@ class User < ActiveRecord::Base
     end
   end
 
-  def format_date
-    if self.birthday.present?
-      today = Date.today
-      d = Date.new(today.year, self.birthday.month, self.birthday.day)
-      age = d.year - self.birthday.year - (d > today ? 1 : 0)
-    else
-      self.birthday.present? ? self.birthday.year : link_to('Add Birthday', edit_account_path)
-    end
-  end
+  # Not used anywhere
+  # def format_date
+  #   if self.birthday.present?
+  #     today = Date.today
+  #     d = Date.new(today.year, self.birthday.month, self.birthday.day)
+  #     age = d.year - self.birthday.year - (d > today ? 1 : 0)
+  #   else
+  #     self.birthday.year : link_to('Add Birthday', edit_account_path)
+  #   end
+  # end
 
   def disconnect(social)
     if social == 'facebook'
@@ -86,6 +87,15 @@ class User < ActiveRecord::Base
     elsif 'linkedin'
       auth = self.authorizations.where(provider: 'LinkedIn').first
       auth.update_attributes(token: nil, secret: nil)
+    end
+  end
+
+  def has_connection_with(provider)
+    auth = self.authorizations.where(provider: provider).first
+    if auth.present?
+      auth.token.present?
+    else
+      false
     end
   end
 

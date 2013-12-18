@@ -59,7 +59,7 @@
 
       <div class="clearfix"></div>
       <div class="name"></div>
-      <%= form_for [@commentable, @comment], remote: true do |f| %>
+      <%= form_for [@event, @comment], remote: true do |f| %>
           <div><%= f.hidden_field :user_id, value: current_user.id %></div>
         <div>
           <%= f.text_area :body, rows: 5,  placeholder: "Leave a comment", class: 'comment-area'  %>
