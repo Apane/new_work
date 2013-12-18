@@ -24,30 +24,6 @@ class User < ActiveRecord::Base
   validates :education, :presence => true
   validates :profile_image, :presence => true
 
-  zip_regex_usa = %r{\d{5}(-\d{4})?}
-  zip_regex_canada = %r{[ABCEGHJKLMNPRSTVXY]\d[A-Z] \d[A-Z]\d}
-
-  validates :zip, :presence => true, :format => { :with => zip_regex_usa }, :if => :shipping_to_usa?
-  validates :zip, :presence => true, :format => { :with => zip_regex_canada }, :if => :shipping_to_canada?
-  validates :zip, :presence => true, :format => { :with => zip_regex_usa }, :if => :billing_to_usa?
-  validates :zip, :presence => true, :format => { :with => zip_regex_canada }, :if => :billing_to_canada?
-
-def shipping_to_usa?
-  shipping_country == 'US'
-end
-
-def billing_to_usa?
-  billing_country == 'US'
-end
-
-def shipping_to_canada?
-  shipping_country == 'CA'
-end
-
-def billing_to_canada?
-  billing_country == 'CA'
-end
-
 
   after_create :create_questions, :set_age
   before_save :set_age
