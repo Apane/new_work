@@ -34,7 +34,11 @@
      <div class="span3">
       <%# User occupation %>
       <i class="fa fa-usd"></i>:
-      <%= best_in_place current_user, :occupation, nil: 'Add occupation' %>
+    <% if current_user.occupation.blank? %>
+          <%= current_user.occupation.present? ? current_user.occupation : link_to('Add Occupation', edit_account_path)%>
+          <% else %>
+          <%= current_user.occupation %>
+          <% end %>
     </div>
 
     <div class="addy">

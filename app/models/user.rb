@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   mount_uploader :profile_image, ProfileImageUploader
 
   validates :gender, :presence => true
-  validates :zip :presence => true
+  validates :zip, :presence => true
 
 
 
