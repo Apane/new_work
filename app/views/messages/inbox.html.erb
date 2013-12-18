@@ -17,10 +17,17 @@
 
       <div class="messages">
         <hr>
+
+        <% if @messages.empty? %>
+          No messages yet...
+          <% else %>
         <% @messages.each do |sender, message| %>
           <%= sender %>
           <%#= render 'inbox_message', message: message %>
         <% end %>
+        <% end %>
+
+
       </div>
     </div>
     <div class="span3">
