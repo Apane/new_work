@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   validates :ethnicity, :presence => true
   validates :education, :presence => true
   validates :profile_image, :presence => true
-
+  validates_format_of :zip, :with => /^\d{5}(-\d{4})?$/, :message => "should be in the form 12345 or 12345-1234"
 
 
 
