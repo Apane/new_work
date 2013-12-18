@@ -15,7 +15,6 @@
     <div class="span6">
       <%#= render 'messages_menu' %>
       <div class="messages">
-        <hr>
         <%= render @messages %>
       </div>
       <%= form_for current_user.sent_messages.new, class: 'form', remote: true do |f| %>
