@@ -20,9 +20,7 @@ class User < ActiveRecord::Base
   mount_uploader :profile_image, ProfileImageUploader
 
   validates :gender, :presence => true
-  validates :ethnicity, :presence => true
-  validates :education, :presence => true
-  validates :profile_image, :presence => true
+
 
 
   after_create :create_questions, :set_age
