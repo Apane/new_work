@@ -15,16 +15,16 @@
     <div class="span6">
       <%#= render 'messages_menu' %>
 
-       <% if @messages.empty? %>
-          <h5>Your inbox is empty...</h5>
-          <% else %>
-        <div class="messages">
+     <div class="messages">
+      <% if @messages.empty? %>
+        <h5>Your inbox is empty...</h5>
+      <% else %>
         <hr>
-        <% @messages.each do |sender, messages| %>
-          <%= render 'inbox_message', messages: messages %>
-        <% end %>
-      </div>
-        <% end %>
+      <% @messages.each do |sender, messages| %>
+        <%= render 'inbox_message', messages: messages %>
+      <% end %>
+     <% end %>
+    </div>
 
 
 
