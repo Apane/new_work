@@ -65,12 +65,12 @@
        Ethnicity:
       <br />
       <br />
-      <div><%= f.select :ethnicity, options_for_select(%w[Asian Middle-Eastern Black Native-American Indian Pacific-Islander Hispanic/Latin White Other]) %></div>
+      <div><%= f.select(:ethnicity_id, Ethnicity.find(:all).collect {|u| [u.name, u.id]}, :prompt => 'Select Ethicity') %></div>
       <br />
        Education:
        <br />
        <br />
-       <div><%= f.select :education, options_for_select(%w[High-School GED Bachelors Masters PhD]) %></div>
+       <div><%= f.select(:education_id, Education.find(:all).collect {|u| [u.name, u.id]}, :prompt => 'Select Ethicity') %></div>
        <br />
 
 	<div><%= f.submit "Update profile", class: "btn btn-warning" %></div>
