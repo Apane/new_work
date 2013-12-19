@@ -89,10 +89,10 @@
      <div class="span3">
        <%# User ethnicity %>
        Ethinicity:
-       <% if @user.ethnicity.blank? %>
-        <%= @user.ethnicity.present? ? @user.ethnicity : '' %>
+       <% if @user.ethnicity.name.blank? %>
+        <%= @user.ethnicity.name.present? ? @user.ethnicity.name : '' %>
        <% else %>
-        <%= @user.ethnicity %>
+        <%= @user.ethnicity.name %>
        <% end %>
      </div>
 
@@ -115,10 +115,10 @@
       <div class="span4">
        <%# User Education %>
        Education:
-       <% if @user.education.blank? %>
-        <%= @user.education.present? ? @user.education : "" %>
+       <% if @user.education.name.blank? %>
+        <%= @user.education.name.present? ? @user.education.name : "" %>
        <% else %>
-        <%= @user.education %>
+        <%= @user.education.name %>
        <% end %>
        <br /><br />
      </div>
