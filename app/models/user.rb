@@ -16,6 +16,9 @@ class User < ActiveRecord::Base
   has_many :questions
   has_many :sent_messages, class_name: 'Message', foreign_key: :sender_id
   has_many :received_messages, class_name: 'Message', foreign_key: :receiver_id
+  has_many :ethnicities
+  has_one  :education
+
   accepts_nested_attributes_for :photos
   mount_uploader :profile_image, ProfileImageUploader
 
@@ -33,6 +36,24 @@ class User < ActiveRecord::Base
     using: {tsearch: {prefix: true, dictionary: "english"}},
     associated_against: {questions: [:answer]}
 
+  DEGREE = {
+    '' => "None",
+    '1' => "Bachelor",
+    '2' => "Master",
+    '3' => "Doctorate"
+  }
+
+  ETHNICITY = {
+    '' => "Asian",
+    '1' => "Indian",
+    '2' => "Black",
+    '3' => "White"
+  }
+
+  GENDER = {
+    0 => "Female",
+    1 => "Male",
+  }
   def create_questions
     Question::QUESTIONS_FOR_ABOUT.map{|q| self.questions.create(question: q, for_about: true)}
     Question::QUESTIONS_FOR_PERSONALITY.map{|q| self.questions.create(question: q, for_personality: true)}

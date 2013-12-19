@@ -1,5 +1,5 @@
 <%= form_for @question, remote: true do |f| %>
-  <%= f.text_area :answer, class: 'answer_textarea' %>
+  <%= f.text_area :answer, class: 'answer_textarea', rows: 5 %>
   <%= f.submit 'Save', class: 'btn btn-primary' %>
   <%= link_to 'Cancel', @question, remote: true, class: 'btn' %>
 <% end %>

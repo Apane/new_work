@@ -29,82 +29,49 @@
       </span>
     </div>
 
-    <div class="row">
-     <br/><br/>
-     <div class="span3">
-      <%# User occupation %>
-      <i class="fa fa-usd"></i>:
-    <% if current_user.occupation.blank? %>
-          <%= current_user.occupation.present? ? current_user.occupation : link_to('Add Occupation', edit_account_path)%>
-          <% else %>
-          <%= current_user.occupation %>
-          <% end %>
-    </div>
-
-    <div class="addy">
+    <div class="span9">
+      <div class="span3">
+        <%# User occupation %>
+         <div class="element"></div>
+        <i class="fa fa-usd"></i>:
+        <%= best_in_place current_user, :occupation, type: :input, :inner_class => 'occupation-edit', nil: 'Add Occupation' %>
+      </div>
       <div class="span2">
-       <%# User address %>
-       <i class="fa fa-home"></i>:
-       <%= current_user.address.present? ? current_user.address : link_to('Add Address', edit_account_path) %>
-     </div>
-   </div>
+        <div class="element"></div>
+          <div>
+            <i class="fa fa-home"></i>:
+              <span class="addy">
+                <%= current_user.address.present? ? current_user.address : link_to('Add Address', edit_account_path) %>
+              </span>
+         </div>
+         <div class="element"></div>
+          <div>Age: <%= user_birthday %></div>
+         <div class="element"></div>
+         <%= best_in_place current_user, :gender, :type => :select,
+          :collection => User::GENDER.map{|d| [d[0], d[1]]}, :inner_class => 'education-edit', nil: 'Select Gender' %>
+      </div>
 
-      <div class="addy">
-      <div class="span4">
-       <%# User last online %>
-       Last online:
-       <%= time_ago_in_words(current_user.last_sign_in_at) + ' ago' %>
-     </div>
-     </div>
+      <div class="span3">
+        <div class="element">
+          <div class="addy">
+          Last online:
+          <%= time_ago_in_words(current_user.last_sign_in_at) + ' ago' %>
+          </div>
+        </div>
+        <div class="element">
+          Ethinicity:
+          <%= best_in_place current_user, :ethnicity_id, :type => :select, collection: Ethnicity.all.map{|e| [e.id, e.name]}, :inner_class => 'education-edit', nil: 'Select Ethnicity' %>
+        </div>
+        <div class="element">
+          Education:
+          <span class="select_for_education">
+        <%= best_in_place current_user, :education_id, :type => :select, collection: Education.all.map{|e| [e.id, e.name]}, :inner_class => 'education-edit', nil: 'Select Education' %>
+        </div>
 
-     <div class="span3">
-      <%# space %>
+                  <%# =:collection => Education.all.map{|e| [e.id, e.name]}, :inner_class => 'education-edit', nil: 'Select Education' %>
+        </span>
+      </div>
     </div>
-
-   <div class="span2">
-     <%# User gender %>
-     <% if current_user.gender == "M" || "male" %>
-     Gender: <i class=""></i> Male
-     <% else %>
-    Gender:  <i class="fa fa-female"></i> Female
-     <% end %>
-     <br/>
-   </div>
-
-   <div class="span2">
-    <%# User occupation %>
-   </div>
-
-     <div class="span3">
-       <%# User ethnicity %>
-       Ethinicity:
-       <% if current_user.ethnicity.blank? %>
-        <%= current_user.ethnicity.present? ? current_user.ethnicity : link_to('Add Ethnicity', edit_account_path) %>
-       <% else %>
-        <%= current_user.ethnicity %>
-       <% end %>
-     </div>
-
-   <div class="span3">
-    <%# User occupation %>
-   </div>
-
-   <div class="span2">
-     <!-- Code to calculate age by user birthday -->
-     Age: <%= user_birthday %>
-     <br/>
-   </div>
-
-     <div class="span4">
-       <%# User Education %>
-       Education:
-       <% if current_user.education.blank? %>
-        <%= current_user.education.present? ? current_user.education : link_to('Add Education', edit_account_path) %>
-       <% else %>
-        <%= current_user.education %>
-       <% end %>
-       <br /><br />
-     </div>
 
    <div class="span8"><div class="name"></div></div>
    <div class="span8">
@@ -116,10 +83,10 @@
       </ul>
       <div class="tab-content">
         <div class="tab-pane in active" id="tab1">
-          <% @questions_for_about.each_with_index do |question, index| %>
+          <% @questions_for_about.each do |question| %>
           <div class="question">
             <h4 class="user_questions">
-              <%= index + 1 %>. <%= question.question %>
+              <%= question.question %>
               <%= link_to ("<i class='icon-edit'></i>".html_safe),
               edit_user_question_path(current_user, question),
               remote: true, class: "edit_link_#{question.id}" %>
@@ -148,10 +115,10 @@
           </div>
         </div>
         <div class="tab-pane" id="tab3">
-          <% @questions_for_personality.each_with_index do |question, index| %>
+          <% @questions_for_personality.each do |question| %>
           <div class="question">
             <h4 class="user_questions">
-              <%= index + 1 %>. <%= question.question %>
+              <%= question.question %>
               <%= link_to ("<i class='icon-edit'></i>".html_safe),
               edit_user_question_path(current_user, question),
               remote: true, class: "edit_link_#{question.id}" %>

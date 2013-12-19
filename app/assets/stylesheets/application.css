@@ -38,4 +38,24 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a3d4ff', end
 #background_cycler img{position:absolute;left:0;top:0;width:100%;z-index:1}
 #background_cycler img.active{z-index:3}
 
-.breadcrumb li a.active {    color: #999999;}
+.logged_out_header{padding-bottom: 15px;padding-top: 10px;}
+
+.breadcrumb li.active {
+  font-weight: bold;
+}
+.element{
+  margin-top: 10px;
+}
+.education-edit {
+  height: 20px;
+  margin-top: 4px;
+  width: 100px;
+  font-size: 12px;
+}
+
+.occupation-edit {
+  height: 20px;
+  margin-top: 4px;
+  width: 150px;
+  font-size: 12px;
+}

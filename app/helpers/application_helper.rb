@@ -27,6 +27,12 @@ module ApplicationHelper
     html.html_safe
   end
 
+  def class_active(key)
+    if controller_name == key
+      return "class='active'".html_safe
+    end
+  end
+
   def lorem
  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, who"
   end

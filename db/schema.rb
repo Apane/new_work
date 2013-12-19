@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131217210716) do
+ActiveRecord::Schema.define(version: 20131219231629) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "authorizations", force: true do |t|
     t.string   "provider"
@@ -43,6 +46,18 @@ ActiveRecord::Schema.define(version: 20131217210716) do
 
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "educations", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ethnicities", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "event_participants", force: true do |t|
     t.integer  "user_id"
@@ -126,6 +141,8 @@ ActiveRecord::Schema.define(version: 20131217210716) do
     t.integer  "age"
     t.string   "ethnicity"
     t.string   "education"
+    t.integer  "ethnicity_id"
+    t.integer  "education_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

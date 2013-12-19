@@ -1,8 +1,9 @@
 <ul class="breadcrumb">
-      <li><%= link_to " Browse Profiles" , profiles_path %></li> |
-      <li><%= link_to " Events" , events_path %></li> |
-      <li><%= link_to " Messages" , messages_path %></li> |
-      <li><%= link_to " My Profile" , welcome_path%></li>
+
+      <li <%= class_active('profiles') %>><%= link_to " Browse Profiles" , profiles_path %></li> |
+      <li <%= class_active('events') %>><%= link_to " Events" , events_path %></li> |
+      <li <%= class_active('messages') %>><%= link_to " Messages" , messages_path %></li> |
+      <li <%= class_active('home') %>><%= link_to " My Profile" , welcome_path%></li>
     <div class#="line">
       <li><%#= link_to icon("fa fa-users ") + " People" , users_path %></li>
     </div>
