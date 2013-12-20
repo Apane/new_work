@@ -13,115 +13,63 @@
         <% else %>
         <%= image_tag "profile-placeholder1.png" %>
         <% end %>
-
-        <%#= Space w line  %>
-        <div class="name"></div>
-
-        <%#= Please bare in mind these are strickly temporary placeholders i.e whitespace  %>
-  <%#= render '/home/sidebar' %>
-        <h5><u>Verifications</u></h5>
-          <%= icon("fa fa-facebook-square") %> Facebook: <small>158 Friends</small>
-        <div class="name"></div>
-          <%= icon("fa fa-twitter") %> Twitter: <small>2,300 Followers</small>
-        <div class="name"></div>
-          <%= icon("fa fa-linkedin") %> LinkedIn: <small>82 Connections</small>
-        <div class="name"></div>
-      </div>
+        <%= render 'profiles/socialprofiles' %>
 
       <div class="span8">
         <%# User name %>
-        <span class="name2">
-          <span class="name1">
-            <% if @user.first_name.blank? %>
-            <%= @user.first_name.present? ? @user.first_name : "" %>
-            <% else %>
-            <%= @user.first_name %> <%= @user.last_name %>
-            <% end %>
-          </span>
-          <span class="side-buttons">
-            <div class="btn btn-warning move"><%= link_to "Message", new_message_path, remote: true %> <%= icon("fa fa-comments")%></div>
-          </span>
+        <span class="name1">
+          <%= @user.first_name.present? ? @user.first_name : "" %> <%= @user.last_name.present? ? @user.last_name : "" %>
+            <span class="bubble"><%= @user.blurb.present? ? @user.blurb : "No blurb..." %></span>
+        </span>
+        <br />
+        <div class="element"></div>
+        <br / >
+
+      </span>
+    </div>
+
+    <div class="span9">
+      <div class="span3">
+        <%# User occupation %>
+         <div class="element"></div>
+        <i class="fa fa-usd"></i>:
+       <%= @user.occupation.present? ? @user.occupation : "" %>
+      </div>
+      <div class="span2">
+        <div class="element"></div>
+          <div>
+            <i class="fa fa-home"></i>:
+              <span class="addy">
+                <%= @user.address.present? ? @user.address : "" %>
+              </span>
+         </div>
+         <div class="element"></div>
+          <div>Age: <%= user_birthday %></div>
+         <div class="element"></div>
+         <%= @user.gender.present? ? @user.gender : "" %>
+      </div>
+
+      <div class="span3">
+        <div class="element">
+          <div class="addy">
+          Last online:
+          <%= time_ago_in_words(@user.last_sign_in_at) + ' ago' %>
+          </div>
+        </div>
+        <div class="element">
+          Ethinicity:
+          <%= @user.ethnicity.name.present? ? @user.ethnicity.name : "" %>
+        </div>
+        <div class="element">
+          Education:
+          <span class="select_for_education">
+           <%= @user.education.name.present? ? @user.education.name : "" %>
+        </div>
+
+                  <%# =:collection => Education.all.map{|e| [e.id, e.name]}, :inner_class => 'education-edit', nil: 'Select Education' %>
         </span>
       </div>
-
-      <div class="row">
-        <br /><br / >
-
-        <div class="span3">
-          <%# User occupation %>
-          <i class="fa fa-usd"></i>:
-          <%= @user.occupation.present? ? @user.occupation : "" %>
-      </div>
-
-      <div class="addy">
-        <div class="span2">
-         <%# User address %>
-         <i class="fa fa-home"></i>:
-         <%= @user.address.present? ? @user.address : "" %>
-       </div>
-     </div>
-
-    <div class="addy">
-      <div class="span4">
-       <%# User last online %>
-       Last online:
-       <%= time_ago_in_words(@user.last_sign_in_at) + ' ago' %>
-     </div>
-   </div>
-
-    <div class="span3">
-      <%# space %>
     </div>
-
-     <div class="span2">
-       <%# User gender %>
-       <% if @user.gender == "M" %>
-       <i class="fa fa-male"></i> Male
-       <% else %>
-       <i class="fa fa-female"></i> Female
-       <% end %>
-     </div>
-
-    <div class="span3">
-      <%# space %>
-    </div>
-
-     <div class="span3">
-       <%# User ethnicity %>
-       Ethinicity:
-       <% if @user.ethnicity.name.blank? %>
-        <%= @user.ethnicity.name.present? ? @user.ethnicity.name : '' %>
-       <% else %>
-        <%= @user.ethnicity.name %>
-       <% end %>
-     </div>
-
-    <div class="span3">
-      <%# space %>
-    </div>
-
-     <div class="span2">
-       <!-- Code to calculate age by user birthday -->
-       Age:
-       <% if @user.birthday.present? %>
-       <%= today = Date.today
-     d = Date.new(today.year, @user.birthday.month, @user.birthday.day)
-       age = d.year - @user.birthday.year - (d > today ? 1 : 0) %>
-       <% else %>
-       <%= @user.birthday.present? ? @user.birthday.year : "" %>
-       <% end %>
-     </div>
-
-      <div class="span4">
-       <%# User Education %>
-       Education:
-       <% if @user.education.name.blank? %>
-        <%= @user.education.name.present? ? @user.education.name : "" %>
-       <% else %>
-        <%= @user.education.name %>
-       <% end %>
-       <br /><br />
-     </div>
      <div class="span8"></div>
 
      <div class="span8"><div class="name"></div></div>
@@ -202,7 +150,6 @@ fb_param.value = '0.00';
 <noscript>
   <img height="1" src="https://www.facebook.com/offsite_event.php?id=6009056882201&amp;value=0" style="display:none;" width="1"/>
 </noscript>
-<%= render '/shared/footer' %>
 
 <script type="text/javascript">
 // remove default datepicker event

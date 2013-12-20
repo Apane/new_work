@@ -21,11 +21,13 @@
           <% if current_user.first_name.blank? %>
           <%= current_user.first_name.present? ? current_user.first_name : link_to('Finish your profile', edit_account_path)%>
           <% else %>
-          <%= current_user.first_name %> <%= current_user.last_name %>
+          <%= current_user.first_name %> <%= current_user.last_name %> <span class="bubble"><%= best_in_place current_user, :blurb, type: :textarea, rows: 50, :inner_class => 'occupation-edit', nil: 'Add a short blurb (max 140)' %></span>
           <% end %>
         </span>
         <br />
-        <div class="name"></div>
+        <div class="element"></div>
+        <br / >
+
       </span>
     </div>
 
@@ -159,7 +161,6 @@ fb_param.value = '0.00';
 <noscript>
   <img height="1" src="https://www.facebook.com/offsite_event.php?id=6009056882201&amp;value=0" style="display:none;" width="1"/>
 </noscript>
-<%= render '/shared/footer' %>
 
 <script type="text/javascript">
 // remove default datepicker event

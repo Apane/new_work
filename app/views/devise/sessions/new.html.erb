@@ -14,10 +14,22 @@
 	    <%= render "devise/shared/links" %>
 	  </div>
 
+       <% if notice %>
+        <p class="notice"><%= notice if flash[:notice] %></p>
+       <% else %>
+
+       <% end %>
+
+       <% if alert %>
+         <p class="alert"><%= alert %></p>
+       <% else %>
+
+       <% end %>
+
+
+
 	  <div class="signup-body">
 	  <h3>Log in to Friendiose</h3>
-
-    <%= devise_error_messages! %>
 
 	  <div><%= f.input_field :email, placeholder: "Your email", required: true, autocomplete: :off %></div>
 
@@ -40,4 +52,3 @@
 </div>
 </div>
 
-<%= render 'shared/footer' %>

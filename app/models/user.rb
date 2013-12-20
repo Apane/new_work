@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :zip, :gender, :remember_me, :first_name, :last_name,
                   :birthday, :current_password, :occupation, :address, :interests, :aboutme, :profile_image,
-                  :photos_attributes, :age, :education_id, :ethnicity_id
+                  :photos_attributes, :age, :education_id, :ethnicity_id, :blurb
 
   has_many :authorizations, :dependent => :destroy
   has_many :comments
@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   has_many :questions
   has_many :sent_messages, class_name: 'Message', foreign_key: :sender_id
   has_many :received_messages, class_name: 'Message', foreign_key: :receiver_id
-  has_many :ethnicities
+  has_one  :ethnicity
   has_one  :education
 
   accepts_nested_attributes_for :photos
@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
 
   validates :gender, :presence => true
   validates :zip, :presence => true
-
+  validates_length_of :blurb, :minimum => 5, :maximum => 140, :allow_blank => true
 
 
   after_create :create_questions, :set_age

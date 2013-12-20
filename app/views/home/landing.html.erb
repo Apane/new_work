@@ -28,26 +28,32 @@ $('#background_cycler').hide();//hide the background while the images load, read
      <div class="join-screenshot">
       <div class="join">
         <%= form_for User.new, url: user_registration_path(User.new) do |f| %>
-          <% if User.new.errors.any? %>
-            <ul>
-              <% User.new.errors.full_messages.each do |msg| %>
-               <li><%= msg %></li>
-              <% end %>
-            </ul>
-          <% end %>
+
+       <% if notice %>
+        <p class="notice"><%= notice if flash[:notice] %></p>
+       <% else %>
+
+       <% end %>
+
+       <% if alert %>
+         <p class="alert"><%= alert %></p>
+       <% else %>
+
+       <% end %>
+
         <h3>Join Now</h3>
         <div class="fieldset">
           <div class="control-group">
             <%= f.text_field "email", placeholder: "Your Email", required: true, autocomplete: :off %>
           </div>
           <div class="control-group">
-            <%= f.password_field "password", placeholder: "Your Password", required: true, autocomplete: :off %>
+          <%= f.text_field :zip, placeholder: "Your Zip or Postal Code", required: true, autocomplete: :off %>
           </div>
           <div class="control-group">
-            <%= f.text_field "first_name", placeholder: "First name", required: true %>
+            <%= f.text_field "first_name", placeholder: "First Name", required: true %>
           </div>
           <div class="control-group">
-            <%= f.text_field "last_name", placeholder: "Last name", required: true %>
+            <%= f.text_field "last_name", placeholder: "Last Name", required: true %>
           </div>
           <div class="control-group">
             <div class="radio-group-row">
