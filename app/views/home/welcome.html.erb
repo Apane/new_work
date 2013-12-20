@@ -21,7 +21,10 @@
           <% if current_user.first_name.blank? %>
           <%= current_user.first_name.present? ? current_user.first_name : link_to('Finish your profile', edit_account_path)%>
           <% else %>
-          <%= current_user.first_name %> <%= current_user.last_name %> <span class="bubble"><%= best_in_place current_user, :blurb, type: :textarea, rows: 50, :inner_class => 'occupation-edit', nil: 'Add a short blurb (max 140)' %></span>
+          <%= current_user.first_name %> <%= current_user.last_name %>
+          <span class="bubble">
+           <%= best_in_place current_user, :blurb, :type => :textarea, :html_attrs => { :style => 'width:380px; height:20px;' }, :nil => 'Add a short blurb (max 140)' %>
+          </span>
           <% end %>
         </span>
         <br />
