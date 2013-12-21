@@ -54,7 +54,7 @@
          <div class="element"></div>
           <div>Age: <%= @user.age %></div>
          <div class="element"></div>
-         <%= @user.gender.present? ? @user.gender : "" %>
+         <%= @user.gender.present? ? User::GENDER[@user.gender] : "" %>
       </div>
 
       <div class="span3">

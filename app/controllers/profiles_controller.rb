@@ -8,7 +8,9 @@ class ProfilesController < ApplicationController
       @max_age = params[:search][:max_age] || nil
       @zipcode = params[:search][:zipcode] || nil
       @distance = params[:search][:distance] || nil
-      @users = User.scoped_by_search(@terms, @min_age, @max_age)
+      @education_id = params[:search][:education_id] || nil
+      @ethnicity_id = params[:search][:ethnicity_id] || nil
+      @users = User.scoped_by_search(@terms, @min_age, @max_age, @education_id, @ethnicity_id)
     else
       @users = User.all
     end

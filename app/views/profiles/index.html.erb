@@ -38,6 +38,21 @@
                 </div>
               </div>
             </div>
+            <div class="clearfix"></div>
+            <div class="search_head location">
+              Education & Ethnicity
+            </div>
+            <div class="age_fields">
+              <div class="span12">
+                <label for="search[education_id]">Education:</label>
+                <%= select_tag 'education', options_from_collection_for_select(Education.all, "id", "name"), class: 'input-large', name: 'search[education_id]', :prompt => "Select something" %>
+              </div>
+              <div class="span12">
+                <label for="search[ethnicity_id]">Ethnicity:</label>
+                <%= select_tag 'education', options_from_collection_for_select(Ethnicity.all, "id", "name"), class: 'input-large', name: 'search[ethnicity_id]', :prompt => "Select something" %>
+              </div>
+              <div class="clearfix"></div>
+            </div>
             <%= submit_tag 'Search', name: nil, class: 'btn'  %>
           <% end %>
         </div>
