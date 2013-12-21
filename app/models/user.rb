@@ -144,7 +144,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.scoped_by_search(terms, min_age, max_age, education_id, ethnicity_id)
+  def self.scoped_by_search(terms, min_age, max_age, education_id, ethnicity_id, gender)
     min = min_age.present? ? min_age : 18
     max = max_age.present? ? max_age : 100
     #TODO find a way to limit the number of users loaded - replace User.all below.
@@ -152,6 +152,7 @@ class User < ActiveRecord::Base
     users = users.where('age >= ? and age <= ?', min, max)
     users = users.where('education_id = ?', education_id) if education_id.present?
     users = users.where('ethnicity_id =?', ethnicity_id) if ethnicity_id.present?
+    users = users.where('gender =?', gender) if gender.present?
     users
   end
 end

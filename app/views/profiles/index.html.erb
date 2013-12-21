@@ -48,10 +48,24 @@
                 <%= select_tag 'education', options_from_collection_for_select(Education.all, "id", "name"), class: 'input-large', name: 'search[education_id]', :prompt => "Select something" %>
               </div>
               <div class="span12">
+                <div class="element"></div>
+                <br />
                 <label for="search[ethnicity_id]">Ethnicity:</label>
                 <%= select_tag 'education', options_from_collection_for_select(Ethnicity.all, "id", "name"), class: 'input-large', name: 'search[ethnicity_id]', :prompt => "Select something" %>
               </div>
               <div class="clearfix"></div>
+            </div>
+            <div class="element"></div>
+            <br />
+              <div class="search_head location">
+              Gender
+            </div>
+            <div class="age_fields">
+              <div class="span12">
+                <label for="search[gender]">Gender:</label>
+                <%= select_tag 'education', options_from_collection_for_select(User.all, "id", "gender"), class: 'input-large', name: 'search[gender]', :prompt => "Select gender" %>
+                 <div class="element"></div><br/>
+              </div>
             </div>
             <%= submit_tag 'Search', name: nil, class: 'btn'  %>
           <% end %>
