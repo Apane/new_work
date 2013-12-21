@@ -8,6 +8,7 @@
       <%#= render 'home/sidebar' %>
       <h5>Owner</h5>
       <%= simple_user_avatar(@event.user) %>
+      <hr>
       <h5>Interesting people</h5>
        <% @interesting_people.each do |person| %>
          <% if person.first_name.present? %>

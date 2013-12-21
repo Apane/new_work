@@ -24,11 +24,13 @@
         <%# User name %>
         <span class="name1">
           <%= @user.first_name.present? ? @user.first_name : "" %> <%= @user.last_name.present? ? @user.last_name : "" %>
-            <span class="bubble"><%= @user.blurb.present? ? @user.blurb : "No blurb..." %></span>
-        </span>
-        <br />
-        <div class="element"></div>
-        <br / >
+          <% if @user.blurb.present? %>
+            <span class="bubble"><%= @user.blurb %></span>
+          <% else %>
+
+          <% end %>
+      </span>
+      <br />
         <div class="name"></div>
       </span>
     </div>
