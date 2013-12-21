@@ -24,7 +24,7 @@
         <br />
         <div class="element"></div>
         <br / >
-
+        <div class="name"></div>
       </span>
     </div>
 
@@ -44,9 +44,9 @@
               </span>
          </div>
          <div class="element"></div>
-          <div>Age: <%= user_birthday %></div>
+           <div>Age: <%= @user.age %></div>
          <div class="element"></div>
-         <%= @user.gender.present? ? @user.gender : "" %>
+           <%= @user.gender.present? ? @user.gender : "" %>
       </div>
 
       <div class="span3">
@@ -58,12 +58,12 @@
         </div>
         <div class="element">
           Ethinicity:
-          <%= @user.ethnicity.name.present? ? @user.ethnicity.name : "" %>
+          <%= @user.ethnicity.present? ? @user.ethnicity.name : "" %>
         </div>
         <div class="element">
           Education:
           <span class="select_for_education">
-           <%= @user.education.name.present? ? @user.education.name : "" %>
+           <%= @user.education.present? ? @user.education.name : "" %>
         </div>
 
                   <%# =:collection => Education.all.map{|e| [e.id, e.name]}, :inner_class => 'education-edit', nil: 'Select Education' %>

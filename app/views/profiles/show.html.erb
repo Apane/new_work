@@ -29,7 +29,7 @@
         <br />
         <div class="element"></div>
         <br / >
-
+        <div class="name"></div>
       </span>
     </div>
 
@@ -49,7 +49,7 @@
               </span>
          </div>
          <div class="element"></div>
-          <div>Age: <%= user_birthday %></div>
+          <div>Age: <%= @user.age %></div>
          <div class="element"></div>
          <%= @user.gender.present? ? @user.gender : "" %>
       </div>
@@ -61,14 +61,16 @@
           <%= time_ago_in_words(@user.last_sign_in_at) + ' ago' %>
           </div>
         </div>
+
         <div class="element">
           Ethinicity:
-          <%= @user.ethnicity.name.present? ? @user.ethnicity.name : "" %>
+          <%= @user.ethnicity.present? ? @user.ethnicity.name : "" %>
         </div>
+
         <div class="element">
           Education:
           <span class="select_for_education">
-           <%= @user.education.name.present? ? @user.education.name : "" %>
+           <%= @user.education.present? ? @user.education.name : "" %>
         </div>
 
                   <%# =:collection => Education.all.map{|e| [e.id, e.name]}, :inner_class => 'education-edit', nil: 'Select Education' %>
@@ -101,11 +103,11 @@
           <div class="tab-pane" id="tab2">
             <div class="page-header">
               <div class="col-sm-6 col-md-3">
-		<% if @user.photos.present? %>
-                <span class="gallery"><%= render @user.photos %></span>
-		<% else %>
-		<h5><%= @user.first_name %> hasn't uploaded any photos..</h5>
-		<% end %>
+		            <% if @user.photos.present? %>
+                  <span class="gallery"><%= render @user.photos %></span>
+	             	<% else %>
+		              <h5><%= @user.first_name %> hasn't uploaded any photos..</h5>
+	             	<% end %>
               </div>
               <div class="clearfix"></div>
             </div>
