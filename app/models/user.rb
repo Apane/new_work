@@ -151,8 +151,8 @@ class User < ActiveRecord::Base
     users = terms.present? ? User.search(terms) : User.all
     users = users.where('age >= ? and age <= ?', min, max)
     users = users.where('education_id = ?', education_id) if education_id.present?
-    users = users.where('ethnicity_id =?', ethnicity_id) if ethnicity_id.present?
-    users = users.where('gender =?', gender) if gender.present?
+    users = users.where('ethnicity_id = ?', ethnicity_id) if ethnicity_id.present?
+    users = users.where('gender = ?', gender) if gender.present?
     users
   end
 end
