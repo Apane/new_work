@@ -5,9 +5,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
          :omniauth_providers => [:facebook, :twitter, :linkedin]
 
-  attr_accessible :email, :password, :password_confirmation, :zip, :gender, :remember_me, :first_name, :last_name,
+  attr_accessible :email, :password, :password_confirmation, :zip, :remember_me, :first_name, :last_name,
                   :birthday, :current_password, :occupation, :address, :interests, :aboutme, :profile_image,
-                  :photos_attributes, :age, :education_id, :ethnicity_id, :blurb
+                  :photos_attributes, :age, :education_id, :ethnicity_id, :blurb, :gender
 
   has_many :authorizations, :dependent => :destroy
   has_many :comments
