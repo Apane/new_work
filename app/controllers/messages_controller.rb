@@ -1,33 +1,15 @@
 class MessagesController < ApplicationController
-  before_filter :authenticate_user!
-  before_action :set_message, only: [:edit, :update, :destroy]
+  before_action :set_message, only: [:show, :edit, :update, :destroy]
 
   # GET /messages
   # GET /messages.json
   def index
-    @messages = current_user.received_messages.order('created_at asc').group_by(&:sender_id)
+    @messages = Message.all
   end
 
   # GET /messages/1
   # GET /messages/1.json
   def show
-    @sender = User.find(params[:id])
-    user = current_user
-    messages = Message.where(sender_id: [@sender.id, user.id], receiver_id: [@sender.id, user.id])
-    @messages = messages.order('created_at asc')
-    @messages.where(receiver_id: user.id).not_opened.update_all(opened: true, opened_at: Time.now)
-  end
-
-  def inbox
-    @messages = current_user.received_messages.order('created_at desc').group_by(&:sender_id)
-  end
-
-  def outbox
-    @messages = current_user.sent_messages.order('created_at desc')
-  end
-
-  def delete_message
-
   end
 
   # GET /messages/new
@@ -48,11 +30,9 @@ class MessagesController < ApplicationController
       if @message.save
         format.html { redirect_to profile_path(@message.receiver), notice: 'Message sent.' }
         format.json { render action: 'show', status: :created, location: @message }
-        format.js
       else
         format.html { redirect_to profile_path(@message.receiver), notice: 'Message not sent. Please try again.' }
         format.json { render json: @message.errors, status: :unprocessable_entity }
-        format.js
       end
     end
   end
@@ -89,6 +69,6 @@ class MessagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def message_params
-      params.require(:message).permit(:sender_id, :receiver_id, :body, :parent_id)
+      params.require(:message).permit(:conversation_id, :sender_id, :recipient_id, :body)
     end
 end

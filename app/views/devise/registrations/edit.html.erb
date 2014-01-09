@@ -1,64 +1,51 @@
-<%= render '/shared/header' %>
-<%= render 'home/breadcrumbs' %>
+<div class="row">
+  <div class="edit">
+    <h2>Account</h2>
+    <%= render 'menu' %>
+    <div class="span6">
+      <h3>Settings</h3>
+      <h4>Change your basic account and language settings.</h4>
+      <div class="name2"></div>
+      <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+      <%= devise_error_messages! %>
+      <h5>Email:</h5>
+      <%= f.input_field :email, placeholder: "Your email", autocomplete: :off %>
 
+      <h5>Password:</h5>
+      <%= f.input_field :password, placeholder: "Password", :autocomplete => "off" %>
 
-<div id="user">
-  <div class="new_user">
-    <div class="container">
-      <div class="row">
-        <div class="edit">
-          <h2>Account</h2>
-          <%= render 'menu' %>
-          <div class="span6">
-            <h3>Settings</h3>
-            <h4>Change your basic account and language settings.</h4>
-            <div class="name2"></div>
-            <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-            <%= devise_error_messages! %>
-            <h5>Email:</h5>
-            <%= f.input_field :email, placeholder: "Your email", autocomplete: :off %>
+      <h5>Password confirmation:</h5>
+      <%= f.input_field :password_confirmation, placeholder: "Password confirmation", autocomplete: :off %>
+      <div class="name2"></div>
 
-            <h5>Password:</h5>
-            <%= f.input_field :password, placeholder: "Password", :autocomplete => "off" %>
+      <h3>Validations</h3>
+      <i class="fa fa-facebook-square"></i> Facebook:<br>
+      <p><%= current_user.has_connection_with('Facebook') ? 'Your Facebook account is now connected' : "Sign in with Facebook and discover your trusted connections to hosts and guests all over the world." %></p>
+      <div class="btn"><%= check_connection('Facebook')%></div>
+      <div class="name"></div><br>
 
-            <h5>Password confirmation:</h5>
-            <%= f.input_field :password_confirmation, placeholder: "Password confirmation", autocomplete: :off %>
-            <div class="name2"></div>
+      <%= icon("fa fa-twitter") %> Twitter:<br>
+      <p><%= current_user.has_connection_with('Twitter') ? 'Your Twitter account is now connected' : 'Sign in with Twitter and merge your connections to your followers.' %></p>
+      <div class="btn"><%= check_connection('Twitter')%></div>
+      <div class="name"></div><br>
 
-            <h3>Validations</h3>
-            <i class="fa fa-facebook-square"></i> Facebook:<br>
-            <p><%= current_user.has_connection_with('Facebook') ? 'Your Facebook account is now connected' : "Sign in with Facebook and discover your trusted connections to hosts and guests all over the world." %></p>
-            <div class="btn"><%= check_connection('Facebook')%></div>
-            <div class="name"></div><br>
+      <%= icon("fa fa-linkedin") %> LinkedIn:<br>
+      <p><%= current_user.has_connection_with('LinkedIn') ? 'Your LinkedIn account is now connected' : "You can now connect your Friendiose account with the world’s largest professional network. Connecting with LinkedIn builds confidence between guests and hosts by establishing a link to your professional life." %></p>
+      <div class="btn"><%= check_connection('LinkedIn')%></div>
+      <div class="name"></div><br>
 
-            <%= icon("fa fa-twitter") %> Twitter:<br>
-            <p><%= current_user.has_connection_with('Twitter') ? 'Your Twitter account is now connected' : 'Sign in with Twitter and merge your connections to your followers.' %></p>
-            <div class="btn"><%= check_connection('Twitter')%></div>
-            <div class="name"></div><br>
-
-            <%= icon("fa fa-linkedin") %> LinkedIn:<br>
-            <p><%= current_user.has_connection_with('LinkedIn') ? 'Your LinkedIn account is now connected' : "You can now connect your Friendiose account with the world’s largest professional network. Connecting with LinkedIn builds confidence between guests and hosts by establishing a link to your professional life." %></p>
-            <div class="btn"><%= check_connection('LinkedIn')%></div>
-            <div class="name"></div><br>
-
-            <div class="name2">
-              <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>
-              <br>
-            </div>
-          </div>
-        </div>
-        <span class="span4">
-          <div class="side-bg">
-            <h6>Note: You can change your password by simply typing a new one in the password fields.</h6>
-            <div><%= f.submit "Update account", class: "btn btn-warning" %></div>
-          </div>
-        </span>
-        <% end %>
+      <div class="name2">
+        <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>
+        <br>
       </div>
     </div>
   </div>
+  <span class="span4">
+    <div class="side-bg">
+      <h6>Note: You can change your password by simply typing a new one in the password fields.</h6>
+      <div><%= f.submit "Update account", class: "btn btn-warning" %></div>
+    </div>
+  </span>
+  <% end %>
 </div>
 </div>
-
-
-

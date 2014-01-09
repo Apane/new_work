@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131221032323) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20140109173916) do
 
   create_table "authorizations", force: true do |t|
     t.string   "provider"
@@ -46,6 +43,13 @@ ActiveRecord::Schema.define(version: 20131221032323) do
 
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "conversations", force: true do |t|
+    t.integer  "author_id"
+    t.integer  "companion_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "educations", force: true do |t|
     t.string   "name"
@@ -84,16 +88,12 @@ ActiveRecord::Schema.define(version: 20131221032323) do
   add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
 
   create_table "messages", force: true do |t|
+    t.integer  "conversation_id"
     t.integer  "sender_id"
-    t.integer  "receiver_id"
+    t.integer  "recipient_id"
     t.text     "body"
-    t.integer  "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "deleted_for_sender",   default: false
-    t.boolean  "deleted_for_receiver", default: false
-    t.boolean  "opened",               default: false
-    t.datetime "opened_at"
   end
 
   create_table "photos", force: true do |t|

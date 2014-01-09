@@ -2,6 +2,8 @@ Friendiose::Application.routes.draw do
 
   resources :messages
 
+  resources :conversations
+
   # get 'auth/:provider/callback', to: 'sessions#create'
   # get 'auth/failure', to: redirect('/')
 
@@ -24,9 +26,7 @@ Friendiose::Application.routes.draw do
   get 'profile/:id' => "profiles#show", as: :profile
   get 'disconnect' => 'users#disconnect'
   get 'profiles' => "profiles#index"
-  get 'inbox' => 'messages#inbox'
-  get 'outbox' => 'messages#outbox'
-  get 'delete_message/:id' => 'messages#delete_message', as: :delete_message
+  get 'messages' => 'conversations#index'
 
   resources :users do
     resources :questions

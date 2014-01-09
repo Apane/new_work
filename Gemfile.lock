@@ -94,13 +94,6 @@ GEM
       rails (>= 3, < 5)
     font-awesome-rails (4.0.3.0)
       railties (>= 3.2, < 5.0)
-    haml (4.0.4)
-      tilt
-    haml-rails (0.4)
-      actionpack (>= 3.1, < 4.1)
-      activesupport (>= 3.1, < 4.1)
-      haml (>= 3.1, < 4.1)
-      railties (>= 3.1, < 4.1)
     hashie (2.0.5)
     hike (1.2.3)
     httpauth (0.2.0)
@@ -262,7 +255,6 @@ DEPENDENCIES
   devise (~> 3.0.0.rc)
   figaro
   font-awesome-rails
-  haml-rails
   jbuilder (~> 1.0.1)
   jquery-fileupload-rails
   jquery-rails

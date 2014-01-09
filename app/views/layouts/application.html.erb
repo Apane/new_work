@@ -21,7 +21,10 @@
     </script>
   </head>
   <body>
-    <%= yield %>
+    <%= render "shared/header" %>
+    <div class="<%= container_class_name %>">
+      <%= yield %>
+    </div>
   </body>
 </html>
 

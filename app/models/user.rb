@@ -14,8 +14,9 @@ class User < ActiveRecord::Base
   has_many :events
   has_many :photos, as: :attachable
   has_many :questions
-  has_many :sent_messages, class_name: 'Message', foreign_key: :sender_id
-  has_many :received_messages, class_name: 'Message', foreign_key: :receiver_id
+  has_many :conversations, foreign_key: 'author_id'
+  has_many :sent_messages, class_name: 'Message', foreign_key: 'sender_id'
+  has_many :inbox_messages, class_name: 'Message', foreign_key: 'reciever_id'
   belongs_to  :ethnicity
   belongs_to  :education
 

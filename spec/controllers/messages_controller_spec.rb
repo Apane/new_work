@@ -23,7 +23,7 @@ describe MessagesController do
   # This should return the minimal set of attributes required to create a valid
   # Message. As you add validations to Message, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "sender_id" => "1" } }
+  let(:valid_attributes) { { "conversation_id" => "1" } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -85,14 +85,14 @@ describe MessagesController do
       it "assigns a newly created but unsaved message as @message" do
         # Trigger the behavior that occurs when invalid params are submitted
         Message.any_instance.stub(:save).and_return(false)
-        post :create, {:message => { "sender_id" => "invalid value" }}, valid_session
+        post :create, {:message => { "conversation_id" => "invalid value" }}, valid_session
         assigns(:message).should be_a_new(Message)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Message.any_instance.stub(:save).and_return(false)
-        post :create, {:message => { "sender_id" => "invalid value" }}, valid_session
+        post :create, {:message => { "conversation_id" => "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -106,8 +106,8 @@ describe MessagesController do
         # specifies that the Message created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Message.any_instance.should_receive(:update).with({ "sender_id" => "1" })
-        put :update, {:id => message.to_param, :message => { "sender_id" => "1" }}, valid_session
+        Message.any_instance.should_receive(:update).with({ "conversation_id" => "1" })
+        put :update, {:id => message.to_param, :message => { "conversation_id" => "1" }}, valid_session
       end
 
       it "assigns the requested message as @message" do
@@ -128,7 +128,7 @@ describe MessagesController do
         message = Message.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Message.any_instance.stub(:save).and_return(false)
-        put :update, {:id => message.to_param, :message => { "sender_id" => "invalid value" }}, valid_session
+        put :update, {:id => message.to_param, :message => { "conversation_id" => "invalid value" }}, valid_session
         assigns(:message).should eq(message)
       end
 
@@ -136,7 +136,7 @@ describe MessagesController do
         message = Message.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Message.any_instance.stub(:save).and_return(false)
-        put :update, {:id => message.to_param, :message => { "sender_id" => "invalid value" }}, valid_session
+        put :update, {:id => message.to_param, :message => { "conversation_id" => "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end

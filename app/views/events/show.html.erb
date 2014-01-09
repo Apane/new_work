@@ -1,93 +1,83 @@
-<%= render 'shared/header' %>
-<%= render "home/breadcrumbs" %>
-
-
-<div class="container">
-  <div class="row">
-    <div class="span3">
-      <%#= render 'home/sidebar' %>
-      <h5>Owner</h5>
-      <%= simple_user_avatar(@event.user) %>
-      <hr>
-      <h5>Interesting people</h5>
-       <% @interesting_people.each do |person| %>
-         <% if person.first_name.present? %>
-         <%= simple_user_avatar(person) %>
-        <% end %>
+<div class="row">
+  <div class="span3">
+    <%#= render 'home/sidebar' %>
+    <h5>Owner</h5>
+    <%= simple_user_avatar(@event.user) %>
+    <hr>
+    <h5>Interesting people</h5>
+     <% @interesting_people.each do |person| %>
+       <% if person.first_name.present? %>
+       <%= simple_user_avatar(person) %>
       <% end %>
-      <hr>
-      <h5>Recently visited</h5>
-      <% @event.event_participants.order('created_at desc').limit(5).map(&:user).each do |p| %>
-      <%= simple_user_avatar(p) %>
-      <% end %>
-    </div>
-    <div class="span5">
-      <div class="new_event_form">
-        <div class="line1"><h4>Create event</h4></div>
-        <%= form_for current_user.events.new, remote: true do |f| %>
-          <h5>Event title:</h5>
-          <div><%= f.text_field :title, placeholder: "Event title", required: true, autocomplete: :off %></div>
-          <h5>Event description:</h5>
-          <div><%= f.text_area :description, placeholder: "Event description", required: true, autocomplete: :off %></div>
-          <h5>Event date:</h5>
-          <div><%= f.text_field :date  %></div>
-          <h5>Event location:</h5>
-          <div><%= f.text_field :location, placeholder: "Event location", required: true, autocomplete: :off %></div>
-          <div>
-            <%= f.submit "Create event", class: 'btn btn-primary' %>
-            <%= link_to "Cancel", '#', class: 'btn cancel_event' %>
-          </div><br />
-        <% end %>
-      </div>
-      <div class="events_list">
-        <!-- look in events/event.hmlt.erb -->
-        <h4><%= @event.title %> at <%= @event.location %></h4>
-        <p><%= @event.description %></p>
-        <h5><i class="fa fa-calendar-o"></i> <%= @event.date.strftime("%A, %B %d, %Y") %></h5>
-        <h5><i class="fa fa-clock-o"></i> <%= @event.time %></h5>
-        <h5><i class="fa fa-map-marker"></i> <%= @event.location %></h5>
-      </div>
-      <div class="name"></div>
-      <br />
-      <medium><strong align-"center"><%= pluralize(@participants.size.to_s, 'person') %> attending this event</strong></medium> <br /><br />
-      <div class="event_participants">
-        <% @event.participants.each do |p| %>
-          <div class="event_particpant participant_<%= p.id %>">
-            <%= simple_user_avatar(p) %>
-            <p><%= p.name %></p>
-            <div><%= "Owner" if @event.owner_is?(p) %></div>
-          </div>
-        <% end %>
-      </div>
-
-      <div class="clearfix"></div>
-      <div class="name"></div>
-      <%= form_for [@event, @comment], remote: true do |f| %>
-          <div><%= f.hidden_field :user_id, value: current_user.id %></div>
+    <% end %>
+    <hr>
+    <h5>Recently visited</h5>
+    <% @event.event_participants.order('created_at desc').limit(5).map(&:user).each do |p| %>
+    <%= simple_user_avatar(p) %>
+    <% end %>
+  </div>
+  <div class="span5">
+    <div class="new_event_form">
+      <div class="line1"><h4>Create event</h4></div>
+      <%= form_for current_user.events.new, remote: true do |f| %>
+        <h5>Event title:</h5>
+        <div><%= f.text_field :title, placeholder: "Event title", required: true, autocomplete: :off %></div>
+        <h5>Event description:</h5>
+        <div><%= f.text_area :description, placeholder: "Event description", required: true, autocomplete: :off %></div>
+        <h5>Event date:</h5>
+        <div><%= f.text_field :date  %></div>
+        <h5>Event location:</h5>
+        <div><%= f.text_field :location, placeholder: "Event location", required: true, autocomplete: :off %></div>
         <div>
-          <%= f.text_area :body, rows: 5,  placeholder: "Leave a comment", class: 'comment-area'  %>
-          <div class="comment_errors"></div>
-        </div>
-        <%= f.submit "Post Comment", class: 'btn btn-primary pull-right' %>
+          <%= f.submit "Create event", class: 'btn btn-primary' %>
+          <%= link_to "Cancel", '#', class: 'btn cancel_event' %>
+        </div><br />
       <% end %>
-      <div id="comments">
-        <%= render @event.root_comments %>
-      </div>
     </div>
-    <div class="span4">
-      <div class="attend_button">
-        <%= attend_to_event(@event) %>
-        <div class="clearfix"></div>
+    <div class="events_list">
+      <!-- look in events/event.hmlt.erb -->
+      <h4><%= @event.title %> at <%= @event.location %></h4>
+      <p><%= @event.description %></p>
+      <h5><i class="fa fa-calendar-o"></i> <%= @event.date.strftime("%A, %B %d, %Y") %></h5>
+      <h5><i class="fa fa-clock-o"></i> <%= @event.time %></h5>
+      <h5><i class="fa fa-map-marker"></i> <%= @event.location %></h5>
+    </div>
+    <div class="name"></div>
+    <br />
+    <medium><strong align-"center"><%= pluralize(@participants.size.to_s, 'person') %> attending this event</strong></medium> <br /><br />
+    <div class="event_participants">
+      <% @event.participants.each do |p| %>
+        <div class="event_particpant participant_<%= p.id %>">
+          <%= simple_user_avatar(p) %>
+          <p><%= p.name %></p>
+          <div><%= "Owner" if @event.owner_is?(p) %></div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="clearfix"></div>
+    <div class="name"></div>
+    <%= form_for [@event, @comment], remote: true do |f| %>
+      <div><%= f.hidden_field :user_id, value: current_user.id %></div>
+      <div>
+        <%= f.text_area :body, rows: 5,  placeholder: "Leave a comment", class: 'comment-area'  %>
+        <div class="comment_errors"></div>
       </div>
-      <%= image_tag("http://www.nicholasroussos.com/images/google-maps-hack.jpg", size: "1000x1000") %>
-    </span>
+      <%= f.submit "Post Comment", class: 'btn btn-primary pull-right' %>
+    <% end %>
+    <div id="comments">
+      <%= render @event.root_comments %>
     </div>
   </div>
-
-  </span>
-<%#= render 'shared/footer' %>
+  <div class="span4">
+    <div class="attend_button">
+      <%= attend_to_event(@event) %>
+      <div class="clearfix"></div>
+    </div>
+    <%= image_tag("http://www.nicholasroussos.com/images/google-maps-hack.jpg", size: "1000x1000") %>
+  </div>
 </div>
-
+<%#= render 'shared/footer' %>
 
 <script type="text/javascript">
 $('.add_event').click(function(event) {
