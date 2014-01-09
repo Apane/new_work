@@ -17,8 +17,13 @@
         <% end %>
       </span>
       <span class="side-buttons">
-        <div class="btn btn-warning move"><%= link_to "Message", new_message_path, remote: true %> <%= icon("fa fa-comments")%></div>
+        <% if @user != current_user %>
+          <div class="btn btn-warning move">
+            <%= link_to "Message", new_message_path, remote: true %> <%= icon("fa fa-comments")%>
+          </div>
+        <% end %>
       </span>
+      <div class="clearfix"></div>
       <br / >
       <div class="name"></div>
     </span>

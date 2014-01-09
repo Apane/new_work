@@ -24,9 +24,9 @@ module UsersHelper
 
   def simple_user_avatar(user)
     if user.profile_image.present?
-      html = link_to (image_tag user.profile_image_url(:small).to_s, class: 'img-polaroid', size: '50x50'), user
+      html = link_to (image_tag user.profile_image_url(:small).to_s, class: 'img-polaroid', size: '50x50'), profile_path(user)
     else
-      html = link_to (image_tag "profile-placeholder1.png", size: '50x50'), user
+      html = link_to (image_tag "profile-placeholder1.png", size: '50x50'), profile_path(user)
     end
     return html
   end

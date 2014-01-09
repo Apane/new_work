@@ -1,15 +1,24 @@
 class MessagesController < ApplicationController
-  before_action :set_message, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
+  before_action :set_message, only: [:edit, :update, :destroy]
 
   # GET /messages
   # GET /messages.json
   def index
-    @messages = Message.all
+    # @messages = Message.all
+    @messages = current_user.inbox_messages.order('created_at asc').group_by(&:conversation_id)
+  end
+
+  def sent
+    @messages = current_user.sent_messages.order('created_at asc').group_by(&:conversation_id)
   end
 
   # GET /messages/1
   # GET /messages/1.json
   def show
+    @conversation = Conversation.find(params[:id])
+    @messages = @conversation.messages
+    @messages.where(recipient_id: current_user.id).update_all(is_new: false)
   end
 
   # GET /messages/new
@@ -25,14 +34,20 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     @message = current_user.sent_messages.new(message_params)
+    unless @message.conversation.present?
+      conversation = Conversation.create(author_id: @message.sender_id, companion_id: @message.recipient_id)
+      @message.conversation_id = conversation.id
+    end
 
     respond_to do |format|
       if @message.save
-        format.html { redirect_to profile_path(@message.receiver), notice: 'Message sent.' }
+        format.html { redirect_to profile_path(@message.recipient), notice: 'Message sent.' }
         format.json { render action: 'show', status: :created, location: @message }
+        format.js
       else
-        format.html { redirect_to profile_path(@message.receiver), notice: 'Message not sent. Please try again.' }
+        format.html { redirect_to profile_path(@message.recipient), notice: 'Message not sent. Please try again.' }
         format.json { render json: @message.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end

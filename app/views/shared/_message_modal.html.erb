@@ -9,7 +9,7 @@
       <%= f.text_area :body, rows: 5 %>
     </div>
     <div class="modal-footer">
-      <div><%= f.hidden_field :receiver_id, value: @user.id %></div>
+      <div><%= f.hidden_field :recipient_id, value: @user.id %></div>
       <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
       <%= f.submit 'Send', class: 'btn btn-primary' %>
     </div>

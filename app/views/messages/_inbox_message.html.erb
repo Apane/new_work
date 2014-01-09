@@ -1,6 +1,7 @@
-<%= link_to message_path(messages.last.sender), class: 'message_link' do %>
+<%= link_to message_path(messages.last.conversation), class: 'message_link' do %>
 <div class="message" style="<%= 'background: #E7F0FF;' if messages.last.new? %>">
   <div class="media">
+    <%= new_message_dot(messages.last) %>
     <div class="pull-left"><%= avatar(messages.last.sender) %></div>
     <div class="media-body">
       <h6 class="media-heading"><%= messages.last.sender.name %></h6>

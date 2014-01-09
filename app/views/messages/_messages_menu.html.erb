@@ -1,12 +1,15 @@
 <ul class="breadcrumb">
-  <li class="<%= 'active' if action_name == 'inbox' %>">
-    <%= link_to 'Inbox', messages_path if action_name != 'inbox' %>
-    <%= 'Inbox' if action_name == 'inbox' %>
+  <li class="<%= 'active' if controller_name == 'messages' && action_name == 'index' %>">
+    <% if controller_name == 'messages' && action_name == 'index' %>
+      Inbox
+    <% else %>
+      <%= link_to 'Inbox', messages_path %>
+    <% end %>
     <span class="divider">|</span>
   </li>
-  <li class="<%= 'active' if action_name == 'outbox' %>">
-    <%= link_to 'Outbox', outbox_path if action_name != 'outbox' %>
-    <%= 'Outbox' if action_name == 'outbox' %>
+  <li class="<%= 'active' if action_name == 'sent' %>">
+    <%= link_to 'Outbox', sent_path if action_name != 'sent' %>
+    <%= 'Outbox' if action_name == 'sent' %>
     <span class="divider">|</span>
   </li>
   <!-- <li class="<%#= 'active' if action_name == 'trash' %>">

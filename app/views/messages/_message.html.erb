@@ -1,25 +1,29 @@
 <div class="message">
-  <div class="media">
-    <% if message.type_of_sent?(current_user) %>
-      <%= link_to avatar(message.sender), profile_path(message.receiver), class: 'pull-left' %>
+  <div class="media message">
+    <%# if message.type_of_sent?(current_user) %>
+      <div class="blue_dot_placeholder pull-left"><%= new_message_dot(message) %></div>
+      <%= link_to avatar(message.sender), profile_path(message.recipient), class: 'pull-left' %>
       <div class="media-body">
         <h6 class="media-heading"><%= message.sender.name %></h6>
         <%= sanitize(message.body) %>
-<!--                 <div class="pull-right">
+<!--    <div class="pull-right">
           <%##= link_to 'Delete', delete_message_path(message), remote: true %>
         </div> -->
       </div>
-    <% elsif message.type_of_received?(current_user) %>
-      <%= link_to avatar(message.sender), profile_path(message.sender), class: 'pull-left' %>
-      <div class="media-body">
-        <h6 class="media-heading"><%= message.sender.name %></h6>
-        <%= sanitize(message.body) %>
-<!--                 <div class="pull-right">
-          <%#= link_to 'Reply', '#' %> |
-          <%#= link_to 'Delete', delete_message_path(message), remote: true %>
-        </div> -->
-      </div>
-    <% end %>
+      <small class="time pull-right"><%= time_ago_in_words(message.created_at) %> ago</small>
+    <%# end %>
   </div>
 </div>
 <hr>
+
+
+<%# elsif message.type_of_received?(current_user) %>
+  <%#= link_to avatar(message.sender), profile_path(message.sender), class: 'pull-left' %>
+  <!-- <div class="media-body"> -->
+    <!-- <h6 class="media-heading"><%#= message.sender.name %></h6> -->
+    <%#= sanitize(message.body) %>
+<!--                 <div class="pull-right">
+      <%#= link_to 'Reply', '#' %> |
+      <%#= link_to 'Delete', delete_message_path(message), remote: true %>
+    </div> -->
+  <!-- </div> -->

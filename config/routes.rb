@@ -26,7 +26,7 @@ Friendiose::Application.routes.draw do
   get 'profile/:id' => "profiles#show", as: :profile
   get 'disconnect' => 'users#disconnect'
   get 'profiles' => "profiles#index"
-  get 'messages' => 'conversations#index'
+  get 'sent' => 'messages#sent'
 
   resources :users do
     resources :questions

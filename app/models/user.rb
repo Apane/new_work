@@ -16,7 +16,8 @@ class User < ActiveRecord::Base
   has_many :questions
   has_many :conversations, foreign_key: 'author_id'
   has_many :sent_messages, class_name: 'Message', foreign_key: 'sender_id'
-  has_many :inbox_messages, class_name: 'Message', foreign_key: 'reciever_id'
+  has_many :inbox_messages, class_name: 'Message', foreign_key: 'recipient_id'
+  has_many :new_messages, -> { where is_new: true }, class_name: 'Message', foreign_key: 'recipient_id'
   belongs_to  :ethnicity
   belongs_to  :education
 
@@ -103,7 +104,7 @@ class User < ActiveRecord::Base
     elsif social == 'twitter'
       auth = self.authorizations.where(provider: 'Twitter').first
       auth.update_attributes(token: nil, secret: nil)
-    elsif 'linkedin'
+    elsif social == 'linkedin'
       auth = self.authorizations.where(provider: 'LinkedIn').first
       auth.update_attributes(token: nil, secret: nil)
     end
