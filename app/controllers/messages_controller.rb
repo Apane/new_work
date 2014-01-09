@@ -17,7 +17,7 @@ class MessagesController < ApplicationController
   # GET /messages/1.json
   def show
     @conversation = Conversation.find(params[:id])
-    @messages = @conversation.messages
+    @messages = @conversation.messages.order('created_at asc')
     @messages.where(recipient_id: current_user.id).update_all(is_new: false)
   end
 
