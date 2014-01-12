@@ -3,11 +3,11 @@
       <li <%= class_active('events') %>><%= link_to " Events" , events_path %></li> |
       <li <%= class_active('messages') %>>
         <%= link_to " Messages", messages_path %>
-        <div class="new_messages">
+        <span class="new_messages">
           <% if current_user.new_messages.any? %>
             <span class="badge badge-important"><%= current_user.new_messages.size %></span>
           <% end %>
-        </div>
+        </span>
       </li> |
       <li <%= class_active('home') %>><%= link_to " My Profile" , welcome_path%></li>
     <div class#="line">

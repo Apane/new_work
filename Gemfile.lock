@@ -154,6 +154,7 @@ GEM
       activerecord (>= 3.1)
       activesupport (>= 3.1)
       arel
+    pnotify-rails (1.2.2)
     polyglot (0.3.3)
     protected_attributes (1.0.2)
       activemodel (>= 4.0.0.beta, < 5.0)
@@ -272,6 +273,7 @@ DEPENDENCIES
   omniauth-twitter
   pg
   pg_search
+  pnotify-rails
   protected_attributes
   pusher
   rails (= 4.0.0.rc1)

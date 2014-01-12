@@ -15,8 +15,10 @@
  *= require datepicker
  *= require font-awesome
  *= require jquery.fileupload-ui
-  *= require_tree .
- */
+ *= require jquery.pnotify.default
+ *= require jquery.pnotify.default.icons
+ *= require_tree .
+*/
 
 body h1, body h2, body h3, body h4, body h5, body h6, .name {
   font-family: "museo", helveticaneue, sans-serif;

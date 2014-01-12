@@ -20,7 +20,10 @@
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
 //= require best_in_place
+//= require pnotify
 //= require_tree .
+
+$.pnotify.defaults.history = false
 
 function cycleImages(){
   var $active = $('#background_cycler .active');
