@@ -45,6 +45,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-linkedin'
 gem 'uuidtools'
 gem 'pg_search'
+gem 'pusher'
 
 # dev test
 gem 'rspec-rails', "~> 2.12"

@@ -12,6 +12,11 @@ class ConversationsController < ApplicationController
   def show
   end
 
+  def refresh_messages
+    @conversation = Conversation.find(params[:id])
+    @message = @conversation.messages.order('id asc').last
+  end
+
   # GET /conversations/new
   def new
     @conversation = Conversation.new
@@ -54,9 +59,10 @@ class ConversationsController < ApplicationController
   # DELETE /conversations/1
   # DELETE /conversations/1.json
   def destroy
+    @conversation.messages.map{|m| m.destroy}
     @conversation.destroy
     respond_to do |format|
-      format.html { redirect_to conversations_url }
+      format.html { redirect_to :back }
       format.json { head :no_content }
     end
   end

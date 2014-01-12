@@ -7,8 +7,13 @@
       <h6 class="media-heading"><%= messages.last.sender.name %></h6>
       <p><%= sanitize(messages.last.body.truncate(100, omision: "...")) %></p>
     </div>
-    <small class="time pull-right"><%= time_ago_in_words(messages.last.created_at) %> ago</small>
   </div>
 </div>
 <% end %>
+<div class="pull-right">
+  <small class="time">
+    <%= time_ago_in_words(messages.last.created_at) %> ago |
+    <%= link_to 'Delete', conversation_path(messages.last.conversation),  method: :delete, data: {confirm: 'Are you sure?'} %>
+  </small>
+</div>
 <hr>

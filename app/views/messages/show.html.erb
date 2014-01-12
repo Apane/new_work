@@ -1,3 +1,12 @@
+<script type="text/javascript">
+  var channel = pusher.subscribe('new_messages_in_conversation_<%= @conversation.id %>');
+  channel.bind('add_message_to_conversation', function(data) {
+    $.ajax({
+      url: '/conversations/' + data.conversation_id + '/refresh_messages',
+      type: "GET"
+    });
+  });
+</script>
   <div class="row">
     <div class="span3">
       <%#= render 'home/sidebar' %>

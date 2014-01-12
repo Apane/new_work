@@ -2,10 +2,15 @@ Friendiose::Application.routes.draw do
 
   resources :messages
 
-  resources :conversations
+  resources :conversations do
+    member do
+      get :refresh_messages
+    end
+  end
 
   # get 'auth/:provider/callback', to: 'sessions#create'
   # get 'auth/failure', to: redirect('/')
+  get 'pusher/auth' => 'pusher#auth'
 
   root to: "home#landing"
 
