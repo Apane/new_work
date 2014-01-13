@@ -46,7 +46,7 @@ module ApplicationHelper
     elsif controller_name == 'sessions'
       @class = ''
     elsif controller_name == 'registrations'
-      if action_name == 'edit' || 'new'
+      if action_name == 'edit'
         @class = 'container'
       else
         @class = ''

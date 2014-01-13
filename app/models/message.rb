@@ -7,17 +7,18 @@ class Message < ActiveRecord::Base
 
   attr_accessible :body, :recipient_id, :conversation_id
 
-  after_create :push_notifications
+  # after_create :push_notifications
+  # after_create :notify_recipient
 
-  def push_notifications
-    Pusher["new_messages_for_user_#{self.recipient_id}"].trigger('new_message', {
-      # message: truncate(self.body, :length => 150),
-      new_messages_count: self.recipient.inbox_messages.unread.count
-    })
-    Pusher["new_messages_in_conversation_#{self.conversation_id}"].trigger('add_message_to_conversation', {
-      conversation_id: self.conversation_id
-    })
-  end
+  # def push_notifications
+  #   Pusher["new_messages_for_user_#{self.recipient_id}"].trigger('new_message', {
+  #     # message: truncate(self.body, :length => 150),
+  #     new_messages_count: self.recipient.inbox_messages.unread.count
+  #   })
+  #   Pusher["new_messages_in_conversation_#{self.conversation_id}"].trigger('add_message_to_conversation', {
+  #     conversation_id: self.conversation_id
+  #   })
+  # end
 
   def new?
     self.is_new?

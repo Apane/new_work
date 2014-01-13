@@ -1,2 +1,5 @@
+$('.messages').append("<%= j render(@message) %>");
+<% broadcast "/messages/for/user/#{@message.recipient_id}" do %>
+  $('.messages').append("<%= j render(@message) %>");
+<% end %>
 $("#new_message")[0].reset();
-// $('.messages').append("<%#= j(render @message) %>");

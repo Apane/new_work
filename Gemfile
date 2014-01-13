@@ -34,6 +34,8 @@ gem "font-awesome-rails"
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.0.1'
+
+# gems by Sergiu #########################################################
 gem 'jquery-fileupload-rails'
 gem 'carrierwave-aws'
 # gem 'bootstrap-editable-rails'
@@ -47,6 +49,11 @@ gem 'uuidtools'
 gem 'pg_search'
 gem 'pusher'
 gem 'pnotify-rails'
+gem 'geokit'
+gem 'geokit-rails'
+gem 'thin'
+gem 'faye'
+##########################################################################
 
 # dev test
 gem 'rspec-rails', "~> 2.12"

@@ -7,19 +7,31 @@
 //   }
 // };
 <% end %>
-<% if current_user %>
-var pusher = new Pusher('6293348e8399c3c3b11e');
-var channel = pusher.subscribe('new_messages_for_user_<%= current_user.id %>');
-channel.bind('new_message', function(data) {
-  $('.new_messages').html(
-    '<span class="badge badge-important">' + data.new_messages_count +'</span>'
-  );
-  $.pnotify({
-    title: "New message",
-    text: "You have a new message",
-    type: "info"
-  });
+<%# if current_user %>
+// var pusher = new Pusher('6293348e8399c3c3b11e');
+// var channel = pusher.subscribe('new_messages_for_user_<%#= current_user.id %>');
+// channel.bind('new_message', function(data) {
+//   $('.new_messages').html(
+//     '<span class="badge badge-important">' + data.new_messages_count +'</span>'
+//   );
+//   $.pnotify({
+//     title: "New message",
+//     text: "You have a new message",
+//     type: "info"
+//   });
 
+// });
+<%# end %>
+
+
+
+<% if current_user %>
+$(function() {
+  var faye = new Faye.Client('http://localhost:9292/faye');
+  faye.subscribe("/messages/for/user/<%= current_user.id %>", function (data) {
+    eval(data);
+  });
 });
 <% end %>
 </script>
+

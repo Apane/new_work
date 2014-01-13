@@ -23,6 +23,10 @@
 //= require pnotify
 //= require_tree .
 
+$(function() {
+  var faye = new Faye.Client('http://localhost:9292/faye');
+});
+
 $.pnotify.defaults.history = false
 
 function cycleImages(){
