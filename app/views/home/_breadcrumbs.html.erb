@@ -4,9 +4,7 @@
       <li <%= class_active('messages') %>>
         <%= link_to " Messages", messages_path %>
         <span class="new_messages">
-          <% if current_user.new_messages.any? %>
-            <span class="badge badge-important"><%= current_user.new_messages.size %></span>
-          <% end %>
+          <%= render 'users/new_messages' %>
         </span>
       </li> |
       <li <%= class_active('home') %>><%= link_to " My Profile" , welcome_path%></li>

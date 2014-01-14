@@ -30,6 +30,10 @@ class UsersController < ApplicationController
     @questions_for_personality = @user.questions.for_personality.order('id asc')
   end
 
+  def refresh_notifcations
+    @new_messages = current_user.new_messages.count
+  end
+
   # disconnect from social networks
   def disconnect
     social = params[:social]

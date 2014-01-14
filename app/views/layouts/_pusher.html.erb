@@ -2,10 +2,18 @@
 <% if current_user %>
 $(function() {
   var faye = new Faye.Client('http://localhost:9292/faye');
-  faye.subscribe("/messages/for/user/<%= current_user.id %>", function (data) {
+  faye.subscribe("/notifications/for/user/<%= current_user.id %>", function (data) {
     eval(data);
+    $.ajax({url: "/refresh_notifications/", type: "GET"});
   });
 });
 <% end %>
 </script>
 
+<!--
+    if (x > 0) {
+      $.ajax({
+        url: "/searches?id=" + x,
+        type: "GET"
+      })
+    }; -->

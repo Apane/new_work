@@ -1,0 +1,4 @@
+<!-- used in ajax request -->
+<% if current_user.new_messages.any? %>
+  <span class="badge badge-important"><%= current_user.new_messages.size %></span>
+<% end %>

@@ -32,6 +32,7 @@ Friendiose::Application.routes.draw do
   get 'disconnect' => 'users#disconnect'
   get 'profiles' => "profiles#index"
   get 'sent' => 'messages#sent'
+  get 'refresh_notifications' => 'users#refresh_notifications'
 
   resources :users do
     resources :questions
