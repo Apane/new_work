@@ -1,5 +1,12 @@
-$('.messages').append("<%= j render(@message) %>");
-<% broadcast "/messages/for/user/#{@message.recipient_id}" do %>
+<% broadcast "/messages/for/conversation/#{@message.conversation.id}" do %>
   $('.messages').append("<%= j render(@message) %>");
 <% end %>
+<% broadcast "/notifications/for/conversation/#{@message.conversation.id}/user/#{@message.recipient.id}" do %>
+  $.pnotify({
+    title: "New message",
+    text: "You have a new message",
+    type: "info"
+  });
+<% end %>
+
 $("#new_message")[0].reset();

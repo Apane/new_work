@@ -6,6 +6,15 @@
   //     type: "GET"
   //   });
   // });
+  $(function() {
+    var faye = new Faye.Client('http://localhost:9292/faye');
+    faye.subscribe("/messages/for/conversation/<%= @conversation.id %>", function (data) {
+      eval(data);
+    });
+    faye.subscribe("/notifications/for/conversation/<%= @conversation.id %>/user/<%= current_user.id %>", function (data) {
+      eval(data);
+    });
+  });
 </script>
   <div class="row">
     <div class="span3">
