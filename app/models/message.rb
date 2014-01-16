@@ -10,4 +10,8 @@ class Message < ActiveRecord::Base
   def new?
     self.is_new?
   end
+
+  def owner_is?(user)
+    self.sender_id == user.id
+  end
 end

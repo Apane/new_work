@@ -1,4 +1,4 @@
-<div class="message">
+<div class="message" style="<%= message.owner_is?(current_user) ? 'background: rgb(228, 228, 228);' : '' %>">
   <div class="media message">
     <div class="blue_dot_placeholder pull-left"><%= new_message_dot(message) %></div>
     <%= link_to avatar(message.sender), profile_path(message.recipient), class: 'pull-left' %>

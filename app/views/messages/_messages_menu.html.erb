@@ -12,6 +12,11 @@
     <%= 'Outbox' if action_name == 'sent' %>
     <span class="divider">|</span>
   </li>
+  <% if action_name == 'show' %>
+  <li class="<%= 'active' if action_name == 'sent' %>">
+    Message
+  </li>
+  <% end %>
   <!-- <li class="<%#= 'active' if action_name == 'trash' %>">
     <%#= link_to 'Trash', trash_path if action_name != 'trash' %>
     <%#= 'Trash' if action_name == 'trash' %>
