@@ -53,6 +53,7 @@ gem 'geokit'
 gem 'geokit-rails'
 gem 'thin'
 gem 'faye'
+gem 'rails-timeago', '~> 2.0'
 ##########################################################################
 
 # dev test

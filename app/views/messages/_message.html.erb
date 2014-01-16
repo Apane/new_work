@@ -4,9 +4,11 @@
     <%= link_to avatar(message.sender), profile_path(message.recipient), class: 'pull-left' %>
     <div class="media-body">
       <h6 class="media-heading"><%= message.sender.name %></h6>
-      <%= sanitize(message.body) %>
+      <%= simple_format(sanitize(message.body)) %>
     </div>
-    <small class="time pull-right"><%= time_ago_in_words(message.created_at) %> ago</small>
+    <small class="time pull-right">
+      <%= timeago_tag(message.created_at) %>
+    </small>
   </div>
 </div>
 <hr>

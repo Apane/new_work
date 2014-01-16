@@ -21,6 +21,7 @@
 //= require jquery-fileupload/vendor/tmpl
 //= require best_in_place
 //= require pnotify
+//= require rails-timeago
 //= require_tree .
 
 $.pnotify.defaults.history = false
