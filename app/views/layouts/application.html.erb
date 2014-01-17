@@ -9,7 +9,7 @@
     <%= javascript_include_tag "http://js.pusher.com/2.1/pusher.min.js", "application", "http://mysite.com:9292/faye.js", "data-turbolinks-track" => true %>
     <%= render 'layouts/pusher' %>
     <%= csrf_meta_tags %>
-    <script src="//use.typekit.net/aom8bmb.js"></script>
+    <%= javascript_include_tag '//use.typekit.net/aom8bmb.js' if Rails.env.production? %>
     <!-- Brand and toggle get grouped for better mobile display -->
      <script>
       try{Typekit.load();}catch(e){};
