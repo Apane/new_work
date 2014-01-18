@@ -1,7 +1,7 @@
 <script type="text/javascript">
 <% if current_user %>
 $(function() {
-  var faye = new Faye.Client('http://localhost:9292/faye');
+  var faye = new Faye.Client(<%= ENV['FAYE_URL'] %>);
   faye.subscribe("/notifications/for/user/<%= current_user.id %>", function (data) {
     eval(data);
     $.ajax({url: "/refresh_notifications/", type: "GET"});
