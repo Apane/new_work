@@ -35,3 +35,6 @@ public/uploads
 
 # Ignore application configuration
 /config/application.yml
+
+# ignore heroku keys
+heroku_keys.textfile
