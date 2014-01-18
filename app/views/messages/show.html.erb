@@ -1,6 +1,6 @@
 <script type="text/javascript">
   $(function() {
-    var faye = new Faye.Client(<%= ENV['FAYE_URL'] %>);
+    var faye = new Faye.Client("<%= ENV['FAYE_URL'] %>");
     faye.subscribe("/messages/for/conversation/<%= @conversation.id %>", function (data) {
       eval(data);
     });
