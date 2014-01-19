@@ -1,5 +1,8 @@
 Friendiose::Application.routes.draw do
 
+  get 'faye/*query' => 'faye#get'
+  post 'faye/*params' => 'faye#post'
+
   resources :messages
 
   resources :conversations do
