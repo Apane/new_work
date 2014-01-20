@@ -38,3 +38,4 @@ public/uploads
 
 # ignore heroku keys
 heroku_keys.textfile
+heroku_keys.textile
