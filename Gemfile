@@ -51,8 +51,8 @@ gem 'pusher'
 gem 'pnotify-rails'
 gem 'geokit'
 gem 'geokit-rails'
-gem 'thin'
-gem 'faye'
+# gem 'thin'
+# gem 'faye'
 gem 'rails-timeago', '~> 2.0'
 gem 'quiet_assets', :group => :development
 ##########################################################################

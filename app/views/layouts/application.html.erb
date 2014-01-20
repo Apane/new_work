@@ -8,8 +8,8 @@
     </title>
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
     <%#= javascript_include_tag :defaults, "nested_form", "application", "data-turbolinks-track" => true %>
-    <%= javascript_include_tag "application", ENV['FAYE_JS_URL'], "data-turbolinks-track" => true %>
-    <%= render 'layouts/pusher' %>
+    <%= javascript_include_tag "http://js.pusher.com/2.1/pusher.min.js", "application", "data-turbolinks-track" => true %>
+    <%= render 'layouts/pusher' if current_user.present? %>
     <%= csrf_meta_tags %>
     <%= javascript_include_tag '//use.typekit.net/aom8bmb.js' if Rails.env.production? %>
     <!-- Brand and toggle get grouped for better mobile display -->

@@ -16,9 +16,9 @@ module MessagesHelper
     return html
   end
 
-  def broadcast(channel, &block)
-    message = {:channel => channel, :data => capture(&block), :ext => {:auth_token => FAYE_TOKEN}}
-    uri = URI.parse(ENV['FAYE_URL'])
-    Net::HTTP.post_form(uri, :message => message.to_json)
-  end
+  # def broadcast(channel, &block)
+  #   message = {:channel => channel, :data => capture(&block), :ext => {:auth_token => FAYE_TOKEN}}
+  #   uri = URI.parse(ENV['FAYE_URL'])
+  #   Net::HTTP.post_form(uri, :message => message.to_json)
+  # end
 end

@@ -1,11 +1,32 @@
 <script type="text/javascript">
-<% if current_user %>
-$(function() {
-  var faye = new Faye.Client("<%= ENV['FAYE_URL'] %>");
-  faye.subscribe("/notifications/for/user/<%= current_user.id %>", function (data) {
-    eval(data);
-    $.ajax({url: "/refresh_notifications/", type: "GET"});
-  });
-});
+// $(function() {
+//   var faye = new Faye.Client("<%#= ENV['FAYE_URL'] %>");
+//   faye.subscribe("/notifications/for/user/<%#= current_user.id %>", function (data) {
+//     eval(data);
+//     $.ajax({url: "/refresh_notifications/", type: "GET"});
+//   });
+// });
+// above code used with FAYE
+
+<% if Rails.env.development? %>
+  // Enable pusher logging - don't include this in production
+  // Pusher.log = function(message) {
+  //   if (window.console && window.console.log) {
+  //     window.console.log(message);
+  //   }
+  // };
 <% end %>
+  var pusher = new Pusher("<%= ENV['PUSHER_KEY'] %>");
+  var channel = pusher.subscribe('new_messages_for_user_<%= current_user.id %>');
+  channel.bind('new_message', function(data) {
+    $('.new_messages').html(
+      '<span class="badge badge-important">' + data.new_messages_count +'</span>'
+    );
+    $.pnotify({
+      title: "New message",
+      text: "<a href='/messages/" + data.conversation_id + "'>"+ "You have a new message from " + data.sender_name + "</a>",
+      type: "info",
+      icon: 'ui-icon ui-icon-signal-diag'
+    });
+  });
 </script>
