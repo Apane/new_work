@@ -10,8 +10,9 @@
   // });
   // $('.message').last().css('background', '#fff');
 <%# end %>
+// above code worked with Faye
 
-localStorage.removeItem('autosave_8');
+localStorage.removeItem('autosave_<%= @message.conversation_id %>');
 $('.alertBox').html('');
 $("#new_message")[0].reset();
 $('time').timeago();

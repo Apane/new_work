@@ -34,7 +34,7 @@
       <%= render @messages %>
     </div>
     <%= form_for current_user.sent_messages.new, class: 'form', remote: true do |f| %>
-      <%= f.text_area :body, rows: 5, placeholder: 'Write a reply...', class: 'span6' %>
+      <%= f.text_area :body, rows: 5, placeholder: 'Write a reply...', class: 'span6', required: true %>
       <div>
         <%= f.hidden_field :recipient_id, value: message_receiver(@conversation) %>
         <%= f.hidden_field :conversation_id, value: @conversation.id %>
