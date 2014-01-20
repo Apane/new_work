@@ -1,11 +1,20 @@
 <script type="text/javascript">
-  $(function() {
-    var faye = new Faye.Client("<%= ENV['FAYE_URL'] %>");
-    faye.subscribe("/messages/for/conversation/<%= @conversation.id %>", function (data) {
-      eval(data);
-    });
-    faye.subscribe("/notifications/for/conversation/<%= @conversation.id %>/user/<%= current_user.id %>", function (data) {
-      eval(data);
+  // $(function() {
+  //   var faye = new Faye.Client("<%#= ENV['FAYE_URL'] %>");
+  //   faye.subscribe("/messages/for/conversation/<%#= @conversation.id %>", function (data) {
+  //     eval(data);
+  //   });
+  //   faye.subscribe("/notifications/for/conversation/<%#= @conversation.id %>/user/<%#= current_user.id %>", function (data) {
+  //     eval(data);
+  //   });
+  // });
+  // above code for faye
+
+  var channel = pusher.subscribe('new_messages_in_conversation_<%= @conversation.id %>');
+  channel.bind('add_message_to_conversation', function(data) {
+    $.ajax({
+      url: '/conversations/' + data.conversation_id + '/refresh_messages',
+      type: "GET"
     });
   });
 </script>
@@ -48,20 +57,8 @@
     }
 
     messageText.autoSave(function() {
-      // var time = showTime();
       $(".alertBox").empty().append($('<div class="alert alert-danger"><span class="alertMessage"></span></div>'));
-      // $(".alertMessage").text("Saved as draft" + time);
       $(".alertMessage").text("Saved as draft");
-      // $(".alert").alert();
     }, 500, "<%= @conversation.id %>");
-
-    // $("#refresh").click(function() {
-    //   location.reload(true);
-    // });
-
-    // $("#clear").click(function() {
-    //   localStorage.clear();
-    //   location.reload(true);
-    // });
   });
 </script>

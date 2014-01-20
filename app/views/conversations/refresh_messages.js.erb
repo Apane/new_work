@@ -1,1 +1,9 @@
 $('.messages').append("<%= j(render @message) %>");
+<% unless current_user == @message.sender %>
+$.pnotify({
+  title: "New message",
+  text: '<%= link_to "You have a new message from #{sanitize(@message.sender.name)}", message_path(@message.conversation) %>',
+  type: "info",
+  icon: 'ui-icon ui-icon-signal-diag'
+});
+<% end %>

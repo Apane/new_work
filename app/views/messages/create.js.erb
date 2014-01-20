@@ -1,16 +1,17 @@
-<% broadcast "/messages/for/conversation/#{@message.conversation.id}" do %>
-  $('.messages').append("<%= j render(@message) %>");
-<% end %>
-<% broadcast "/notifications/for/user/#{@message.recipient.id}" do %>
-  $.pnotify({
-    title: "New message",
-    text: '<%= link_to "You have a new message from #{sanitize(@message.sender.name)}", message_path(@message.conversation) %>',
-    type: "info",
-    icon: 'ui-icon ui-icon-signal-diag'
-  });
-  $('.message').last().css('background', '#fff');
-<% end %>
+<%# broadcast "/messages/for/conversation/#{@message.conversation.id}" do %>
+  // $('.messages').append("<%#= j render(@message) %>");
+<%# end %>
+<%# broadcast "/notifications/for/user/#{@message.recipient.id}" do %>
+  // $.pnotify({
+  //   title: "New message",
+  //   text: '<%#= link_to "You have a new message from #{sanitize(@message.sender.name)}", message_path(@message.conversation) %>',
+  //   type: "info",
+  //   icon: 'ui-icon ui-icon-signal-diag'
+  // });
+  // $('.message').last().css('background', '#fff');
+<%# end %>
 
 localStorage.removeItem('autosave_8');
+$('.alertBox').html('');
 $("#new_message")[0].reset();
 $('time').timeago();
