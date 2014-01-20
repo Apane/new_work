@@ -16,12 +16,12 @@ class Message < ActiveRecord::Base
       sender_name: self.sender.name,
       conversation_id: self.conversation_id
     })
-    # Pusher["new_messages_in_conversation_#{self.conversation_id}"].trigger('add_message_to_conversation', {
-    #   conversation_id: self.conversation_id
-    # })
-    Pusher.trigger("new_messages_in_conversation_#{self.conversation_id}", 'add_message_to_conversation', {
+    Pusher["new_messages_in_conversation_#{self.conversation_id}"].trigger('add_message_to_conversation', {
       conversation_id: self.conversation_id
     })
+    #Pusher.trigger("new_messages_in_conversation_#{self.conversation_id}", 'add_message_to_conversation', {
+    #  conversation_id: self.conversation_id
+    #})
   end
 
   def new?
