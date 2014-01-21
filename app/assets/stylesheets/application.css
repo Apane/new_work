@@ -63,9 +63,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a3d4ff', end
 }
 
 #map {
-  border: 1px solid #DDD;
   width:300px;
   height: 300px;
   margin: 10px 0 10px 0;
-  -webkit-box-shadow: #AAA 0px 0px 15px;
 }
