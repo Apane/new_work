@@ -21,9 +21,7 @@ class Event < ActiveRecord::Base
   end
 
   def owner_is?(user)
-    if self.user_id == user.id
-      return true
-    end
+    self.user_id == user.id
   end
 
   def is_private?

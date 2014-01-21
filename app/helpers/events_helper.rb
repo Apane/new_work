@@ -8,11 +8,13 @@ module EventsHelper
   end
 
   def attend_to_event(event)
-    unless @event.owner_is?(current_user)
-      if @event.participants.include?(current_user)
+    unless event.owner_is?(current_user)
+      if event.participants.include?(current_user)
         button_to 'Stop attending this event', stop_attend_event_path(event), method: :delete, remote: true,
             confirm: 'Are you sure you want to stop attending this event?',
             class: 'btn btn-warning pull-right'
+      elsif event.participants.size >= event.max_attendees
+        'no more places in this event'
       else
         button_to 'Attend this event', attend_event_path(event), method: :post, remote: true,
             confirm: 'Are you sure you want to RSVP for this event?',
