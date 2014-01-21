@@ -23,8 +23,8 @@
       '<span class="badge badge-important">' + data.new_messages_count +'</span>'
     );
     $.pnotify({
-      title: "New message",
-      text: "<a href='/messages/" + data.conversation_id + "'>"+ "You have a new message from " + data.sender_name + "</a>",
+      title: data.message_title,
+      text: data.message,
       type: "info",
       icon: 'ui-icon ui-icon-signal-diag'
     });

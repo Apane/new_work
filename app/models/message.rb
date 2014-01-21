@@ -12,9 +12,9 @@ class Message < ActiveRecord::Base
   def push_notifications
     Pusher["new_messages_for_user_#{self.recipient_id}"].trigger('new_message', {
       # message: truncate(self.body, :length => 150),
+      message_title: 'New message',
       new_messages_count: self.recipient.inbox_messages.unread.count,
-      sender_name: self.sender.name,
-      conversation_id: self.conversation_id
+      message: "<a href='/messages/#{self.conversation_id}'>You have a new message from #{self.sender.name}</a>".html_safe
     })
     Pusher["new_messages_in_conversation_#{self.conversation_id}"].trigger('add_message_to_conversation', {
       conversation_id: self.conversation_id
