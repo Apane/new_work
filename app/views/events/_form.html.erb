@@ -1,12 +1,37 @@
-<%= simple_form_for @event do |f| %>
+<%= form_for @event do |f| %>
   <h5>Event title:</h5>
-  <div><%= f.input_field :title, placeholder: "Event title", required: true, autocomplete: :off %></div>
-  <h5>Event description:</h5>
-  <div><%= f.input_field :description, placeholder: "Event description", required: true, autocomplete: :off %></div>
+  <div><%= f.text_field :title, placeholder: "Event title", required: true %></div>
+  <h5>Location Address:</h5>
+  <div><%= f.text_field :location, placeholder: "Location Address", required: true, autocomplete: :off %></div>
+  <h5>Location Name:</h5>
+  <div><%= f.text_field :location_name, placeholder: "Location Name", required: true %></div>
   <h5>Event date:</h5>
   <div><%= f.text_field :date  %></div>
+  <h5>Event time:</h5>
   <div><%= f.text_field :time  %></div>
-  <h5>Event location:</h5>
-  <div><%= f.input_field :location, placeholder: "Event location", required: true, autocomplete: :off %></div>
-  <div><%= f.submit @event.new_record? ? "Create event" : "Update event"  %></div><br />
+  <h5>Event description:</h5>
+  <div>
+    <%= f.text_area :description, placeholder: "Event description", required: true, autocomplete: :off %>
+  </div>
+  <h5>Event type</h5>
+  <div>
+    <%= f.radio_button :event_type, '1', :checked => true %>
+    <%= label :event_type_P, 'Private', value: '1' %>
+    <%= f.radio_button :event_type, '0' %>
+    <%= label :event_type_sms, 'Public', value: '0' %>
+  </div>
+
+  <div class="extra_attr">
+    <%= f.hidden_field :lng %>
+    <%= f.hidden_field :lat %>
+    <%= f.hidden_field :country %>
+    <%= f.hidden_field :postal_code %>
+    <%= f.hidden_field :state %>
+    <%= f.hidden_field :district %>
+  </div>
+  <br>
+  <div>
+    <%= f.submit @event.new_record? ? "Create event" : "Update event", class: 'btn'  %>
+    <%= link_to 'Cancel', events_path, class: 'btn' %>
+  </div><br />
 <% end %>

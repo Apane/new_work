@@ -31,7 +31,6 @@ gem 'sprockets-rails', '~> 2.0.0.rc4'
 gem 'bootstrap-sass', '~> 2.3.2.0'
 gem "font-awesome-rails"
 # gem 'bootstrap-x-editable-rails'
-gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.0.1'
 
@@ -51,7 +50,7 @@ gem 'pusher'
 gem 'pnotify-rails'
 gem 'geokit'
 gem 'geokit-rails'
-# gem 'thin'
+gem 'thin'
 # gem 'faye'
 gem 'rails-timeago', '~> 2.0'
 gem 'quiet_assets', :group => :development

@@ -1,14 +1,61 @@
-<%= render 'shared/header' %>
+<%= content_for :header_js do %>
+  <script>
+  $(function() {
+    var addresspickerMap = $( "#event_location" ).addresspicker({
+      regionBias: "fr",
+      updateCallback: showCallback,
+      mapOptions: {
+        zoom: 4,
+        center: new google.maps.LatLng(46, 2),
+        scrollwheel: false,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      },
+      elements: {
+        map:      "#map",
+        lat:      "#event_lat",
+        lng:      "#event_lng",
+        street_number: '#street_number',
+        route: '#route',
+        locality: '#locality',
+        administrative_area_level_2: '#event_district',
+        administrative_area_level_1: '#event_state',
+        country:  '#event_country',
+        postal_code: '#event_postal_code'
+      }
+    });
+
+    var gmarker = addresspickerMap.addresspicker( "marker");
+    gmarker.setVisible(true);
+    addresspickerMap.addresspicker( "updatePosition");
+
+    $('#reverseGeocode').change(function(){
+      $("#addresspicker_map").addresspicker("option", "reverseGeocode", ($(this).val() === 'true'));
+    });
+
+    function showCallback(geocodeResult, parsedGeocodeResult){
+      $('#callback_result').text(JSON.stringify(parsedGeocodeResult, null, 4));
+    }
+    // Update zoom field
+    var map = $("#addresspicker_map").addresspicker("map");
+    google.maps.event.addListener(map, 'idle', function(){
+      $('#zoom').val(map.getZoom());
+    });
+  });
+  </script>
+<% end %>
 
 <div class="container">
   <div class="row">
-    <div class="span3">
-      <%= render 'sidebar' %>
+    <div class="span2">
+      <%#= render 'sidebar' %>
     </div>
 
-    <div class="span8">
+    <div class="span6">
       <div class="line1"><h4>Create an event</h4></div>
       <%= render 'form' %>
+    </div>
+    <div class="span2">
+      <div id="map"></div>
     </div>
   </div>
 </div>

@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
-  attr_accessible :title, :description, :location, :date, :time, :event_date
+  attr_accessible :title, :description, :location, :date, :time, :event_date, :lat, :lng,
+        :location_name, :event_type, :max_attendees, :postal_code, :country, :state, :district
 
   acts_as_commentable
   has_many :comments, as: :commentable
@@ -23,6 +24,10 @@ class Event < ActiveRecord::Base
     if self.user_id == user.id
       return true
     end
+  end
+
+  def is_private?
+    self.event_type
   end
 
 # this adds owner to partipants list

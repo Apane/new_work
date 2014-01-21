@@ -13,6 +13,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery.ui.all
 //= require bootstrap-datepicker
 //= require jquery_ujs
 //= require jquery_nested_form

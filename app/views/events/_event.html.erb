@@ -9,7 +9,9 @@
   <div class="span3">
     <div class="line2">
     <h5><%= link_to_event_owner(event.user) %> Created an Event</h5>
-    <h4><%= link_to event.title, event %></h4>
+    <h4><%= link_to event.title, event %>
+      <span class="label label-warning"><%= event.is_private? ? 'Private' : 'Public' %></span>
+    </h4>
     <h5><i class="fa fa-map-marker"></i> <%= event.location %></h5>
     <h5><i class="fa fa-calendar-o"></i> <%= event.date.strftime("%A, %B %d, %Y") %></h5>
     <h5><i class="fa fa-clock-o"></i> <%= event.time %></h5>
