@@ -17,6 +17,7 @@
  *= require jquery.fileupload-ui
  *= require jquery.pnotify.default
  *= require jquery.pnotify.default.icons
+ *= require bootstrap-wysihtml5
  *= require_tree .
 */
 

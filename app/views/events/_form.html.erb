@@ -57,7 +57,7 @@
   <div><%= f.text_field :time  %></div>
   <h5>Event description:</h5>
   <div>
-    <%= f.text_area :description, placeholder: "Event description", required: true, autocomplete: :off %>
+    <%= f.text_area :description, placeholder: "Event description", class: 'span6 wysihtml5', rows: 10 %>
   </div>
   <h5>Event type</h5>
   <div>
@@ -66,7 +66,8 @@
     <%= f.radio_button :event_type, '0' %>
     <%= label :event_type_sms, 'Public', value: '0' %>
   </div>
-
+  <h5>Maximum attendees</h5>
+  <div><%= f.text_field :max_attendees %></div>
   <div class="extra_attr">
     <%= f.hidden_field :lng %>
     <%= f.hidden_field :lat %>
@@ -81,3 +82,23 @@
     <%= link_to 'Cancel', events_path, class: 'btn' %>
   </div><br />
 <% end %>
+<script type="text/javascript">
+  // if using turbolink
+  $(document).on('page:load', function(){
+    window['rangy'].initialized = false
+  })
+  $(document).ready(function(){
+    $('.wysihtml5').each(function(i, elem) {
+      $(elem).wysihtml5({
+        "font-styles": true, //Font styling, e.g. h1, h2, etc.
+        "emphasis": true, //Italics, bold, etc.
+        "lists": true, //(Un)ordered lists, e.g. Bullets, Numbers.
+        "html": true, //Button which allows you to edit the generated HTML.
+        "link": true, //Button to insert a link.
+        "image": false, //Button to insert an image.
+        "color": false //Button to change color of font
+      });
+    });
+
+  })
+</script>

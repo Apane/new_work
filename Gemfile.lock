@@ -54,6 +54,8 @@ GEM
     bcrypt-ruby (3.1.2)
     bootstrap-sass (2.3.2.2)
       sass (~> 3.2)
+    bootstrap-wysihtml5-rails (0.3.1.23)
+      railties (>= 3.0)
     builder (3.1.4)
     capybara (2.0.2)
       mime-types (>= 1.16)
@@ -271,6 +273,7 @@ DEPENDENCIES
   awesome_print
   best_in_place!
   bootstrap-sass (~> 2.3.2.0)
+  bootstrap-wysihtml5-rails
   capybara (= 2.0.2)
   carrierwave
   carrierwave-aws

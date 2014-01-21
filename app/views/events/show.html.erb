@@ -49,7 +49,9 @@
       <h5><i class="fa fa-clock-o"></i> <%= @event.time %></h5>
       <h5><i class="fa fa-map-marker"></i> <%= @event.location %></h5>
     </div>
-    <p><%= @event.description %></p>
+    <p>
+      <%= simple_format(sanitize(@event.description)) %>
+    </p>
     <div class="name"></div>
     <br />
     <medium><strong align-"center"><%= pluralize(@participants.size.to_s, 'person') %> attending this event</strong></medium> <br /><br />
@@ -82,7 +84,7 @@
       <%= attend_to_event(@event) %>
       <div class="clearfix"></div>
     </div>
-    <%= link_to 'Edit event', edit_event_path(@event), class: 'btn' %>
+    <%= link_to 'Edit event', edit_event_path(@event), class: 'btn pull-right' if @event.owner_is?(current_user) %>
   </div>
 </div>
 <%#= render 'shared/footer' %>

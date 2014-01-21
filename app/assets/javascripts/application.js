@@ -23,6 +23,7 @@
 //= require best_in_place
 //= require pnotify
 //= require rails-timeago
+//= require bootstrap-wysihtml5
 //= require_tree .
 
 $.pnotify.defaults.history = false
