@@ -12,25 +12,6 @@
     </div>
 
     <div class="span6">
-      <div class="new_event_form">
-        <div class="line1"><h4>Create event</h4></div>
-        <%= form_for current_user.events.new, remote: true do |f| %>
-          <h5>Event title:</h5>
-          <div><%= f.text_field :title, placeholder: "Event title", required: true, autocomplete: :off %></div>
-          <h5>Event description:</h5>
-          <div><%= f.text_area :description, placeholder: "Event description", required: true, autocomplete: :off %></div>
-          <h5>Event date:</h5>
-          <div><%= f.text_field :date  %></div>
-          <h5>Event time:</h5>
-          <div><%= f.text_field :time  %></div>
-          <h5>Event location:</h5>
-          <div><%= f.text_field :location, placeholder: "Event location", required: true, autocomplete: :off %></div>
-          <div>
-            <%= f.submit "Create event", class: 'btn btn-primary' %>
-            <%= link_to "Cancel", '#', class: 'btn cancel_event' %>
-          </div><br />
-        <% end %>
-      </div>
       <div class="events_list">
         <!-- look in events/event.hmlt.erb -->
         <%= render @events %>
@@ -49,12 +30,3 @@
     </div>
   </div>
 </div>
-
-<script type="text/javascript">
-// $('.add_event').click(function(event) {
-//   $('.new_event_form').fadeIn('400', function() {});
-// });
-// $('.cancel_event').click(function(event) {
-//   $('.new_event_form').fadeOut('400', function() {});
-// });
-</script>
