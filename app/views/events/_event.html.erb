@@ -17,9 +17,9 @@
     <h5><i class="fa fa-clock-o"></i> <%= event.time %></h5>
     <i class="fa fa-dot-circle-o"></i> <medium><strong align-"center"><%= pluralize(event.participants.size.to_s, 'person') %></strong></medium> <br /><br />
         <% event.participants.each do |p| %>
-            <%= simple_user_avatar(p) %>
-            <%= p.short_name %> is attending.
-	<% end %>
+          <%= simple_user_avatar(p) %>
+          <%= p.short_name %> is attending.
+	      <% end %>
     </div>
   </div>
 </div>

@@ -8,8 +8,7 @@ class Event < ActiveRecord::Base
   has_many :event_participants, dependent: :destroy
   has_many :participants, through: :event_participants, source: :user
 
-  after_create :update_event_date
-#  after_create :add_owner_to_participants
+  after_create :update_event_date, :add_owner_to_participants
 
   def update_event_date
     date = self.date.to_s
@@ -28,8 +27,8 @@ class Event < ActiveRecord::Base
     self.event_type
   end
 
-# this adds owner to partipants list
-#  def add_owner_to_participants
-#    EventParticipant.create(user_id: self.user_id, event_id: self.id)
-#  end
+  # add owner to partipants list
+  def add_owner_to_participants
+   EventParticipant.create(user_id: self.user_id, event_id: self.id)
+  end
 end
