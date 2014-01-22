@@ -19,9 +19,6 @@ class Message < ActiveRecord::Base
     Pusher["new_messages_in_conversation_#{self.conversation_id}"].trigger('add_message_to_conversation', {
       conversation_id: self.conversation_id
     })
-    #Pusher.trigger("new_messages_in_conversation_#{self.conversation_id}", 'add_message_to_conversation', {
-    #  conversation_id: self.conversation_id
-    #})
   end
 
   def new?

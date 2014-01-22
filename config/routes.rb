@@ -22,16 +22,13 @@ Friendiose::Application.routes.draw do
   get "welcome", to: "home#welcome", as: 'welcome'
 
   devise_scope :user do
-  #  get "edit/edit_account", :to => "devise/registrations#edit_account", :as => "account_registration"
     get 'edit/edit_account' => 'users/registrations#account_registration', as: :edit_account
   end
 
-  # patch '/users/:id', to: 'users#update', as: 'user'
   get 'profile/:id' => "profiles#show", as: :profile
   get 'disconnect' => 'users#disconnect'
   get 'profiles' => "profiles#index"
   get 'sent' => 'messages#sent'
-  get 'refresh_notifications' => 'users#refresh_notifications'
 
   resources :users do
     resources :questions
