@@ -28,8 +28,10 @@ class Comment < ActiveRecord::Base
 
   def create_notification
     participants = self.commentable.participants.where('user_id <> ?', self.user_id)
-    participants.each do |p|
-      self.notifications.create(user_id: p.id)
+    if participants.any?
+      participants.each do |p|
+        self.notifications.create(user_id: p.id)
+      end
     end
   end
 

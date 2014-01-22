@@ -3,4 +3,4 @@ $('.participant_<%= @participant.user_id %>').fadeOut('400', function() {
 });
 $('.attend_button').html("<%= j(button_to 'Attend this event', attend_event_path(@event), method: :post, remote: true,
                 confirm: 'Are you sure you want to RSVP for this event?',
-                class: 'btn btn-warning pull-right') %> <div class='clearfix'></div>");
+                class: 'btn btn-warning') %> <div class='clearfix'></div>");
