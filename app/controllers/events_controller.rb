@@ -27,10 +27,15 @@ class EventsController < ApplicationController
   end
 
   def show
-    @user = current_user
-    @event = Event.find(params[:id])
-    @comment = @event.comments.new
-    @participants = @event.participants
+    @event = Event.where(id: params[:id]).first
+    if @event.present?
+      @user = current_user
+      @event = Event.find(params[:id])
+      @comment = @event.comments.new
+      @participants = @event.participants
+    else
+      redirect_to events_path, error: 'Event not found'
+    end
   end
 
   def edit
@@ -52,24 +57,21 @@ class EventsController < ApplicationController
     @event.destroy
 
     respond_to do |format|
-      format.html {redirect_to :back}
+      format.html {redirect_to events_path}
       format.js
     end
   end
 
   def attend
     @event = Event.find(params[:id])
-    @event.event_participants.create(event_id: @event.id, user_id: current_user.id)
-    @participant = current_user
+    unless @event.is_private?
+      @event.event_participants.create(event_id: @event.id, user_id: current_user.id)
+      @participant = current_user
+    end
 
     respond_to do |format|
-      if @event.save
-        format.html {redirect_to @event}
-        format.js {}
-      else
-        format.html {redirect_to @event}
-        format.js {}
-      end
+      format.html {redirect_to @event}
+      format.js {}
     end
   end
 
