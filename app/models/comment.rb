@@ -1,8 +1,8 @@
 class Comment < ActiveRecord::Base
   attr_accessible :title, :body, :subject, :user_id
-  
+
   acts_as_nested_set :scope => [:commentable_id, :commentable_type]
-  
+
   validates :body, :presence => true
   validates :user, :presence => true
 
@@ -14,6 +14,16 @@ class Comment < ActiveRecord::Base
 
   # NOTE: Comments belong to a user
   belongs_to :user
+
+  after_create :push_notifications
+
+  def push_notifications
+    Pusher["notifications_for_event_#{self.commentable_id}"].trigger('new_comment', {
+      user_id: self.user_id,
+      message_title: 'New comment',
+      message: "<a href='/events/#{self.commentable_id}'>#{self.user.name} commented on #{self.commentable.title} event </a>".html_safe
+    })
+  end
 
   # Helper class method that allows you to build a comment
   # by passing a commentable object, a user_id, and comment text

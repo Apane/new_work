@@ -29,4 +29,17 @@
       icon: 'ui-icon ui-icon-signal-diag'
     });
   });
+  <% current_user.attended_events.each do |event| %>
+    var channel = pusher.subscribe('notifications_for_event_<%= event.id %>');
+    channel.bind('new_comment', function(data) {
+      if (data.user_id != <%= current_user.id %>) {
+        $.pnotify({
+          title: data.message_title,
+          text: data.message,
+          type: "info",
+          icon: 'ui-icon ui-icon-signal-diag'
+        });
+      };
+    });
+  <% end %>
 </script>

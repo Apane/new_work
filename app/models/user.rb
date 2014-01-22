@@ -20,6 +20,8 @@ class User < ActiveRecord::Base
   has_many :new_messages, -> { where is_new: true }, class_name: 'Message', foreign_key: 'recipient_id'
   belongs_to  :ethnicity
   belongs_to  :education
+  has_many :event_participants, dependent: :destroy
+  has_many :attended_events, through: :event_participants, source: :event
 
   accepts_nested_attributes_for :photos
   mount_uploader :profile_image, ProfileImageUploader
@@ -85,17 +87,6 @@ class User < ActiveRecord::Base
       self.age = age
     end
   end
-
-  # Not used anywhere
-  # def format_date
-  #   if self.birthday.present?
-  #     today = Date.today
-  #     d = Date.new(today.year, self.birthday.month, self.birthday.day)
-  #     age = d.year - self.birthday.year - (d > today ? 1 : 0)
-  #   else
-  #     self.birthday.year : link_to('Add Birthday', edit_account_path)
-  #   end
-  # end
 
   def disconnect(social)
     if social == 'facebook'
