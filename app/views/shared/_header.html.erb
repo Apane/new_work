@@ -12,7 +12,14 @@
             </div>
           <% end %>
           <ul class="nav navbar-nav navbar-right">
-            <li class="loggedin"><%= link_to icon("fa fa-calendar-o "), events_path %></li>
+            <li class="loggedin">
+              <%= link_to icon("fa fa-calendar-o "), '', remote: true %>
+              <div class="new_notifications">
+                <% if current_user.new_notifications.any? %>
+                  <span class="badge badge-important"><%= current_user.new_notifications.size %></span>
+                <% end %>
+              </div>
+            </li>
             <li class="loggedin"><%= link_to icon("fa fa-envelope"), messages_path %></li>
             <li class="loggedin"><%= link_to icon("fa fa-cog"), edit_user_registration_path %></li>
             <li class="loggedina"><%= link_to "Sign out" , destroy_user_session_path, method: :delete %></li>

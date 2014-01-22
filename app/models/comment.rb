@@ -11,11 +11,12 @@ class Comment < ActiveRecord::Base
   #acts_as_votable
 
   belongs_to :commentable, :polymorphic => true
+  has_many :notifications, as: :noteable
 
   # NOTE: Comments belong to a user
   belongs_to :user
 
-  after_create :push_notifications
+  after_create :push_notifications, :create_notification
 
   def push_notifications
     Pusher["notifications_for_event_#{self.commentable_id}"].trigger('new_comment', {
@@ -23,6 +24,13 @@ class Comment < ActiveRecord::Base
       message_title: 'New comment',
       message: "<a href='/events/#{self.commentable_id}'>#{self.user.name} commented on #{self.commentable.title} event </a>".html_safe
     })
+  end
+
+  def create_notification
+    participants = self.commentable.participants.where('user_id <> ?', self.user_id)
+    participants.each do |p|
+      self.notifications.create(user_id: p.id)
+    end
   end
 
   # Helper class method that allows you to build a comment

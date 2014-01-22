@@ -7,6 +7,7 @@ class Event < ActiveRecord::Base
   belongs_to :user
   has_many :event_participants, dependent: :destroy
   has_many :participants, through: :event_participants, source: :user
+  has_many :notifications, as: :noteable
 
   after_create :update_event_date, :add_owner_to_participants
 

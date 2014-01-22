@@ -29,6 +29,18 @@
       icon: 'ui-icon ui-icon-signal-diag'
     });
   });
+
+  channel.bind('new_notification', function(data) {
+    // if (data.user_id != <%= current_user.id %>) {
+      if ($('.new_notifications span.badge').length > 0) {
+        number = parseInt($('.new_notifications span.badge').html())+1;
+        $('.new_notifications span.badge').html(number);
+      } else{
+        $('.new_notifications').html('<span class="badge badge-important">1</span>');
+      };
+    // };
+  });
+
   <% current_user.attended_events.each do |event| %>
     var channel = pusher.subscribe('notifications_for_event_<%= event.id %>');
     channel.bind('new_comment', function(data) {
