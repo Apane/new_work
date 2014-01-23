@@ -33,9 +33,9 @@ module UsersHelper
 
   def avatar(user)
     if user.profile_image.present?
-      html = image_tag user.profile_image_url(:small).to_s, class: 'media-object', size: '50x50'
+      html = image_tag user.profile_image_url(:small).to_s, class: 'media-object', size: '68x68'
     else
-      html = image_tag "profile-placeholder1.png", class: 'media-object', size: '50x50'
+      html = image_tag "people_image.jpg", class: 'media-object', size: '68x68'
     end
     return html
   end

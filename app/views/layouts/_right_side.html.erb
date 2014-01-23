@@ -1,0 +1,29 @@
+<div class="col-md-3">
+  <div role="complementary" class="bs-sidebar hidden-print affix-top" style="">
+    <ul class="nav bs-sidenav">
+      <li class="<%= 'active' if controller_name == 'profiles' %>">
+        <%= link_to 'Browse', profiles_path %>
+      </li>
+      <li class="<%= 'active' if controller_name == 'events' %>">
+        <%= link_to 'Events', events_path %>
+      </li>
+      <li class=""><a href="#">Activities </a></li>
+
+      <li class="menuheader expandable"><a href="#" >Messaging</a> </li>
+      <ul class="categoryitems">
+        <li class="<%= 'active' if controller_name == 'messages' && action_name == 'index' %>">
+          <%= link_to messages_path do %>
+            Inbox <span class="t-inbox"><%= current_user.new_messages.size %></span>
+          <% end %>
+        <li class="">
+          <%= link_to 'Outbox', sent_path %>
+        </li>
+        <li class=""><a href="#">Drafts</a></li>
+        <li class=""><a href="#">Deleted</a></li>
+      </ul>
+
+      <li class=""><a href="#">Favorites</a></li>
+      <li class=""><a href="visitors-01.html">Visitors</a></li>
+    </ul>
+  </div>
+</div>

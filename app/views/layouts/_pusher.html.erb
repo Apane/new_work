@@ -19,8 +19,9 @@
   var pusher = new Pusher("<%= ENV['PUSHER_KEY'] %>");
   var channel = pusher.subscribe('new_messages_for_user_<%= current_user.id %>');
   channel.bind('new_message', function(data) {
-    $('.new_messages').html(
-      '<span class="badge badge-important">' + data.new_messages_count +'</span>'
+    // counter = parseInt($('.t-inbox').html())+1;
+    $('.t-inbox').html(
+      data.new_messages_count
     );
     $.pnotify({
       title: data.message_title,

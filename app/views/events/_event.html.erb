@@ -1,27 +1,25 @@
-<div id="event_<%= event.id %>">
-  <div class="span2">
-  <% if event.user.profile_image.present? %>
-    <%= image_tag event.user.profile_image_url(:thumb), class: 'img-polaroid' %>
-  <% else %>
-    <%= image_tag "profile-placeholder1.png" %>
-  <% end %>
-  </div>
-  <div class="span3">
-    <div class="line2">
-    <h5><%= link_to_event_owner(event.user) %> Created an Event</h5>
-    <h4><%= link_to event.title, event %>
-      <span class="label label-warning"><%= event.is_private? ? 'Private' : 'Public' %></span>
-    </h4>
-    <h5><i class="fa fa-map-marker"></i> <%= event.location %></h5>
-    <h5><i class="fa fa-calendar-o"></i> <%= event.date.strftime("%A, %B %d, %Y") %></h5>
-    <h5><i class="fa fa-clock-o"></i> <%= event.time %></h5>
-    <i class="fa fa-dot-circle-o"></i> <medium><strong align-"center"><%= pluralize(event.participants.size.to_s, 'person') %></strong></medium> <br /><br />
-        <% event.participants.each do |p| %>
-          <%= simple_user_avatar(p) %>
-          <%= p.short_name %> is attending.
-	      <% end %>
+<%= link_to event do %>
+  <div class="col-md-12 event_m">
+    <div class="event-image">
+      <%= image_tag 'event_image.jpg' %>
     </div>
+
+    <div class="event-about">
+      <h3><%= event.title %></h3>
+      <p class="place-map"><%= event.location_name %>, <%= event.location %></p>
+      <p class="date"><%= event.date.strftime("%A, %B %d, %Y") %></p>
+      <p class="c-time"><%= event.time %></p>
+      <div>
+        <%= image_tag event.user.profile_image_url(:thumb), size:'30x30' %>
+        <p class="host-by">Hosted by :</p>
+        <p class="host-by-name"><%= event.user.name %></p>
+      </div>
+    </div>
+    <div class="clr"></div>
   </div>
-</div>
-<div class="clearfix"></div>
-<p></p>
+<% end %>
+
+<%# event.participants.each do |p| %>
+<%#= simple_user_avatar(p) %>
+<%#= p.short_name %>
+<%# end %>

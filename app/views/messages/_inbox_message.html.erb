@@ -1,19 +1,17 @@
-<%= link_to message_path(messages.last.conversation), class: 'message_link' do %>
-<div class="message" style="<%= 'background: #E7F0FF;' if messages.last.new? %>">
-  <div class="media">
-    <%= new_message_dot(messages.last) %>
-    <div class="pull-left"><%= avatar(messages.last.sender) %></div>
-    <div class="media-body">
-      <h6 class="media-heading"><%= messages.last.sender.name %></h6>
+<li class="<%= messages.last.new? ? 'unread' : 'read' %>">
+  <div class="checkbox">
+    <input type="checkbox" value="check<%= messages.last.id %>" name="check" id="check<%= messages.last.id %>">
+    <label for="check<%= messages.last.id %>"></label>
+  </div>
+  <a href="messages-02.html">
+  <%= link_to message_path(messages.last.conversation) do %>
+    <div class="m-image"><%= avatar(messages.last.sender) %></div>
+    <div class="m-text">
+      <p class="m-name"><%= messages.last.sender.name %></p>
+      <span class="pull-right"><span class="reply-m"></span><%= time_ago_in_words(messages.last.created_at) %></span>
       <p><%= sanitize(messages.last.body.truncate(100, omision: "...")) %></p>
     </div>
-  </div>
-</div>
-<% end %>
-<div class="pull-right">
-  <small class="time">
-    <%= time_ago_in_words(messages.last.created_at) %> ago |
-    <%= link_to 'Delete', conversation_path(messages.last.conversation),  method: :delete, data: {confirm: 'Are you sure?'} %>
-  </small>
-</div>
-<hr>
+    <%#= link_to 'Delete', conversation_path(messages.last.conversation),  method: :delete, data: {confirm: 'Are you sure?'} %>
+  <% end %>
+  <div class="clr"></div>
+</li>

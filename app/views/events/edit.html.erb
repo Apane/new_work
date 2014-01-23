@@ -1,15 +1,8 @@
-<div class="container">
-  <div class="row">
-    <div class="span3">
-      <%#= render 'sidebar' %>
-    </div>
+<div class="row">
+  <%= render 'layouts/right_side' %>
 
-    <div class="span6">
-      <div class="line1"><h4>Edit event</h4></div>
+  <div role="main" class="col-md-6">
       <%= render 'form' %>
-    </div>
-    <div class="span3">
-      <div id="map"></div>
-    </div>
   </div>
+  <%= render 'events/left_side_map' %>
 </div>

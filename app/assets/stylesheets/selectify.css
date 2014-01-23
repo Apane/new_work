@@ -1,0 +1,178 @@
+.selectify {
+    color: #555555;
+    float: left;
+    position: relative;
+	margin-top:4px;
+}
+.times .selectify {
+    color: #555555;
+    float: left;
+    position: relative;
+	margin-top:0px;
+	width:100% !important;
+}
+.gender .selectify {
+    color: #555555;
+    float: left;
+    position: relative;
+	width:60% !important;
+}
+.genders .selectify {
+    color: #555555;
+    float: left;
+    position: relative;
+	width:60% !important;
+}
+.gender {
+    margin-top: 20px;
+}
+
+.selectify .options
+{
+    position:absolute;
+    z-index:2;
+    overflow-y:auto;
+	border:#ccc 1px solid;
+	font-size:12px;
+
+}
+.times .selectify .options
+{
+    position:absolute;
+    z-index:2;
+    overflow-y:auto;
+	border:#ccc 1px solid;
+	font-size:12px;
+	width:100% !important;
+
+}
+.gender .selectify .options
+{
+    position:absolute;
+    z-index:2;
+    overflow-y:auto;
+	border:#ccc 1px solid;
+	font-size:12px;
+	width:100% !important;
+
+}
+.genders .selectify .options
+{
+    position:absolute;
+    z-index:2;
+    overflow-y:auto;
+	border:#ccc 1px solid;
+	font-size:12px;
+	width:100% !important;
+
+}
+
+.selectify .header {
+background: #eeeeee; /* Old browsers */
+background: -moz-linear-gradient(top,  #eeeeee 0%, #eaeaea 4%, #ebebeb 21%, #eeeeee 29%, #ededed 32%, #f1f1f1 50%, #efefef 54%, #ffffff 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(4%,#eaeaea), color-stop(21%,#ebebeb), color-stop(29%,#eeeeee), color-stop(32%,#ededed), color-stop(50%,#f1f1f1), color-stop(54%,#efefef), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #eeeeee 0%,#eaeaea 4%,#ebebeb 21%,#eeeeee 29%,#ededed 32%,#f1f1f1 50%,#efefef 54%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #eeeeee 0%,#eaeaea 4%,#ebebeb 21%,#eeeeee 29%,#ededed 32%,#f1f1f1 50%,#efefef 54%,#ffffff 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #eeeeee 0%,#eaeaea 4%,#ebebeb 21%,#eeeeee 29%,#ededed 32%,#f1f1f1 50%,#efefef 54%,#ffffff 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #eeeeee 0%,#eaeaea 4%,#ebebeb 21%,#eeeeee 29%,#ededed 32%,#f1f1f1 50%,#efefef 54%,#ffffff 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+
+    border: 1px solid #EBEBEB;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.selectify .header .icon
+{
+
+
+    content: " ";
+    height: 0;
+    margin-left: -7px;
+    position: absolute;
+    width: 0;
+    right: 0.5em;
+    margin-top: -5px;
+
+	background:url(../images/jquery.selectBox-arrow.gif) no-repeat 65px 10px;
+
+}
+
+.selectify .header .selected {
+    background: url("../images/jquery.selectBox-arrow.gif") no-repeat scroll 65px 8px rgba(0, 0, 0, 0);
+    color: #929292;
+    font-size: 10px;
+    padding: 6px 6px;
+    width: auto;
+	text-transform:uppercase;
+}
+
+.gender .selectify .header .selected {
+    background: url("../images/jquery.selectBox-arrow.gif") no-repeat scroll 94% 8px rgba(0, 0, 0, 0);
+    color: #929292;
+    font-size: 10px;
+    padding: 6px 6px;
+    width: auto;
+	text-transform:uppercase;
+}
+.genders .selectify .header .selected {
+    background: url("../images/jquery.selectBox-arrow.gif") no-repeat scroll 94% 8px rgba(0, 0, 0, 0);
+    color: #929292;
+    font-size: 10px;
+    padding: 6px 6px;
+    width: auto;
+	text-transform:uppercase;
+}
+
+.age .selectify .header .selected {
+    background: url("../images/jquery.selectBox-arrow.gif") no-repeat scroll 30px 6px rgba(0, 0, 0, 0) !important;
+    color: #929292;
+    font-size: 10px;
+    padding: 6px 6px;
+    width: auto;
+	text-transform:uppercase;
+}
+.times .selectify .header .selected {
+    background: url("../images/jquery.selectBox-arrow.gif") no-repeat scroll 94% 6px rgba(0, 0, 0, 0) !important;
+    color: #929292;
+    font-size: 10px;
+    padding: 6px 6px;
+    width: auto;
+	text-transform:uppercase;
+}
+
+.selectify .header.hover .selected
+{
+    color:#555;
+}
+
+.selectify .header.hover .icon
+{
+    border-color: #000 transparent transparent;
+}
+
+.selectify .option
+{
+   /* border: 1px solid #BBB;*/
+    cursor:pointer;
+    border-top:0;
+    color:#999;
+    padding: 5px 20px;
+    background:#FFF;
+}
+.age .selectify .option
+{
+   /* border: 1px solid #BBB;*/
+    cursor:pointer;
+    border-top:0;
+    color:#999;
+    padding: 5px 20px 5px 15px;
+    background:#FFF;
+	text-align:center;
+}
+
+.selectify .option.active
+{
+    background:#F39814;
+    color:#FFF;
+}

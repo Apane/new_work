@@ -1,32 +1,31 @@
-<div class="container">
-  <div class="row">
-    <div class="span3">
-      <%#= render 'home/sidebar' %>
-      <h5>Interesting people</h5>
-       <% @interesting_people.each do |person| %>
-         <% if person.first_name.present? %>
-         <%= simple_user_avatar(person) %>
-        <% end %>
-      <% end %>
-      <hr>
-    </div>
+<div class="row">
+  <%= render 'layouts/right_side' %>
 
-    <div class="span6">
-      <div class="events_list">
-        <!-- look in events/event.hmlt.erb -->
-        <%= render @events %>
+  <div role="main" class="col-md-6">
+    <div class="col-md-12 showing-event">
+      <div class="row">
+        <div class="col-md-12">
+          <h4>Showing 4 Upcoming Events </h4>
+          <div class="col-md-3 row fr">
+            <select class="form-control">
+              <option value="">SORT BY</option>
+              <option value="1">General</option>
+              <option value="2">News</option>
+              <option value="3">Media</option>
+              <option value="4">Funny</option>
+            </select>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="span3">
-      <span class="btn btn-success fileinput-button">
-	      <span class="white">
-          <%= link_to new_event_path, class: 'add_event' do %>
-            <i class="icon-plus icon-white"></i>
-            Create event
-          <% end %>
-        </span>
-      </span>
+    <div class="col-md-12 event_info">
+      <div class="row">
+        <%= render @events %>
+        <br>
+      </div>
     </div>
   </div>
+
+  <%= render 'events/left_side' %>
 </div>

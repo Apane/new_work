@@ -1,14 +1,18 @@
-<div class="message" style="<%= message.owner_is?(current_user) ? 'background: rgb(228, 228, 228);' : '' %>">
-  <div class="media message">
-    <div class="blue_dot_placeholder pull-left"><%= new_message_dot(message) %></div>
-    <%= link_to avatar(message.sender), profile_path(message.recipient), class: 'pull-left' %>
-    <div class="media-body">
-      <h6 class="media-heading"><%= message.sender.name %></h6>
-      <%= simple_format(sanitize(message.body)) %>
-    </div>
-    <small class="time pull-right">
-      <%= timeago_tag(message.created_at) %>
-    </small>
+<div class="send-message-details">
+  <div class="s-image">
+    <%= avatar(message.sender) %>
   </div>
+
+  <div class="s-about">
+    <h4 class="s-heading">
+      <% if message.sender == current_user %>
+        Me
+      <% else %>
+        <%= message.sender.name %>
+      <% end %>
+    </h4>
+    <span class="s-time-date pull-right"><%= timeago_tag(message.created_at) %></span>
+    <%= simple_format(sanitize(message.body)) %>
+  </div>
+  <div class="clr"></div>
 </div>
-<hr>

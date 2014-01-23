@@ -1,24 +1,29 @@
-<!-- used in profile/index - domain/profiles -->
-<div class="profile_unit profile_<%= user.id %>">
-  <div class="span3">
-    <% if user.profile_image.present? %>
-      <%= link_to image_tag(user.profile_image_url(:thumb), class: 'img-polaroid', size: '100x60'), profile_path(user) %>
-    <% else %>
-      <%= link_to image_tag("profile-placeholder1.png"), profile_path(user) %>
-    <% end %>
-  </div>
-  <div class="span6">
-    <div class="user_name">
-      <%= link_to user.name, profile_path(user) %>
+<%= link_to profile_path(user) do %>
+  <div class="col-md-12 users_info">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="img-thumbnail">
+          <% if user.profile_image.present? %>
+            <%= image_tag(user.profile_image_url(:thumb), size: '100x100') %>
+          <% else %>
+            <%= image_tag("people_image.jpg") %>
+          <% end %>
+        </div>
+
+        <div class="users_about_info">
+          <h4><%= user.name %></h4>
+          <p>
+            <%= sanitize truncate(user.questions.first.answer, omision: "...", length: 300) %>
+          </p>
+        </div>
+
+        <div class="fr">
+          <p><%= user.address %></p>
+          <p><%= user.age %> years old</p>
+        </div>
+
+        <div class="clr"></div>
+      </div>
     </div>
-    <div class="about_user">
-      <%= user.about_user %>
-    </div>
   </div>
-  <div class="span3">
-    <%= user.address %><br>
-    Age: <%= user.age %>
-  </div>
-  <div class="clearfix"></div>
-</div>
-<hr>
+<% end %>

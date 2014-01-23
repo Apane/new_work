@@ -1,80 +1,114 @@
-<div class="row-fluid">
-  <div class="span12">
-    <div class="span3">
-      <div class="search">
-        <%= form_tag profiles_path, class: 'form-inline advanced_search', method: :get do %>
-          <%= hidden_field_tag :terms, "#{@terms if @terms.present?}", name: 'search[terms]' %>
-          <div class="search_head top">
-            Search
+<div class="row">
+  <%= render 'layouts/right_side' %>
+  <div role="main" class="col-md-6">
+
+    <div class="col-md-12 showing">
+      <div class="row">
+        <div class="col-md-12">
+          <h4>Showing <%= pluralize(@users.size, 'people') %> </h4>
+          <div class="col-md-3 row fr">
+            <select class="form-control">
+              <option value="">SORT BY</option>
+              <option value="1">General</option>
+              <option value="2">News</option>
+              <option value="3">Media</option>
+              <option value="4">Funny</option>
+            </select>
           </div>
-          <div class="age_fields">
-            <p>Age:</p>
-            <div class="span12">
-              <div class="span5">
-                <%= number_field_tag :min_age, "#{@min_age if @min_age.present?}", class: 'input-mini age', placeholder: 'from', min: 18, max: 100, name: 'search[min_age]' %>
-              </div>
-              <div class="span2"> to </div>
-              <div class="span5">
-                <%= number_field_tag :max_age, "#{@max_age if @max_age.present?}", class: 'input-mini age', placeholder: 'from', min: 18, max: 100, name: 'search[max_age]' %>
-              </div>
-            </div>
-          </div>
-          <div class="clearfix"></div>
-          <div class="search_head location">
-            Location
-          </div>
-          <div class="age_fields">
-            <div class="span12">
-              <div class="span6">
-                <label for="search[zipcode]">Zipcode:</label>
-                <%= text_field_tag :zipcode, "#{@zipcode if @zipcode.present?}", class: 'input-small zipcode', placeholder: 'zipcode', name: 'search[zipcode]' %>
-              </div>
-              <div class="span6">
-                <label for="search[distance]">Within:</label>
-                <%= number_field_tag :distance, "#{@distance if @distance.present?}", class: 'input-mini distance', placeholder: 'miles', min: 1, name: 'search[distance]' %>
-              </div>
-            </div>
-          </div>
-          <div class="clearfix"></div>
-          <div class="search_head location">
-            Education & Ethnicity
-          </div>
-          <div class="age_fields">
-            <div class="span12">
-              <label for="search[education_id]">Education:</label>
-              <%= select_tag 'education', options_from_collection_for_select(Education.all, "id", "name"), class: 'input-large', name: 'search[education_id]', :prompt => "Select Education Level" %>
-            </div>
-            <div class="span12">
-              <div class="element"></div>
-              <br />
-              <label for="search[ethnicity_id]">Ethnicity:</label>
-              <%= select_tag 'education', options_from_collection_for_select(Ethnicity.all, "id", "name"), class: 'input-large', name: 'search[ethnicity_id]', :prompt => "Select Ethnicity" %>
-            </div>
-            <div class="clearfix"></div>
-          </div>
-          <div class="element"></div>
-          <br />
-            <div class="search_head location">
-            Gender
-          </div>
-          <div class="age_fields">
-            <div class="span12">
-              <label for="search[gender]">Gender:</label>
-              <%= select_tag 'gender', options_for_select(User::GENDER.collect{|g| [g[1], g[0]]}), class: 'input-large', name: 'search[gender]', :prompt => "Select gender" %>
-               <div class="element"></div><br/>
-            </div>
-          </div>
-          <%= submit_tag 'Search', name: nil, class: 'btn'  %>
-        <% end %>
-      </div>
-    </div>
-    <div class="span9">
-      <div class="profile_list">
-        <div class="results"><h4><%= @users.size %> matching results</h4></div>
-        <div class="listing">
-          <%= render @users %>
         </div>
       </div>
     </div>
+    <%= render @users %>
   </div>
+  <%= render 'layouts/left_side' %>
 </div>
+
+<%= content_for :footer_js do %>
+<%= javascript_include_tag  %>
+<script type="text/javascript">
+  $("select").selectify();
+
+  $(function(){
+    $('#multiAccordion1').multiAccordion({
+      active: [1, 2],
+      click: function(event, ui) {
+  //console.log('clicked')
+  },
+  init: function(event, ui) {
+  //console.log('whoooooha')
+  },
+  tabShown: function(event, ui) {
+  //console.log('shown')
+  },
+  tabHidden: function(event, ui) {
+  //console.log('hidden')
+  }
+
+  });
+
+    $('#multiAccordion1').multiAccordion("option", "active", [0, 0]);
+  });
+
+  $(function(){
+    $('#multiAccordion2').multiAccordion({
+      active: [],
+      click: function(event, ui) {
+  //console.log('clicked')
+  },
+  init: function(event, ui) {
+  //console.log('whoooooha')
+  },
+  tabShown: function(event, ui) {
+  //console.log('shown')
+  },
+  tabHidden: function(event, ui) {
+  //console.log('hidden')
+  }
+
+  });
+
+    $('#multiAccordion2').multiAccordion("option", "active", [0, 3]);
+  });
+
+  $(function(){
+    $('#multiAccordion3').multiAccordion({
+      active: [],
+      click: function(event, ui) {
+  //console.log('clicked')
+  },
+  init: function(event, ui) {
+  //console.log('whoooooha')
+  },
+  tabShown: function(event, ui) {
+  //console.log('shown')
+  },
+  tabHidden: function(event, ui) {
+  //console.log('hidden')
+  }
+
+  });
+
+    $('#multiAccordion3').multiAccordion("option", "active", [0, 3]);
+  });
+  $(function(){
+    $('#multiAccordion4').multiAccordion({
+      active: [],
+      click: function(event, ui) {
+  //console.log('clicked')
+  },
+  init: function(event, ui) {
+  //console.log('whoooooha')
+  },
+  tabShown: function(event, ui) {
+  //console.log('shown')
+  },
+  tabHidden: function(event, ui) {
+  //console.log('hidden')
+  }
+
+  });
+
+    $('#multiAccordion4').multiAccordion("option", "active", [0, 3]);
+  });
+</script>
+<% end %>

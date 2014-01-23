@@ -16,7 +16,7 @@
         lng:      "#event_lng",
         street_number: '#street_number',
         route: '#route',
-        locality: '#locality',
+        locality: '#event_city',
         administrative_area_level_2: '#event_district',
         administrative_area_level_1: '#event_state',
         country:  '#event_country',
@@ -44,44 +44,224 @@
   </script>
 <% end %>
 
-<%= form_for @event do |f| %>
-  <h5>Event title:</h5>
-  <div><%= f.text_field :title, placeholder: "Event title", required: true %></div>
-  <h5>Location Address:</h5>
-  <div><%= f.text_field :location, placeholder: "Location Address", required: true, autocomplete: :off %></div>
-  <h5>Location Name:</h5>
-  <div><%= f.text_field :location_name, placeholder: "Location Name", required: true %></div>
-  <h5>Event date:</h5>
-  <div><%= f.text_field :date  %></div>
-  <h5>Event time:</h5>
-  <div><%= f.text_field :time  %></div>
-  <h5>Event description:</h5>
-  <div>
-    <%= f.text_area :description, placeholder: "Event description", class: 'span6 wysihtml5', rows: 10 %>
+
+
+<div class="col-md-12 showing-event">
+  <div class="row">
+    <div class="col-md-12">
+      <h4>Create an Event </h4>
+    </div>
   </div>
-  <h5>Event type</h5>
-  <div>
-    <%= f.radio_button :event_type, '1', :checked => true %>
-    <%= label :event_type_P, 'Private', value: '1' %>
-    <%= f.radio_button :event_type, '0' %>
-    <%= label :event_type_sms, 'Public', value: '0' %>
+</div>
+<div class="col-md-12 event_info">
+  <div class="row">
+    <div class="col-md-12 event_m border-none">
+      <%= form_for @event, html: {role: 'form'} do |f| %>
+        <div class="form-info">
+          <p class="creat-event-details">Event Details</p>
+          <div class="form-group">
+            <%= f.label :title, 'Event Title:' %>
+            <%= f.text_field :title, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <label for="Image"> Event Image:</label>
+            <input type="file" class="form-control">
+          </div>
+          <div class="form-group">
+            <%= f.label :location_name, 'Location Name:' %>
+            <%= f.text_field :location_name, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :location, 'Location Address:' %>
+            <%= f.text_field :location, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-4 col-xs-4">
+                <%= f.label :city, 'City:' %>
+                <%= f.text_field :city, class: 'form-control' %>
+              </div>
+              <div class="col-md-4 col-xs-4">
+                <%= f.label :state, 'State' %>
+                <%= f.text_field :state, class: 'form-control' %>
+              </div>
+              <div class="col-md-4 col-xs-4">
+                <%= f.label :postal_code, 'Zip:' %>
+                <%= f.text_field :postal_code, class: 'form-control' %>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-5 col-xs-5">
+                <%= f.label :date, 'Date' %>
+                <%= f.text_field :date, class: 'form-control', required: true %>
+              </div>
+              <div class="col-md-5 col-xs-5 fr">
+                <%= f.label :time, 'Time' %>
+                <%= f.text_field :time, class: 'form-control', required: true %>
+              </div>
+            </div>
+            <div class="clr"></div>
+          </div>
+          <span>
+            <%= f.hidden_field :lng %>
+            <%= f.hidden_field :lat %>
+            <%= f.hidden_field :country %>
+            <%= f.hidden_field :district %>
+          </span>
+
+          <div class="form-group">
+            <label for="Category">Category</label>
+            <select class="form-control">
+              <option>Category 1</option>
+              <option>Category 2</option>
+              <option>Category 3</option>
+              <option>Category 4</option>
+              <option>Category 5</option>
+              <option>Category 6</option>
+              <option>Category 7</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :description %>
+            <%= f.text_area :description, class: 'form-control', rows: 7 %>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-5 col-xs-5">
+                <label for="Date">Event Type :</label>
+                <div class="radio">
+                  <%= f.radio_button :event_type, '1', :checked => true %>
+                  <%= label :event_type_P, 'Private', value: '1' %>
+                </div>
+                <div class="radio">
+                  <%= f.radio_button :event_type, '0' %>
+                  <%= label :event_type_sms, 'Public', value: '0' %>
+                </div>
+              </div>
+              <div class="col-md-5 col-xs-5 fr">
+                <%= f.label :max_attendees, 'Maximum Attendees' %>
+                <%= f.text_field :max_attendees, class: 'form-control' %>
+              </div>
+            </div>
+            <div class="clr"></div>
+          </div>
+        </div>
+        <div class="form-info">
+          <p class="creat-event-details">Who can join/view this event</p>
+          <div class="form-group">
+            <div class="col-xs-3">
+              <p class="text-right">
+                <label for="Attendees">Age</label>
+              </p>
+            </div>
+            <div class="col-md-4 col-xs-4">
+              <select class="form-control">
+                <option>18-25</option>
+                <option>25-35</option>
+                <option>35-50</option>
+                <option>50-75</option>
+                <option>75-100</option>
+              </select>
+            </div>
+            <div class="clr"></div>
+          </div>
+          <div class="form-group">
+            <div class="col-xs-3">
+              <p class="text-right">
+                <label for="Attendees">Gender</label>
+              </p>
+            </div>
+            <div class="col-md-4 col-xs-4">
+              <select class="form-control">
+                <option>Male</option>
+                <option>Female</option>
+              </select>
+            </div>
+            <div class="clr"></div>
+          </div>
+          <div class="form-group">
+            <div class="col-xs-3">
+              <p class="text-right">
+                <label for="Attendees">Ethnicity</label>
+              </p>
+            </div>
+            <div class="col-md-6 col-xs-6">
+              <select class="form-control">
+                <option>American</option>
+                <option>American 1</option>
+                <option>American 2</option>
+                <option>American 3</option>
+              </select>
+            </div>
+            <div class="clr"></div>
+          </div>
+          <div class="form-group">
+            <div class="col-xs-3">
+              <p class="text-right">
+                <label for="Attendees">Interest</label>
+              </p>
+            </div>
+            <div class="col-md-6 col-xs-6">
+              <select class="form-control">
+                <option>Programming</option>
+                <option>Programming 1</option>
+                <option>Programming 2</option>
+                <option>Programming 3</option>
+                <option>Programming 4</option>
+              </select>
+            </div>
+            <div class="clr"></div>
+          </div>
+          <div class="form-group">
+            <div class="col-xs-3">
+              <p class="text-right">
+                <label for="Attendees">Occupation</label>
+              </p>
+            </div>
+            <div class="col-md-6 col-xs-6">
+              <select class="form-control">
+                <option>SOftware Engineer</option>
+                <option>SOftware Engineer 1</option>
+                <option>SOftware Engineer 2</option>
+                <option>SOftware Engineer 3</option>
+                <option>SOftware Engineer 4</option>
+              </select>
+            </div>
+            <div class="clr"></div>
+          </div>
+          <div class="form-group">
+            <div class="col-xs-3">
+              <p class="text-right">
+                <label for="Attendees">School</label>
+              </p>
+            </div>
+            <div class="col-md-6 col-xs-6">
+              <select class="form-control">
+                <option>MIT</option>
+                <option>MIT 1</option>
+                <option>MIT 2</option>
+                <option>MIT 3</option>
+                <option>MIT 4</option>
+              </select>
+            </div>
+            <div class="clr"></div>
+          </div>
+        </div>
+        <div class="col-md-12 text-center">
+          <div align="center">
+            <%= f.submit @event.new_record? ? "Submit event" : "Update event", class: 'btn btn-default btn-lg creat-event'  %>
+            <%= link_to 'Cancel', events_path, class: 'btn btn-default cencel-event' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <h5>Maximum attendees</h5>
-  <div><%= f.text_field :max_attendees %></div>
-  <div class="extra_attr">
-    <%= f.hidden_field :lng %>
-    <%= f.hidden_field :lat %>
-    <%= f.hidden_field :country %>
-    <%= f.hidden_field :postal_code %>
-    <%= f.hidden_field :state %>
-    <%= f.hidden_field :district %>
-  </div>
-  <br>
-  <div>
-    <%= f.submit @event.new_record? ? "Create event" : "Update event", class: 'btn'  %>
-    <%= link_to 'Cancel', events_path, class: 'btn' %>
-  </div><br />
-<% end %>
+</div>
+
 <script type="text/javascript">
   // if using turbolink
   $(document).on('page:load', function(){

@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140122142709) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20140123155129) do
 
   create_table "authorizations", force: true do |t|
     t.string   "provider"
@@ -95,6 +92,7 @@ ActiveRecord::Schema.define(version: 20140122142709) do
     t.string   "country"
     t.string   "state"
     t.string   "district"
+    t.string   "city"
   end
 
   add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree

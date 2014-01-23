@@ -1,0 +1,224 @@
+    /* Portrait tablet to landscape and desktop */
+    @media (min-width: 960px) and (max-width: 1200px) { 
+
+
+.panel-body > span {
+    margin-left: 8px;
+    margin-right: 4px;
+}
+
+.search_input {
+    margin-top: 8px;
+    padding-left: 10px;
+    width: 87%;
+}
+.setting {
+    background: none repeat scroll 0 0 #FD8A4F;
+    border: 1px solid #FEA87D;
+    border-radius: 4px;
+    color: #FFFFFF;
+    float: right;
+    margin: 7px 0 0;
+    padding: 0 8px;
+}
+.dropdown-toggle {
+    font-size: 12px;
+}
+.panel-title {
+    color: #414141;
+    display: inline-block;
+    font-family: 'ProximaNovaBold';
+    font-size: 14px;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.age > span {
+    margin-left: 8px;
+    margin-right: 6px !important;
+}
+
+.myaccount > a {
+    display: block;
+    float: left;
+    line-height: 48px;
+    margin-left: 0px !important;
+    width: 30px;
+}
+.img-thumbnail {
+    margin-right: 9px;
+    width: 20%;
+}
+.img-thumbnail img { width:100%; }
+.send-m {
+    background: url("../images/send-m.png") no-repeat scroll 12% center, linear-gradient(to bottom, #F88E21 0%, #F4871E 2%, #F4841E 5%, #F78222 10%, #F4821F 17%, #F68121 20%, #F37022 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.location > input {
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 57px;
+}
+.setting li.dropdown ul.dropdown-menu { left: -28px; }
+
+.gender > span {
+    margin-left: 8px;
+    margin-right: 5px;
+}
+.gender { margin-top: 15px; }
+
+.event-info ul li {
+    font-size: 14px;
+    line-height: 50px;
+}
+.reply-icon {
+    background: url("../images/message-icons.png") no-repeat scroll 4px -360px, linear-gradient(to bottom, #FCFCFC 0%, #FAFAFA 5%, #F2F2F2 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    padding-left: 27px;
+    padding-right: 7px;
+}
+.markas-icon {
+    background: url("../images/message-icons.png") no-repeat scroll 4px -396px, linear-gradient(to bottom, #FCFCFC 0%, #FAFAFA 5%, #F2F2F2 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    padding-left: 28px;
+    padding-right: 7px;
+}
+.delete-icon {
+    background: url("../images/message-icons.png") no-repeat scroll 5px -135px, linear-gradient(to bottom, #FCFCFC 0%, #FAFAFA 5%, #F2F2F2 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    padding-left: 28px;
+    padding-right: 7px;
+}
+.blocks-icon {
+    background: url("../images/message-icons.png") no-repeat scroll 5px -430px, linear-gradient(to bottom, #FCFCFC 0%, #FAFAFA 5%, #F2F2F2 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    margin-right: 7px;
+    padding-left: 29px;
+}
+.report-icon {
+    background: url("../images/message-icons.png") no-repeat scroll 5px -466px, linear-gradient(to bottom, #FCFCFC 0%, #FAFAFA 5%, #F2F2F2 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    padding-left: 27px;
+    padding-right: 7px;
+}
+.buttons-bg {
+    font-size: 13px;
+	margin-right:0px;
+}
+.m-text {
+    width: 68%;
+}
+
+ /*-----------------Setting------------*/
+ 
+.delet-b { padding-right: 47px; }
+
+.c-time{margin-top:8px;}
+.setting-details #tabs ul li {
+    margin: 1px 0.1em 0 1px;
+}
+.setting-details #tabs ul li a {
+    color: #444444;
+    font-size: 9px;
+    padding: 9px 1.22px;
+}
+.ui-tabs .ui-tabs-nav {
+    margin: 0;
+    padding: 6px 2px 0;
+}
+.setting-details #tabs ul li a {
+    color: #444444;
+    font-size: 9px;
+    padding: 9px 4px;
+}
+
+.selectify .header{margin-right:4px;}
+
+.selectify .focus{margin-left:18px !important;}
+.setting li.dropdown a span {
+
+    padding-left: 5px;
+    padding-right: 8px;
+}
+.event-about div img {
+    margin-right: 8px;
+    margin-top: 10px;
+}
+.host-by {padding-top: 8px; }
+     
+}
+
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 959px) { 
+
+.search_input {
+    width: 91.8% !important;
+}
+.age > span {
+    margin-left: 33px;
+    margin-right: 27px;
+}
+
+.ui-widget-content {
+    margin: 0 0 10px 0;
+}	
+	 }
+     
+    /* Landscape phone to portrait tablet */
+    @media (max-width: 767px) {
+	
+.setting {
+    background: none repeat scroll 0 0 #FD8A4F;
+    border: 1px solid #FEA87D;
+    border-radius: 4px;
+    color: #FFFFFF;
+    float: right;
+    margin: 7px 0 0;
+    padding: 0 9px;
+}
+.event-info ul li {
+    font-size: 14px;
+    line-height: 48px;
+}
+.m-text {
+    width: 68%;
+}
+	
+	}
+     
+   /* Landscape phones and down */
+ @media (max-width: 480px) {
+	 
+.panel-body > span {
+    color: #9B9B9B;
+    display: inline-block;
+    float: left;
+    font-family: 'ProximaNovaRegular';
+    font-size: 12px;
+    line-height: 34px;
+    margin-left: 8px;
+    margin-right: 30px;
+}
+.age > span {
+    color: #9B9B9B;
+    display: inline-block;
+    float: left;
+    font-family: 'ProximaNovaRegular';
+    font-size: 14px;
+    line-height: 34px;
+    margin-left: 18px;
+    margin-right: 24px;
+}
+
+.ui-widget-content { margin-bottom: 10px;}
+
+.event-image-m, .event-info{ width: 100%; }
+
+.event-info ul li {
+    font-size: 13px;
+    line-height: 55px;
+}
+.m-text {
+    width: 100%;
+}
+
+
+
+}
+
+
+
