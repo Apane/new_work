@@ -45,11 +45,8 @@ ddaccordion.init({
 
 </head>
 
-    <div class="container">
-      <div class="row">
         <%= render 'layouts/right_side' %>
-      </div>
-    </div>
+
 
         <div role="main" class="col-md-6">
             <div class="visitors-m">
@@ -72,12 +69,12 @@ ddaccordion.init({
 
               <div class="col-md-12 users_info visitors">
                   <div class="row">
-                    <% @event.event_participants.order('created_at desc').limit(5).map(&:user).each do |p| %>
+                    <#% @event.event_participants.order('created_at desc').limit(5).map(&:user).each do |p| %>
 
                     <div class="col-md-12">
                     <div class="img-thumbnail">
-                    <img class="" alt="image"><%= simple_user_avatar(p) %></img>
-                    <% end %>
+                    <img class="" alt="image"><%#= simple_user_avatar(p) %></img>
+                    <#% end %>
                     </div>
 
                     <div class="users_about_info">
