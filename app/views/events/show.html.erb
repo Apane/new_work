@@ -20,6 +20,112 @@
 </script>
 
 <div class="row">
+  <%= render 'layouts/right_side' %>
+
+  <div role="main" class="col-md-6">
+    <div class="col-md-12 showing-event">
+      <div class="row">
+        <div class="col-md-12">
+          <h2><%= @event.title %></h2>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 event-location">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="event-image-m">
+            <%= image_tag 'event_image.jpg' %>
+          </div>
+          <div class="event-info">
+            <ul>
+              <li><%= @event.location_name %>, <%= @event.city %></li>
+              <li><%= @event.date.strftime("%A, %B %d, %Y") %></li>
+              <li><%= @event.time %></li>
+            </ul>
+          </div>
+          <div class="clr"></div>
+          <div class="event-about-info">
+            <p>
+              <%= @event.description %>
+            </p>
+          </div>
+          <div class="clr"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="event-map">
+            <div style='width: 100%;'>
+              <div id="map" style='width: 100%; height: 250px;'></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="row">
+        <p class="comments-n"><%= pluralize(@event.comments.size, 'comment') %></p>
+        <div class="col-md-12 event-comment">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <div class="col-sm-2 col-xs-2">
+                <div class="c-user-imge">
+                  <img src="images/people_image.jpg" align="image">
+                </div>
+              </div>
+              <div class="col-sm-10 col-xs-10">
+                <p class="c-heading">Me</p>
+                <textarea class="form-control" rows="5"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default pull-right creat-event">Add Comment</button>
+              </div>
+            </div>
+          </form>
+          <%= form_for [@event, @event.comments.new], remote: true do |f| %>
+            <div><%= f.hidden_field :user_id, value: current_user.id %></div>
+            <div>
+              <%= f.text_area :body, rows: 5,  placeholder: "Leave a comment", class: 'comment-area'  %>
+              <div class="comment_errors"></div>
+            </div>
+            <%= f.submit "Post Comment", class: 'btn btn-primary pull-right' %>
+          <% end %>
+          <div class="row">
+            <div class="comments-details">
+              <div class="c-imge">
+                <img src="images/people_image.jpg" align="image">
+              </div>
+              <div class="c-about">
+                <p class="c-heading">Anthony Panepinto</p>
+                <p class="c-time-date pull-right">Jan 13, 2014 - 4:33pm</p>
+                <p class="c-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusan-tium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt expica-bo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+              </div>
+              <div class="clr"></div>
+            </div>
+            <div class="comments-details">
+              <div class="c-imge">
+                <img src="images/people_image.jpg" align="image">
+              </div>
+              <div class="c-about">
+                <p class="c-heading">Anthony Panepinto</p>
+                <p class="c-time-date pull-right">Jan 13, 2014 - 4:33pm</p>
+                <p class="c-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusan-tium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt expica-bo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+              </div>
+              <div class="clr"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= render 'events/event_right_side' %>
+</div>
+
+
+
+<div class="row">
   <div class="span3">
     <%#= render 'home/sidebar' %>
     <h5>Owner</h5>
@@ -67,7 +173,7 @@
 
     <div class="clearfix"></div>
     <div class="name"></div>
-    <%= form_for [@event, @comment], remote: true do |f| %>
+    <%= form_for [@event, @event.comments.new], remote: true do |f| %>
       <div><%= f.hidden_field :user_id, value: current_user.id %></div>
       <div>
         <%= f.text_area :body, rows: 5,  placeholder: "Leave a comment", class: 'comment-area'  %>

@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
   attr_accessible :title, :description, :location, :date, :time, :event_date, :lat, :lng,
-        :location_name, :event_type, :max_attendees, :postal_code, :country, :state, :district
+        :location_name, :event_type, :max_attendees, :postal_code, :country, :state, :district, :city
 
   acts_as_commentable
   has_many :comments, as: :commentable

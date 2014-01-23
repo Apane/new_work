@@ -31,7 +31,6 @@ class EventsController < ApplicationController
     if @event.present?
       @user = current_user
       @event = Event.find(params[:id])
-      @comment = @event.comments.new
       @participants = @event.participants
     else
       redirect_to events_path, error: 'Event not found'
