@@ -30,6 +30,7 @@ Friendiose::Application.routes.draw do
   get 'profiles' => "profiles#index"
   get 'sent' => 'messages#sent'
   get 'notifications' => 'notifications#index'
+  get 'visitors' => 'users#visitors'
 
   resources :users do
     resources :questions

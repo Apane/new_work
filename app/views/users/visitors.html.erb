@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+<link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <title>Friendiose</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/mystyle.css" rel="stylesheet">
+     <link href="css/mediaquery.css" rel="stylesheet">
+
+   <link rel="stylesheet" href="css/selectify.css" />
+
+<script type="text/javascript" src="js/dropdown.js"></script>
+<script type="text/javascript" src="js/ddaccordion.js"></script>
+<script type="text/javascript">
+
+
+ddaccordion.init({
+  headerclass: "expandable", //Shared CSS class name of headers group that are expandable
+  contentclass: "categoryitems", //Shared CSS class name of contents group
+  revealtype: "click", //Reveal content when user clicks or onmouseover the header? Valid value: "click", "clickgo", or "mouseover"
+  mouseoverdelay: 200, //if revealtype="mouseover", set delay in milliseconds before header expands onMouseover
+  collapseprev: true, //Collapse previous content (so only one open at any time)? true/false
+  defaultexpanded: [0], //index of content(s) open by default [index1, index2, etc]. [] denotes no content
+  onemustopen: false, //Specify whether at least one header should be open always (so never all headers closed)
+  animatedefault: false, //Should contents open by default be animated into view?
+  persiststate: true, //persist state of opened contents within browser session?
+  toggleclass: ["", "openheader"], //Two CSS classes to be applied to the header when it's collapsed and expanded, respectively ["class1", "class2"]
+  togglehtml: ["prefix", "", ""], //Additional HTML added to the header when it's collapsed and expanded, respectively  ["position", "html1", "html2"] (see docs)
+  animatespeed: "fast", //speed of animation: integer in milliseconds (ie: 200), or keywords "fast", "normal", or "slow"
+  oninit:function(headers, expandedindices){ //custom code to run when headers have initalized
+    //do nothing
+  },
+  onopenclose:function(header, index, state, isuseractivated){ //custom code to run whenever a header is opened or closed
+    //do nothing
+  }
+})
+
+
+</script>
+
+</head>
+
+
+        <div class="clr"></div>
+        </div>
+
+        </div>
+      </div>
+    </header>
+
+
+    <div class="container">
+      <div class="row">
+          <%= render 'layouts/right_side' %>
+          </div>
+        </div>
+
+        <div role="main" class="col-md-6">
+
+            <div class="visitors-m">
+              <div class="col-md-12 showing">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <h4>23 people visited your profile </h4>
+                        <div class="col-md-3 row fr">
+                        <select class="form-control">
+                              <option value="">SORT BY</option>
+                              <option value="1">General</option>
+                              <option value="2">News</option>
+                              <option value="3">Media</option>
+                              <option value="4">Funny</option>
+                       </select>
+                      </div>
+                    </div>
+                    </div>
+                </div>
+
+              <div class="col-md-12 users_info visitors">
+                  <div class="row">
+                    <div class="col-md-12">
+                    <div class="img-thumbnail">
+                    <img class="" src="images/people_image.jpg" alt="image">
+                    </div>
+
+                    <#% @event.event_participants.order('created_at desc').limit(5).map(&:user).each do |p| %>
+                    <#%= simple_user_avatar(p) %>
+                    <#% end %>
+
+                    <div class="users_about_info">
+                    <h4>Anthony Panepinto</h4>
+                    <p class="visit-time">22 minutes ago </p>
+                    </div>
+
+                    <div class="fr">
+                    <p>Toronto, canada</p>
+                    <p>22 years old</p>
+                    </div>
+
+                  <div class="clr"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-12 users_info visitors">
+                  <div class="row">
+                    <div class="col-md-12">
+                    <div class="img-thumbnail">
+                    <img class="" src="images/people_image.jpg" alt="image">
+                    </div>
+
+                    <div class="users_about_info">
+                    <h4>Anthony Panepinto</h4>
+                     <p class="visit-time">22 minutes ago </p>
+                    </div>
+
+                    <div class="fr">
+                    <p>Toronto, canada</p>
+                    <p>22 years old</p>
+                    </div>
+
+                  <div class="clr"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-12 users_info visitors">
+                  <div class="row">
+                    <div class="col-md-12">
+                    <div class="img-thumbnail">
+                    <img class="" src="images/people_image.jpg" alt="image">
+                    </div>
+
+                    <div class="users_about_info">
+                    <h4>Anthony Panepinto</h4>
+                     <p class="visit-time">22 minutes ago </p>
+                    </div>
+
+                    <div class="fr">
+                    <p>Toronto, canada</p>
+                    <p>22 years old</p>
+                    </div>
+
+                  <div class="clr"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-12 users_info visitors">
+                  <div class="row">
+                    <div class="col-md-12">
+                    <div class="img-thumbnail">
+                    <img class="" src="images/people_image.jpg" alt="image">
+                    </div>
+
+                    <div class="users_about_info">
+                    <h4>Anthony Panepinto</h4>
+                     <p class="visit-time">22 minutes ago </p>
+                    </div>
+
+                    <div class="fr">
+                    <p>Toronto, canada</p>
+                    <p>22 years old</p>
+                    </div>
+
+                  <div class="clr"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-12 users_info visitors">
+                  <div class="row">
+                    <div class="col-md-12">
+                    <div class="img-thumbnail">
+                    <img class="" src="images/people_image.jpg" alt="image">
+                    </div>
+
+                    <div class="users_about_info">
+                    <h4>Anthony Panepinto</h4>
+                     <p class="visit-time">22 minutes ago </p>
+                    </div>
+
+                    <div class="fr">
+                    <p>Toronto, canada</p>
+                    <p>22 years old</p>
+                    </div>
+
+                  <div class="clr"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-12 users_info visitors">
+                  <div class="row">
+                    <div class="col-md-12">
+                    <div class="img-thumbnail">
+                    <img class="" src="images/people_image.jpg" alt="image">
+                    </div>
+
+                    <div class="users_about_info">
+                    <h4>Anthony Panepinto</h4>
+                     <p class="visit-time">22 minutes ago </p>
+                    </div>
+
+                    <div class="fr">
+                    <p>Toronto, canada</p>
+                    <p>22 years old</p>
+                    </div>
+
+                  <div class="clr"></div>
+                    </div>
+                  </div>
+                </div>
+
+           </div>
+
+        </div>
+
+        <div class="col-md-3">
+          <div class="panel panel-default">
+            <div id="multiAccordion1">
+               <h3 class="panel-title panel-heading-text"><a href="#">Age</a></h3>
+                <div>
+              <div class="panel-body age">
+              <span>Form </span>
+              <select>
+                            <option value="18"> 18 </option>
+                            <option value="19"> 19 </option>
+                            <option value="20"> 20 </option>
+                            <option value="21"> 21 </option>
+                            <option value="22"> 22 </option>
+                            <option value="23"> 23 </option>
+                            <option value="24"> 24 </option>
+                            <option value="25"> 25 </option>
+                            <option value="26"> 26 </option>
+                            <option value="27"> 27 </option>
+                            <option value="28"> 28 </option>
+                            <option value="29"> 29 </option>
+                            <option value="30"> 30 </option>
+                          </select>
+              <span>To</span>
+              <select>
+                            <option value="18"> 22 </option>
+                            <option value="19"> 23 </option>
+                            <option value="20"> 24 </option>
+                            <option value="21"> 25 </option>
+                            <option value="22"> 26 </option>
+                            <option value="23"> 27 </option>
+                            <option value="24"> 28 </option>
+                            <option value="25"> 29 </option>
+                            <option value="26"> 30 </option>
+                            <option value="27"> 31 </option>
+                            <option value="28"> 32 </option>
+                            <option value="29"> 33 </option>
+                            <option value="30"> 34 </option>
+                          </select>
+              </div>
+            </div>
+
+
+            </div>
+
+            <div id="multiAccordion2">
+               <h3 class="panel-title panel-heading-text border-t"><a href="#">Gender</a></h3>
+                <div>
+              <div class="panel-body genders">
+              <span>Show Only</span>
+
+          <select class="select-style">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          </select>
+
+            </div>
+            </div>
+
+
+            </div>
+
+            <div id="multiAccordion3">
+               <h3 class="panel-title panel-heading-text border-t"><a href="#">Ethnicity</a></h3>
+                <div>
+              <div class="panel-body">
+            <div class="checkbox">
+        <input id="check1" type="checkbox" name="check" value="check1">
+        <label for="check1">Caucasian</label>
+        <br>
+        <input id="check2" type="checkbox" name="check" value="check2">
+        <label for="check2">African American/Black</label>
+            <br>
+        <input id="check3" type="checkbox" name="check" value="check3">
+        <label for="check3">Hispanic/Latino</label>
+            <br>
+        <input id="check4" type="checkbox" name="check" value="check4">
+        <label for="check4">Asian</label>
+            <br>
+        <input id="check5" type="checkbox" name="check" value="check5">
+        <label for="check5">Middle eastern</label>
+            <br>
+        <input id="check6" type="checkbox" name="check" value="check6">
+        <label for="check6">Pacific Islander</label>
+            <br>
+        <input id="check7" type="checkbox" name="check" value="check7">
+        <label for="check7">Native American</label>
+            <br>
+        <input id="check8" type="checkbox" name="check" value="check8">
+        <label for="check8"> Other</label>
+      </div>
+            </div>
+            </div>
+
+
+            </div>
+
+            <div id="multiAccordion4">
+               <h3 class="panel-title panel-heading-text border-t"><a href="#">Interest</a></h3>
+                <div>
+              <div class="panel-body">
+
+            <div class="checkbox">
+        <input id="check9" type="checkbox" name="check" value="check9">
+        <label for="check9">Interest 1</label>
+        <br>
+        <input id="check10" type="checkbox" name="check" value="check10">
+        <label for="check10">Interest 2</label>
+            <br>
+        <input id="check11" type="checkbox" name="check" value="check11">
+        <label for="check11">Interest 2</label>
+            <br>
+        <input id="check12" type="checkbox" name="check" value="check12">
+        <label for="check12">Interest 2</label>
+            <br>
+        <input id="check13" type="checkbox" name="check" value="check13">
+        <label for="check13">Interest 2</label>
+      </div>
+            </div>
+            </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+</div>
+
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+  <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+  <script type="text/javascript" src="js/jquery-selectify.js"></script>
+    <script type="text/javascript">
+        $("select").selectify();
+    </script>
+
+    <script type="text/javascript" src="js/jquery-1.4.3.min.js"></script>
+  <script type="text/javascript" src="js/jquery-ui-1.8.13.custom.min.js"></script>
+  <script type="text/javascript" src="js/jquery.multi-accordion-1.5.3.js"></script>
+    <script type="text/javascript">
+    $(function(){
+      $('#multiAccordion1').multiAccordion({
+        active: [1, 2],
+        click: function(event, ui) {
+          //console.log('clicked')
+        },
+        init: function(event, ui) {
+          //console.log('whoooooha')
+        },
+        tabShown: function(event, ui) {
+          //console.log('shown')
+        },
+        tabHidden: function(event, ui) {
+          //console.log('hidden')
+        }
+
+      });
+
+      $('#multiAccordion1').multiAccordion("option", "active", [0, 0]);
+    });
+
+        $(function(){
+      $('#multiAccordion2').multiAccordion({
+        active: [],
+        click: function(event, ui) {
+          //console.log('clicked')
+        },
+        init: function(event, ui) {
+          //console.log('whoooooha')
+        },
+        tabShown: function(event, ui) {
+          //console.log('shown')
+        },
+        tabHidden: function(event, ui) {
+          //console.log('hidden')
+        }
+
+      });
+
+      $('#multiAccordion2').multiAccordion("option", "active", [0, 3]);
+    });
+
+      $(function(){
+      $('#multiAccordion3').multiAccordion({
+        active: [],
+        click: function(event, ui) {
+          //console.log('clicked')
+        },
+        init: function(event, ui) {
+          //console.log('whoooooha')
+        },
+        tabShown: function(event, ui) {
+          //console.log('shown')
+        },
+        tabHidden: function(event, ui) {
+          //console.log('hidden')
+        }
+
+      });
+
+      $('#multiAccordion3').multiAccordion("option", "active", [0, 3]);
+    });
+      $(function(){
+      $('#multiAccordion4').multiAccordion({
+        active: [],
+        click: function(event, ui) {
+          //console.log('clicked')
+        },
+        init: function(event, ui) {
+          //console.log('whoooooha')
+        },
+        tabShown: function(event, ui) {
+          //console.log('shown')
+        },
+        tabHidden: function(event, ui) {
+          //console.log('hidden')
+        }
+
+      });
+
+      $('#multiAccordion4').multiAccordion("option", "active", [0, 3]);
+    });
+  </script>
+
+
+
+</body>
+
+
+</html>

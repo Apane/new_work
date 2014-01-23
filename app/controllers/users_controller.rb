@@ -41,6 +41,16 @@ class UsersController < ApplicationController
     redirect_to :back
   end
 
+  def visitors
+    @event = Event.where(id: params[:id]).first
+    if @event.present?
+      @user = current_user
+      @event = Event.find(params[:id])
+      @comment = @event.comments.new
+      @participants = @event.participants
+  end
+end
+
  private
     # Using a private method to encapsulate the permissible parameters
     # is just a good pattern since you'll be able to reuse the same
