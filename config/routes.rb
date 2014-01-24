@@ -31,6 +31,11 @@ Friendiose::Application.routes.draw do
   get 'sent' => 'messages#sent'
   get 'notifications' => 'notifications#index'
   get 'visitors' => 'users#visitors'
+  get 'expand_your_social_circle' => 'seo#expand_your_social_circle'
+  get 'find_new_friends' => 'seo#find_new_friends'
+  get 'meet_new_people' => 'seo#meet_new_people'
+
+
 
   resources :users do
     resources :questions
