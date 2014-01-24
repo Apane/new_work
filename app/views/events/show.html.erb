@@ -66,55 +66,33 @@
       <div class="row">
         <p class="comments-n"><%= pluralize(@event.comments.size, 'comment') %></p>
         <div class="col-md-12 event-comment">
-          <form class="form-horizontal" role="form">
+          <%= form_for [@event, @event.comments.new], html: {class: 'form-horizontal', role: 'form'}, remote: true do |f| %>
+            <div><%= f.hidden_field :user_id, value: current_user.id %></div>
             <div class="form-group">
               <div class="col-sm-2 col-xs-2">
                 <div class="c-user-imge">
-                  <img src="images/people_image.jpg" align="image">
+                  <% if @user.profile_image.present? %>
+                    <%= image_tag(@user.profile_image_url(:thumb), size: '35x35') %>
+                  <% else %>
+                    <%= image_tag("people_image.jpg") %>
+                  <% end %>
                 </div>
               </div>
               <div class="col-sm-10 col-xs-10">
                 <p class="c-heading">Me</p>
-                <textarea class="form-control" rows="5"></textarea>
+                <%= f.text_area :body, rows: 5,  placeholder: "Leave a comment", class: 'form-control'  %>
               </div>
+              <div class="comment_errors"></div>
             </div>
             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-default pull-right creat-event">Add Comment</button>
+                <%= f.submit "Add Comment", class: 'btn btn-default pull-right creat-event' %>
               </div>
             </div>
-          </form>
-          <%= form_for [@event, @event.comments.new], remote: true do |f| %>
-            <div><%= f.hidden_field :user_id, value: current_user.id %></div>
-            <div>
-              <%= f.text_area :body, rows: 5,  placeholder: "Leave a comment", class: 'comment-area'  %>
-              <div class="comment_errors"></div>
-            </div>
-            <%= f.submit "Post Comment", class: 'btn btn-primary pull-right' %>
           <% end %>
-          <div class="row">
-            <div class="comments-details">
-              <div class="c-imge">
-                <img src="images/people_image.jpg" align="image">
-              </div>
-              <div class="c-about">
-                <p class="c-heading">Anthony Panepinto</p>
-                <p class="c-time-date pull-right">Jan 13, 2014 - 4:33pm</p>
-                <p class="c-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusan-tium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt expica-bo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-              </div>
-              <div class="clr"></div>
-            </div>
-            <div class="comments-details">
-              <div class="c-imge">
-                <img src="images/people_image.jpg" align="image">
-              </div>
-              <div class="c-about">
-                <p class="c-heading">Anthony Panepinto</p>
-                <p class="c-time-date pull-right">Jan 13, 2014 - 4:33pm</p>
-                <p class="c-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusan-tium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt expica-bo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-              </div>
-              <div class="clr"></div>
-            </div>
+
+          <div class="row comments" id="comments">
+            <%= render @event.root_comments %>
           </div>
         </div>
       </div>
@@ -122,91 +100,3 @@
   </div>
   <%= render 'events/event_right_side' %>
 </div>
-
-
-
-<div class="row">
-  <div class="span3">
-    <%#= render 'home/sidebar' %>
-    <h5>Owner</h5>
-    <%= simple_user_avatar(@event.user) %>
-    <hr>
-    <h5>Interesting people</h5>
-     <% @interesting_people.each do |person| %>
-       <% if person.first_name.present? %>
-       <%= simple_user_avatar(person) %>
-      <% end %>
-    <% end %>
-    <hr>
-    <h5>Recently visited</h5>
-    <% @event.event_participants.order('created_at desc').limit(5).map(&:user).each do |p| %>
-    <%= simple_user_avatar(p) %>
-    <% end %>
-  </div>
-  <div class="span6">
-    <h4>
-      <%= @event.title %>
-    </h4>
-    <div style='width: 100%;'>
-      <div id="map" style='width: 100%; height: 250px;'></div>
-    </div>
-    <div class="events_list">
-      <h5><i class="fa fa-calendar-o"></i> <%= @event.date.strftime("%A, %B %d, %Y") %></h5>
-      <h5><i class="fa fa-clock-o"></i> <%= @event.time %></h5>
-      <h5><i class="fa fa-map-marker"></i> <%= @event.location %></h5>
-    </div>
-    <p>
-      <%= simple_format(sanitize(@event.description)) %>
-    </p>
-    <div class="name"></div>
-    <br />
-    <medium><strong align-"center"><%= pluralize(@participants.size.to_s, 'person') %> attending this event</strong></medium> <br /><br />
-    <div class="event_participants">
-      <% @event.participants.each do |p| %>
-        <div class="event_particpant participant_<%= p.id %>">
-          <%= simple_user_avatar(p) %>
-          <p><%= p.name %></p>
-          <div><%= "You" if @event.owner_is?(p) %></div>
-        </div>
-      <% end %>
-    </div>
-
-    <div class="clearfix"></div>
-    <div class="name"></div>
-    <%= form_for [@event, @event.comments.new], remote: true do |f| %>
-      <div><%= f.hidden_field :user_id, value: current_user.id %></div>
-      <div>
-        <%= f.text_area :body, rows: 5,  placeholder: "Leave a comment", class: 'comment-area'  %>
-        <div class="comment_errors"></div>
-      </div>
-      <%= f.submit "Post Comment", class: 'btn btn-primary pull-right' %>
-    <% end %>
-    <div id="comments">
-      <%= render @event.root_comments %>
-    </div>
-  </div>
-  <div class="span3">
-    <div class="attend_button">
-      <%= attend_to_event(@event) %>
-      <div class="clearfix"></div>
-    </div>
-    <% if @event.owner_is?(current_user) %>
-      <p>
-        <%= link_to 'Edit event', edit_event_path(@event), class: 'btn' %>
-      </p>
-      <p>
-        <%= link_to 'Close Event', event_path(@event), class: 'btn btn-danger',  method: :delete, data: {confirm: 'Are you sure?'} %>
-      </p>
-    <% end %>
-  </div>
-</div>
-<%#= render 'shared/footer' %>
-
-<script type="text/javascript">
-$('.add_event').click(function(event) {
-  $('.new_event_form').css('display', 'block');
-});
-$('.cancel_event').click(function(event) {
-  $('.new_event_form').css('display', 'none');
-});
-</script>

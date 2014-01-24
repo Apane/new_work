@@ -1,5 +1,10 @@
-<!-- DO NOT REMOVE used in ajax action -->
-<div class="event_particpant participant_<%= @participant.id %>">
-  <%= simple_user_avatar(@participant) %>
-  <p><%= @participant.name %></p>
+<div class="row attending-peoples participant_<%= @participant.id %>">
+  <div class="col-xs-12">
+    <div class="attending-peoples-image">
+
+      <%= image_tag 'people_image.jpg' %>
+    </div>
+    <p><%= @participant.name %></p>
+    <div class="clr"></div>
+  </div>
 </div>

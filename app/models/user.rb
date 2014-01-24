@@ -24,6 +24,9 @@ class User < ActiveRecord::Base
   has_many :attended_events, through: :event_participants, source: :event
   has_many :notifications
   has_many :new_notifications, -> { where is_opened: false }, class_name: 'Notification'
+  has_many :visits, dependent: :destroy
+  has_many :visitors, through: :visits
+  has_many :recent_visitors, through: :visits, source: :visitor, conditions: [ "visits.visited_at > ?", 1.month.ago ]
 
   accepts_nested_attributes_for :photos
   mount_uploader :profile_image, ProfileImageUploader

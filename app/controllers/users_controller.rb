@@ -42,14 +42,8 @@ class UsersController < ApplicationController
   end
 
   def visitors
-    @event = Event.where(id: params[:id]).first
-    if @event.present?
-      @user = current_user
-      @event = Event.find(params[:id])
-      @comment = @event.comments.new
-      @participants = @event.participants
+    @visitors = current_user.recent_visitors
   end
-end
 
  private
     # Using a private method to encapsulate the permissible parameters

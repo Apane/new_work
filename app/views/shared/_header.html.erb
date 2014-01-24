@@ -29,7 +29,10 @@
 
       <% if user_signed_in? %>
       <div class="col-md-3 myaccount">
-        <%= link_to image_tag('w_icon.png'), notifications_path %>
+        <%= link_to notifications_path, class: 'notes_area' do %>
+          <%= image_tag('w_icon.png') %>
+          <span class="notes_count"><%= current_user.new_notifications.size if current_user.new_notifications.any? %></span>
+        <% end %>
         <%= link_to image_tag('inbox_icon.png'), messages_path %>
         <ul class="setting">
           <li class="dropdown">

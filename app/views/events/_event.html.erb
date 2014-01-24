@@ -10,7 +10,11 @@
       <p class="date"><%= event.date.strftime("%A, %B %d, %Y") %></p>
       <p class="c-time"><%= event.time %></p>
       <div>
+        <% if event.user.profile_image_url.present? %>
         <%= image_tag event.user.profile_image_url(:thumb), size:'30x30' %>
+        <% else %>
+        <%= image_tag 'people_image.jpg' %>
+        <% end %>
         <p class="host-by">Hosted by :</p>
         <p class="host-by-name"><%= event.user.name %></p>
       </div>

@@ -33,11 +33,11 @@
 
   channel.bind('new_notification', function(data) {
     // if (data.user_id != <%= current_user.id %>) {
-      if ($('.new_notifications span.badge').length > 0) {
-        number = parseInt($('.new_notifications span.badge').html())+1;
-        $('.new_notifications span.badge').html(number);
+      if ($('.notes_area span.notes_count').html() > 0) {
+        number = parseInt($('.notes_area span.notes_count').html())+1;
+        $('.notes_area span.notes_count').html(number);
       } else{
-        $('.new_notifications').html('<span class="badge badge-important">1</span>');
+        $('.notes_area span.notes_count').html('1');
       };
     // };
   });

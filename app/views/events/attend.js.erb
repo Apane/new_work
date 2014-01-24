@@ -1,4 +1,4 @@
 $('.event_participants').append("<%= j(render 'participant') %>");
 $('.attend_button').html("<%= j(button_to 'Stop attending this event', stop_attend_event_path(@event), method: :delete, remote: true,
             confirm: 'Are you sure you want to stop attending this event?',
-            class: 'btn btn-warning') %> <div class='clearfix'></div>");
+            class: 'btn btn-primary btn-lg btn-block creat-event margin-b') %> <div class='clearfix'></div>");

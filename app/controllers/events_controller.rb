@@ -30,7 +30,8 @@ class EventsController < ApplicationController
     @event = Event.where(id: params[:id]).first
     if @event.present?
       @user = current_user
-      @event = Event.find(params[:id])
+      # @event = Event.find(params[:id])
+      @owner = @event.user
       @participants = @event.participants
     else
       redirect_to events_path, error: 'Event not found'

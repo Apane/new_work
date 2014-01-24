@@ -23,7 +23,9 @@
       </ul>
 
       <li class=""><a href="#">Favorites</a></li>
-      <li class=""><%= link_to 'Visitors', visitors_path %></li>
+      <li class="<%= 'active' if controller_name == 'users' && action_name == 'visitors' %>">
+        <%= link_to 'Visitors', visitors_path %>
+      </li>
     </ul>
   </div>
 </div>

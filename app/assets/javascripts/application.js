@@ -32,5 +32,6 @@
 //= require best_in_place
 //= require bootstrap-wysihtml5
 //= require jquery.autoSave
+//= require rails-timeago
 
 $.pnotify.defaults.history = false
