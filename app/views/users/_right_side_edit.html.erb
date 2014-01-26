@@ -1,0 +1,73 @@
+<div class="col-md-3">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Age </h3>
+      <span class="edit-icon pull-right"></span>
+    </div>
+    <div class="panel-body">
+      22
+    </div>
+    <div class="panel-heading">
+      <h3 class="panel-title">Gender</h3>
+      <span class="edit-icon pull-right"></span>
+    </div>
+    <div class="panel-body">
+      Male
+    </div>
+    <div class="panel-heading">
+      <h3 class="panel-title">Occupation</h3>
+      <span class="edit-icon pull-right"></span>
+    </div>
+    <div class="panel-body">
+      I am empty....
+    </div>
+    <div class="panel-heading">
+      <h3 class="panel-title">Address</h3>
+      <span class="edit-icon pull-right"></span>
+    </div>
+    <div class="panel-body">
+      I am empty....
+    </div>
+    <div class="panel-heading">
+      <h3 class="panel-title">Ethnicity</h3>
+      <span class="edit-icon pull-right"></span>
+    </div>
+    <div class="panel-body">
+      I am empty....
+    </div>
+    <div class="panel-heading">
+      <h3 class="panel-title">Education</h3>
+      <span class="edit-icon pull-right"></span>
+    </div>
+    <div class="panel-body">
+      I am empty....
+    </div>
+  </div>
+  <div class="col-md-12 events">
+    <div class="row">
+      <p class="heading-text">Events <span>(<%= current_user.events.size %>)</span></p>
+      <% event = current_user.events.last %>
+      <div class="event-img">
+        <%= image_tag 'event_image.jpg' %>
+      </div>
+      <div class="event-about">
+        <h3><%= event.title %></h3>
+        <p class="place-map"><%= event.location_name %>, <%= event.city %></p>
+        <p class="date"><%= event.date.strftime("%A, %B %d, %Y") %></p>
+        <p class="c-time"><%= event.time %></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12 events">
+    <div class="row">
+      <p class="heading-text">Activities <span>(1)</span></p>
+      <div class="event-img">
+        <%= image_tag 'event_image.jpg' %>
+      </div>
+      <div class="event-about">
+        <h3>Bodybuilding Tips &amp; Drinks!</h3>
+        <p class="place-map">Spaggos italian Cuisine, Los Angeles</p>
+      </div>
+    </div>
+  </div>
+</div>

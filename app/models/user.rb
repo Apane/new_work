@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   include PgSearch
 
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :confirmable, :lockable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
          :omniauth_providers => [:facebook, :twitter, :linkedin]
 

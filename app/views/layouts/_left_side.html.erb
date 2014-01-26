@@ -1,183 +1,32 @@
 <div class="col-md-3">
-  <%= form_tag profiles_path, class: 'form-inline advanced_search', method: :get do %>
-    <div class="panel panel-default">
-      <div id="multiAccordion1">
-        <h3 class="panel-title panel-heading-text"><a href="#">Age</a></h3>
-        <div>
-          <div class="panel-body age">
-            <span>Form </span>
-            <select>
-              <option value="18"> 18 </option>
-              <option value="19"> 19 </option>
-              <option value="20"> 20 </option>
-              <option value="21"> 21 </option>
-              <option value="22"> 22 </option>
-              <option value="23"> 23 </option>
-              <option value="24"> 24 </option>
-              <option value="25"> 25 </option>
-              <option value="26"> 26 </option>
-              <option value="27"> 27 </option>
-              <option value="28"> 28 </option>
-              <option value="29"> 29 </option>
-              <option value="30"> 30 </option>
-            </select>
-            <span>To</span>
-            <select>
-              <option value="18"> 22 </option>
-              <option value="19"> 23 </option>
-              <option value="20"> 24 </option>
-              <option value="21"> 25 </option>
-              <option value="22"> 26 </option>
-              <option value="23"> 27 </option>
-              <option value="24"> 28 </option>
-              <option value="25"> 29 </option>
-              <option value="26"> 30 </option>
-              <option value="27"> 31 </option>
-              <option value="28"> 32 </option>
-              <option value="29"> 33 </option>
-              <option value="30"> 34 </option>
-            </select>
-          </div>
-        </div>
-      </div>
+  <div role="complementary" class="bs-sidebar hidden-print affix-top" style="">
+    <ul class="nav bs-sidenav">
+      <li class="<%= 'active' if controller_name == 'profiles' %>">
+        <%= link_to 'Browse', profiles_path %>
+      </li>
+      <li class="<%= 'active' if controller_name == 'events' %>">
+        <%= link_to 'Events', events_path %>
+      </li>
+      <li class=""><a href="#">Activities </a></li>
 
-      <div id="multiAccordion2">
-        <h3 class="panel-title panel-heading-text border-t"><a href="#">Gender</a></h3>
-        <div>
-          <div class="panel-body genders">
-            <span>Show Only</span>
+      <li class="menuheader expandable"><a href="#" >Messaging</a> </li>
+      <ul class="categoryitems">
+        <li class="<%= 'active' if controller_name == 'messages' && action_name == 'index' %>">
+          <%= link_to messages_path do %>
+            Inbox <span class="t-inbox"><%= current_user.new_messages.size %></span>
+          <% end %>
+        <li class="">
+          <%= link_to 'Outbox', sent_path %>
+        </li>
+        <!-- <li class=""><a href="#">Drafts</a></li> -->
+        <!-- <li class=""><a href="#">Deleted</a></li> -->
+      </ul>
 
-            <select class="select-style">
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-            </select>
-
-          </div>
-        </div>
-      </div>
-
-      <div id="multiAccordion3">
-        <h3 class="panel-title panel-heading-text border-t"><a href="#">Ethnicity</a></h3>
-        <div>
-          <div class="panel-body">
-            <div class="checkbox">
-              <input id="check1" type="checkbox" name="check" value="check1">
-              <label for="check1">Caucasian</label>
-              <br>
-              <input id="check2" type="checkbox" name="check" value="check2">
-              <label for="check2">African American/Black</label>
-              <br>
-              <input id="check3" type="checkbox" name="check" value="check3">
-              <label for="check3">Hispanic/Latino</label>
-              <br>
-              <input id="check4" type="checkbox" name="check" value="check4">
-              <label for="check4">Asian</label>
-              <br>
-              <input id="check5" type="checkbox" name="check" value="check5">
-              <label for="check5">Middle eastern</label>
-              <br>
-              <input id="check6" type="checkbox" name="check" value="check6">
-              <label for="check6">Pacific Islander</label>
-              <br>
-              <input id="check7" type="checkbox" name="check" value="check7">
-              <label for="check7">Native American</label>
-              <br>
-              <input id="check8" type="checkbox" name="check" value="check8">
-              <label for="check8"> Other</label>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div id="multiAccordion4">
-        <h3 class="panel-title panel-heading-text border-t"><a href="#">Interest</a></h3>
-        <div>
-          <div class="panel-body">
-
-            <div class="checkbox">
-              <input id="check9" type="checkbox" name="check" value="check9">
-              <label for="check9">Interest 1</label>
-              <br>
-              <input id="check10" type="checkbox" name="check" value="check10">
-              <label for="check10">Interest 2</label>
-              <br>
-              <input id="check11" type="checkbox" name="check" value="check11">
-              <label for="check11">Interest 2</label>
-              <br>
-              <input id="check12" type="checkbox" name="check" value="check12">
-              <label for="check12">Interest 2</label>
-              <br>
-              <input id="check13" type="checkbox" name="check" value="check13">
-              <label for="check13">Interest 2</label>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  <% end %>
+      <li class=""><a href="#">Favorites</a></li>
+      <li class="<%= 'active' if controller_name == 'users' && action_name == 'visitors' %>">
+        <%= link_to 'Visitors', visitors_path %>
+      </li>
+    </ul>
+  </div>
+  <%= render 'users/verifications' %>
 </div>
-
-<!--         <%= form_tag profiles_path, class: 'form-inline advanced_search', method: :get do %>
-          <%= hidden_field_tag :terms, "#{@terms if @terms.present?}", name: 'search[terms]' %>
-          <div class="search_head top">
-            Search
-          </div>
-          <div class="age_fields">
-            <p>Age:</p>
-            <div class="span12">
-              <div class="span5">
-                <%= number_field_tag :min_age, "#{@min_age if @min_age.present?}", class: 'input-mini age', placeholder: 'from', min: 18, max: 100, name: 'search[min_age]' %>
-              </div>
-              <div class="span2"> to </div>
-              <div class="span5">
-                <%= number_field_tag :max_age, "#{@max_age if @max_age.present?}", class: 'input-mini age', placeholder: 'from', min: 18, max: 100, name: 'search[max_age]' %>
-              </div>
-            </div>
-          </div>
-          <div class="clearfix"></div>
-          <div class="search_head location">
-            Location
-          </div>
-          <div class="age_fields">
-            <div class="span12">
-              <div class="span6">
-                <label for="search[zipcode]">Zipcode:</label>
-                <%= text_field_tag :zipcode, "#{@zipcode if @zipcode.present?}", class: 'input-small zipcode', placeholder: 'zipcode', name: 'search[zipcode]' %>
-              </div>
-              <div class="span6">
-                <label for="search[distance]">Within:</label>
-                <%= number_field_tag :distance, "#{@distance if @distance.present?}", class: 'input-mini distance', placeholder: 'miles', min: 1, name: 'search[distance]' %>
-              </div>
-            </div>
-          </div>
-          <div class="clearfix"></div>
-          <div class="search_head location">
-            Education & Ethnicity
-          </div>
-          <div class="age_fields">
-            <div class="span12">
-              <label for="search[education_id]">Education:</label>
-              <%= select_tag 'education', options_from_collection_for_select(Education.all, "id", "name"), class: 'input-large', name: 'search[education_id]', :prompt => "Select Education Level" %>
-            </div>
-            <div class="span12">
-              <div class="element"></div>
-              <br />
-              <label for="search[ethnicity_id]">Ethnicity:</label>
-              <%= select_tag 'education', options_from_collection_for_select(Ethnicity.all, "id", "name"), class: 'input-large', name: 'search[ethnicity_id]', :prompt => "Select Ethnicity" %>
-            </div>
-            <div class="clearfix"></div>
-          </div>
-          <div class="element"></div>
-          <br />
-            <div class="search_head location">
-            Gender
-          </div>
-          <div class="age_fields">
-            <div class="span12">
-              <label for="search[gender]">Gender:</label>
-              <%= select_tag 'gender', options_for_select(User::GENDER.collect{|g| [g[1], g[0]]}), class: 'input-large', name: 'search[gender]', :prompt => "Select gender" %>
-               <div class="element"></div><br/>
-            </div>
-          </div>
-          <%= submit_tag 'Search', name: nil, class: 'btn'  %>
-        <% end %> -->
