@@ -9,7 +9,7 @@ module EventsHelper
 
   def attend_to_event(event)
     # use event.max_attendees + 1 as user who created event is a participant too
-    if event.is_private?
+    if event.is_private? && event.user != current_user
       'This is private event. You need an invitation to attend to this event.'
     else
       max_attendees = event.max_attendees.present? ? (event.max_attendees + 1) : 100
