@@ -16,24 +16,9 @@
           <span class="verified">Verified</span>
         </div>
       </a>
-      <a href="#">
-        <div class="verified-m facebook-verified row">
-          <p>Facebook</p>
-          <span class="un-verified">Click to verify</span>
-        </div>
-      </a>
-      <a href="#">
-        <div class="verified-m linkedin-verified row">
-          <p>Linkedin</p>
-          <span class="un-verified">Click to verify</span>
-        </div>
-      </a>
-      <a href="#">
-        <div class="verified-m twitter-verified row">
-          <p>Twitter</p>
-          <span class="un-verified">Click to verify</span>
-        </div>
-      </a>
+      <%= check_connection('Facebook')%>
+      <%= check_connection('LinkedIn')%>
+      <%= check_connection('Twitter')%>
     </div>
   </div>
 </div>
