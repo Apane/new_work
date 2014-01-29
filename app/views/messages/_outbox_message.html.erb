@@ -1,13 +1,16 @@
-<%= link_to message_path(messages.last.conversation), class: 'message_link' do %>
-<div class="message">
-  <div class="media">
-    <div class="pull-left"><%= avatar(messages.last.sender) %></div>
-    <div class="media-body">
-      <h6 class="media-heading"><%= messages.last.sender.name %></h6>
+<li class="<%= messages.last.new? ? 'unread' : 'read' %>">
+  <div class="checkbox">
+    <input type="checkbox" value="check<%= messages.last.id %>" name="check" id="check<%= messages.last.id %>">
+    <label for="check<%= messages.last.id %>"></label>
+  </div>
+  <%= link_to message_path(messages.last.conversation) do %>
+    <div class="m-image"><%= avatar(messages.last.sender) %></div>
+    <div class="m-text">
+      <p class="m-name"><%= messages.last.sender.name %></p>
+      <span class="pull-right"><span class="reply-m"></span><%= time_ago_in_words(messages.last.created_at) %></span>
       <p><%= sanitize(messages.last.body.truncate(100, omision: "...")) %></p>
     </div>
-    <small class="time pull-right"><%= time_ago_in_words(messages.last.created_at) %> ago</small>
-  </div>
-</div>
-<% end %>
-<hr>
+    <%#= link_to 'Delete', conversation_path(messages.last.conversation),  method: :delete, data: {confirm: 'Are you sure?'} %>
+  <% end %>
+  <div class="clr"></div>
+</li>

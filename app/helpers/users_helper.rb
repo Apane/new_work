@@ -59,7 +59,7 @@ module UsersHelper
       end
     else
       link_to user_omniauth_authorize_path(provider: provider.downcase) do
-        content_tag :div, class: "verified-m phone-verified row" do
+        content_tag :div, class: "verified-m #{provider.downcase}-verified row" do
           (content_tag :p, provider) +
           (content_tag :span, 'Click to verify', class: "un-verified")
         end

@@ -4,8 +4,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/edit
   def edit
     @user = current_user
-    @questions_for_about = @user.questions.for_about.order('id asc')
-    @questions_for_personality = @user.questions.for_personality.order('id asc')
+
     render :edit
   end
 

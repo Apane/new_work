@@ -1,3 +1,24 @@
 <center>
   <h3>Working on it</h3>
 </center>
+
+<div class="row">
+  <%= render 'layouts/left_side' %>
+  <div role="main" class="col-md-6">
+    <div class="message-info">
+      <button type="button" class="btn btn-primary buttons-bg delete-icon"> Delete</button>
+      <div class="col-md-12 inbox-messages">
+        <div class="row">
+          <div class="col-md-12 inbox-m">
+            <h4><%= current_user.new_notifications.size %> new notifications</h4>
+          </div>
+
+          <ul>
+            <%= render current_user.new_notifications %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>

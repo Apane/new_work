@@ -3,7 +3,6 @@
     <input type="checkbox" value="check<%= messages.last.id %>" name="check" id="check<%= messages.last.id %>">
     <label for="check<%= messages.last.id %>"></label>
   </div>
-  <a href="messages-02.html">
   <%= link_to message_path(messages.last.conversation) do %>
     <div class="m-image"><%= avatar(messages.last.sender) %></div>
     <div class="m-text">

@@ -36,3 +36,6 @@
 .bootstrap-timepicker-widget.dropdown-menu{
   background: #fff;
 }
+.edit-icon{
+  cursor: pointer;
+}

@@ -2,24 +2,36 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title">Age </h3>
-      <span class="edit-icon pull-right"></span>
+      <span class="edit-icon pull-right edit-age"></span>
     </div>
     <div class="panel-body">
-      22
+      <div>
+        <%= best_in_place current_user, :birthday, {activator: ".edit-age",
+            nil: 'I am empty...', inner_class: 'form-control', type: :date} %>
+      </div>
     </div>
     <div class="panel-heading">
       <h3 class="panel-title">Gender</h3>
-      <span class="edit-icon pull-right"></span>
+      <span class="edit-icon pull-right edit-gender"></span>
     </div>
     <div class="panel-body">
-      Male
+      <div>
+        <%= best_in_place current_user, :education_id, type: :select,
+            collection: User::GENDER.to_a,
+            activator: ".edit-gender",
+            nil: 'I am empty...',
+            inner_class: 'form-control' %>
+      </div>
     </div>
     <div class="panel-heading">
       <h3 class="panel-title">Occupation</h3>
-      <span class="edit-icon pull-right"></span>
+      <span class="edit-icon pull-right edit-occupation"></span>
     </div>
     <div class="panel-body">
-      I am empty....
+      <div>
+        <%= best_in_place current_user, :occupation, activator: ".edit-occupation",
+            nil: 'I am empty...', inner_class: 'form-control' %>
+      </div>
     </div>
     <div class="panel-heading">
       <h3 class="panel-title">Address</h3>
@@ -30,17 +42,29 @@
     </div>
     <div class="panel-heading">
       <h3 class="panel-title">Ethnicity</h3>
-      <span class="edit-icon pull-right"></span>
+      <span class="edit-icon pull-right edit-ethnicity"></span>
     </div>
     <div class="panel-body">
-      I am empty....
+      <div>
+        <%= best_in_place current_user, :ethnicity_id, type: :select,
+            collection: Ethnicity.all.map{|e| [e.id, e.name]},
+            activator: ".edit-ethnicity",
+            nil: 'I am empty...',
+            inner_class: 'form-control' %>
+      </div>
     </div>
     <div class="panel-heading">
       <h3 class="panel-title">Education</h3>
-      <span class="edit-icon pull-right"></span>
+      <span class="edit-icon pull-right edit-education"></span>
     </div>
     <div class="panel-body">
-      I am empty....
+      <div>
+        <%= best_in_place current_user, :education_id, type: :select,
+            collection: Education.all.map{|e| [e.id, e.name]},
+            activator: ".edit-education",
+            nil: 'I am empty...',
+            inner_class: 'form-control' %>
+      </div>
     </div>
   </div>
   <div class="col-md-12 events">

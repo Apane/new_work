@@ -1,0 +1,16 @@
+<li class="<%#= notification.new? ? 'unread' : 'read' %>">
+  <div class="checkbox">
+    <input type="checkbox" value="check<%= notification.id %>" name="check" id="check<%= notification.id %>">
+    <label for="check<%= notification.id %>"></label>
+  </div>
+  <%#= link_to message_path(messages.last.conversation) do %>
+    <div class="m-image"><%= avatar(notification.user) %></div>
+    <div class="m-text">
+      <p class="m-name"><%= notification.user.name %></p>
+      <span class="pull-right"><span class="reply-m"></span><%= time_ago_in_words(notification.created_at) %></span>
+      <p><%#= sanitize(messages.last.body.truncate(100, omision: "...")) %></p>
+    </div>
+    <%#= link_to 'Delete', conversation_path(messages.last.conversation),  method: :delete, data: {confirm: 'Are you sure?'} %>
+  <%# end %>
+  <div class="clr"></div>
+</li>

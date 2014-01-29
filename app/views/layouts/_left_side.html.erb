@@ -15,7 +15,7 @@
           <%= link_to messages_path do %>
             Inbox <span class="t-inbox"><%= current_user.new_messages.size %></span>
           <% end %>
-        <li class="">
+        <li class="<%= 'active' if controller_name == 'messages' && action_name == 'sent' %>">
           <%= link_to 'Outbox', sent_path %>
         </li>
         <!-- <li class=""><a href="#">Drafts</a></li> -->
@@ -28,5 +28,5 @@
       </li>
     </ul>
   </div>
-  <%= render 'users/verifications' if controller_name == 'registrations' %>
+  <%= render 'users/verifications' if controller_name == 'users' && action_name == 'edit_profile' %>
 </div>

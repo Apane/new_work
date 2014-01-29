@@ -33,5 +33,6 @@
 //= require bootstrap-wysihtml5
 //= require jquery.autoSave
 //= require rails-timeago
+//= require landing
 
 $.pnotify.defaults.history = false

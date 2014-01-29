@@ -1,102 +1,21 @@
 <div class="row">
-  <%= render 'layouts/left_side' %>
-
-  <div role="main" class="col-md-6">
-    <div class="col-md-12 users_info">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="user-image">
-            <%= image_tag 'user-image.jpg' %>
-          </div>
-
-          <div class="users_about_fullinfo">
-            <h3>Anthony Panepinto</h3>
-            <p class="edit-about-text">Click here to add a short blurb (maximum 140 characters) <span class="edit-icon"></span> </p>
-          </div>
-          <div class="clr"></div>
-        </div>
-      </div>
-    </div>
-
-    <div id="tabs">
-      <ul>
-        <li><a href="#tabs-1">About</a></li>
-        <li><a href="#tabs-2">Photo</a></li>
-        <li><a href="#tabs-3">Top Fives</a></li>
-      </ul>
-      <div id="tabs-1">
-        <% @questions_for_about.each_with_index do |question, index| %>
-        <div class="about-summary">
-          <p class="summary-heading"><%= question.question %> <span class="edit-icon"></span> </p>
-          <p class="summary-info"><%= answer_for(question) %></p>
-        </div>
-        <% end %>
-      </div>
-
-      <div id="tabs-2">
-        <div class="user-photos">
-          <div class="upload-new">
-            <button class="btn btn-primary btn-lg up-new" type="button">Upload New Photo</button>
-          </div>
-          <ul>
-            <li>
-              <%= image_tag 'users-photos-01.jpg' %>
-              <p class="caption">Caption <span class="edit-icon"></span> </p>
-              <p>Lorem ipsum dolor sit amet,consectetur adipisicing elit, sed do eiusmod tempor incidiunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-              <button class="btn btn-primary btn-lg photo-b" type="button">Set as profile picture</button>
-              <button class="btn btn-primary btn-lg photo-b" type="button">Remove photo</button>
-              <div class="photo-up-down"> <a href="#">up</a> <a href="#">down</a> </div>
-            </li>
-            <li>
-              <%= image_tag 'users-photos-01.jpg' %>
-              <p class="caption">Caption <span class="edit-icon"></span> </p>
-              <p>Lorem ipsum dolor sit amet,consectetur adipisicing elit, sed do eiusmod tempor incidiunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-              <button class="btn btn-primary btn-lg photo-b" type="button">Set as profile picture</button>
-              <button class="btn btn-primary btn-lg photo-b" type="button">Remove photo</button>
-              <div class="photo-up-down"> <a href="#">up</a> <a href="#">down</a> </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div id="tabs-3">
-        <% @questions_for_personality.each_with_index do |question, index| %>
-        <div class="about-summary">
-          <p class="summary-heading"><%= question.question %> <span class="edit-icon"></span></p>
-          <p class="summary-info empty"><%= answer_for(question) %> </p>
-        </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-
-  <%= render 'users/right_side_edit' %>
-</div>
-<script>
-  $(function() {
-    $( "#tabs" ).tabs();
-  });
-</script>
-
-
-<!-- <div class="row">
   <div class="edit">
     <h2>Account</h2>
     <div class="span6">
       <h3>Settings</h3>
       <h4>Change your basic account and language settings.</h4>
-      <%#= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-      <%#= devise_error_messages! %>
+      <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+      <%= devise_error_messages! %>
       <h5>Email:</h5>
-      <%#= f.input_field :email, placeholder: "Your email", autocomplete: :off %>
+      <%= f.input_field :email, placeholder: "Your email", autocomplete: :off %>
 
       <h5>Password:</h5>
-      <%#= f.input_field :password, placeholder: "Password", :autocomplete => "off" %>
+      <%= f.input_field :password, placeholder: "Password", :autocomplete => "off" %>
 
       <h5>Password confirmation:</h5>
-      <%#= f.input_field :password_confirmation, placeholder: "Password confirmation", autocomplete: :off %>
+      <%= f.input_field :password_confirmation, placeholder: "Password confirmation", autocomplete: :off %>
       <div class="name2">
-        <%#= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>
+        <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>
         <br>
       </div>
     </div>
@@ -104,9 +23,9 @@
   <span class="span4">
     <div class="side-bg">
       <h6>Note: You can change your password by simply typing a new one in the password fields.</h6>
-      <div><%#= f.submit "Update account", class: "btn btn-warning" %></div>
+      <div><%= f.submit "Update account", class: "btn btn-warning" %></div>
     </div>
   </span>
-  <%# end %>
+  <% end %>
 </div>
-</div> -->
+</div>

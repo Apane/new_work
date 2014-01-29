@@ -30,6 +30,12 @@ class UsersController < ApplicationController
     @questions_for_personality = @user.questions.for_personality.order('id asc')
   end
 
+  def edit_profile
+    @user = current_user
+    @questions_for_about = @user.questions.for_about.order('id asc')
+    @questions_for_personality = @user.questions.for_personality.order('id asc')
+  end
+
   def refresh_notifcations
     @new_messages = current_user.new_messages.count
   end

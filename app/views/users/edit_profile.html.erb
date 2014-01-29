@@ -1,0 +1,88 @@
+<div class="row">
+  <%= render 'layouts/left_side' %>
+
+  <div role="main" class="col-md-6">
+    <div class="col-md-12 users_info">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="user-image">
+            <%= image_tag 'user-image.jpg' %>
+          </div>
+
+          <div class="users_about_fullinfo">
+            <h3><%= current_user.name %></h3>
+            <p class="edit-about-text">
+              <%= best_in_place current_user, :blurb, activator: ".edit-blurb", nil: 'Click here to add a short blurb (maximum 140 characters)', inner_class: 'form-control' %>
+              <span class="edit-icon edit-blurb"></span>
+            </p>
+          </div>
+          <div class="clr"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="tabs">
+      <ul>
+        <li><a href="#tabs-1">About</a></li>
+        <li><a href="#tabs-2">Photo</a></li>
+        <li><a href="#tabs-3">Top Fives</a></li>
+      </ul>
+      <div id="tabs-1">
+        <% @questions_for_about.each_with_index do |question, index| %>
+        <div class="about-summary">
+          <p class="summary-heading"><%= question.question %> <span class="edit-icon edit-icon-<%= question.id %>"></span> </p>
+          <p class="summary-info <%= 'empty' if question.answer.length == 0 %>">
+            <%= best_in_place question, :answer, :type => :textarea, activator: ".edit-icon-#{question.id}",
+                  nil: 'I am empty...', inner_class: 'form-control' %>
+          </p>
+        </div>
+        <% end %>
+      </div>
+
+      <div id="tabs-2">
+        <div class="user-photos">
+          <div class="upload-new">
+            <button class="btn btn-primary btn-lg up-new" type="button">Upload New Photo</button>
+          </div>
+          <ul>
+            <li>
+              <%= image_tag 'users-photos-01.jpg' %>
+              <p class="caption">Caption <span class="edit-icon"></span> </p>
+              <p>Lorem ipsum dolor sit amet,consectetur adipisicing elit, sed do eiusmod tempor incidiunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+              <button class="btn btn-primary btn-lg photo-b" type="button">Set as profile picture</button>
+              <button class="btn btn-primary btn-lg photo-b" type="button">Remove photo</button>
+              <div class="photo-up-down"> <a href="#">up</a> <a href="#">down</a> </div>
+            </li>
+            <li>
+              <%= image_tag 'users-photos-01.jpg' %>
+              <p class="caption">Caption <span class="edit-icon"></span> </p>
+              <p>Lorem ipsum dolor sit amet,consectetur adipisicing elit, sed do eiusmod tempor incidiunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+              <button class="btn btn-primary btn-lg photo-b" type="button">Set as profile picture</button>
+              <button class="btn btn-primary btn-lg photo-b" type="button">Remove photo</button>
+              <div class="photo-up-down"> <a href="#">up</a> <a href="#">down</a> </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="tabs-3">
+        <% @questions_for_personality.each_with_index do |question, index| %>
+        <div class="about-summary">
+          <p class="summary-heading"><%= question.question %> <span class="edit-icon edit-icon-<%= question.id %>"></span></p>
+          <p class="summary-info <%= 'empty' if question.answer.length == 0 %>">
+            <%= best_in_place question, :answer, {:type => :textarea, activator: ".edit-icon-#{question.id}",
+                              nil: 'I am empty...', inner_class: 'form-control'} %>
+          </p>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <%= render 'users/right_side_edit' %>
+</div>
+<script>
+  $(function() {
+    $( "#tabs" ).tabs();
+  });
+</script>
