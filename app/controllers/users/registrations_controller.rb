@@ -1,6 +1,14 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_filter :load_zip_codes, only: [:create]
 
+  # GET /resource/edit
+  def edit
+    @user = current_user
+    @questions_for_about = @user.questions.for_about.order('id asc')
+    @questions_for_personality = @user.questions.for_personality.order('id asc')
+    render :edit
+  end
+
   # POST /resource
   def create
     build_resource(sign_up_params)

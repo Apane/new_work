@@ -47,6 +47,7 @@
     <div class="row">
       <p class="heading-text">Events <span>(<%= current_user.events.size %>)</span></p>
       <% event = current_user.events.last %>
+      <% if event.present? %>
       <div class="event-img">
         <%= image_tag 'event_image.jpg' %>
       </div>
@@ -56,6 +57,7 @@
         <p class="date"><%= event.date.strftime("%A, %B %d, %Y") %></p>
         <p class="c-time"><%= event.time %></p>
       </div>
+      <% end %>
     </div>
   </div>
   <div class="col-md-12 events">

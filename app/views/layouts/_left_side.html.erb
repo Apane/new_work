@@ -28,5 +28,5 @@
       </li>
     </ul>
   </div>
-  <%= render 'users/verifications' %>
+  <%= render 'users/verifications' if controller_name == 'registrations' %>
 </div>

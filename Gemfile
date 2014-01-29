@@ -14,7 +14,7 @@ gem 'rails_12factor', group: :production
 gem 'carrierwave'
 gem 'rmagick'
 gem 'sass-rails'
-gem 'devise', '~> 3.0.0.rc'
+gem 'devise' #, '~> 3.0.0.rc'
 gem 'simple_form'
 gem 'nested_form'
 gem "figaro"
