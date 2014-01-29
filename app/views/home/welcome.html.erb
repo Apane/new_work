@@ -1,181 +1,88 @@
-<div id="landing_welcome_page">
-  <div class="container">
-    <div class="row">
-      <%#= Profile image upload  %>
-      <div class="span4">
-        <%= user_avatar(current_user) %>
-        <%#= Space w line  %>
-        <div class="name"></div><br>
-        <%#= Please bare in mind these are strickly temporary placeholders i.e whitespace  %>
-        <%#= render '/home/sidebar' %>
-        <%= render 'social' %>
-      </div>
+<div class="row">
+  <%= render 'layouts/left_side' %>
 
-      <div class="span8">
-        <%# User name %>
-        <span class="name1">
-          <% if current_user.first_name.blank? %>
-          <%= current_user.first_name.present? ? current_user.first_name : link_to('Finish your profile', edit_account_path)%>
-          <% else %>
-          <%= current_user.first_name %> <%= current_user.last_name %>
-          <% end %>
-          <span class="bubble">
-           <%= best_in_place current_user, :blurb, :type => :textarea, :html_attrs => { :style => 'width:380px; height:20px;' }, :nil => 'Add a short blurb (max 140)' %>
-          </span>
-        </span>
-        <div class="element"></div>
-        <br / >
-        <div class="name"></div>
-
-      </span>
-    </div>
-
-    <div class="span9">
-      <div class="span3">
-        <%# User occupation %>
-         <div class="element"></div>
-        <i class="fa fa-usd"></i>:
-        <%= best_in_place current_user, :occupation, type: :input, :inner_class => 'occupation-edit', nil: 'Add Occupation' %>
-      </div>
-      <div class="span2">
-        <div class="element"></div>
-          <div>
-            <i class="fa fa-home"></i>:
-              <span class="addy">
-                <%= current_user.address.present? ? current_user.address : link_to('Add Address', edit_account_path) %>
-              </span>
-         </div>
-         <div class="element"></div>
-          <div>Age: <%= user_birthday %></div>
-         <div class="element"></div>
-         <%= best_in_place current_user, :gender, :type => :select,
-          collection: User::GENDER.map{|d| [d[0], d[1]]}, :inner_class => 'education-edit', nil: 'Select Gender' %>
-      </div>
-
-      <div class="span3">
-        <div class="element">
-          <div class="addy">
-          Last online:
-          <%= time_ago_in_words(current_user.last_sign_in_at) + ' ago' %>
+  <div role="main" class="col-md-6">
+    <div class="col-md-12 users_info">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="user-image">
+            <%= image_tag 'user-image.jpg' %>
           </div>
-        </div>
-        <div class="element">
-          Ethinicity:
-          <%= best_in_place current_user, :ethnicity_id, :type => :select, collection: Ethnicity.all.map{|e| [e.id, e.name]}, :inner_class => 'education-edit', nil: 'Select Ethnicity' %>
-        </div>
-        <div class="element">
-          Education:
-          <span class="select_for_education">
-        <%= best_in_place current_user, :education_id, :type => :select, collection: Education.all.map{|e| [e.id, e.name]}, :inner_class => 'education-edit', nil: 'Select Education' %>
-        </div>
 
-                  <%# =:collection => Education.all.map{|e| [e.id, e.name]}, :inner_class => 'education-edit', nil: 'Select Education' %>
-        </span>
+          <div class="users_about_fullinfo">
+            <h3><%= current_user.name %></h3>
+            <p class="edit-about-text">
+              <%= best_in_place current_user, :blurb, activator: ".edit-blurb", nil: 'Click here to add a short blurb (maximum 140 characters)', inner_class: 'form-control' %>
+              <span class="edit-icon edit-blurb"></span>
+            </p>
+          </div>
+          <div class="clr"></div>
+        </div>
       </div>
     </div>
 
-   <div class="span8"><div class="name"></div></div>
-   <div class="span8">
-    <div class="tabbable"> <!-- Only required for left/right tabs -->
-      <ul class="nav nav-tabs">
-        <li class="active"><a href="#tab1" data-toggle="tab">About me</a></li>
-        <li><a href="#tab2" data-toggle="tab">Photos</a></li>
-        <li><a href="#tab3" data-toggle="tab">Top 5</a></li>
+    <div id="tabs">
+      <ul>
+        <li><a href="#tabs-1">About</a></li>
+        <li><a href="#tabs-2">Photo</a></li>
+        <li><a href="#tabs-3">Top Fives</a></li>
       </ul>
-      <div class="tab-content">
-        <div class="tab-pane in active" id="tab1">
-          <% @questions_for_about.each do |question| %>
-          <div class="question">
-            <h4 class="user_questions">
-              <%= question.question %>
-              <%= link_to ("<i class='icon-edit'></i>".html_safe),
-              edit_user_question_path(current_user, question),
-              remote: true, class: "edit_link_#{question.id}" %>
-            </h4>
-            <div class="answer" id="answer_<%= question.id %>">
-              <%= answer_for(question) %>
-            </div>
-          </div>
-          <% end %>
+      <div id="tabs-1">
+        <% @questions_for_about.each_with_index do |question, index| %>
+        <div class="about-summary">
+          <p class="summary-heading"><%= question.question %> <span class="edit-icon edit-icon-<%= question.id %>"></span> </p>
+          <p class="summary-info <%= 'empty' if question.answer.present? && question.answer.length == 0 %>">
+            <%= best_in_place question, :answer, :type => :textarea, activator: ".edit-icon-#{question.id}",
+                  nil: 'I am empty...', inner_class: 'form-control' %>
+          </p>
         </div>
-        <div class="tab-pane" id="tab2">
-          <div class="page-header">
-            <%= form_for Photo.new do |f| %>
-            <span class="btn btn-success fileinput-button">
-              <i class="icon-plus icon-white"></i>
-              <span>Add photos...</span>
-              <%= f.file_field :file, multiple: true, name: "photo[file]" %>
-            </span>
-            <% end %>
-            <div class="clearfix"></div>
+        <% end %>
+      </div>
+
+      <div id="tabs-2">
+        <div class="user-photos">
+          <div class="upload-new">
+            <button class="btn btn-primary btn-lg up-new" type="button">Upload New Photo</button>
           </div>
-          <div class="photos_cont">
-            <div class="col-sm-6 col-md-3">
-              <span class="gallery"><%= render current_user.photos %></span>
-            </div>
-          </div>
+          <ul>
+            <li>
+              <%= image_tag 'users-photos-01.jpg' %>
+              <p class="caption">Caption <span class="edit-icon"></span> </p>
+              <p>Lorem ipsum dolor sit amet,consectetur adipisicing elit, sed do eiusmod tempor incidiunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+              <button class="btn btn-primary btn-lg photo-b" type="button">Set as profile picture</button>
+              <button class="btn btn-primary btn-lg photo-b" type="button">Remove photo</button>
+              <div class="photo-up-down"> <a href="#">up</a> <a href="#">down</a> </div>
+            </li>
+            <li>
+              <%= image_tag 'users-photos-01.jpg' %>
+              <p class="caption">Caption <span class="edit-icon"></span> </p>
+              <p>Lorem ipsum dolor sit amet,consectetur adipisicing elit, sed do eiusmod tempor incidiunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+              <button class="btn btn-primary btn-lg photo-b" type="button">Set as profile picture</button>
+              <button class="btn btn-primary btn-lg photo-b" type="button">Remove photo</button>
+              <div class="photo-up-down"> <a href="#">up</a> <a href="#">down</a> </div>
+            </li>
+          </ul>
         </div>
-        <div class="tab-pane" id="tab3">
-          <% @questions_for_personality.each do |question| %>
-          <div class="question">
-            <h4 class="user_questions">
-              <%= question.question %>
-              <%= link_to ("<i class='icon-edit'></i>".html_safe),
-              edit_user_question_path(current_user, question),
-              remote: true, class: "edit_link_#{question.id}" %>
-            </h4>
-            <div class="answer" id="answer_<%= question.id %>">
-              <%= answer_for(question) %>
-            </div>
-          </div>
-          <% end %>
+      </div>
+
+      <div id="tabs-3">
+        <% @questions_for_personality.each_with_index do |question, index| %>
+        <div class="about-summary">
+          <p class="summary-heading"><%= question.question %> <span class="edit-icon edit-icon-<%= question.id %>"></span></p>
+          <p class="summary-info <%= 'empty' if question.answer.present? && question.answer.length == 0 %>">
+            <%= best_in_place question, :answer, {:type => :textarea, activator: ".edit-icon-#{question.id}",
+                              nil: 'I am empty...', inner_class: 'form-control'} %>
+          </p>
         </div>
+        <% end %>
       </div>
     </div>
   </div>
-</div>
-</div>
-</div>
 
-<script id="template-upload" type="text/x-tmpl">
-<div class="upload">
-{%=o.name%}
-<div class="progress"><div class="bar" style="width: 0%;"></div></div>
+  <%= render 'users/right_side_edit' %>
 </div>
-</script>
 <script>
-var fb_param = {};
-fb_param.pixel_id = '6009056882201';
-fb_param.value = '0.00';
-(function(){
-  var fpw = document.createElement('script');
-  fpw.async = true;
-  fpw.src = '//connect.facebook.net/en_US/fp.js';
-  var ref = document.getElementsByTagName('script')[0];
-  ref.parentNode.insertBefore(fpw, ref);
-})();
-</script>
-
-<noscript>
-  <img height="1" src="https://www.facebook.com/offsite_event.php?id=6009056882201&amp;value=0" style="display:none;" width="1"/>
-</noscript>
-
-<script type="text/javascript">
-// // remove default datepicker event
-// jQuery(document).off('best_in_place:datepicker');
-
-// jQuery(document).on('best_in_place:datepicker', function(event, bip, element) {
-//   // Display the jQuery UI datepicker popup
-//   jQuery(element).find('input')
-//   .datepicker({
-//     format: element.data('date-format')
-//   })
-//   .on('hide', function(){
-//     bip.update();
-//   })
-//   .on('changeDate', function(){
-//     $(this).datepicker('hide');
-//   })
-//   .datepicker('show');
-// });
+  $(function() {
+    $( "#tabs" ).tabs();
+  });
 </script>

@@ -8,7 +8,8 @@ class HomeController < ApplicationController
   end
 
   def welcome
-    @questions_for_about = current_user.questions.for_about.order('id asc')
-    @questions_for_personality = current_user.questions.for_personality.order('id asc')
+    @user = current_user
+    @questions_for_about = @user.questions.for_about.order('id asc')
+    @questions_for_personality = @user.questions.for_personality.order('id asc')
   end
 end
