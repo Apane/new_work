@@ -21,6 +21,8 @@ Devise.setup do |config|
       config.secret_key = ENV['DEVISE_SECRET_KEY']
   end
 
+  config.secret_key = '72ac96170883ab916ea3712026d32eba4bfa5623038f5141cb8c771015367c4dcc9ce4e2afe00a1adb4ce07eb23c02a6f3003da42be73d36ce0ea85f4c867b2a'
+
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
   # just :email. You can configure it to use [:username, :subdomain], so for
