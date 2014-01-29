@@ -31,8 +31,8 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :photos
   mount_uploader :profile_image, ProfileImageUploader
 
-  validates :gender, :presence => true
-  validates :zip, :presence => true
+  # validates :gender, :presence => true
+  # validates :zip, :presence => true
   validates_length_of :blurb, :minimum => 5, :maximum => 140, :allow_blank => true
 
 

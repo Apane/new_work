@@ -9,9 +9,9 @@ en:
         user:
           attributes:
             email:
-              blank: "Please Specify an Email id"
-              taken: "Please use a different Email id"
-              invalid: "Please Specify a valid Email id"
+              blank: "Please Specify an Email"
+              taken: "Please use a different Email"
+              invalid: "Please Specify a valid Email"
             password:
               blank: "Please Specify a Password"
               confirmation: "Password does not match"

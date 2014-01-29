@@ -50,6 +50,12 @@
   </head>
   <body>
     <%= render "shared/header" %>
+    <% flash.each do |name, msg| %>
+      <div class="alert alert-<%= name == :notice ? "success" : "warning" %> alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <%= msg %>
+      </div>
+    <% end %>
     <%= yield %>
     <%= render "shared/footer" %>
     <%= yield :footer_js %>

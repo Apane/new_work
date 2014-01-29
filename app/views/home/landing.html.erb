@@ -9,29 +9,69 @@
             <h3 class="panel-title">Sign Up</h3>
           </div>
           <div class="panel-body">
+            <%= simple_form_for('user', :as => 'user', :url => registration_path('user')) do |f| %>
             <form role="form">
               <div class="form-group">
                 <label for="exampleInputEmail1">Email Address :</label>
-                <input type="email" class="form-control" id="Email1">
+                <%= f.email_field :email, class: 'form-control', id: 'Email1' %>
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">Password :</label>
-                <input type="password" class="form-control" id="Password">
+                <%= f.password_field :password, class: 'form-control', id: 'Password' %>
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">Zip Code :</label>
-                <input type="text" class="form-control" id="zip">
+                <%= f.text_field :zip, class: 'form-control', id: 'zip' %>
               </div>
               <div class="col-md-12 text-center sign-b">
-                <button type="submit" class="btn btn-default creat-event">Create Account</button>
+                <%= f.submit 'Create Account', class: 'btn btn-default creat-event' %>
                 <p>By clicking the button you agree to<br>
                   the terms and conditions</p>
                 </div>
               </form>
+              <% end %>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+<div class="container middel-part">
+  <div class="row steps">
+    <div class="col-md-6">
+      <p class="margin-t">Fill out your Interests</p>
+      <p>Show off your true self</p>
+    </div>
+    <div class="col-md-6">
+      <%= image_tag 'step-1-image.jpg', alt: 'image' %>
+    </div>
+  </div>
+
+  <div class="row steps bg-color">
+    <div class="col-md-6">
+      <%= image_tag 'step-2-image.jpg', alt: 'image' %>
+    </div>
+    <div class="col-md-6">
+      <p class="margin-t">Find other with similar</p>
+      <p>hobbies, background, and age</p>
+    </div>
+  </div>
+
+  <div class="row steps">
+    <div class="col-md-6">
+      <p class="margin-t">Hang out with others just like you</p>
+      <p>Make New Friends</p>
+    </div>
+    <div class="col-md-6">
+      <%= image_tag 'step-3-image.jpg', alt: 'image' %>
+    </div>
+  </div>
+
+  <div class="row steps">
+    <div class="col-md-12 text-center">
+      <p>Meet people like you near you</p>
+      <button class="btn btn-primary join-b" type="button">Join Now</button>
     </div>
   </div>
 </div>
