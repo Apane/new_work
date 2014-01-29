@@ -5,6 +5,8 @@ class HomeController < ApplicationController
     if user_signed_in?
       redirect_to welcome_path
     end
+
+    render layout: 'home_page'
   end
 
   def welcome

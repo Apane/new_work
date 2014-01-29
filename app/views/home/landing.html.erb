@@ -1,142 +1,37 @@
-<%# Begin background image cycler on landing page %>
-<div id="background_cycler" >
-
-  <script type="text/javascript">
-$('#background_cycler').hide();//hide the background while the images load, ready to fade in later
-</script>
-
-<%= image_tag("background-guys-game.png", alt: "") %>
-<%= image_tag("background-neutral.png",  class: "active", alt: "") %>
-<%= image_tag("background-girls.png",  alt: "") %>
-<%= image_tag("bg-wheel.png",  alt: "") %>
-<%= image_tag("bg-train.png",  alt: "") %>
-<%= image_tag("bg-girls2.png",  alt: "") %>
-<%= image_tag("bg-room.png",  alt: "") %>
-<%= image_tag("bg-girls3.png",  alt: "") %>
-
-</div>
-<%# End of background image cycler on landing page %>
-
-<div id="landing_page">
-  <div class="top-section <%= background_image_class %>">
+<div class="banner">
+  <%= image_tag 'banner.jpg', alt: 'banner-image' %>
+  <div class="home-page-m">
     <div class="container">
-      <h2 class="main_message">
-       Meet people like you near you
-     </h2>
-     <div class="join-screenshot">
-      <div class="join">
-        <%= form_for User.new, url: user_registration_path(User.new) do |f| %>
-
-       <% if notice %>
-        <p class="notice"><%= notice if flash[:notice] %></p>
-       <% else %>
-
-       <% end %>
-
-       <% if alert %>
-         <p class="alert"><%= alert %></p>
-       <% else %>
-
-       <% end %>
-
-        <h3>Join Now</h3>
-        <div class="fieldset">
-          <div class="control-group">
-            <%= f.text_field "email", placeholder: "Your Email", required: true, autocomplete: :off %>
+      <p class="banner-heading">meet people like you near you</p>
+      <div class=" col-md-4 col-xs-12 sign-up-form">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Sign Up</h3>
           </div>
-          <div class="control-group">
-          <%= f.text_field :zip, placeholder: "Your Zip or Postal Code", required: true, autocomplete: :off %>
-          </div>
-          <div class="control-group">
-            <%= f.text_field "first_name", placeholder: "First Name", required: true %>
-          </div>
-          <div class="control-group">
-            <%= f.text_field "last_name", placeholder: "Last Name", required: true %>
-          </div>
-          <div class="control-group">
-            <div class="radio-group-row">
-              <label class="radio-group-title">
-                Gender:
-              </label>
-              <label class="radio inline">
-                <%= f.radio_button "gender", "M" %>
-                Male
-              </label>
-              <label class="radio inline">
-                <%= f.radio_button "gender", "F" %>
-                Female
-              </label>
+          <div class="panel-body">
+            <form role="form">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email Address :</label>
+                <input type="email" class="form-control" id="Email1">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Password :</label>
+                <input type="password" class="form-control" id="Password">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Zip Code :</label>
+                <input type="text" class="form-control" id="zip">
+              </div>
+              <div class="col-md-12 text-center sign-b">
+                <button type="submit" class="btn btn-default creat-event">Create Account</button>
+                <p>By clicking the button you agree to<br>
+                  the terms and conditions</p>
+                </div>
+              </form>
             </div>
           </div>
-          <div class="control-group submit">
-            <button type="submit">
-              SIGN UP
-            </button>
-          </div>
-          <h5><%#= link_to "Sign in with Facebook", "/auth/facebook" %></h5>
         </div>
-        <% end %>
-      </div>
-      <div class="screenshot">
-        <%= image_tag "screenshot-filled.png" %>
       </div>
     </div>
   </div>
-</div>
-<div class="bottom-section">
-  <div class="container">
-    <div class="bullet-points">
-      <div class="bullet clearfix">
-        <div class="message pull-right">
-          <h3>Sign up and fill out your interests</h3>
-        </div>
-        <div class="icon pull-left">
-          <%= image_tag "interests_icon.png" %>
-        </div>
-      </div>
-      <div class="bullet clearfix horz_gray">
-        <div class="message pull-left">
-          <h3>
-            Discover people who share your
-            <br/>
-            interests
-          </h3>
-        </div>
-        <div class="icon pull-right">
-          <%= image_tag "share_interests.png" %>
-        </div>
-      </div>
-      <div class="bullet clearfix">
-        <div class="message pull-right">
-          <h3>
-            Set up a time to go hang out
-          </h3>
-        </div>
-        <div class="icon pull-left">
-          <%= image_tag "calendar-icon.png" %>
-        </div>
-      </div>
-      <div class="bullet clearfix horz_gray">
-        <div class="message pull-left">
-          <h3>
-            Break the ice online.
-            <br/>
-            Hang out offline
-          </h3>
-        </div>
-        <div class="icon pull-right">
-          <%= image_tag "break-ice-icon.png" %>
-        </div>
-      </div>
-    </div>
-    <br />
-    <h2 id="join1">
-     Meet people like you near you
-   </h2>
-   <br />
-   <div id="join"><h1><%=link_to "Join Now", new_user_registration_path, class: "btn btn-warning" %></h1></div>
-   <br />
-   <%= render '/shared/footer' %>
- </div>
-</div>
 </div>

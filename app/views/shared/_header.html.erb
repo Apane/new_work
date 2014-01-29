@@ -29,8 +29,8 @@
         <% end %>
       </div>
 
-      <% if user_signed_in? %>
       <div class="col-md-3 myaccount">
+        <% if user_signed_in? %>
         <%= link_to notifications_path, class: 'notes_area' do %>
           <%= image_tag('w_icon.png') %>
           <span class="notes_count"><%= current_user.new_notifications.size if current_user.new_notifications.any? %></span>
@@ -50,8 +50,13 @@
           </li>
         </ul>
         <div class="clr"></div>
+        <% else %>
+          <span>
+            <%= link_to 'Sign IN', new_user_session_path, class: 'btn btn-info sign-i-u' %>
+            <%= link_to 'Sign UP', new_user_registration_path, class: 'btn btn-info sign-i-u' %>
+          </span>
+        <% end %>
       </div>
-      <% end %>
     </div>
   </div>
 </header>
