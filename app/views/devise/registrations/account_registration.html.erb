@@ -1,71 +1,309 @@
 <div class="row">
   <%= render 'layouts/left_side' %>
 
-  <div class="edit">
-    <h2>Profile</h2>
-    <%= simple_form_for(@user, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }, :html => {:multipart => true}) do |f| %>
-      <div class="span5">
-        <h3>Personal information</h3>
-        <h4>This information appears on your public profile, search results, and beyond.</h4>
-        <div class="name2"></div>
-        <%= devise_error_messages! %>
+  <div role="main" class="col-md-6">
+    <div class="setting-details">
+      <div id="tabs">
+        <ul>
+          <li><a href="#tabs-1">Email Notifications</a></li>
+          <li><a href="#tabs-2">Password</a></li>
+          <li><a href="#tabs-3">Hidden Users</a></li>
+          <li><a href="#tabs-4">Blocked Users</a></li>
+          <li><a href="#tabs-5">Events</a></li>
+          <li><a href="#tabs-6">Activity Partners</a></li>
+        </ul>
 
-        <h5>First name:</h5>
-        <%= f.input_field :first_name, placeholder: "Your first name", required: true, autocomplete: :off %>
+        <div id="tabs-1">
+          <div class="notifications">
+            <div class="checkbox">
+              <input type="checkbox" value="check1" name="check" id="check1">
+              <label for="check1">Receive a new message</label>
+              <br>
+              <input type="checkbox" value="check2" name="check" id="check2">
+              <label for="check2">Receive a new reply</label>
+              <br>
+              <input type="checkbox" value="check3" name="check" id="check3">
+              <label for="check3">Someone joins your event</label>
+              <br>
+              <input type="checkbox" value="check4" name="check" id="check4">
+              <label for="check4">New comment on your event</label>
+              <br>
+              <input type="checkbox" value="check5" name="check" id="check5">
+              <label for="check5">Someone viewed your profile</label>
+              <br>
+              <input type="checkbox" value="check6" name="check" id="check6">
+              <label for="check6">Newsletter</label>
+              <br>
+              <br>
+              <button type="submit" class="btn btn-default send-m-button"> Save Changes</button>
+            </div>
+          </div>
+        </div>
 
-        <h5>Last name:</h5>
-        <%= f.input_field :last_name, placeholder: "Your last name", required: true, autocomplete: :off %>
+        <div id="tabs-2">
+          <div class="password">
+            <form role="form">
+              <div class="form-group border-bottom">
+                <label for="Email1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="email@domain.com">
+              </div>
+              <div class="form-group border-bottom">
+                <div class="row">
+                  <div class="col-md-12"><label for="Password">Change your password</label></div>
+                  <div class="col-md-6"><input type="password" class="form-control" id="Newpassword" placeholder="New Password"></div>
+                  <div class="col-md-6"><input type="password" class="form-control" id="Repeatnewpassword" placeholder="Repeat New Password"></div>
+                </div>
+              </div>
+              <div class="form-group border-bottom border-none">
+                <div class="row">
+                  <div class="col-md-12">
+                    <label for="Password">Confirm your changes</label>
+                  </div>
+                  <div class="col-md-8">
+                    <input type="password" class="form-control" id="Currentassword" placeholder="Current Password">
+                  </div>
+                  <div class="col-md-4">
+                    <button class="btn btn-default send-m-button" type="submit"> Save Changes</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
 
-        <h5>Address/city/state:</h5>
-        <%= f.input_field :address, placeholder: "Address", autocomplete: :off %>
+        <div id="tabs-3">
+          <div class="hidden-user">
+            <ul>
+              <li>
+                <div class="col-md-8">
+                  <div class="hide-user-image"><%= image_tag 'people_image.jpg' %></div>
+                  <p>Anthony Panepinto</p>
+                </div>
+                <div class="col-md-4"> <a href="#">Unhide</a> <span>.</span> <a href="#">Report</a> </div>
+                <div class="clr"></div>
+              </li>
+              <li>
+                <div class="col-md-8">
+                  <div class="hide-user-image"><%= image_tag 'people_image.jpg' %></div>
+                  <p>Anthony Panepinto</p>
+                </div>
+                <div class="col-md-4"> <a href="#">Unhide</a> <span>.</span> <a href="#">Report</a> </div>
+                <div class="clr"></div>
+              </li>
 
-        <h5>Zip/Postal code:</h5>
-        <%= f.input_field :zip, placeholder: "Your zip or postal code", required: true, autocomplete: :off %>
+              <li>
+                <div class="col-md-8">
+                  <div class="hide-user-image"><%= image_tag 'people_image.jpg' %></div>
+                  <p>Anthony Panepinto</p>
+                </div>
+                <div class="col-md-4"> <a href="#">Unhide</a> <span>.</span> <a href="#">Report</a> </div>
+                <div class="clr"></div>
+              </li>
+              <li>
+                <div class="col-md-8">
+                  <div class="hide-user-image"><%= image_tag 'people_image.jpg' %></div>
+                  <p>Anthony Panepinto</p>
+                </div>
+                <div class="col-md-4"> <a href="#">Unhide</a> <span>.</span> <a href="#">Report</a> </div>
+                <div class="clr"></div>
+              </li>
+              <li>
+                <div class="col-md-8">
+                  <div class="hide-user-image"><%= image_tag 'people_image.jpg' %></div>
+                  <p>Anthony Panepinto</p>
+                </div>
+                <div class="col-md-4"> <a href="#">Unhide</a> <span>.</span> <a href="#">Report</a> </div>
+                <div class="clr"></div>
+              </li>
+              <li>
+                <div class="col-md-8">
+                  <div class="hide-user-image"><%= image_tag 'people_image.jpg' %></div>
+                  <p>Anthony Panepinto</p>
+                </div>
+                <div class="col-md-4"> <a href="#">Unhide</a> <span>.</span> <a href="#">Report</a> </div>
+                <div class="clr"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
 
-        <h5>Occupation:</h5>
-        <%= f.input_field :occupation, placeholder: "Occupation", autocomplete: :off %>
+        <div id="tabs-4">
+          <div class="hidden-user">
+            <ul>
+              <li>
+                <div class="col-md-8">
+                  <div class="hide-user-image"><%= image_tag 'people_image.jpg' %></div>
+                  <p>Anthony Panepinto</p>
+                </div>
+                <div class="col-md-4"> <a href="#">Unblock</a> <span>.</span> <a href="#">Report</a> </div>
+                <div class="clr"></div>
+              </li>
+              <li>
+                <div class="col-md-8">
+                  <div class="hide-user-image"><%= image_tag 'people_image.jpg' %></div>
+                  <p>Anthony Panepinto</p>
+                </div>
+                <div class="col-md-4"> <a href="#">Unblock</a> <span>.</span> <a href="#">Report</a> </div>
+                <div class="clr"></div>
+              </li>
+              <li>
+                <div class="col-md-8">
+                  <div class="hide-user-image"><%= image_tag 'people_image.jpg' %></div>
+                  <p>Anthony Panepinto</p>
+                </div>
+                <div class="col-md-4"> <a href="#">Unblock</a> <span>.</span> <a href="#">Report</a> </div>
+                <div class="clr"></div>
+              </li>
+              <li>
+                <div class="col-md-8">
+                  <div class="hide-user-image"><%= image_tag 'people_image.jpg' %></div>
+                  <p>Anthony Panepinto</p>
+                </div>
+                <div class="col-md-4"> <a href="#">Unblock</a> <span>.</span> <a href="#">Report</a> </div>
+                <div class="clr"></div>
+              </li>
+              <li>
+                <div class="col-md-8">
+                  <div class="hide-user-image"><%= image_tag 'people_image.jpg' %></div>
+                  <p>Anthony Panepinto</p>
+                </div>
+                <div class="col-md-4"> <a href="#">Unblock</a> <span>.</span> <a href="#">Report</a> </div>
+                <div class="clr"></div>
+              </li>
+              <li>
+                <div class="col-md-8">
+                  <div class="hide-user-image"><%= image_tag 'people_image.jpg' %></div>
+                  <p>Anthony Panepinto</p>
+                </div>
+                <div class="col-md-4"> <a href="#">Unblock</a> <span>.</span> <a href="#">Report</a> </div>
+                <div class="clr"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
 
-        <h5>Birthday:</h5>
-        <%= f.date_select :birthday,
-        {:start_year => Time.now.year,
-          :end_year => 1900,
-          :use_short_month => true,
-          :order => [:month, :day, :year],
-          :prompt => {:month => 'Month', :day => 'Day', :year => 'Year'}},
-          {:class => 'year',
-            :id => 'user_birthday'}%><br />
+        <div id="tabs-5">
+          <div class="event-m">
+            <a href="events-03.html">
+              <div class="col-md-12 event_m">
+                <div class="event-image">
+                  <%= image_tag 'event_image.jpg' %>
+                </div>
+
+                <div class="event-about">
+                  <h3>Bodybuilding Tips &amp; Drinks!</h3>
+                  <p class="place-map">Spaggos italian Cuisine, Los Angeles</p>
+                  <p class="date">Wednesday, December 11,2013 </p>
+                  <p class="c-time">9:00 am </p>
+                  <div>
+                    <%= image_tag 'people_image.jpg' %>
+                    <p class="host-by">Hosted by :</p>
+                    <p class="host-by-name">Anthony Panepinto</p>
+                  </div>
+                </div>
+                <div class="clr"></div>
+              </div>
+            </a>
+
+            <a href="events-03.html">
+              <div class="col-md-12 event_m">
+                <div class="event-image">
+                  <%= image_tag 'event_image.jpg' %>
+                </div>
+
+                <div class="event-about">
+                  <h3>Bodybuilding Tips &amp; Drinks!</h3>
+                  <p class="place-map">Spaggos italian Cuisine, Los Angeles</p>
+                  <p class="date">Wednesday, December 11,2013 </p>
+                  <p class="c-time">9:00 am </p>
+                  <div>
+                    <%= image_tag 'people_image.jpg' %>
+                    <p class="host-by">Hosted by :</p>
+                    <p class="host-by-name">Anthony Panepinto</p>
+                  </div>
+                </div>
+                <div class="clr"></div>
+              </div>
+            </a>
+
+            <a href="events-03.html">
+              <div class="col-md-12 event_m">
+                <div class="event-image">
+                  <%= image_tag 'event_image.jpg' %>
+                </div>
+
+                <div class="event-about">
+                  <h3>Bodybuilding Tips &amp; Drinks!</h3>
+                  <p class="place-map">Spaggos italian Cuisine, Los Angeles</p>
+                  <p class="date">Wednesday, December 11,2013 </p>
+                  <p class="c-time">9:00 am </p>
+                  <div>
+                    <%= image_tag 'people_image.jpg' %>
+                    <p class="host-by">Hosted by :</p>
+                    <p class="host-by-name">Anthony Panepinto</p>
+                  </div>
+                </div>
+                <div class="clr"></div>
+              </div>
+            </a>
+
+            <a href="events-03.html">
+              <div class="col-md-12 event_m border-none">
+                <div class="event-image">
+                  <%= image_tag 'event_image.jpg' %>
+                </div>
+
+                <div class="event-about">
+                  <h3>Bodybuilding Tips &amp; Drinks!</h3>
+                  <p class="place-map">Spaggos italian Cuisine, Los Angeles</p>
+                  <p class="date">Wednesday, December 11,2013 </p>
+                  <p class="c-time">9:00 am </p>
+                  <div>
+                    <%= image_tag 'people_image.jpg' %>
+                    <p class="host-by">Hosted by :</p>
+                    <p class="host-by-name">Anthony Panepinto</p>
+                  </div>
+                </div>
+                <div class="clr"></div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div id="tabs-6">
+          <div class="activity_m">
+            <a href="activity-02.html">
+              <div class="col-md-12 event_m">
+                <div class="event-image">
+                  <%= image_tag 'event_image.jpg' %>
+                </div>
+                <div class="event-about">
+                  <h3>I am looking for a Tennis Partner</h3>
+                  <p class="place-map">Spaggos italian Cuisine, Los Angeles</p>
+                  <p class="date">Wednesday, December 11,2013 </p>
+                  <p class="c-time">9:00 am </p>
+                  <p class="p-time">Once a month </p>
+                  <div>
+                    <%= image_tag 'people_image.jpg' %>
+                    <p class="act-name">Anthony Panepinto</p>
+                    <p class="act-d">22/M/Toronto</p>
+                    <div class="clr"></div>
+                  </div>
+                </div>
+                <div class="clr"></div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+
       </div>
-      <div class="span5">
-        <div class="side-bg">
-        <br />
-        Profile image:<br />
-        <%= image_tag @user.profile_image_url(:thumb).to_s if @user.profile_image? %>
-        <%= f.file_field :profile_image %>
-        <h5>Gender:</h5>
-        <label class="radio inline">
-          <span class="pushm"><%= f.radio_button "gender", "1" %>
-            Male
-          </span>
-        </label>
-        <label class="radio inline">
-          <span class="pushf">
-            <%= f.radio_button "gender", "0" %>
-            Female
-          </span>
-        </label><br /><br />
-        <br />
-        Ethnicity:
-        <br />
-        <br />
-        <div><%= f.select(:ethnicity_id, Ethnicity.find(:all).collect {|u| [u.name, u.id]}, :prompt => 'Select Ethicity') %></div>
-        <br />
-        Education:
-        <br />
-        <br />
-        <div><%= f.select(:education_id, Education.find(:all).collect {|u| [u.name, u.id]}, :prompt => 'Select Ethicity') %></div>
-        <br />
-        <div><%= f.submit "Update profile", class: "btn btn-warning" %></div>
-      </div>
-    <% end %>
+    </div>
   </div>
+  <%= render 'right_side' %>
 </div>
+<script>
+$(function() {
+  $( "#tabs" ).tabs();
+});
+</script>
