@@ -7,7 +7,9 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :zip, :remember_me, :first_name, :last_name,
                   :birthday, :current_password, :occupation, :address, :interests, :aboutme, :profile_image,
-                  :photos_attributes, :age, :education_id, :ethnicity_id, :blurb, :gender
+                  :photos_attributes, :age, :education_id, :ethnicity_id, :blurb, :gender, :email_confirmation
+
+  attr_accessor :email_confirmation
 
   has_many :authorizations, :dependent => :destroy
   has_many :comments

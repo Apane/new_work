@@ -40,19 +40,23 @@ module ApplicationHelper
   def whitespace
   end
 
-  def container_class_name
-    if action_name == 'landing'
-      @class = ''
-    elsif controller_name == 'sessions'
-      @class = ''
-    elsif controller_name == 'registrations'
-      if action_name == 'edit'
-        @class = 'container'
-      else
-        @class = ''
-      end
+  def body_class_name
+    if controller_name == 'sessions' && action_name == 'new'
+      'backgroud-img'
+    elsif controller_name == 'registrations' && action_name == 'new'
+      'backgroud-img'
     else
-      @class = 'container'
+      ''
+    end
+  end
+
+  def container_class_name
+    if controller_name == 'sessions' && action_name == 'new'
+      'sign-up-bg'
+    elsif controller_name == 'registrations' && action_name == 'new'
+      'sign-up-bg'
+    else
+      ''
     end
   end
 end

@@ -39,3 +39,9 @@
 .edit-icon{
   cursor: pointer;
 }
+span.notes_count{
+  position: absolute;
+  margin-top: -10px;
+  margin-left: -10px;
+  color: #fff;
+}

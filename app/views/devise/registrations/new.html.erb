@@ -1,69 +1,109 @@
-<div class="background-gradient">
-<div id="user">
-      <div class="logo"><%#= link_to logo, root_path %></div>
-
-  <div class="new_user">
-
-    <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-
-      <%= devise_error_messages! %>
-
-  <div id="formbox-login-tips" class="tips">
-	<h4>Meet people like you, near you.</h4>
-	<div class="line"></div>
-	<ul>
-	  <li><h5>Publish new events</h5></li>
-	  <li><h5>Get others to join</h5></li>
-	  <li><h5>Find people with shared interests.</h5></li>
-	</ul>
-      </div>
-      <div class="signup-body">
-	<h3>Create a new account</h3>
-	<div><%= f.input_field :email, placeholder: "Your email", required: true, autocomplete: :off %></div>
-	<div><%= f.input_field :password, placeholder: "Password", required: true, autocomplete: :off %></div>
-	<div><%= f.input_field :password_confirmation, placeholder: "Password confirmation", required: true, autocomplete: :off %></div>
-	<div><%= f.input_field :first_name, placeholder: "Your first name", required: true, autocomplete: :off %></div>
-	<div><%= f.input_field :last_name, placeholder: "Your last name", required: true, autocomplete: :off %></div>
-	<div><%= f.input_field :zip, placeholder: "Your zip or postal code", required: true, autocomplete: :off %></div>
-
-  <br />
-  Profile image:<br /><br />
-  <%= image_tag @user.profile_image_url(:thumb).to_s if @user.profile_image? %>
-  <%= f.file_field :profile_image %>
-  <br />
-  <br />
-
-	Birthday: <br /><br />
-	<%= f.date_select :birthday,
-          {:start_year => Time.now.year,
-    :end_year => 1900,
-    :use_short_month => true,
-    :order => [:month, :day, :year],
-    :prompt => {:month => 'Month', :day => 'Day', :year => 'Year'}},
-  {:class => 'year',
-    :id => 'user_birthday'}
-%>
-  <br />
-  <br />
-	Gender:
-	<br />
-	<label class="radio inline">
-	  <div class="pushm"><%= f.radio_button "gender", "1" %>
-	    Male
-	  </div>
-	</label>
-	<label class="radio inline">
-	  <div class="pushf">
-	    <%= f.radio_button "gender", "0" %>
-	    Female
-	  </div>
-	</label>
-	<br /><br />
-	<div><%= f.submit "Sign up", class: "btn btn-warning"  %></div><br />
-
-      <% end %>
-      </div>
+<div class="row">
+  <div class="col-md-6 creat-account-info">
+    <div class="col-md-12 row">
+      <%= image_tag 'creat-account-info-bg-image.png' %>
+    </div>
+    <div class="col-md-12 padding-left">
+      <h1>Meet people like you near you</h1>
+      <ul>
+        <li>Publish new events</li>
+        <li>Get others to join</li>
+        <li>Find people with shared interests.</li>
+      </ul>
+    </div>
   </div>
+  <div class="col-md-5 creat-account">
+    <h1>Create New Account</h1>
+    <div class="col-md-12 showing-event">
+      <div class="row">
+        <div class="col-md-12">
+          <h4>Sign Up</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 event_info">
+      <div class="row">
+        <div class="col-md-12 event_m border-none">
+          <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), html:{role: 'form'}) do |f| %>
+            <%= devise_error_messages! %>
+            <div class="form-group">
+              <%= f.label :first_name %>
+              <%= f.text_field :first_name, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :last_name %>
+              <%= f.text_field :last_name, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :email %>
+              <%= f.email_field :email, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :email_confirmation %>
+              <%= f.email_field :email_confirmation, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :zip %>
+              <%= f.text_field :zip, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <label for="Date" style="display:block; margin-bottom:5px;">Gender :</label>
+              <div class="radio col-xs-6 row">
+                <label>
+                  <%= f.radio_button :gender, "1" %>
+                  Male
+                </label>
+              </div>
+              <div class="radio col-xs-6 row">
+                <label>
+                  <%= f.radio_button :gender, "0" %>
+                  Female
+                </label>
+              </div>
+              <div class="clr"></div>
+            </div>
+            <div class="form-group">
+              <label for="Date" style="display:block; margin-bottom:5px;">Date of Birth :</label>
+              <div class="row birth-date">
+                <%= f.date_select :birthday, {
+                  :order => [:day, :month, :year],
+                  :start_year => 1940,
+                  :end_year => 2004} %>
+              </div>
+              <div class="clr"></div>
+            </div>
+<!--             <div class="form-group">
+              <label for="Date" style="display:block; margin-bottom:5px;">Profile Picture :</label>
+              <div class="col-xs-3 row">
+                <div class="profile-photo">
+                  <%#= image_tag 'user-image.jpg' %>
+                </div>
+              </div>
+              <div class="col-xs-9">
+                <button type="button" class="btn btn-primary btn-lg btn-block upload-photo">Upload A Photo</button>
+              </div>
+              <div class="clr"></div>
+            </div> -->
+            <div class="col-md-12 text-center creat-b">
+              <div align="center">
+                <%= f.submit 'Create Account', class: 'btn btn-default btn-lg creat-event' %>
+                <p>By clicking the button, you agree to the terms and conditions</p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="clr"></div>
 </div>
-</div>
-<%#= render 'shared/footer' %>
+
+<%= render "shared/footer" %>
+
+<script type="text/javascript">
+    $( document ).ready(function() {
+      $("select").selectify();
+
+      $( ".selectify" ).wrap( "<div class='col-xs-4'></div>" );
+    });
+</script>
