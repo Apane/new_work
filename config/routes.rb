@@ -22,7 +22,7 @@ Friendiose::Application.routes.draw do
   get "welcome", to: "home#welcome", as: 'welcome'
 
   devise_scope :user do
-    get 'edit/edit_account' => 'users/registrations#account_registration', as: :edit_account
+    get 'settings' => 'users/registrations#account_registration', as: :settings
   end
 
   get 'profile/:id' => "profiles#show", as: :profile

@@ -1,0 +1,73 @@
+<div class="col-md-3">
+  <button class="btn btn-primary btn-lg btn-block send-m send-icon" type="button">Send Message</button>
+  <button class="btn btn-primary btn-lg btn-block mark-f mark-icon" type="button">Mark As Favorits</button>
+  <button class="btn btn-primary hide-u hide-icon pull-left" type="button">Hide User</button>
+  <button class="btn btn-primary block-u block-icon pull-right" type="button">Block User</button>
+  <div class="clr"></div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Age</h3>
+    </div>
+    <div class="panel-body">
+      22
+    </div>
+    <div class="panel-heading">
+      <h3 class="panel-title">Gender</h3>
+    </div>
+    <div class="panel-body">
+      <%= User::GENDER[@user.gender] %>
+    </div>
+    <div class="panel-heading">
+      <h3 class="panel-title">Occupation</h3>
+    </div>
+    <div class="panel-body">
+      <%= @user.occupation.present? ? @user.occupation : 'Empty' %>
+    </div>
+    <div class="panel-heading">
+      <h3 class="panel-title">Address</h3>
+    </div>
+    <div class="panel-body">
+      -
+    </div>
+    <div class="panel-heading">
+      <h3 class="panel-title">Ethnicity</h3>
+    </div>
+    <div class="panel-body">
+      <%= @user.ethnicity.present? ? @user.ethnicity.name : 'Not information' %>
+    </div>
+    <div class="panel-heading">
+      <h3 class="panel-title">Education</h3>
+    </div>
+    <div class="panel-body">
+      <%= @user.education.present? ? @user.education.name : 'Not information' %>
+    </div>
+  </div>
+
+  <div class="col-md-12 events">
+    <div class="row">
+      <p class="heading-text">Events <span>(1)</span></p>
+      <div class="event-img">
+        <%= image_tag 'event_image.jpg' %>
+      </div>
+      <div class="event-about">
+        <h3>Bodybuilding Tips &amp; Drinks!</h3>
+        <p class="place-map">Spaggos italian Cuisine, Los Angeles</p>
+        <p class="date">Wednesday, December 11,2013 </p>
+        <p class="c-time">9:00 am </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12 events">
+    <div class="row">
+      <p class="heading-text">Activities <span>(1)</span></p>
+      <div class="event-img">
+        <%= image_tag 'event_image.jpg' %>
+      </div>
+      <div class="event-about">
+        <h3>Bodybuilding Tips &amp; Drinks!</h3>
+        <p class="place-map">Spaggos italian Cuisine, Los Angeles</p>
+      </div>
+    </div>
+  </div>
+</div>

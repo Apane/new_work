@@ -48,17 +48,17 @@ class User < ActiveRecord::Base
     associated_against: {questions: [:answer]}
 
   DEGREE = {
-    '' => "None",
-    '1' => "Bachelor",
-    '2' => "Master",
-    '3' => "Doctorate"
+    0 => "None",
+    1 => "Bachelor",
+    2 => "Master",
+    3 => "Doctorate"
   }
 
   ETHNICITY = {
-    '' => "Asian",
-    '1' => "Indian",
-    '2' => "Black",
-    '3' => "White"
+    0 => "Asian",
+    1 => "Indian",
+    2 => "Black",
+    3 => "White"
   }
 
   GENDER = {

@@ -1,6 +1,5 @@
-<span class="photo_<%= photo.id %>">
+<li class="photo_<%= photo.id %>">
   <%= image_tag(photo.file.thumb.url, class: 'img-polaroid') %>
-  <span class="remove">
-    <%= link_to "x", photo, :confirm => 'Are you sure?', :method => :delete, remote: true %>
-  </span>
-</span>
+  <p>Lorem ipsum dolor sit amet,consectetur adipisicing elit, sed do eiusmod tempor incidiunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+  <%= link_to "delete", photo, :confirm => 'Are you sure?', :method => :delete, remote: true %>
+</li>
