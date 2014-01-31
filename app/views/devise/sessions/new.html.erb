@@ -1,54 +1,58 @@
-<div class="background-gradient">
-  <div id="user">
-    <div class="main1">
-      <div class="logo"><%#= link_to logo, root_path %></div>
-      <div class="new_user">
-
-	<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-	  <div id="formbox-login-tips" class="tips">
-	    Don't have an account?
-
-	    <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-        <%= link_to "Sign up", new_registration_path(resource_name) %>
-	      <br />	      <br />
-	    <%= render "devise/shared/links" %>
-	  </div>
-
-       <% if notice %>
-        <p class="notice"><%= notice if flash[:notice] %></p>
-       <% else %>
-
-       <% end %>
-
-       <% if alert %>
-         <p class="alert"><%= alert %></p>
-       <% else %>
-
-       <% end %>
-
-
-
-	  <div class="signup-body">
-	  <h3>Log in to Friendiose</h3>
-
-	  <div><%= f.input_field :email, placeholder: "Your email", required: true %></div>
-
-	  <div><%= f.input_field :password, placeholder: "Password", required: true  %></div>
-
-
-	  <% if devise_mapping.rememberable? -%>
-            <div><%= f.check_box :remember_me, checked: true %> Remember my email on this computer</div>
-	  <% end -%><br />
-
-	    <div class="Form_Field Form_Field_Text marketing"><%= f.submit "Sign in", class: "btn btn-warning"  %></div><br />
-
-	  <% end %>
-
-	<% end -%>
-
+<div class="container sign-up-bg">
+  <div class="row">
+    <div class="col-md-6 creat-account-info">
+      <div class="col-md-12 row">
+        <%= image_tag 'creat-account-info-bg-image.png' %>
+      </div>
+      <div class="col-md-12 padding-left">
+        <h1>Meet people like you near you</h1>
+        <ul>
+          <li>Publish new events</li>
+          <li>Get others to join</li>
+          <li>Find people with shared interests.</li>
+        </ul>
       </div>
     </div>
-  </div>
-</div>
-</div>
 
+    <div class="col-md-5 creat-account">
+      <h1>Sign In</h1>
+      <div class="col-md-12 showing-event">
+        <div class="row">
+          <div class="col-md-12">
+            <h4>Sign In</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12 event_info">
+        <div class="row">
+          <div class="col-md-12 event_m border-none">
+            <%= simple_form_for(resource, :as => resource_name,
+                              :url => session_path(resource_name)) do |f| %>
+              <div class="form-group">
+                <%= f.label :email %>
+                <%= f.email_field :email, required: true, class: 'form-control' %>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :password %>
+                <%= f.password_field :password, class: 'form-control' %>
+              </div>
+
+              <div class="form-group">
+                <label style="color:#666666;">Don't have an account?<br>
+                  <span><%= link_to "Sign up here", new_registration_path(resource_name) %></span>
+                </label>
+                <%= f.submit "Sign In", class: 'btn btn-default send-m-button pull-right' %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clr"></div>
+  </div>
+
+  <%= render "shared/footer" %>
+</div>
+<%#= render "devise/shared/links" %>

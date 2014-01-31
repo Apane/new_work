@@ -48,7 +48,7 @@
       ga('send', 'pageview');
     </script>
   </head>
-  <body>
+  <body class="<%= 'backgroud-img' if controller_name == 'sessions' && action_name == 'new' %>">
     <%= render "shared/header" %>
     <% flash.each do |name, msg| %>
       <div class="alert alert-<%= name == :notice ? "success" : "warning" %> alert-dismissable">
@@ -59,7 +59,7 @@
     <div class="container">
       <%= yield %>
     </div>
-    <%= render "shared/footer" %>
+    <%= render "shared/footer" unless controller_name == 'sessions' && action_name == 'new' %>
     <%= yield :footer_js %>
   </body>
 </html>
