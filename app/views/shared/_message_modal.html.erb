@@ -1,12 +1,22 @@
 <!-- Modal -->
+<div id="windowTitleDialog" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="windowTitleLabel" aria-hidden="true">
 
-  <%= form_for current_user.sent_messages.new do |f| %>
-    <div class="modal-body">
-      <%= f.text_area :body, rows: 5 %>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+         <h4 class="modal-title" id="myModalLabel">Send message to <%= @user.name %></h4>
+      </div>
+      <%= form_for current_user.sent_messages.new do |f| %>
+      <div class="modal-body">
+        <%= f.text_area :body, rows: 5, class: 'form-control' %>
+        <div class="clr"></div>
+      </div>
+      <div class="modal-footer">
+        <%= f.hidden_field :recipient_id, value: @user.id %>
+        <%= f.submit 'Send', class: 'btn btn-default pull-right creat-event' %>
+      </div>
+      <% end %>
     </div>
-    <div class="modal-footer">
-      <div><%= f.hidden_field :recipient_id, value: @user.id %></div>
-      <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-      <%= f.submit 'Send', class: 'btn btn-primary' %>
-    </div>
-  <% end %>
+  </div>
+</div>

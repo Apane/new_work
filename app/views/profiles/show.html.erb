@@ -77,4 +77,4 @@
 <%#= @user.age %>
 <%#= @user.ethnicity.present? ? @user.ethnicity.name : "" %>
 <%#= @user.education.present? ? @user.education.name : "" %>
-<%#= render 'shared/message_modal' %>
+<%= render 'shared/message_modal' unless @user == current_user %>
