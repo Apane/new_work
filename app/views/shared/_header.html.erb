@@ -31,25 +31,25 @@
 
       <div class="col-md-3 myaccount">
         <% if user_signed_in? %>
-        <%= link_to notifications_path, class: 'notes_area' do %>
-          <%= image_tag('w_icon.png') %>
-          <span class="notes_count"><%= current_user.new_notifications.size if current_user.new_notifications.any? %></span>
-        <% end %>
-        <%= link_to image_tag('inbox_icon.png'), messages_path %>
-        <ul class="setting">
-          <li class="dropdown">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-              <span><%= current_user.name %></span>
-              <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to 'Edit profile', root_path %></li>
-              <li><a href="settings.html">Settings</a></li>
-              <li><%= link_to "Log out" , destroy_user_session_path, method: :delete %></li>
-            </ul>
-          </li>
-        </ul>
-        <div class="clr"></div>
+          <%= link_to notifications_path, class: 'notes_area' do %>
+            <%= image_tag('w_icon.png') %>
+            <span class="notes_count"><%= current_user.new_notifications.size if current_user.new_notifications.any? %></span>
+          <% end %>
+          <%= link_to image_tag('inbox_icon.png'), messages_path %>
+          <ul class="setting">
+            <li class="dropdown">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                <span><%= current_user.name %></span>
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to 'Edit profile', root_path %></li>
+                <li><a href="settings.html">Settings</a></li>
+                <li><%= link_to "Log out" , destroy_user_session_path, method: :delete %></li>
+              </ul>
+            </li>
+          </ul>
+          <div class="clr"></div>
         <% else %>
           <span>
             <%= link_to 'Sign IN', new_user_session_path, class: 'btn btn-info sign-i-u' %>
