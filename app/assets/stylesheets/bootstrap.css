@@ -3388,9 +3388,13 @@ input[type="button"].btn-block {
 
 .dropdown-toggle:focus {
   outline: 0;
-  overflow: hidden;
-  padding-bottom: 5px;
 }
+
+.dropdown-toggle {
+  overflow: hidden;
+  padding-bottom: 20px;
+}
+
 
 .dropdown-menu {
   position: absolute;
@@ -4394,7 +4398,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .dropdown-toggle > div {
     float: left;
     margin-right: 6px;
-    overflow:hidden;
 }
 .dropdown-toggle .icon-bar {
   display: block;
@@ -4448,7 +4451,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
     background: none repeat scroll 0 0 #FFFFFF;
     border-left: 1px solid #E8DACE;
     border-radius: 5px !important;
-    height: 39px;
+    height: 31px;
     margin-top: 6px;
     padding-left: 10px;
     width: 100% !important;

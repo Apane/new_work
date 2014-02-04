@@ -43,6 +43,8 @@ Friendiose::Application.routes.draw do
 
   resources :users do
     resources :favorites, :only => [:index, :create, :destroy]
+    post 'create', on: :member
+    delete 'destroy', on: :member
   end
 
   resources :photos
