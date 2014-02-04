@@ -15,4 +15,13 @@ class FavoritesController < ApplicationController
     @favorite.destroy unless @favorite.blank?
   end
   end
+
+  private
+
+  def find_user
+    @user = User.find(params[:id])
+  end
+
+  end
+
 end
