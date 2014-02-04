@@ -6,9 +6,10 @@ class FavoritesController < ApplicationController
   end
 
   def create
+    @currentuser = current_user
     @user = User.find params[:id]
-    @user.favorites << @user
-  def
+    @currentuser.favorites << @user
+  end
 
   def destroy
     @favorite = @user.favorites.find_by_user_id params[:id]
