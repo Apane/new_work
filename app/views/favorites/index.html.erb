@@ -18,7 +18,12 @@
           </div>
         </div>
       </div>
-      <% @visitors.each do |visitor| %>
+
+
+      <%= @user.favorites.map(&:name).to_sentence %>
+
+
+      <% @favorites.each do |favorite| %>
       <div class="col-md-12 users_info visitors">
         <div class="row">
           <div class="col-md-12">
