@@ -14,15 +14,11 @@ class FavoritesController < ApplicationController
   def destroy
     @favorite = @user.favorites.find_by_user_id params[:id]
     @favorite.destroy unless @favorite.blank?
+    end
   end
-  end
-
-  private
 
   def find_user
     @user = current_user
-  end
-
   end
 
 end
