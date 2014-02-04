@@ -17,8 +17,6 @@ class FavoritesController < ApplicationController
   end
   end
 
-  private
-
   def find_user
     @user = current_user
   end
