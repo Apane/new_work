@@ -1,4 +1,5 @@
 Friendiose::Application.routes.draw do
+  get "favorites/index"
   resources :messages
 
   resources :conversations do
@@ -36,11 +37,14 @@ Friendiose::Application.routes.draw do
   get 'meet_new_people' => 'seo#meet_new_people'
   get 'edit_profile' => 'users#edit_profile'
 
-
-
   resources :users do
     resources :questions
   end
+
+  resources :users do
+    resources :favorites, :only => [:index, :create, :destroy]
+  end
+
   resources :photos
 
   resources :events do #events/1/comments
@@ -50,6 +54,9 @@ Friendiose::Application.routes.draw do
   end
 
   resources :questions
+
+  resources :favorites
+
 
 
   # duplicates o for devise

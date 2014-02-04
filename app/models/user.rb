@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
   has_many :visits, dependent: :destroy
   has_many :visitors, through: :visits
   has_many :recent_visitors, through: :visits, source: :visitor, conditions: [ "visits.visited_at > ?", 1.month.ago ]
+  has_and_belongs_to_many :favorites
 
   accepts_nested_attributes_for :photos
   mount_uploader :profile_image, ProfileImageUploader
