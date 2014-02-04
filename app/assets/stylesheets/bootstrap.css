@@ -3388,7 +3388,7 @@ input[type="button"].btn-block {
 
 .dropdown-toggle:focus {
   outline: 0;
-  overflow:hidden;
+  overflow: hidden;
   padding-bottom: 5px;
 }
 
@@ -4392,7 +4392,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .dropdown-toggle > div {
     float: left;
     margin-right: 6px;
-    overflow:hidden
+    overflow:hidden;
     padding-bottom: 5px;
 
 }
