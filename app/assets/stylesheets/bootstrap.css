@@ -3389,7 +3389,6 @@ input[type="button"].btn-block {
 .dropdown-toggle:focus {
   outline: 0;
   overflow: hidden;
-  padding-bottom: 5px;
 }
 
 .dropdown-menu {
@@ -3676,11 +3675,14 @@ input[type="button"].btn-block {
 .btn-group > .btn + .dropdown-toggle {
   padding-right: 8px;
   padding-left: 8px;
+  padding-bottom: 4px;
 }
 
 .btn-group > .btn-lg + .dropdown-toggle {
   padding-right: 12px;
   padding-left: 12px;
+  padding-bottom: 4px;
+
 }
 
 .btn-group.open .dropdown-toggle {
@@ -4401,6 +4403,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   width: 22px;
   height: 3px;
   border-radius: 1px;
+  padding-bottom: 4px;
 }
 
 .dropdown-toggle .icon-bar + .icon-bar {
