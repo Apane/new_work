@@ -6,7 +6,7 @@
         <div class="row">
           <div class="col-md-12">
             <h4><%= pluralize(@favorites.size, 'Favorites') %></h4>
-            <div class="col-md-3 row fr">
+<!--             <div class="col-md-3 row fr">
               <select class="form-control">
                 <option value="">SORT BY</option>
                 <option value="1">General</option>
@@ -14,7 +14,7 @@
                 <option value="3">Media</option>
                 <option value="4">Funny</option>
               </select>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -28,21 +28,21 @@
         <div class="row">
           <div class="col-md-12">
             <div class="img-thumbnail">
-              <% if favorite.profile_image.present? %>
-                <%= image_tag(favorite.profile_image_url(:thumb), size: '100x100') %>
+              <% if favorite.favorited.profile_image.present? %>
+                <%= image_tag(favorite.favorited.profile_image_url(:thumb), size: '100x100') %>
               <% else %>
                 <%= image_tag("people_image.jpg") %>
               <% end %>
             </div>
             <div class="users_about_info">
-              <h4><%= visitor.name %></h4>
+              <h4><%= favorite.favorited.name %></h4>
               <p class="visit-time">
-                <%= timeago_tag(current_user.visits.where(favorite: favorite).first.visited_at) %>
+                <%= timeago_tag(favorite.created_at) %>
               </p>
             </div>
             <div class="fr">
-              <p><%= favorite.address %></p>
-              <p><%= favorite.age %> years old</p>
+              <p><%= favorite.favorited.address %></p>
+              <p><%= favorite.favorited.age %> years old</p>
             </div>
             <div class="clr"></div>
           </div>
