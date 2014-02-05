@@ -51,6 +51,24 @@ class UsersController < ApplicationController
     @visitors = current_user.recent_visitors.order('visited_at desc')
   end
 
+  def toggle_hidden
+    @hidden_id = params[:hidden_user_id] # sent to js.erb
+    if params[:action_type] == 'remove'
+      current_user.hidden_users.where('hidden_user_id = ?', @hidden_id).first.destroy
+    elsif params[:action_type] == 'add'
+      current_user.hidden_users.find_or_create_by(hidden_user_id: @hidden_id)
+    end
+  end
+
+  def toggle_blocked
+    @blocked_id = params[:blocked_user_id] # sent to js.erb
+    if params[:action_type] == 'remove'
+      current_user.blocked_users.where('blocked_user_id = ?', @blocked_id).first.destroy
+    elsif params[:action_type] == 'add'
+      current_user.blocked_users.find_or_create_by(blocked_user_id: @blocked_id)
+    end
+  end
+
  private
     # Using a private method to encapsulate the permissible parameters
     # is just a good pattern since you'll be able to reuse the same

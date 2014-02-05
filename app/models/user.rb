@@ -31,6 +31,8 @@ class User < ActiveRecord::Base
   has_many :recent_visitors, through: :visits, source: :visitor, conditions: [ "visits.visited_at > ?", 1.month.ago ]
   has_many :favorites
   has_many :people_who_favorited_me, class_name: 'Favorite', foreign_key: 'favorite_id'
+  has_many :hidden_users, dependent: :destroy
+  has_many :blocked_users, dependent: :destroy
 
   accepts_nested_attributes_for :photos
   mount_uploader :profile_image, ProfileImageUploader
@@ -71,6 +73,20 @@ class User < ActiveRecord::Base
   def favorited?(user)
     fav_ids = self.favorites.pluck(:favorite_id)
     if fav_ids.include? user.id
+      true
+    end
+  end
+
+  def hidden_for?(user)
+    user_ids = user.hidden_users.pluck(:hidden_user_id)
+    if user_ids.include? self.id
+      true
+    end
+  end
+
+   def blocked_for?(user)
+    user_ids = user.blocked_users.pluck(:blocked_user_id)
+    if user_ids.include? self.id
       true
     end
   end

@@ -38,6 +38,10 @@ Friendiose::Application.routes.draw do
   get 'edit_profile' => 'users#edit_profile'
   get 'favorites' => 'favorites#index'
   get 'toggle_favorite' => 'favorites#toggle_favorite'
+  get 'toggle_blocked' => 'users#toggle_blocked'
+  get 'toggle_hidden' => 'users#toggle_hidden'
+
+
 
   resources :users do
     resources :questions

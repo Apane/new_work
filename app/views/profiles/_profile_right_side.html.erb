@@ -1,10 +1,8 @@
 <div class="col-md-3">
   <%= link_to 'Send Message', '#windowTitleDialog', class: 'btn btn-primary btn-lg btn-block send-m send-icon', data: {toggle: 'modal'} unless @user == current_user %>
-  <%=  add_to_favorites %>
+  <%= add_to_favorites %>
   <%= add_to_hidden_users %>
   <%= add_to_blocked_users %>
-  <button class="btn btn-primary hide-u hide-icon pull-left" type="button">Hide User</button>
-  <button class="btn btn-primary block-u block-icon pull-right" type="button">Block User</button>
   <div class="clr"></div>
   <div class="panel panel-default">
     <div class="panel-heading">
