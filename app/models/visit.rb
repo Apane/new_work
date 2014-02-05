@@ -2,7 +2,7 @@ class Visit < ActiveRecord::Base
   belongs_to :user
   belongs_to :visitor, class_name: 'User', foreign_key: 'visitor_id'
 
-  attr_accessible :visited_at
+  attr_accessible :visited_at, :visitor_id
 
   after_create :update_time
 

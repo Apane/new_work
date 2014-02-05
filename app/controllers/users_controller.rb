@@ -48,7 +48,7 @@ class UsersController < ApplicationController
   end
 
   def visitors
-    @visitors = current_user.recent_visitors
+    @visitors = current_user.recent_visitors.order('visited_at desc')
   end
 
  private
