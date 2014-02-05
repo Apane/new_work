@@ -36,15 +36,13 @@ Friendiose::Application.routes.draw do
   get 'find_new_friends' => 'seo#find_new_friends'
   get 'meet_new_people' => 'seo#meet_new_people'
   get 'edit_profile' => 'users#edit_profile'
+  get 'favorites' => 'favorites#index'
+  get 'toggle_favorite' => 'favorites#toggle_favorite'
 
   resources :users do
     resources :questions
-  end
-
-  resources :users do
-    resources :favorites, :only => [:index, :create, :destroy]
-    post 'add_favorite', on: :member
-    delete 'destroy_favorite', on: :member
+    # post 'add_favorite', on: :member
+    # delete 'destroy_favorite', on: :member
   end
 
   resources :photos
@@ -57,7 +55,7 @@ Friendiose::Application.routes.draw do
 
   resources :questions
 
-  resources :favorites
+  # resources :favorites
 
 
 

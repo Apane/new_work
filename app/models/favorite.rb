@@ -1,4 +1,6 @@
 class Favorite < ActiveRecord::Base
-  has_many :favorite_relationships
-  has_many :users, through: :favorite_relationships
+  attr_accessible :favorite_id, :user_id
+
+  belongs_to :user
+  belongs_to :favorited, class_name: 'User', foreign_key: 'favorite_id'
 end

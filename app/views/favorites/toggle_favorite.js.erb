@@ -1,0 +1,10 @@
+button = $('.favorite_button')
+<% if params[:action_type] == 'remove' %>
+  button.text('Mark as Favorite');
+  button.attr('href', '/toggle_favorite?action_type=add&favorite_id=<%= @fav_id %>');
+<% elsif params[:action_type] == 'add' %>
+  button.text('Remove from Favorite');
+  button.attr('href', '/toggle_favorite?action_type=remove&favorite_id=<%= @fav_id %>');
+<% else %>
+  alert('something went wrong!');
+<% end %>

@@ -29,9 +29,8 @@ class User < ActiveRecord::Base
   has_many :visits, dependent: :destroy
   has_many :visitors, through: :visits
   has_many :recent_visitors, through: :visits, source: :visitor, conditions: [ "visits.visited_at > ?", 1.month.ago ]
-  has_many :favorite_relationships
-  has_many :favorites, through: :favorite_relationships
-  has_many :people_who_favorited_me, through: :favorite_relationships, foreign_key: "favorite_id"
+  has_many :favorites
+  has_many :people_who_favorited_me, class_name: 'Favorite', foreign_key: 'favorite_id'
 
   accepts_nested_attributes_for :photos
   mount_uploader :profile_image, ProfileImageUploader
@@ -68,6 +67,14 @@ class User < ActiveRecord::Base
     0 => "Female",
     1 => "Male",
   }
+
+  def favorited?(user)
+    fav_ids = self.favorites.pluck(:favorite_id)
+    if fav_ids.include? user.id
+      true
+    end
+  end
+
   def create_questions
     Question::QUESTIONS_FOR_ABOUT.map{|q| self.questions.create(question: q, for_about: true)}
     Question::QUESTIONS_FOR_PERSONALITY.map{|q| self.questions.create(question: q, for_personality: true)}
