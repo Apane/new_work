@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140205152631) do
+ActiveRecord::Schema.define(version: 20140205214846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,13 @@ ActiveRecord::Schema.define(version: 20140205152631) do
     t.string   "last_name"
     t.string   "name"
     t.string   "link"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "blockeds", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "blocked_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -105,6 +112,13 @@ ActiveRecord::Schema.define(version: 20140205152631) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "favorite_id"
+  end
+
+  create_table "hiddens", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "hidden_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "messages", force: true do |t|
