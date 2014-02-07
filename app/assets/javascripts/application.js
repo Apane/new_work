@@ -19,6 +19,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.remotipart
 //= require jquery.ui.all
 //= require bootstrap
 //= require addresspicker.js
@@ -34,6 +35,5 @@
 //= require jquery.autoSave
 //= require rails-timeago
 //= require landing
-//= require jquery.remotipart
 
 $.pnotify.defaults.history = false

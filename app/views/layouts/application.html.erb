@@ -36,7 +36,6 @@
     <%= yield :header_js %>
     <%= render 'layouts/pusher' if current_user.present? %>
     <%= csrf_meta_tags %>
-    <%= javascript_include_tag '//use.typekit.net/aom8bmb.js' if Rails.env.production? %>
     <!-- Brand and toggle get grouped for better mobile display -->
      <script>
       try{Typekit.load();}catch(e){};
