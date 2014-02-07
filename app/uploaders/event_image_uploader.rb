@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class ProfileImageUploader < CarrierWave::Uploader::Base
+class EventImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   include CarrierWave::RMagick
@@ -26,24 +26,15 @@ class ProfileImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Process files as they are uploaded:
-  #  process :scale => [200, 300]
+  # process :scale => [200, 300]
   #
-  #def scale(width, height)
-   # width=200
-   # height=300
-  #end
+  # def scale(width, height)
+  #   # do something
+  # end
 
   # Create different versions of your uploaded files:
   version :thumb do
-     process :resize_to_limit => [110, 0]
-  end
-
-  version :small do
-     process :resize_to_limit => [30, 0]
-  end
-
-  version :all do
-     process :resize_to_limit => [150, 0]
+    process :resize_to_limit => [500, 0]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

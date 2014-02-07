@@ -16,10 +16,12 @@ class UsersController < ApplicationController
       if @user.update(params[:user])
         format.html { redirect_to profile_path}
         format.json { respond_with_bip(@user) }
+        format.js
       else
         format.html { render edit}
         # render profile_path
         format.json { respond_with_bip(@user) }
+        format.js
       end
     end
   end

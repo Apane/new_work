@@ -60,6 +60,7 @@
       <%= yield %>
     </div>
     <%= render "shared/footer" unless controller_name == 'sessions' && action_name == 'new' || controller_name == 'registrations' && action_name == 'new' %>
+    <div class="modal"><!-- Place at bottom of page --></div>
     <%= yield :footer_js %>
   </body>
 </html>

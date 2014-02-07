@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
   attr_accessible :title, :description, :location, :date, :time, :event_date, :lat, :lng,
-        :location_name, :event_type, :max_attendees, :postal_code, :country, :state, :district, :city
+        :location_name, :event_type, :max_attendees, :postal_code, :country, :state, :district, :city, :image
 
   acts_as_commentable
   has_many :comments, as: :commentable
@@ -10,6 +10,8 @@ class Event < ActiveRecord::Base
   has_many :notifications, as: :noteable
 
   after_create :update_event_date, :add_owner_to_participants
+
+  mount_uploader :image, EventImageUploader
 
   def update_event_date
     date = self.date.to_s

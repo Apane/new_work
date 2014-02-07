@@ -64,8 +64,8 @@
             <%= f.text_field :title, class: 'form-control' %>
           </div>
           <div class="form-group">
-            <label for="Image"> Event Image:</label>
-            <input type="file" class="form-control">
+            <%= f.label :image, 'Event Image' %>
+            <%= f.file_field :image, class: 'form-control' %>
           </div>
           <div class="form-group">
             <%= f.label :location_name, 'Location Name:' %>

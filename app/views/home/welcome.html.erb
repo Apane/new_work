@@ -5,10 +5,14 @@
     <div class="col-md-12 users_info">
       <div class="row">
         <div class="col-md-12">
-          <div class="user-image">
-            <%= image_tag 'user-image.jpg' %>
+          <div class="user-image upload">
+            <div class="loader"></div>
+            <% if current_user.profile_image.present? %>
+              <%= image_tag(current_user.profile_image_url) %>
+            <% else %>
+              <%= image_tag 'user-image.jpg' %>
+            <% end %>
           </div>
-
           <div class="users_about_fullinfo">
             <h3><%= current_user.name %></h3>
             <p class="edit-about-text">
@@ -19,6 +23,12 @@
           <div class="clr"></div>
         </div>
       </div>
+    </div>
+    <div style="display:none;">
+    <%= form_for current_user, :html => { :multipart => true }, :remote => true do |f| %>
+        <%= hidden_field_tag :upload_type, 'avatar' %>
+        <%= f.file_field :profile_image %>
+    <% end %>
     </div>
 
     <div id="tabs">
@@ -84,5 +94,14 @@
 <script>
   $(function() {
     $( "#tabs" ).tabs();
+  });
+
+  $('.user-image').click(function() {
+      $('input[type=file]#user_profile_image').trigger('click');
+  });
+
+  $('input[type=file]#user_profile_image').change(function() {
+    $('.edit_user').submit();
+    $('.loader').show();
   });
 </script>

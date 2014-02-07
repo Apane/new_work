@@ -59,6 +59,7 @@ gem 'thin'
 gem 'rails-timeago', '~> 2.0'
 gem 'quiet_assets', :group => :development
 gem 'bootstrap-wysihtml5-rails'
+gem 'remotipart', '~> 1.2'
 ##########################################################################
 
 # dev test

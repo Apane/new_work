@@ -210,6 +210,7 @@ GEM
     raindrops (0.12.0)
     rake (10.1.1)
     ref (1.0.5)
+    remotipart (1.2.1)
     rmagick (2.13.2)
     rspec-core (2.14.7)
     rspec-expectations (2.14.4)
@@ -311,6 +312,7 @@ DEPENDENCIES
   rails3_serve_static_assets!
   rails_12factor
   rails_log_stdout!
+  remotipart (~> 1.2)
   rmagick
   rspec-rails (~> 2.12)
   sass-rails

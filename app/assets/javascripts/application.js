@@ -34,5 +34,6 @@
 //= require jquery.autoSave
 //= require rails-timeago
 //= require landing
+//= require jquery.remotipart
 
 $.pnotify.defaults.history = false
