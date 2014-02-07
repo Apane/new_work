@@ -22,9 +22,9 @@ Friendiose::Application.routes.draw do
 
   get "welcome", to: "home#welcome", as: 'welcome'
 
-  devise_scope :user do
-    get 'settings' => 'users/registrations#account_registration', as: :settings
-  end
+  # devise_scope :user do
+    get 'settings' => 'users#account_registration', as: :settings
+  # end
 
   get 'profile/:id' => "profiles#show", as: :profile
   get 'disconnect' => 'users#disconnect'

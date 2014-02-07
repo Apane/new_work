@@ -74,55 +74,20 @@
         <div id="tabs-3">
           <div class="hidden-user">
             <ul>
-              <li>
+              <% @hidden_users.each do |user| %>
+              <li class="hidden_user_<%= user.id %>">
                 <div class="col-md-8">
                   <div class="hide-user-image"><%= image_tag 'people_image.jpg' %></div>
-                  <p>Anthony Panepinto</p>
+                  <p><%= user.name %></p>
                 </div>
-                <div class="col-md-4"> <a href="#">Unhide</a> <span>.</span> <a href="#">Report</a> </div>
+                <div class="col-md-4">
+                  <%= link_to 'Unhide', toggle_hidden_path(hidden_user_id: user.id, action_type: 'unhide'), remote: true %>
+                  <span>.</span>
+                  <a href="#">Report</a>
+                </div>
                 <div class="clr"></div>
               </li>
-              <li>
-                <div class="col-md-8">
-                  <div class="hide-user-image"><%= image_tag 'people_image.jpg' %></div>
-                  <p>Anthony Panepinto</p>
-                </div>
-                <div class="col-md-4"> <a href="#">Unhide</a> <span>.</span> <a href="#">Report</a> </div>
-                <div class="clr"></div>
-              </li>
-
-              <li>
-                <div class="col-md-8">
-                  <div class="hide-user-image"><%= image_tag 'people_image.jpg' %></div>
-                  <p>Anthony Panepinto</p>
-                </div>
-                <div class="col-md-4"> <a href="#">Unhide</a> <span>.</span> <a href="#">Report</a> </div>
-                <div class="clr"></div>
-              </li>
-              <li>
-                <div class="col-md-8">
-                  <div class="hide-user-image"><%= image_tag 'people_image.jpg' %></div>
-                  <p>Anthony Panepinto</p>
-                </div>
-                <div class="col-md-4"> <a href="#">Unhide</a> <span>.</span> <a href="#">Report</a> </div>
-                <div class="clr"></div>
-              </li>
-              <li>
-                <div class="col-md-8">
-                  <div class="hide-user-image"><%= image_tag 'people_image.jpg' %></div>
-                  <p>Anthony Panepinto</p>
-                </div>
-                <div class="col-md-4"> <a href="#">Unhide</a> <span>.</span> <a href="#">Report</a> </div>
-                <div class="clr"></div>
-              </li>
-              <li>
-                <div class="col-md-8">
-                  <div class="hide-user-image"><%= image_tag 'people_image.jpg' %></div>
-                  <p>Anthony Panepinto</p>
-                </div>
-                <div class="col-md-4"> <a href="#">Unhide</a> <span>.</span> <a href="#">Report</a> </div>
-                <div class="clr"></div>
-              </li>
+              <% end %>
             </ul>
           </div>
         </div>
@@ -130,54 +95,20 @@
         <div id="tabs-4">
           <div class="hidden-user">
             <ul>
-              <li>
+              <% @blocked_users.each do |user| %>
+              <li class="blocked_user_<%= user.id %>">
                 <div class="col-md-8">
                   <div class="hide-user-image"><%= image_tag 'people_image.jpg' %></div>
                   <p>Anthony Panepinto</p>
                 </div>
-                <div class="col-md-4"> <a href="#">Unblock</a> <span>.</span> <a href="#">Report</a> </div>
-                <div class="clr"></div>
-              </li>
-              <li>
-                <div class="col-md-8">
-                  <div class="hide-user-image"><%= image_tag 'people_image.jpg' %></div>
-                  <p>Anthony Panepinto</p>
+                <div class="col-md-4">
+                  <%= link_to 'Unblock', toggle_blocked_path(blocked_user_id: user.id, action_type: 'unblock'), remote: true %>
+                  <span>.</span>
+                  <a href="#">Report</a>
                 </div>
-                <div class="col-md-4"> <a href="#">Unblock</a> <span>.</span> <a href="#">Report</a> </div>
                 <div class="clr"></div>
               </li>
-              <li>
-                <div class="col-md-8">
-                  <div class="hide-user-image"><%= image_tag 'people_image.jpg' %></div>
-                  <p>Anthony Panepinto</p>
-                </div>
-                <div class="col-md-4"> <a href="#">Unblock</a> <span>.</span> <a href="#">Report</a> </div>
-                <div class="clr"></div>
-              </li>
-              <li>
-                <div class="col-md-8">
-                  <div class="hide-user-image"><%= image_tag 'people_image.jpg' %></div>
-                  <p>Anthony Panepinto</p>
-                </div>
-                <div class="col-md-4"> <a href="#">Unblock</a> <span>.</span> <a href="#">Report</a> </div>
-                <div class="clr"></div>
-              </li>
-              <li>
-                <div class="col-md-8">
-                  <div class="hide-user-image"><%= image_tag 'people_image.jpg' %></div>
-                  <p>Anthony Panepinto</p>
-                </div>
-                <div class="col-md-4"> <a href="#">Unblock</a> <span>.</span> <a href="#">Report</a> </div>
-                <div class="clr"></div>
-              </li>
-              <li>
-                <div class="col-md-8">
-                  <div class="hide-user-image"><%= image_tag 'people_image.jpg' %></div>
-                  <p>Anthony Panepinto</p>
-                </div>
-                <div class="col-md-4"> <a href="#">Unblock</a> <span>.</span> <a href="#">Report</a> </div>
-                <div class="clr"></div>
-              </li>
+              <% end %>
             </ul>
           </div>
         </div>

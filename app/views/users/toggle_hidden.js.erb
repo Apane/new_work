@@ -1,0 +1,16 @@
+if ($('.hide_user_button').length == 0) {
+  $('li.hidden_user_<%= @hidden_user_id %>').fadeOut('fast', function() {
+    $('li.hidden_user_<%= @hidden_user_id %>').remove();
+  });
+} else{
+  button = $('.hide_user_button')
+  <% if params[:action_type] == 'unhide' %>
+  button.text('Hide User');
+  button.attr('href', '/toggle_hidden?action_type=hide&hidden_user_id=<%= @hidden_user_id %>');
+  <% elsif params[:action_type] == 'hide' %>
+  button.text('Un-Hide');
+  button.attr('href', '/toggle_hidden?action_type=unhide&hidden_user_id=<%= @hidden_user_id %>');
+  <% else %>
+  alert('something went wrong!');
+  <% end %>
+};

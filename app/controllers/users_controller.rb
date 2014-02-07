@@ -52,21 +52,26 @@ class UsersController < ApplicationController
   end
 
   def toggle_hidden
-    @hidden_id = params[:hidden_user_id] # sent to js.erb
-    if params[:action_type] == 'remove'
-      current_user.hidden_users.where('hidden_user_id = ?', @hidden_id).first.destroy
-    elsif params[:action_type] == 'add'
-      current_user.hidden_users.find_or_create_by(hidden_user_id: @hidden_id)
+    @hidden_user_id = params[:hidden_user_id] # sent to js.erb
+    if params[:action_type] == 'hide'
+      current_user.hidden_users.find_or_create_by(hidden_user_id: @hidden_user_id)
+    elsif params[:action_type] == 'unhide'
+      current_user.hidden_users.where('hidden_user_id = ?', @hidden_user_id).first.destroy
     end
   end
 
   def toggle_blocked
-    @blocked_id = params[:blocked_user_id] # sent to js.erb
-    if params[:action_type] == 'remove'
-      current_user.blocked_users.where('blocked_user_id = ?', @blocked_id).first.destroy
-    elsif params[:action_type] == 'add'
-      current_user.blocked_users.find_or_create_by(blocked_user_id: @blocked_id)
+    @blocked_user_id = params[:blocked_user_id] # sent to js.erb
+    if params[:action_type] == 'unblock'
+      current_user.blocked_users.where('blocked_user_id = ?', @blocked_user_id).first.destroy
+    elsif params[:action_type] == 'block'
+      current_user.blocked_users.find_or_create_by(blocked_user_id: @blocked_user_id)
     end
+  end
+
+  def account_registration
+    @hidden_users = User.where(id: current_user.hidden_users.pluck(:hidden_user_id))
+    @blocked_users = User.where(id: current_user.blocked_users.pluck(:blocked_user_id))
   end
 
  private

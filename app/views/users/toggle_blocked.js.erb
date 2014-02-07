@@ -1,0 +1,16 @@
+if ($('.block_user_button').length == 0) {
+  $('li.blocked_user_<%= @blocked_user_id %>').fadeOut('fast', function() {
+    $('li.blocked_user_<%= @blocked_user_id %>').remove();
+  });
+} else{
+  button = $('.block_user_button')
+  <% if params[:action_type] == 'unblock' %>
+  button.text('Block User');
+  button.attr('href', '/toggle_blocked?action_type=block&blocked_user_id=<%= @blocked_user_id %>');
+  <% elsif params[:action_type] == 'block' %>
+  button.text('Un-block');
+  button.attr('href', '/toggle_blocked?action_type=unblock&blocked_user_id=<%= @blocked_user_id %>');
+  <% else %>
+  alert('something went wrong!');
+  <% end %>
+};
