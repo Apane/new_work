@@ -1,3 +1,4 @@
+<% unless user.hidden_for?(current_user) %>
 <%= link_to profile_path(user) do %>
   <div class="col-md-12 users_info">
     <div class="row">
@@ -20,10 +21,12 @@
         <div class="fr">
           <p><%= user.address %></p>
           <p><%= user.age %> years old</p>
+          <p><%= user.blocked_for?(current_user) ? 'Blocked' : '' %></p>
         </div>
 
         <div class="clr"></div>
       </div>
     </div>
   </div>
+<% end %>
 <% end %>
