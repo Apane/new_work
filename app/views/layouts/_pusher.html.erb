@@ -20,7 +20,7 @@
   var channel = pusher.subscribe('new_messages_for_user_<%= current_user.id %>');
   channel.bind('new_message', function(data) {
     // counter = parseInt($('.t-inbox').html())+1;
-    $('.t-inbox').html(
+    $('span.t-inbox, span.messages_count').html(
       data.new_messages_count
     );
     $.pnotify({
@@ -39,12 +39,18 @@
       } else{
         $('.notes_area span.notes_count').html('1');
       };
+      $.pnotify({
+        title: data.notification_title,
+        text: data.message,
+        type: "info",
+        icon: 'ui-icon ui-icon-signal-diag'
+      });
     // };
   });
 
   <% current_user.attended_events.each do |event| %>
     var channel = pusher.subscribe('notifications_for_event_<%= event.id %>');
-    channel.bind('new_comment', function(data) {
+    channel.bind("new_comment_<%= event.id %>", function(data) {
       if (data.user_id != <%= current_user.id %>) {
         $.pnotify({
           title: data.message_title,

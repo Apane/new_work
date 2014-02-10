@@ -3,7 +3,19 @@ class EventsController < ApplicationController
 
   def index
     @user = current_user
-    @events = Event.all
+
+    if params[:search]
+      distance = params[:search][:distance] || nil
+      time = params[:search][:time] || nil
+      @events = Event.scoped_by_search(current_user, distance, time)
+    else
+      @events = Event.all
+    end
+
+    respond_to do |format|
+      format.html {}
+      format.js {}
+    end
   end
 
   def new
@@ -67,6 +79,7 @@ class EventsController < ApplicationController
     unless @event.is_private?
       @event.event_participants.create(event_id: @event.id, user_id: current_user.id)
       @participant = current_user
+      @event.create_join_notification(current_user)
     end
 
     respond_to do |format|
@@ -79,6 +92,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @participant = @event.event_participants.where(user_id: current_user.id, event_id: @event.id).first
     @participant.destroy
+    @event.create_leave_notification(current_user)
 
     respond_to do |format|
       format.html {redirect_to @event}

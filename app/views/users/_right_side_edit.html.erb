@@ -35,10 +35,13 @@
     </div>
     <div class="panel-heading">
       <h3 class="panel-title">Address</h3>
-      <span class="edit-icon pull-right"></span>
+      <span class="edit-icon pull-right edit-address"></span>
     </div>
     <div class="panel-body">
-      I am empty....
+      <div>
+        <%= best_in_place current_user, :address, activator: ".edit-address",
+            nil: 'I am empty...', inner_class: 'form-control' %>
+      </div>
     </div>
     <div class="panel-heading">
       <h3 class="panel-title">Ethnicity</h3>

@@ -1,13 +1,19 @@
 class User < ActiveRecord::Base
   include PgSearch
 
+  acts_as_mappable :default_units => :miles,
+                   :default_formula => :sphere,
+                   :lat_column_name => :lat,
+                   :lng_column_name => :lng
+
   devise :database_authenticatable, :registerable, :confirmable, :lockable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
          :omniauth_providers => [:facebook, :twitter, :linkedin]
 
   attr_accessible :email, :password, :password_confirmation, :zip, :remember_me, :first_name, :last_name,
                   :birthday, :current_password, :occupation, :address, :interests, :aboutme, :profile_image,
-                  :photos_attributes, :age, :education_id, :ethnicity_id, :blurb, :gender, :email_confirmation
+                  :photos_attributes, :age, :education_id, :ethnicity_id, :blurb, :gender, :email_confirmation,
+                  :lat, :lng
 
   attr_accessor :email_confirmation
 
@@ -43,7 +49,7 @@ class User < ActiveRecord::Base
 
 
   after_create :create_questions, :set_age
-  before_save :set_age
+  before_save :set_age, :get_gps_data
 
   # pg_search_scope :search_by_full_name, :against => [:first_name, :last_name], :using => [:tsearch]
 
@@ -118,6 +124,15 @@ class User < ActiveRecord::Base
       d = Date.new(today.year, self.birthday.month, self.birthday.day)
       age = d.year - self.birthday.year - (d > today ? 1 : 0)
       self.age = age
+    end
+  end
+
+  def get_gps_data
+    gps = Geokit::Geocoders::GoogleGeocoder.geocode self.address if self.address.present?
+    if gps.present?
+      self.zip = gps.zip
+      self.lat = gps.lat
+      self.lng = gps.lng
     end
   end
 

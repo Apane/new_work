@@ -35,7 +35,10 @@
             <%= image_tag('w_icon.png') %>
             <span class="notes_count"><%= current_user.new_notifications.size if current_user.new_notifications.any? %></span>
           <% end %>
-          <%= link_to image_tag('inbox_icon.png'), messages_path %>
+          <%= link_to messages_path, class: 'messages_area' do %>
+            <%= image_tag('inbox_icon.png') %>
+            <span class="messages_count"><%= current_user.new_messages.size if current_user.new_messages.any? %></span>
+          <% end %>
           <ul class="setting">
             <li class="dropdown">
               <a data-toggle="dropdown" class="dropdown-toggle" href="#">

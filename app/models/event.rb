@@ -1,4 +1,11 @@
 class Event < ActiveRecord::Base
+  include PgSearch
+
+  acts_as_mappable :default_units => :miles,
+                   :default_formula => :sphere,
+                   :lat_column_name => :lat,
+                   :lng_column_name => :lng
+
   attr_accessible :title, :description, :location, :date, :time, :event_date, :lat, :lng,
         :location_name, :event_type, :max_attendees, :postal_code, :country, :state, :district, :city, :image
 
@@ -33,5 +40,38 @@ class Event < ActiveRecord::Base
   # add owner to partipants list
   def add_owner_to_participants
    EventParticipant.create(user_id: self.user_id, event_id: self.id)
+  end
+
+  def create_join_notification(participant)
+    participants = self.participants.where('user_id <> ?', participant.id)
+    if participants.any?
+      participants.each do |p|
+        self.notifications.create(user_id: p.id)
+      end
+    end
+  end
+
+  def create_leave_notification(participant)
+    participants = self.participants.where('user_id <> ?', participant.id)
+    if participants.any?
+      participants.each do |p|
+        self.notifications.create(user_id: p.id)
+      end
+    end
+  end
+
+  def self.scoped_by_search(user, distance, time)
+    if time.present?
+      if time == '1'
+        time = Date.today
+      else
+        time = Date.tomorrow
+      end
+    end
+
+    events = Event.all
+    events = events.within(distance, :origin => user) if distance.present?
+    events = events.where(date: time) if time.present?
+    events
   end
 end

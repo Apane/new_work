@@ -7,9 +7,8 @@ class Notification < ActiveRecord::Base
 
   def push_notifications
     Pusher["new_messages_for_user_#{self.user_id}"].trigger('new_notification', {
-      # user_id: self.user_id
-      # message_title: 'New comment'
-      #message: "<a href='/events/#{self.commentable_id}'>#{self.user.name} commented on #{self.commentable.title} event </a>".html_safe
+      notification_title: "You have one new notification",
+      message: "Some message here"
     })
   end
 end

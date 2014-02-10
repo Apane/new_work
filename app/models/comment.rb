@@ -16,7 +16,7 @@ class Comment < ActiveRecord::Base
   # NOTE: Comments belong to a user
   belongs_to :user
 
-  after_create :push_notifications, :create_notification
+  after_create :create_notification, :push_notifications
 
   def push_notifications
     Pusher["notifications_for_event_#{self.commentable_id}"].trigger('new_comment', {

@@ -5,7 +5,7 @@
     <div class="col-md-12 showing-event">
       <div class="row">
         <div class="col-md-12">
-          <h4>
+          <h4 class="events_counter">
             <%= @events.any? ? "Showing #{@events.size} Upcoming Events" : "No events to show" %>
           </h4>
           <% if @events.size > 4 %>
@@ -24,6 +24,7 @@
     </div>
 
     <div class="col-md-12 event_info">
+      <div class="loading" style="display:none;"><h4>Loading events...</h4></div>
       <div class="row">
         <%= render @events %>
         <br>

@@ -21,6 +21,12 @@ class ProfilesController < ApplicationController
     @user = User.find(params[:id])
     @questions_for_about = @user.questions.for_about.order('id asc')
     @questions_for_personality = @user.questions.for_personality.order('id asc')
-    @user.visits.where(visitor: current_user).first_or_create
+    visit = @user.visits.where(visitor: current_user).first
+    if visit.present?
+      visit.visited_at = Time.now
+      visit.save
+    else
+      @user.visits.create(visitor_id: current_user.id)
+    end
   end
 end

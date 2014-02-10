@@ -3,13 +3,13 @@
 
   <p class="filter-e">Filter Events By :</p>
   <div class="panel panel-default">
-
+    <%= form_tag '/events', method: :get, id: 'filter_events', remote: true do %>
     <div id="multiAccordion1">
       <h3 class="panel-title panel-heading-text"><a href="#">Location</a></h3>
       <div>
         <div class="panel-body">
           <div class="location">
-            Within <input name="" type="text"> mile of me
+            Within <%= text_field_tag :distance, '', name: 'search[distance]' %> mile of me
           </div>
         </div>
       </div>
@@ -20,10 +20,7 @@
       <div>
         <div class="panel-body">
           <div class="times">
-            <select>
-              <option value="Tomorrow">Tomorrow</option>
-              <option value="Today">Today</option>
-            </select>
+            <%= select_tag :time, options_for_select( [['Today', 1], ['Tomorrow', 2]]), name: 'search[time]', id: 'time_select' %>
           </div>
         </div>
       </div>
@@ -119,5 +116,15 @@
         </div>
       </div>
     </div>
+    <%= submit_tag 'Search', class: 'btn btn-primary' %>
+    <% end %>
   </div>
 </div>
+<script type="text/javascript">
+  $('input#distance').focusout(function() {
+    $('#filter_events').submit();
+  });
+  $('#time_select').change(function() {
+    $('#filter_events').submit();
+  });
+</script>
