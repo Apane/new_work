@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
   # GET /messages.json
   def index
     # @messages = Message.all
-    @messages = current_user.inbox_messages.order('created_at asc').group_by(&:conversation_id)
+    @messages = current_user.inbox_messages.order('created_at desc').group_by(&:conversation_id)
   end
 
   def sent

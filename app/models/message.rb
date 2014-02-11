@@ -5,7 +5,7 @@ class Message < ActiveRecord::Base
   belongs_to :recipient, class_name: 'User', foreign_key: 'recipient_id'
   scope :unread, -> { where(is_new: true) }
 
-  attr_accessible :body, :recipient_id, :conversation_id
+  attr_accessible :body, :recipient_id, :conversation_id, :is_new
 
   after_create :push_notifications
 

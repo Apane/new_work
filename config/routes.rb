@@ -40,6 +40,7 @@ Friendiose::Application.routes.draw do
   get 'toggle_favorite' => 'favorites#toggle_favorite'
   get 'toggle_blocked' => 'users#toggle_blocked'
   get 'toggle_hidden' => 'users#toggle_hidden'
+  post 'act_on_conversations' => 'conversations#act_on_conversations'
 
 
 

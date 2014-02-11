@@ -1,5 +1,6 @@
 class ConversationsController < ApplicationController
-  before_action :set_conversation, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
+  before_action :set_conversation, only: [:show, :edit, :update]
 
   # GET /conversations
   # GET /conversations.json
@@ -54,6 +55,22 @@ class ConversationsController < ApplicationController
         format.json { render json: @conversation.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def act_on_conversations
+    ids = params[:conversations].to_a.map{|c| c[1]}
+    conversations =  Conversation.where(id: ids)
+
+    if params[:act] == 'delete'
+      conversations.each do |c|
+        c.destroy
+      end
+    elsif params[:act] == 'unread'
+      conversations.each do |c|
+        c.messages.where(recipient_id: current_user.id).last.update_attributes(is_new: true)
+      end
+    end
+    redirect_to :back
   end
 
   # DELETE /conversations/1
