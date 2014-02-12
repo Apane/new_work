@@ -97,6 +97,12 @@ class User < ActiveRecord::Base
     end
   end
 
+  def block(user)
+    unless user.blocked_for?(self)
+      self.blocked_users.find_or_create_by(blocked_user_id: user.id)
+    end
+  end
+
   def create_questions
     Question::QUESTIONS_FOR_ABOUT.map{|q| self.questions.create(question: q, for_about: true)}
     Question::QUESTIONS_FOR_PERSONALITY.map{|q| self.questions.create(question: q, for_personality: true)}

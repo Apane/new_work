@@ -69,6 +69,12 @@ class ConversationsController < ApplicationController
       conversations.each do |c|
         c.messages.where(recipient_id: current_user.id).last.update_attributes(is_new: true)
       end
+    elsif params[:act] == 'block_users'
+      user_ids = params[:users][:user_ids].split('').uniq
+      users = User.where(id: user_ids)
+      users.each do |u|
+        current_user.block(u)
+      end
     end
     redirect_to :back
   end

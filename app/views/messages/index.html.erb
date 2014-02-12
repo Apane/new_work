@@ -3,9 +3,9 @@
   <div role="main" class="col-md-6">
     <div class="message-info">
       <!-- <button type="button" class="btn btn-primary buttons-bg reply-icon"> Reply</button> -->
-      <%= button_tag 'Mark As Unread', class: 'btn btn-primary buttons-bg markas-icon mark_unread' %>
-      <%= button_tag 'Delete', class: 'btn btn-primary buttons-bg delete-icon remove_conversations' %>
-      <button type="button" class="btn btn-primary buttons-bg blocks-icon"> Block </button>
+      <%= button_tag 'Mark As Unread', class: 'btn btn-primary buttons-bg markas-icon act_on_form', data: {act: 'unread'} %>
+      <%= button_tag 'Delete', class: 'btn btn-primary buttons-bg delete-icon act_on_form', data: {act: 'delete'} %>
+      <button type="button" class="btn btn-primary buttons-bg blocks-icon act_on_form" data-act="block_users"> Block </button>
       <button type="button" class="btn btn-primary buttons-bg report-icon"> Report</button>
 
       <div class="col-md-12 inbox-messages">
@@ -14,11 +14,12 @@
             <h4><%= current_user.new_messages.size %> Unread Messages</h4>
           </div>
           <%= form_tag '/act_on_conversations', class: 'act_on_conversations' do %>
-          <ul>
-            <% @messages.each do |sender, messages| %>
-              <%= render 'inbox_message', messages: messages %>
-            <% end %>
-          </ul>
+            <%= text_field_tag :user_ids, '', name: 'users[user_ids]', class: 'user_ids' %>
+            <ul>
+              <% @messages.each do |sender, messages| %>
+                <%= render 'inbox_message', messages: messages %>
+              <% end %>
+            </ul>
           <% end %>
         </div>
       </div>
@@ -28,13 +29,16 @@
 </div>
 
 <script type="text/javascript">
-  $('.remove_conversations').on('click', function(event) {
-    $('.act_on_conversations').attr('action', '/act_on_conversations?act=delete');
+  $('.act_on_form').on('click', function(event) {
+    act = $(this).data('act')
+    $('.act_on_conversations').attr('action', '/act_on_conversations?act=' + act);
     $('.act_on_conversations').submit();
   });
 
-  $('.mark_unread').on('click', function(event) {
-    $('.act_on_conversations').attr('action', '/act_on_conversations?act=unread');
-    $('.act_on_conversations').submit();
+  $('input:checkbox').on('click', function(event) {
+    var ids = []
+    $('input:checkbox:checked').each(function() { ids.push( $(this).data('userid'))})
+    // alert($(this).data('userid'));
+    $('input.user_ids').val(ids.join(''));
   });
 </script>

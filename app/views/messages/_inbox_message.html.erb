@@ -1,7 +1,7 @@
 <% conversation = messages.last.conversation %>
 <li class="<%= conversation.messages.where(recipient_id: current_user.id).last.new? ? 'unread' : 'read' %>">
   <div class="checkbox">
-    <input type="checkbox" value="<%= conversation.id %>" name="conversations[c_<%= conversation.id %>]" id="check_<%= conversation.id %>">
+    <input type="checkbox" value="<%= conversation.id %>" name="conversations[c_<%= conversation.id %>]" id="check_<%= conversation.id %>" data-userid="<%= messages.last.sender.id %>">
     <label for="check_<%= conversation.id %>"></label>
   </div>
   <%= link_to message_path(conversation) do %>
