@@ -14,7 +14,7 @@
             <h4><%= current_user.new_messages.size %> Unread Messages</h4>
           </div>
           <%= form_tag '/act_on_conversations', class: 'act_on_conversations' do %>
-            <%= text_field_tag :user_ids, '', name: 'users[user_ids]', class: 'user_ids' %>
+            <%= hidden_field_tag :user_ids, '', name: 'users[user_ids]', class: 'user_ids' %>
             <ul>
               <% @messages.each do |sender, messages| %>
                 <%= render 'inbox_message', messages: messages %>
