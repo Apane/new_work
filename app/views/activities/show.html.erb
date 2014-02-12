@@ -1,0 +1,106 @@
+<script type="text/javascript">
+  function initialize() {
+    var myLatlng = new google.maps.LatLng(<%= @event.lat %>,<%= @event.lng %>);
+    var mapOptions = {
+      zoom: 15,
+      center: myLatlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      disableDefaultUI: true
+    }
+    var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+    var marker = new google.maps.Marker({
+        position: myLatlng,
+        map: map,
+        title: '<%= @event.title %>'
+    });
+  }
+
+  google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+<div class="row">
+  <%= render 'layouts/left_side' %>
+
+  <div role="main" class="col-md-6">
+    <div class="col-md-12 showing-event">
+      <div class="row">
+        <div class="col-md-12">
+          <h2><%= @event.title %></h2>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 event-location">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="event-image-m">
+            <% if @event.image.present? %>
+              <%= image_tag(@event.image_url) %>
+            <% else %>
+            <%= image_tag 'event_image.jpg' %>
+            <% end %>
+          </div>
+          <div class="event-info">
+            <ul>
+              <li><%= @event.location_name %>, <%= @event.city %></li>
+              <li><%= @event.date.strftime("%A, %B %d, %Y") %></li>
+              <li><%= @event.time %></li>
+            </ul>
+          </div>
+          <div class="clr"></div>
+          <div class="event-about-info">
+            <p>
+              <%= @event.description %>
+            </p>
+          </div>
+          <div class="clr"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="event-map">
+            <div style='width: 100%;'>
+              <div id="map" style='width: 100%; height: 250px;'></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="row">
+        <p class="comments-n"><%= pluralize(@event.comments.size, 'comment') %></p>
+        <div class="col-md-12 event-comment">
+          <%= form_for [@event, @event.comments.new], html: {class: 'form-horizontal', role: 'form'}, remote: true do |f| %>
+            <div><%= f.hidden_field :user_id, value: current_user.id %></div>
+            <div class="form-group">
+              <div class="col-sm-2 col-xs-2">
+                <div class="c-user-imge">
+                  <% if @user.profile_image.present? %>
+                    <%= image_tag(@user.profile_image_url(:thumb), size: '35x35') %>
+                  <% else %>
+                    <%= image_tag("people_image.jpg") %>
+                  <% end %>
+                </div>
+              </div>
+              <div class="col-sm-10 col-xs-10">
+                <p class="c-heading">Me</p>
+                <%= f.text_area :body, rows: 5,  placeholder: "Leave a comment", class: 'form-control'  %>
+              </div>
+              <div class="comment_errors"></div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <%= f.submit "Add Comment", class: 'btn btn-default pull-right creat-event' %>
+              </div>
+            </div>
+          <% end %>
+
+          <div class="row comments" id="comments">
+            <%= render @event.root_comments %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= render 'events/event_right_side' %>
+</div>

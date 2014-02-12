@@ -58,6 +58,12 @@ Friendiose::Application.routes.draw do
     delete 'stop_attend', on: :member
   end
 
+  resources :activities do #events/1/comments
+    resources :comments
+    post 'attend', on: :member
+    delete 'stop_attend', on: :member
+  end
+
   resources :questions
 
   # resources :favorites

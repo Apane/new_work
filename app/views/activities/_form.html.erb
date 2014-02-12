@@ -1,0 +1,285 @@
+<%= content_for :header_js do %>
+  <script>
+  $(function() {
+    var addresspickerMap = $( "#event_location" ).addresspicker({
+      regionBias: "fr",
+      updateCallback: showCallback,
+      mapOptions: {
+        zoom: 10,
+        center: new google.maps.LatLng(46, 2),
+        scrollwheel: false,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      },
+      elements: {
+        map:      "#map",
+        lat:      "#event_lat",
+        lng:      "#event_lng",
+        street_number: '#street_number',
+        route: '#route',
+        locality: '#event_city',
+        administrative_area_level_2: '#event_district',
+        administrative_area_level_1: '#event_state',
+        country:  '#event_country',
+        postal_code: '#event_postal_code'
+      }
+    });
+
+    var gmarker = addresspickerMap.addresspicker( "marker");
+    gmarker.setVisible(true);
+    addresspickerMap.addresspicker( "updatePosition");
+
+    $('#reverseGeocode').change(function(){
+      $("#addresspicker_map").addresspicker("option", "reverseGeocode", ($(this).val() === 'true'));
+    });
+
+    function showCallback(geocodeResult, parsedGeocodeResult){
+      $('#callback_result').text(JSON.stringify(parsedGeocodeResult, null, 4));
+    }
+    // Update zoom field
+    var map = $("#addresspicker_map").addresspicker("map");
+    google.maps.event.addListener(map, 'idle', function(){
+      $('#zoom').val(map.getZoom());
+    });
+  });
+  </script>
+<% end %>
+
+
+
+<div class="col-md-12 showing-event">
+  <div class="row">
+    <div class="col-md-12">
+      <h4>Create an Activity </h4>
+    </div>
+  </div>
+</div>
+<div class="col-md-12 event_info">
+  <div class="row">
+    <div class="col-md-12 event_m border-none">
+      <%= form_for @event, html: {role: 'form'} do |f| %>
+        <div class="form-info">
+          <p class="creat-event-details">Event Details</p>
+          <div class="form-group">
+              <div class="creat-activity">
+              I am a looking for a  <input type="text" name=""> Partner
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :image, 'Activity Image' %>
+            <%= f.file_field :image, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :location_name, 'Location Name:' %>
+            <%= f.text_field :location_name, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :location, 'Location Address:' %>
+            <%= f.text_field :location, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-4 col-xs-4">
+                <%= f.label :city, 'City:' %>
+                <%= f.text_field :city, class: 'form-control' %>
+              </div>
+              <div class="col-md-4 col-xs-4">
+                <%= f.label :state, 'State' %>
+                <%= f.text_field :state, class: 'form-control' %>
+              </div>
+              <div class="col-md-4 col-xs-4">
+                <%= f.label :postal_code, 'Zip:' %>
+                <%= f.text_field :postal_code, class: 'form-control' %>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-5 col-xs-5">
+                <%= f.label :date, 'Date' %>
+                <%= f.text_field :date, class: 'form-control', required: true %>
+              </div>
+              <div class="col-md-5 col-xs-5 fr">
+                <%= f.label :time, 'Time' %>
+                <%= f.text_field :time, class: 'form-control', required: true %>
+              </div>
+            </div>
+            <div class="clr"></div>
+          </div>
+          <span>
+            <%= f.hidden_field :lng %>
+            <%= f.hidden_field :lat %>
+            <%= f.hidden_field :country %>
+            <%= f.hidden_field :district %>
+          </span>
+
+          <div class="form-group">
+            <label for="Category">Category</label>
+            <select class="form-control">
+              <option>Category 1</option>
+              <option>Category 2</option>
+              <option>Category 3</option>
+              <option>Category 4</option>
+              <option>Category 5</option>
+              <option>Category 6</option>
+              <option>Category 7</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :description %>
+            <%= f.text_area :description, class: 'form-control', rows: 7 %>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-5 col-xs-5">
+                <label for="Date">Activity Type :</label>
+                <div class="radio">
+                  <%= f.radio_button :event_type, '1', :checked => true %>
+                  <%= label :event_type_P, 'Private', value: '1' %>
+                </div>
+                <div class="radio">
+                  <%= f.radio_button :event_type, '0' %>
+                  <%= label :event_type_sms, 'Public', value: '0' %>
+                </div>
+              </div>
+              <div class="col-md-5 col-xs-5 fr">
+                <%= f.label :max_attendees, 'Maximum Attendees' %>
+                <%= f.text_field :max_attendees, class: 'form-control' %>
+              </div>
+            </div>
+            <div class="clr"></div>
+          </div>
+        </div>
+        <div class="form-info">
+          <p class="creat-event-details">Who can join/view this event</p>
+          <div class="form-group">
+            <div class="col-xs-3">
+              <p class="text-right">
+                <label for="Attendees">Age</label>
+              </p>
+            </div>
+            <div class="col-md-4 col-xs-4">
+              <select class="form-control">
+                <option>18-25</option>
+                <option>25-35</option>
+                <option>35-50</option>
+                <option>50-75</option>
+                <option>75-100</option>
+              </select>
+            </div>
+            <div class="clr"></div>
+          </div>
+          <div class="form-group">
+            <div class="col-xs-3">
+              <p class="text-right">
+                <label for="Attendees">Gender</label>
+              </p>
+            </div>
+            <div class="col-md-4 col-xs-4">
+              <select class="form-control">
+                <option>Male</option>
+                <option>Female</option>
+              </select>
+            </div>
+            <div class="clr"></div>
+          </div>
+          <div class="form-group">
+            <div class="col-xs-3">
+              <p class="text-right">
+                <label for="Attendees">Ethnicity</label>
+              </p>
+            </div>
+            <div class="col-md-6 col-xs-6">
+              <select class="form-control">
+                <option>American</option>
+                <option>American 1</option>
+                <option>American 2</option>
+                <option>American 3</option>
+              </select>
+            </div>
+            <div class="clr"></div>
+          </div>
+          <div class="form-group">
+            <div class="col-xs-3">
+              <p class="text-right">
+                <label for="Attendees">Interest</label>
+              </p>
+            </div>
+            <div class="col-md-6 col-xs-6">
+              <select class="form-control">
+                <option>Programming</option>
+                <option>Programming 1</option>
+                <option>Programming 2</option>
+                <option>Programming 3</option>
+                <option>Programming 4</option>
+              </select>
+            </div>
+            <div class="clr"></div>
+          </div>
+          <div class="form-group">
+            <div class="col-xs-3">
+              <p class="text-right">
+                <label for="Attendees">Occupation</label>
+              </p>
+            </div>
+            <div class="col-md-6 col-xs-6">
+              <select class="form-control">
+                <option>SOftware Engineer</option>
+                <option>SOftware Engineer 1</option>
+                <option>SOftware Engineer 2</option>
+                <option>SOftware Engineer 3</option>
+                <option>SOftware Engineer 4</option>
+              </select>
+            </div>
+            <div class="clr"></div>
+          </div>
+          <div class="form-group">
+            <div class="col-xs-3">
+              <p class="text-right">
+                <label for="Attendees">School</label>
+              </p>
+            </div>
+            <div class="col-md-6 col-xs-6">
+              <select class="form-control">
+                <option>MIT</option>
+                <option>MIT 1</option>
+                <option>MIT 2</option>
+                <option>MIT 3</option>
+                <option>MIT 4</option>
+              </select>
+            </div>
+            <div class="clr"></div>
+          </div>
+        </div>
+        <div class="col-md-12 text-center">
+          <div align="center">
+            <%= f.submit @event.new_record? ? "Submit event" : "Update event", class: 'btn btn-default btn-lg creat-event'  %>
+            <%= link_to 'Cancel', events_path, class: 'btn btn-default cencel-event' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  // if using turbolink
+  $(document).on('page:load', function(){
+    window['rangy'].initialized = false
+  })
+  $(document).ready(function(){
+    $('.wysihtml5').each(function(i, elem) {
+      $(elem).wysihtml5({
+        "font-styles": true, //Font styling, e.g. h1, h2, etc.
+        "emphasis": true, //Italics, bold, etc.
+        "lists": true, //(Un)ordered lists, e.g. Bullets, Numbers.
+        "html": true, //Button which allows you to edit the generated HTML.
+        "link": true, //Button to insert a link.
+        "image": false, //Button to insert an image.
+        "color": false //Button to change color of font
+      });
+    });
+
+  })
+</script>
