@@ -33,6 +33,11 @@
         }
       })
     </script>
+
+    <script type="text/javascript">
+      $('#background_cycler').hide();//hide the background while the images load, ready to fade in later
+    </script>
+
     <%= yield :header_js %>
     <%= render 'layouts/pusher' if current_user.present? %>
     <%= csrf_meta_tags %>

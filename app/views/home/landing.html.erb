@@ -2,11 +2,7 @@
   <%# Begin background image cycler on landing page %>
 <div id="background_cycler" >
 
-<script type="text/javascript">
-$('#background_cycler').hide();//hide the background while the images load, ready to fade in later
-</script>
-
-  <%= image_tag 'banner.jpg', class: "active", alt: 'banner-image' %>
+  <%= image_tag('banner.jpg', class: "active", alt: 'banner-image') %>
   <%= image_tag("background-guys-game.png", alt: "") %>
   <%= image_tag("background-neutral.png",   alt: "") %>
   <%= image_tag("background-girls.png",  alt: "") %>
@@ -18,7 +14,6 @@ $('#background_cycler').hide();//hide the background while the images load, read
 
 </div>
 <%# End of background image cycler on landing page %>
-  <%= image_tag 'banner.jpg', alt: 'banner-image' %>
   <div class="home-page-m">
     <div class="container">
       <p class="banner-heading">Meet new people and make new friends</p>
