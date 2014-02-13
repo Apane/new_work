@@ -169,10 +169,8 @@
               </p>
             </div>
             <div class="col-md-4 col-xs-4">
-              <select class="form-control">
-                <option>Male</option>
-                <option>Female</option>
-              </select>
+            <%= f.select(:gender, options_for_select(Event::GENDER.invert.to_a), {},
+                          {class: 'form-control'})%>
             </div>
             <div class="clr"></div>
           </div>

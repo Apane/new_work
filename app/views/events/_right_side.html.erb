@@ -21,7 +21,7 @@
         <div class="panel-body">
           <div class="times">
             <%= select_tag(:time, options_for_select( [['Today', 1], ['Tomorrow', 2]]),
-                {name: 'search[time]', id: 'time_select', class: 'form-control'}) %>
+                {name: 'search[time]', id: 'time_select', class: 'form-control form_select'}) %>
           </div>
         </div>
       </div>
@@ -32,8 +32,8 @@
       <div>
         <div class="panel-body">
           <div class="age">
-            <span style="margin-right:22%;">Age </span>
-            <select>
+            <span>Age </span>
+            <select class="form-control" style="width:30%;">
                <option value="18"> 18 </option>
                <option value="19"> 19 </option>
                <option value="20"> 20 </option>
@@ -48,8 +48,8 @@
                <option value="29"> 29 </option>
                <option value="30"> 30 </option>
             </select>
-            <span style="margin-right:5%; margin-left:5%;">To </span>
-            <select>
+            <span style="margin-left: 25px;">To </span>
+            <select class="form-control" style="width:30%;">
               <option value="18"> 22 </option>
               <option value="19"> 23 </option>
               <option value="20"> 24 </option>
@@ -68,16 +68,14 @@
           </div>
           <div class="gender">
             <span>Gender</span>
-            <select>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-            </select>
+            <%= select_tag(:time, options_for_select( Event::GENDER.invert.to_a),
+                {name: 'search[gender]', id: 'time_select', class: 'form-control form_select'}) %>
             <div class="clr"></div>
           </div>
 
           <div class="gender">
             <span>Ethnicity</span>
-            <select>
+            <select class="form-control">
               <option value="Asian">Asian</option>
               <option value="Middle eastern">Middle eastern</option>
               <option value="Pacific Islander ">Pacific Islander </option>
@@ -97,7 +95,7 @@
           <label for="c_<%= cat.id %>"><%= cat.name %></label>
           <br>
           <% end %>
-          <%= text_field_tag :cat_ids, '', name: 'search[cat_ids]' %>
+          <%= hidden_field_tag :cat_ids, '', name: 'search[cat_ids]' %>
         </div>
       </div>
     </div>
@@ -108,7 +106,7 @@
   $('input#distance').focusout(function() {
     $('#filter_events').submit();
   });
-  $('#time_select').change(function() {
+  $('.form_select').change(function() {
     $('#filter_events').submit();
   });
 
