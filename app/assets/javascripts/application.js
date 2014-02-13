@@ -36,6 +36,10 @@
 //= require jquery.autoSave
 //= require rails-timeago
 //= require landing
+//= require jquery-fileupload/basic
+//= require jquery-fileupload/vendor/tmpl
+//= require photos
+
 
 $.pnotify.defaults.history = false
 

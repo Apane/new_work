@@ -1,6 +1,6 @@
 <% if @photo.new_record? %>
   alert("Failed to upload photo: <%= j @photo.errors.full_messages.join(', ').html_safe %>");
 <% else %>
-  $("span.gallery").prepend("<%= j render(@photo) %>");
-  $('.upload').fadeOut();
+  $("ul.my_photos").prepend("<%= j render(@photo) %>");
+  // $('.upload').fadeOut();
 <% end %>

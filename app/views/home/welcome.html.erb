@@ -49,29 +49,22 @@
         </div>
         <% end %>
       </div>
-
+      <div class="spinner"></div>
       <div id="tabs-2">
         <div class="user-photos">
           <div class="upload-new">
             <button class="btn btn-primary btn-lg up-new" type="button">Upload New Photo</button>
+            <div style="display:none;">
+              <%= form_for Photo.new do |f| %>
+                <%= f.file_field :file, multiple: true, name: "photo[file]" %>
+              <% end %>
+            </div>
           </div>
-          <ul>
-            <li>
-              <%= image_tag 'users-photos-01.jpg' %>
-              <p class="caption">Caption <span class="edit-icon"></span> </p>
-              <p>Lorem ipsum dolor sit amet,consectetur adipisicing elit, sed do eiusmod tempor incidiunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-              <button class="btn btn-primary btn-lg photo-b" type="button">Set as profile picture</button>
-              <button class="btn btn-primary btn-lg photo-b" type="button">Remove photo</button>
-              <div class="photo-up-down"> <a href="#">up</a> <a href="#">down</a> </div>
-            </li>
-            <li>
-              <%= image_tag 'users-photos-01.jpg' %>
-              <p class="caption">Caption <span class="edit-icon"></span> </p>
-              <p>Lorem ipsum dolor sit amet,consectetur adipisicing elit, sed do eiusmod tempor incidiunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-              <button class="btn btn-primary btn-lg photo-b" type="button">Set as profile picture</button>
-              <button class="btn btn-primary btn-lg photo-b" type="button">Remove photo</button>
-              <div class="photo-up-down"> <a href="#">up</a> <a href="#">down</a> </div>
-            </li>
+          <script id="template-upload" type="text/x-tmpl">
+            {%=o.name%}
+          </script>
+          <ul class="my_photos">
+            <%= render current_user.photos %>
           </ul>
         </div>
       </div>
@@ -99,6 +92,10 @@
 
   $('.user-image').click(function() {
       $('input[type=file]#user_profile_image').trigger('click');
+  });
+
+  $('.up-new').click(function() {
+      $('input[type=file]#photo_file').trigger('click');
   });
 
   $('input[type=file]#user_profile_image').change(function() {

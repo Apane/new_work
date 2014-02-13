@@ -1,5 +1,16 @@
-<li class="photo_<%= photo.id %>">
+<!-- <li class="photo_<%= photo.id %>">
   <%= image_tag(photo.file.thumb.url, class: 'img-polaroid') %>
   <p>Lorem ipsum dolor sit amet,consectetur adipisicing elit, sed do eiusmod tempor incidiunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
   <%= link_to "delete", photo, :confirm => 'Are you sure?', :method => :delete, remote: true %>
+</li>
+ -->
+
+<li class='photo_<%= photo.id %>'>
+  <%= image_tag(photo.file.url) %>
+  <p class="caption"><%= photo.title %> <span class="edit-icon"></span> </p>
+  <p>Lorem ipsum dolor sit amet,consectetur adipisicing elit, sed do eiusmod tempor incidiunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+  <button class="btn btn-primary btn-lg photo-b" type="button">Set as profile picture</button>
+
+  <%= link_to "delete", photo, :confirm => 'Are you sure?', :method => :delete, remote: true, class: 'btn btn-primary btn-lg photo-b' %>
+  <div class="photo-up-down"> <a href="#">up</a> <a href="#">down</a> </div>
 </li>
