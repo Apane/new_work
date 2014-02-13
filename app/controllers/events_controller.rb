@@ -7,7 +7,8 @@ class EventsController < ApplicationController
     if params[:search]
       distance = params[:search][:distance] || nil
       time = params[:search][:time] || nil
-      @events = Event.scoped_by_search(current_user, distance, time)
+      cat_ids = params[:search][:cat_ids].split('').uniq || nil
+      @events = Event.scoped_by_search(current_user, distance, time, cat_ids)
     else
       @events = Event.all
     end

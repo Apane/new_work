@@ -34,3 +34,89 @@
 
   <%= render 'events/right_side' %>
 </div>
+
+<script type="text/javascript">
+    $(function(){
+      $('#multiAccordion1').multiAccordion({
+        active: [1, 2],
+        click: function(event, ui) {
+          //console.log('clicked')
+        },
+        init: function(event, ui) {
+          //console.log('whoooooha')
+        },
+        tabShown: function(event, ui) {
+          //console.log('shown')
+        },
+        tabHidden: function(event, ui) {
+          //console.log('hidden')
+        }
+
+      });
+
+      $('#multiAccordion1').multiAccordion("option", "active", [0, 0]);
+    });
+
+        $(function(){
+      $('#multiAccordion2').multiAccordion({
+        active: [],
+        click: function(event, ui) {
+          //console.log('clicked')
+        },
+        init: function(event, ui) {
+          //console.log('whoooooha')
+        },
+        tabShown: function(event, ui) {
+          //console.log('shown')
+        },
+        tabHidden: function(event, ui) {
+          //console.log('hidden')
+        }
+
+      });
+
+      $('#multiAccordion2').multiAccordion("option", "active", [0, 3]);
+    });
+
+      $(function(){
+      $('#multiAccordion3').multiAccordion({
+        active: [],
+        click: function(event, ui) {
+          //console.log('clicked')
+        },
+        init: function(event, ui) {
+          //console.log('whoooooha')
+        },
+        tabShown: function(event, ui) {
+          //console.log('shown')
+        },
+        tabHidden: function(event, ui) {
+          //console.log('hidden')
+        }
+
+      });
+
+      $('#multiAccordion3').multiAccordion("option", "active", [0, 3]);
+    });
+      $(function(){
+      $('#multiAccordion4').multiAccordion({
+        active: [],
+        click: function(event, ui) {
+          //console.log('clicked')
+        },
+        init: function(event, ui) {
+          //console.log('whoooooha')
+        },
+        tabShown: function(event, ui) {
+          //console.log('shown')
+        },
+        tabHidden: function(event, ui) {
+          //console.log('hidden')
+        }
+
+      });
+
+      $('#multiAccordion4').multiAccordion("option", "active", [0, 3]);
+    });
+
+</script>

@@ -6,8 +6,8 @@ class Event < ActiveRecord::Base
                    :lat_column_name => :lat,
                    :lng_column_name => :lng
 
-  attr_accessible :title, :description, :location, :date, :time, :event_date, :lat, :lng,
-        :location_name, :event_type, :max_attendees, :postal_code, :country, :state, :district, :city, :image
+  attr_accessible :title, :description, :location, :date, :time, :event_date, :lat, :lng, :location_name,
+      :event_type, :max_attendees, :postal_code, :country, :state, :district, :city, :image, :category_id
 
   acts_as_commentable
   has_many :comments, as: :commentable
@@ -15,6 +15,7 @@ class Event < ActiveRecord::Base
   has_many :event_participants, dependent: :destroy
   has_many :participants, through: :event_participants, source: :user
   has_many :notifications, as: :noteable
+  has_many :categories
 
   after_create :update_event_date, :add_owner_to_participants
 
@@ -60,18 +61,19 @@ class Event < ActiveRecord::Base
     end
   end
 
-  def self.scoped_by_search(user, distance, time)
+  def self.scoped_by_search(user, distance, time, cat_ids)
     if time.present?
       if time == '1'
         time = Date.today
       else
-        time = Date.tomorrow
+        time = DateTime.now.tomorrow.to_date
       end
     end
 
-    events = Event.all
-    events = events.within(distance, :origin => user) if distance.present?
+    events = self.all
+    events = events.within(distance, :origin => user) unless distance.empty?
     events = events.where(date: time) if time.present?
+    events = events.where(category_id: cat_ids) if cat_ids.present?
     events
   end
 end

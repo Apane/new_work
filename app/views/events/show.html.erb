@@ -50,7 +50,7 @@
           <div class="clr"></div>
           <div class="event-about-info">
             <p>
-              <%= @event.description %>
+              <%= sanitize(@event.description) %>
             </p>
           </div>
           <div class="clr"></div>

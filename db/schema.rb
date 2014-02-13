@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140213165558) do
+ActiveRecord::Schema.define(version: 20140213200700) do
 
   create_table "authorizations", force: true do |t|
     t.string   "provider"
@@ -30,6 +30,12 @@ ActiveRecord::Schema.define(version: 20140213165558) do
   create_table "blocked_users", force: true do |t|
     t.integer  "user_id"
     t.integer  "blocked_user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -101,6 +107,7 @@ ActiveRecord::Schema.define(version: 20140213165558) do
     t.string   "district"
     t.string   "city"
     t.string   "image"
+    t.integer  "category_id"
   end
 
   add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
