@@ -1,0 +1,46 @@
+<div class="col-md-3">
+    <span class="attend_button">
+    <%= attend_to_event(@event) %>
+    </span>
+    <% if @event.owner_is?(current_user) %>
+      <%= link_to 'Close Event', event_path(@event), class: 'btn btn-danger btn-lg btn-block mark-icon',
+              method: :delete, data: {confirm: 'Are you sure?'} %>
+      <%= link_to 'Edit event', edit_event_path(@event), class: 'btn btn-primary btn-lg btn-block edit-event mark-icon' %>
+    <% end %>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Hosted By</h3>
+    </div>
+    <div class="panel-body">
+      <div class="hosted-image">
+        <% if @owner.profile_image.present? %>
+          <%= image_tag(@owner.profile_image_url(:thumb), size: '35x35') %>
+        <% else %>
+          <%= image_tag("people_image.jpg") %>
+        <% end %>
+      </div>
+      <p class="host-by-title"><%= @owner.name %></p>
+    </div>
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= @event.participants.size %> people are attending</h3>
+    </div>
+    <div class="panel-body pading-n event_participants">
+      <% @event.participants.each do |user| %>
+        <div class="row attending-peoples participant_<%= user.id %>">
+          <div class="col-xs-12">
+            <div class="attending-peoples-image">
+              <% if user.profile_image.present? %>
+                <%= image_tag(user.profile_image_url(:thumb), size: '35x35') %>
+              <% else %>
+                <%= image_tag("people_image.jpg") %>
+              <% end %>
+            </div>
+            <p><%= user.name %></p>
+            <div class="clr"></div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

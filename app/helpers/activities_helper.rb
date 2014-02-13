@@ -1,4 +1,4 @@
-module EventsHelper
+module ActivitiesHelper
 
 def attend_to_activity(activity)
     # use event.max_attendees + 1 as user who created event is a participant too

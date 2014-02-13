@@ -18,6 +18,11 @@ class EventsController < ApplicationController
     end
   end
 
+  def activities
+    @activities = Event.all
+    render 'activities/index'
+  end
+
   def new
     @event = Event.new
   end
