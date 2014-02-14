@@ -9,7 +9,7 @@
       <div>
         <div class="panel-body">
           <div class="location">
-            Within <%= text_field_tag :distance, '', name: 'search[distance]' %> mile of me
+            Within <%= text_field_tag :distance, '', name: 'search[distance]', autocomplete: :off %> mile of me
           </div>
         </div>
       </div>
@@ -69,17 +69,14 @@
           <div class="gender">
             <span>Gender</span>
             <%= select_tag(:time, options_for_select( Event::GENDER.invert.to_a),
-                {name: 'search[gender]', id: 'time_select', class: 'form-control form_select'}) %>
+                {name: 'search[gen]', id: 'time_select', class: 'form-control form_select', prompt: 'All'}) %>
             <div class="clr"></div>
           </div>
 
           <div class="gender">
             <span>Ethnicity</span>
-            <select class="form-control">
-              <option value="Asian">Asian</option>
-              <option value="Middle eastern">Middle eastern</option>
-              <option value="Pacific Islander ">Pacific Islander </option>
-            </select>
+            <%= select_tag(:ethnicity_id, options_for_select( Ethnicity.all.collect{|e| [e.name, e.id]}),
+                {name: 'search[ethn]', id: 'time_select', class: 'form-control form_select', prompt: 'All'}) %>
           </div>
         </div>
       </div>

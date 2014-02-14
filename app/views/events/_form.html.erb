@@ -169,7 +169,7 @@
               </p>
             </div>
             <div class="col-md-4 col-xs-4">
-            <%= f.select(:gender, options_for_select(Event::GENDER.invert.to_a), {},
+            <%= f.select(:gender, options_for_select(Event::GENDER.invert.to_a), {include_blank: 'All'},
                           {class: 'form-control'})%>
             </div>
             <div class="clr"></div>
@@ -181,12 +181,8 @@
               </p>
             </div>
             <div class="col-md-6 col-xs-6">
-              <select class="form-control">
-                <option>American</option>
-                <option>American 1</option>
-                <option>American 2</option>
-                <option>American 3</option>
-              </select>
+              <%= f.select(:ethnicity_id, options_from_collection_for_select(Ethnicity.all, :id, :name), {include_blank: 'All'},
+                          {class: 'form-control'})%>
             </div>
             <div class="clr"></div>
           </div>

@@ -7,7 +7,7 @@ class Event < ActiveRecord::Base
                    :lng_column_name => :lng
 
   attr_accessible :title, :description, :location, :date, :time, :event_date, :lat, :lng, :location_name, :gender,
-      :event_type, :max_attendees, :postal_code, :country, :state, :district, :city, :image, :category_id
+      :event_type, :max_attendees, :postal_code, :country, :state, :district, :city, :image, :category_id, :ethnicity_id
 
   acts_as_commentable
   has_many :comments, as: :commentable
@@ -22,9 +22,8 @@ class Event < ActiveRecord::Base
   mount_uploader :image, EventImageUploader
 
   GENDER = {
-    0 => "All",
     1 => "Female",
-    2 => "Male",
+    2 => "Male"
   }
 
   def update_event_date
@@ -67,7 +66,7 @@ class Event < ActiveRecord::Base
     end
   end
 
-  def self.scoped_by_search(user, distance, time, cat_ids, gender)
+  def self.scoped_by_search(user, distance, time, cat_ids, gender, ethnicity)
     if time.present?
       if time == '1'
         time = Date.today
@@ -81,6 +80,7 @@ class Event < ActiveRecord::Base
     events = events.where(date: time) if time.present?
     events = events.where(category_id: cat_ids) if cat_ids.present?
     events = events.where(gender: gender) unless gender.empty?
+    events = events.where(ethnicity_id: ethnicity) unless ethnicity.empty?
     events
   end
 end
