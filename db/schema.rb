@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140213235652) do
+ActiveRecord::Schema.define(version: 20140214150634) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "authorizations", force: true do |t|
     t.string   "provider"
@@ -110,6 +113,8 @@ ActiveRecord::Schema.define(version: 20140213235652) do
     t.integer  "category_id"
     t.integer  "gender",        default: 0
     t.integer  "ethnicity_id"
+    t.integer  "age_min",       default: 18
+    t.integer  "age_max",       default: 80
   end
 
   add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree

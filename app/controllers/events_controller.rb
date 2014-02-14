@@ -10,7 +10,9 @@ class EventsController < ApplicationController
       cat_ids = params[:search][:cat_ids].split('').uniq || nil
       gender = params[:search][:gen] || nil
       ethnicity = params[:search][:ethn] || nil
-      @events = Event.scoped_by_search(current_user, distance, time, cat_ids, gender, ethnicity)
+      age_min = params[:search][:age_min] || nil
+      age_max = params[:search][:age_max] || nil
+      @events = Event.scoped_by_search(current_user, distance, time, cat_ids, gender, ethnicity, age_min, age_max)
     else
       @events = Event.all
     end

@@ -5,7 +5,7 @@
     <div class="col-md-12 showing-event">
       <div class="row">
         <div class="col-md-12">
-          <h4>Showing 4 Activities </h4>
+          <h4>Showing <%= @activities.size %> Activities </h4>
           <div class="col-md-3 row fr">
 <!--             <select class="form-control">
               <option value="">SORT BY</option>
@@ -23,7 +23,7 @@
       <div class="row">
         <% @activities.each do |act| %>
           <% user = act.user %>
-          <a href="activity-03.html">
+          <%= link_to '' do %>
             <div class="col-md-12 event_m">
               <div class="event-image">
                 <% if act.image.present? %>
@@ -51,7 +51,7 @@
               </div>
               <div class="clr"></div>
             </div>
-          </a>
+          <% end %>
         <% end %>
         <br>
       </div>

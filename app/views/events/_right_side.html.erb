@@ -33,7 +33,7 @@
         <div class="panel-body">
           <div class="age">
             <span>Age </span>
-            <select class="form-control" style="width:30%;">
+            <select class="form-control age_select_one form_select" style="width:30%;" name="search[age_min]">
                <option value="18"> 18 </option>
                <option value="19"> 19 </option>
                <option value="20"> 20 </option>
@@ -47,22 +47,39 @@
                <option value="28"> 28 </option>
                <option value="29"> 29 </option>
                <option value="30"> 30 </option>
+               <option value="31"> 31 </option>
+               <option value="32"> 32 </option>
+               <option value="33"> 33 </option>
+               <option value="34"> 34 </option>
+               <option value="35"> 35 </option>
+               <option value="36"> 36 </option>
+               <option value="37"> 37 </option>
+               <option value="38"> 38 </option>
+               <option value="39"> 39 </option>
             </select>
             <span style="margin-left: 25px;">To </span>
-            <select class="form-control" style="width:30%;">
-              <option value="18"> 22 </option>
-              <option value="19"> 23 </option>
-              <option value="20"> 24 </option>
-              <option value="21"> 25 </option>
-              <option value="22"> 26 </option>
-              <option value="23"> 27 </option>
-              <option value="24"> 28 </option>
-              <option value="25"> 29 </option>
-              <option value="26"> 30 </option>
-              <option value="27"> 31 </option>
-              <option value="28"> 32 </option>
-              <option value="29"> 33 </option>
-              <option value="30"> 34 </option>
+            <select class="form-control age_select_two form_select" style="width:30%;" name="search[age_max]">
+               <option value="19"> 19 </option>
+               <option value="20"> 20 </option>
+               <option value="21"> 21 </option>
+               <option value="22"> 22 </option>
+               <option value="23"> 23 </option>
+               <option value="24"> 24 </option>
+               <option value="25"> 25 </option>
+               <option value="26"> 26 </option>
+               <option value="27"> 27 </option>
+               <option value="28"> 28 </option>
+               <option value="29"> 29 </option>
+               <option value="30"> 30 </option>
+               <option value="31"> 31 </option>
+               <option value="32"> 32 </option>
+               <option value="33"> 33 </option>
+               <option value="34"> 34 </option>
+               <option value="35"> 35 </option>
+               <option value="36"> 36 </option>
+               <option value="37"> 37 </option>
+               <option value="38"> 38 </option>
+               <option value="39" selected='selected'> 39 </option>
             </select>
             <div class="clr"></div>
           </div>
@@ -113,5 +130,14 @@
     // alert($(this).data('userid'));
     $('input#cat_ids').val(ids.join(''));
     $('#filter_events').submit();
+  });
+
+  $('.age_select_one').on('change', function(event) {
+    age_one = $('.age_select_one  option:selected').val();
+    var age_two = ''
+    for (var i=age_one; i <= 80; i++) {
+      age_two +=  "<option value=" + i + ">" + i + "</option>";
+    }
+    $('.age_select_two').html(age_two).removeAttr('disabled');
   });
 </script>
