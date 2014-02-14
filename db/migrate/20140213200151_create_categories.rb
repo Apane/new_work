@@ -14,8 +14,7 @@ class CreateCategories < ActiveRecord::Migration
       {name: 'Hangout' },
       {name: 'Show' },
       {name: 'PhysicalActivity' },
-      {name: 'Presentation' },
-      {name: 'Other' }
+      {name: 'Presentation' }
     ])
   end
 end

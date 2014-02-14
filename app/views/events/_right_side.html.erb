@@ -21,7 +21,7 @@
         <div class="panel-body">
           <div class="times">
             <%= select_tag(:time, options_for_select( [['Today', 1], ['Tomorrow', 2]]),
-                {name: 'search[time]', id: 'time_select', class: 'form-control form_select'}) %>
+                {name: 'search[time]', id: 'time_select', class: 'form-control form_select', prompt: 'All'}) %>
           </div>
         </div>
       </div>
