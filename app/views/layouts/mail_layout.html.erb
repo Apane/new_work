@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+<link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <title>Friendiose</title>
+
+<style type="text/css">
+  body{font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #333333;
+    background-color: #f9f9f9;}
+  tr.styled{background-color:#fff; border-radius:8px; box-shadow:0 0 1px #c0c0c0;}
+  td.styled{float:right; padding-right:30px; padding-top:10px;v}
+</style>
+</head>
+
+<body>
+
+    <table width="60%" style="margin:0 auto;">
+            <tr>
+            <td><%= image_tag 'mail/email-page-logo-1.png' %></td>
+            <td class="styled"><%= image_tag('mail/email-page-logo-2.png') %></td>
+          </tr>
+
+          <tr class="styled">
+            <td colspan="2" style="padding:35px;">
+              <%= yield %>
+            </td>
+          </tr>
+
+
+          <tr>
+            <td colspan="2" style="text-align:center;">
+            <br><br>
+            <p>
+              <a href="www.friendiose.com">
+                <%= image_tag 'footer_logo.png' %>
+              </a>
+            </p>
+            <p>2014 © Friendiose. All Rights Reserved</p>
+            </td>
+          </tr>
+
+    </table>
+
+</body>
+
+
+</html>

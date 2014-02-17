@@ -26,7 +26,7 @@ Friendiose::Application.configure do
   # Raise exception on mass assignment protection for Active Record models
   config.active_record.mass_assignment_sanitizer = :strict
 
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host=>"localhost", :port=>3000, :protocol=>"http://" }
   # using mailcathcer for dev env, see http://mailcatcher.me/
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
