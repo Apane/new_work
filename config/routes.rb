@@ -1,5 +1,7 @@
 Friendiose::Application.routes.draw do
-  resources :activities
+  resources :activities do
+    resources :comments
+  end
 
   get "favorites/index"
   resources :messages

@@ -1,7 +1,7 @@
 <%= content_for :header_js do %>
   <script>
   $(function() {
-    var addresspickerMap = $( "#event_location" ).addresspicker({
+    var addresspickerMap = $( "#activity_location" ).addresspicker({
       regionBias: "fr",
       updateCallback: showCallback,
       mapOptions: {
@@ -12,15 +12,15 @@
       },
       elements: {
         map:      "#map",
-        lat:      "#event_lat",
-        lng:      "#event_lng",
+        lat:      "#activity_lat",
+        lng:      "#activity_lng",
         street_number: '#street_number',
         route: '#route',
-        locality: '#event_city',
-        administrative_area_level_2: '#event_district',
-        administrative_area_level_1: '#event_state',
-        country:  '#event_country',
-        postal_code: '#event_postal_code'
+        locality: '#activity_city',
+        administrative_area_level_2: '#activity_district',
+        administrative_area_level_1: '#activity_state',
+        country:  '#activity_country',
+        postal_code: '#activity_postal_code'
       }
     });
 
@@ -111,15 +111,8 @@
               <div class="col-md-4 col-xs-4">
                 <div class="form-group">
                   <label for="Category">Frequency :</label>
-                  <select class="form-control">
-                    <option>Frequency : 1</option>
-                    <option>Frequency : 2</option>
-                    <option>Frequency : 3</option>
-                    <option>Frequency : 4</option>
-                    <option>Frequency : 5</option>
-                    <option>Frequency : 6</option>
-                    <option>Frequency : 7</option>
-                  </select>
+                  <%= f.select(:frequency_id, options_for_select(Activity::FREQUENCY.invert.to_a),
+                    {}, {class: 'form-control'}) %>
                 </div>
               </div>
 
@@ -144,18 +137,14 @@
             </div>
             <div class="col-md-3 col-xs-3">
               <div class="radio">
-                <label>
-                  <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                  Private
-                </label>
+                <%= f.radio_button :activity_type, '1', :checked => true %>
+                <%= label :activity_type, 'Private', value: '1' %>
               </div>
             </div>
             <div class="col-md-3 col-xs-3">
               <div class="radio">
-                <label>
-                  <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                  Public
-                </label>
+                <%= f.radio_button :activity_type, '0' %>
+                <%= label :activity_type, 'Public', value: '0' %>
               </div>
             </div>
             <div class="clr"></div>

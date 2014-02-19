@@ -7,17 +7,27 @@ class Activity < ActiveRecord::Base
                    :lng_column_name => :lng
 
   attr_accessible :title, :description, :location, :date, :time, :activity_date,
-        :lat, :lng, :location, :location_name, :activity_type, :postal_code, :country,
+        :lat, :lng, :location_name, :activity_type, :postal_code, :country,
         :state, :city, :frequency_id, :category_id, :gender, :ethnicity_id,
         :age_min, :age_max, :ages, :district
 
-  validates :title, :description, :date, presence: true
+  validates :title, :description, :date, :location, :date, :time, :location_name,
+            :city, :state, :postal_code, presence: true
 
   attr_accessor :ages
 
+  acts_as_commentable
+  has_many :comments, as: :commentable
   belongs_to :user
   before_save :set_min_max_age
   after_create :update_event_date #, :add_owner_to_participants
+
+  FREQUENCY = {
+    0 => "Other",
+    1 => "Daily",
+    2 => "Once a week",
+    3 => "Once a month"
+  }
 
   def set_min_max_age
     ages = self.ages.split('-')

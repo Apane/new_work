@@ -15,6 +15,14 @@ class ActivitiesController < ApplicationController
   # GET /activities/1
   # GET /activities/1.json
   def show
+    if @activity.present?
+      @user = current_user
+      # @event = Event.find(params[:id])
+      @owner = @activity.user
+      # @participants = @activity.participants
+    else
+      redirect_to events_path, error: 'Event not found'
+    end
   end
 
   # GET /activities/new

@@ -77,6 +77,10 @@ class User < ActiveRecord::Base
     1 => "Male",
   }
 
+  def gender_hum
+    User::GENDER[self.gender]
+  end
+
   def favorited?(user)
     fav_ids = self.favorites.pluck(:favorite_id)
     if fav_ids.include? user.id
