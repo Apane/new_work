@@ -53,25 +53,22 @@
     </div>
   </div>
 </div>
+
 <div class="col-md-12 event_info">
   <div class="row">
     <div class="col-md-12 event_m border-none">
-      <%= form_for @event, html: {role: 'form'} do |f| %>
+      <%= form_for @activity, html: {role: 'form'} do |f|%>
+        <div class="creat-activity">
+          I am a looking for a  <%= f.text_field :title %> Partner
+        </div>
+
         <div class="form-info">
-          <p class="creat-event-details">Event Details</p>
-          <div class="form-group">
-              <div class="creat-activity">
-              I am a looking for a  <input type="text" name=""> Partner
-            </div>
-          </div>
-          <div class="form-group">
-            <%= f.label :image, 'Activity Image' %>
-            <%= f.file_field :image, class: 'form-control' %>
-          </div>
+          <p class="creat-event-details">Where</p>
           <div class="form-group">
             <%= f.label :location_name, 'Location Name:' %>
             <%= f.text_field :location_name, class: 'form-control' %>
           </div>
+
           <div class="form-group">
             <%= f.label :location, 'Location Address:' %>
             <%= f.text_field :location, class: 'form-control' %>
@@ -92,67 +89,78 @@
               </div>
             </div>
           </div>
+        </div>
+        <div class="form-info">
+          <p class="creat-event-details">when</p>
           <div class="form-group">
             <div class="row">
-              <div class="col-md-5 col-xs-5">
+              <div class="col-md-4 col-xs-4">
                 <%= f.label :date, 'Date' %>
                 <%= f.text_field :date, class: 'form-control', required: true %>
               </div>
-              <div class="col-md-5 col-xs-5 fr">
+              <div class="col-md-4 col-xs-4">
                 <%= f.label :time, 'Time' %>
                 <%= f.text_field :time, class: 'form-control', required: true %>
               </div>
-            </div>
-            <div class="clr"></div>
-          </div>
-          <span>
-            <%= f.hidden_field :lng %>
-            <%= f.hidden_field :lat %>
-            <%= f.hidden_field :country %>
-            <%= f.hidden_field :district %>
-          </span>
-
-          <div class="form-group">
-            <label for="Category">Category</label>
-            <select class="form-control">
-              <option>Category 1</option>
-              <option>Category 2</option>
-              <option>Category 3</option>
-              <option>Category 4</option>
-              <option>Category 5</option>
-              <option>Category 6</option>
-              <option>Category 7</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :description %>
-            <%= f.text_area :description, class: 'form-control', rows: 7 %>
-          </div>
-
-          <div class="form-group">
-            <div class="row">
-              <div class="col-md-5 col-xs-5">
-                <label for="Date">Activity Type :</label>
-                <div class="radio">
-                  <%= f.radio_button :event_type, '1', :checked => true %>
-                  <%= label :event_type_P, 'Private', value: '1' %>
-                </div>
-                <div class="radio">
-                  <%= f.radio_button :event_type, '0' %>
-                  <%= label :event_type_sms, 'Public', value: '0' %>
+              <span>
+                <%= f.hidden_field :lng %>
+                <%= f.hidden_field :lat %>
+                <%= f.hidden_field :country %>
+                <%= f.hidden_field :district %>
+              </span>
+              <div class="col-md-4 col-xs-4">
+                <div class="form-group">
+                  <label for="Category">Frequency :</label>
+                  <select class="form-control">
+                    <option>Frequency : 1</option>
+                    <option>Frequency : 2</option>
+                    <option>Frequency : 3</option>
+                    <option>Frequency : 4</option>
+                    <option>Frequency : 5</option>
+                    <option>Frequency : 6</option>
+                    <option>Frequency : 7</option>
+                  </select>
                 </div>
               </div>
-              <div class="col-md-5 col-xs-5 fr">
-                <%= f.label :max_attendees, 'Maximum Attendees' %>
-                <%= f.text_field :max_attendees, class: 'form-control' %>
-              </div>
+
             </div>
             <div class="clr"></div>
           </div>
         </div>
         <div class="form-info">
-          <p class="creat-event-details">Who can join/view this event</p>
+          <p class="creat-event-details">Description </p>
+          <div class="form-group">
+            <%= f.label :description, 'Description of Activity :' %>
+            <%= f.text_area :description, class: 'form-control wysihtml5', rows: 7 %>
+          </div>
+        </div>
+        <div class="form-info">
+          <p class="creat-event-details">Who can join/view this Activity</p>
+          <div class="form-group">
+            <div class="col-md-3 col-xs-3">
+              <p class="text-right">
+                <label for="Date">Event Type</label>
+              </p>
+            </div>
+            <div class="col-md-3 col-xs-3">
+              <div class="radio">
+                <label>
+                  <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                  Private
+                </label>
+              </div>
+            </div>
+            <div class="col-md-3 col-xs-3">
+              <div class="radio">
+                <label>
+                  <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                  Public
+                </label>
+              </div>
+            </div>
+            <div class="clr"></div>
+          </div>
+
           <div class="form-group">
             <div class="col-xs-3">
               <p class="text-right">
@@ -160,7 +168,7 @@
               </p>
             </div>
             <div class="col-md-4 col-xs-4">
-              <select class="form-control">
+              <select class="form-control" name="activity[ages]">
                 <option>18-25</option>
                 <option>25-35</option>
                 <option>35-50</option>
@@ -177,10 +185,8 @@
               </p>
             </div>
             <div class="col-md-4 col-xs-4">
-              <select class="form-control">
-                <option>Male</option>
-                <option>Female</option>
-              </select>
+              <%= f.select(:gender, options_for_select(Event::GENDER.invert.to_a),
+                {include_blank: 'All'}, {class: 'form-control'})%>
             </div>
             <div class="clr"></div>
           </div>
@@ -191,12 +197,8 @@
               </p>
             </div>
             <div class="col-md-6 col-xs-6">
-              <select class="form-control">
-                <option>American</option>
-                <option>American 1</option>
-                <option>American 2</option>
-                <option>American 3</option>
-              </select>
+              <%= f.select(:ethnicity_id, options_from_collection_for_select(Ethnicity.all, :id, :name),
+                {include_blank: 'All'}, {class: 'form-control'})%>
             </div>
             <div class="clr"></div>
           </div>
@@ -254,14 +256,16 @@
         </div>
         <div class="col-md-12 text-center">
           <div align="center">
-            <%= f.submit @event.new_record? ? "Submit event" : "Update event", class: 'btn btn-default btn-lg creat-event'  %>
-            <%= link_to 'Cancel', events_path, class: 'btn btn-default cencel-event' %>
+            <%= f.submit @activity.new_record? ? "Submit activity" : "Update activity",
+              class: 'btn btn-default btn-lg creat-event'  %>
+            <%= link_to 'Cancel', activities_path, class: 'btn btn-default cencel-event' %>
           </div>
         </div>
       <% end %>
     </div>
   </div>
 </div>
+
 
 <script type="text/javascript">
   // if using turbolink

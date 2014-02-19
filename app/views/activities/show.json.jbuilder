@@ -1,0 +1,1 @@
+json.extract! @activity, :title, :description, :location, :date, :time, :activity_date, :lat, :lng, :location, :location_name, :activity_type, :postal_code, :country, :state, :city, :frequency_id, :category_id, :gender, :ethnicity_id, :age_min, :age_max, :created_at, :updated_at

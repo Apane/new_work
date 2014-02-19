@@ -1,15 +1,15 @@
 <div class="col-md-3">
-  <%= link_to 'Create Activity', new_event_path, class: 'btn btn-primary btn-lg btn-block creat-event' %>
+  <%= link_to 'Create Activity', new_activity_path, class: 'btn btn-primary btn-lg btn-block creat-event' %>
 
-  <p class="filter-e">Filter Events By :</p>
+  <p class="filter-e">Filter Activities By :</p>
   <div class="panel panel-default">
-    <%= form_tag '/events', method: :get, id: 'filter_events', remote: true do %>
+    <%= form_tag '/activities', method: :get, id: 'filter_events', remote: true do %>
     <div id="multiAccordion1">
       <h3 class="panel-title panel-heading-text"><a href="#">Location</a></h3>
       <div>
         <div class="panel-body">
           <div class="location">
-            Within <%= text_field_tag :distance, '', name: 'search[distance]' %> mile of me
+            Within <input name="" type="text"> mile of me
           </div>
         </div>
       </div>
@@ -20,110 +20,110 @@
       <div>
         <div class="panel-body">
           <div class="times">
-            <%= select_tag :time, options_for_select( [['Today', 1], ['Tomorrow', 2]]), name: 'search[time]', id: 'time_select' %>
+            <select>
+              <option value="Tomorrow">Tomorrow</option>
+              <option value="Today">Today</option>
+            </select>
           </div>
         </div>
       </div>
     </div>
 
     <div id="multiAccordion3">
-     <h3 class="panel-title panel-heading-text border-t"><a href="#">Attendees</a></h3>
-     <div>
-       <div class="panel-body">
-        <div class="age">
-          <span style="margin-right:22%;">Age </span>
-          <select>
-           <option value="18"> 18 </option>
-           <option value="19"> 19 </option>
-           <option value="20"> 20 </option>
-           <option value="21"> 21 </option>
-           <option value="22"> 22 </option>
-           <option value="23"> 23 </option>
-           <option value="24"> 24 </option>
-           <option value="25"> 25 </option>
-           <option value="26"> 26 </option>
-           <option value="27"> 27 </option>
-           <option value="28"> 28 </option>
-           <option value="29"> 29 </option>
-           <option value="30"> 30 </option>
-         </select>
-         <span style="margin-right:5%; margin-left:5%;">To </span>
-         <select>
-          <option value="18"> 22 </option>
-          <option value="19"> 23 </option>
-          <option value="20"> 24 </option>
-          <option value="21"> 25 </option>
-          <option value="22"> 26 </option>
-          <option value="23"> 27 </option>
-          <option value="24"> 28 </option>
-          <option value="25"> 29 </option>
-          <option value="26"> 30 </option>
-          <option value="27"> 31 </option>
-          <option value="28"> 32 </option>
-          <option value="29"> 33 </option>
-          <option value="30"> 34 </option>
-        </select>
-        <div class="clr"></div>
-      </div>
+      <h3 class="panel-title panel-heading-text border-t"><a href="#">Partner Criteria</a></h3>
+      <div>
+        <div class="panel-body">
+          <div class="age">
+            <span style="margin-right:22%;">Age </span>
+            <select>
+              <option value="18"> 18 </option>
+              <option value="19"> 19 </option>
+              <option value="20"> 20 </option>
+              <option value="21"> 21 </option>
+              <option value="22"> 22 </option>
+              <option value="23"> 23 </option>
+              <option value="24"> 24 </option>
+              <option value="25"> 25 </option>
+              <option value="26"> 26 </option>
+              <option value="27"> 27 </option>
+              <option value="28"> 28 </option>
+              <option value="29"> 29 </option>
+              <option value="30"> 30 </option>
+            </select>
+            <span style="margin-right:5%; margin-left:5%;">To </span>
+            <select>
+              <option value="18"> 22 </option>
+              <option value="19"> 23 </option>
+              <option value="20"> 24 </option>
+              <option value="21"> 25 </option>
+              <option value="22"> 26 </option>
+              <option value="23"> 27 </option>
+              <option value="24"> 28 </option>
+              <option value="25"> 29 </option>
+              <option value="26"> 30 </option>
+              <option value="27"> 31 </option>
+              <option value="28"> 32 </option>
+              <option value="29"> 33 </option>
+              <option value="30"> 34 </option>
+            </select>
+            <div class="clr"></div>
+          </div>
 
-      <div class="gender">
-        <span>Gender</span>
-        <select>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-        </select>
-        <div class="clr"></div>
-      </div>
+          <div class="gender">
+            <span>Gender</span>
+            <select>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+            <div class="clr"></div>
+          </div>
 
-      <div class="gender">
-        <span>Ethnicity</span>
-        <select>
-          <option value="Asian">Asian</option>
-          <option value="Middle eastern">Middle eastern</option>
-          <option value="Pacific Islander ">Pacific Islander </option>
-        </select>
+          <div class="gender">
+            <span>Ethnicity</span>
+            <select>
+              <option value="Asian">Asian</option>
+              <option value="Middle eastern">Middle eastern</option>
+              <option value="Pacific Islander ">Pacific Islander </option>
+            </select>
+          </div>
+
+
+        </div>
       </div>
     </div>
 
     <div id="multiAccordion4">
-     <h3 class="panel-title panel-heading-text border-t"><a href="#">Category</a></h3>
-     <div>
-       <div class="panel-body">
-        <div class="checkbox">
-          <input id="check1" type="checkbox" name="check" value="check1">
-          <label for="check1">Option 1</label>
-          <br>
-          <input id="check2" type="checkbox" name="check" value="check2">
-          <label for="check2">Option 2</label>
-          <br>
-          <input id="check3" type="checkbox" name="check" value="check3">
-          <label for="check3">Option 3</label>
-          <br>
-          <input id="check4" type="checkbox" name="check" value="check4">
-          <label for="check4">Option 4</label>
-          <br>
-          <input id="check5" type="checkbox" name="check" value="check5">
-          <label for="check5">Option 5</label>
-          <br>
-          <input id="check6" type="checkbox" name="check" value="check6">
-          <label for="check6">Option 6</label>
-          <br>
-          <input id="check7" type="checkbox" name="check" value="check7">
-          <label for="check7">Option 7</label>
-          <br>
-          <input id="check8" type="checkbox" name="check" value="check8">
-          <label for="check8"> Option 8</label>
+      <h3 class="panel-title panel-heading-text border-t"><a href="#">Category</a></h3>
+      <div>
+        <div class="panel-body">
+          <div class="checkbox">
+            <input id="check1" type="checkbox" name="check" value="check1">
+            <label for="check1">Option 1</label>
+            <br>
+            <input id="check2" type="checkbox" name="check" value="check2">
+            <label for="check2">Option 2</label>
+            <br>
+            <input id="check3" type="checkbox" name="check" value="check3">
+            <label for="check3">Option 3</label>
+            <br>
+            <input id="check4" type="checkbox" name="check" value="check4">
+            <label for="check4">Option 4</label>
+            <br>
+            <input id="check5" type="checkbox" name="check" value="check5">
+            <label for="check5">Option 5</label>
+            <br>
+            <input id="check6" type="checkbox" name="check" value="check6">
+            <label for="check6">Option 6</label>
+            <br>
+            <input id="check7" type="checkbox" name="check" value="check7">
+            <label for="check7">Option 7</label>
+            <br>
+            <input id="check8" type="checkbox" name="check" value="check8">
+            <label for="check8"> Option 8</label>
+          </div>
         </div>
       </div>
     </div>
     <% end %>
   </div>
 </div>
-<script type="text/javascript">
-  $('input#distance').focusout(function() {
-    $('#filter_events').submit();
-  });
-  $('#time_select').change(function() {
-    $('#filter_events').submit();
-  });
-</script>

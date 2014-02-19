@@ -11,13 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140214150634) do
+ActiveRecord::Schema.define(version: 20140219080740) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  create_table "activities", force: true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "description"
+    t.string   "location"
+    t.date     "date"
+    t.string   "time"
+    t.datetime "activity_date"
+    t.float    "lat"
+    t.float    "lng"
+    t.string   "location_name"
+    t.boolean  "activity_type"
+    t.string   "postal_code"
+    t.string   "country"
+    t.string   "state"
+    t.string   "city"
+    t.string   "district"
+    t.integer  "frequency_id"
+    t.integer  "category_id"
+    t.integer  "gender",        default: 0
+    t.integer  "ethnicity_id"
+    t.integer  "age_min",       default: 18
+    t.integer  "age_max",       default: 80
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "activities", ["user_id"], name: "index_activities_on_user_id", using: :btree
 
   create_table "authorizations", force: true do |t|
     t.string   "provider"
@@ -132,13 +158,6 @@ ActiveRecord::Schema.define(version: 20140214150634) do
   create_table "hidden_users", force: true do |t|
     t.integer  "user_id"
     t.integer  "hidden_user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "hiddens", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "hidden_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

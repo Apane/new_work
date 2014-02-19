@@ -23,13 +23,8 @@ class EventsController < ApplicationController
     end
   end
 
-  def activities
-    @activities = Event.all
-    render 'activities/index'
-  end
-
   def new
-    @event = Event.new
+    @event = current_user.events.new
   end
 
   def create

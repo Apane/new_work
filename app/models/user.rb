@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
   has_many :authorizations, :dependent => :destroy
   has_many :comments
   has_many :events
+  has_many :activities
   has_many :photos, as: :attachable
   has_many :questions
   has_many :conversations, foreign_key: 'author_id'
