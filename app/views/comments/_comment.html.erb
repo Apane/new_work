@@ -13,7 +13,7 @@
   <div class="c-about">
     <p class="c-heading"><%= user.name %></p>
     <p class="c-time-date pull-right"><%= time_ago_in_words(comment.created_at) + " ago" %></p>
-    <p class="c-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusan-tium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt expica-bo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+    <p class="c-text"><%= sanitize(comment.body) %></p>
   </div>
   <div class="clr"></div>
 </div>

@@ -51,4 +51,8 @@ class Activity < ActiveRecord::Base
   def is_private?
     self.event_type
   end
+
+  def frequency
+    Activity::FREQUENCY[self.frequency_id]
+  end
 end

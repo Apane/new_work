@@ -21,36 +21,7 @@
 
     <div class="col-md-12 event_info">
       <div class="row">
-        <% @activities.each do |act| %>
-          <% user = act.user %>
-
-          <%= link_to act do %>
-            <div class="col-md-12 event_m">
-              <div class="event-image">
-                <%= image_tag 'event_image.jpg', html: {align: 'image'} %>
-              </div>
-
-              <div class="event-about">
-                <h3>I am looking for a <%= act.title %> partner</h3>
-                <p class="place-map"><%= act.location_name %>, <%= act.city %></p>
-                <p class="date"><%= act.date.strftime("%A, %B %d, %Y") %></p>
-                <p class="c-time"><%= act.time %></p>
-                <p class="p-time">Once a month </p>
-                <div>
-                  <% if act.user.profile_image_url.present? %>
-                  <%= image_tag act.user.profile_image_url(:thumb), size:'30x30' %>
-                  <% else %>
-                  <%= image_tag 'people_image.jpg' %>
-                  <% end %>
-                  <p class="act-name"><%= act.user.name %></p>
-                  <p class="act-d">22/M/Toronto</p>
-                  <div class="clr"></div>
-                </div>
-              </div>
-              <div class="clr"></div>
-            </div>
-          <% end %>
-        <% end %>
+        <%= render @activities %>
         <br>
       </div>
     </div>

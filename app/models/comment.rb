@@ -19,18 +19,22 @@ class Comment < ActiveRecord::Base
   after_create :create_notification, :push_notifications
 
   def push_notifications
-    Pusher["notifications_for_event_#{self.commentable_id}"].trigger('new_comment', {
-      user_id: self.user_id,
-      message_title: 'New comment',
-      message: "<a href='/events/#{self.commentable_id}'>#{self.user.name} commented on #{self.commentable.title} event </a>".html_safe
-    })
+    if self.commentable_type == 'Event'
+      Pusher["notifications_for_event_#{self.commentable_id}"].trigger('new_comment', {
+        user_id: self.user_id,
+        message_title: 'New comment',
+        message: "<a href='/events/#{self.commentable_id}'>#{self.user.name} commented on #{self.commentable.title} event </a>".html_safe
+      })
+    end
   end
 
   def create_notification
-    participants = self.commentable.participants.where('user_id <> ?', self.user_id)
-    if participants.any?
-      participants.each do |p|
-        self.notifications.create(user_id: p.id)
+    if self.commentable_type == 'Event'
+      participants = self.commentable.participants.where('user_id <> ?', self.user_id)
+      if participants.any?
+        participants.each do |p|
+          self.notifications.create(user_id: p.id)
+        end
       end
     end
   end

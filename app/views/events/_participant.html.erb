@@ -1,8 +1,11 @@
 <div class="row attending-peoples participant_<%= @participant.id %>">
   <div class="col-xs-12">
     <div class="attending-peoples-image">
-
-      <%= image_tag 'people_image.jpg' %>
+      <% if @participant.profile_image.present? %>
+        <%= image_tag(@participant.profile_image_url(:thumb), size: '35x35') %>
+      <% else %>
+        <%= image_tag("people_image.jpg") %>
+      <% end %>
     </div>
     <p><%= @participant.name %></p>
     <div class="clr"></div>

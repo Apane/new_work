@@ -81,6 +81,10 @@ class User < ActiveRecord::Base
     User::GENDER[self.gender]
   end
 
+  def gender_initial
+    User::GENDER[self.gender][0]
+  end
+
   def favorited?(user)
     fav_ids = self.favorites.pluck(:favorite_id)
     if fav_ids.include? user.id
@@ -144,6 +148,7 @@ class User < ActiveRecord::Base
       self.zip = gps.zip
       self.lat = gps.lat
       self.lng = gps.lng
+      self.city = gps.city
     end
   end
 

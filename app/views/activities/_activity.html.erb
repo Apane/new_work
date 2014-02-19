@@ -1,0 +1,27 @@
+<% user = activity.user %>
+<%= link_to activity do %>
+  <div class="col-md-12 event_m">
+    <div class="event-image">
+      <%= image_tag 'event_image.jpg', html: {align: 'image'} %>
+    </div>
+
+    <div class="event-about">
+      <h3>I am looking for a <%= activity.title %> partner</h3>
+      <p class="place-map"><%= activity.location_name %>, <%= activity.city %></p>
+      <p class="date"><%= activity.date.strftime("%A, %B %d, %Y") %></p>
+      <p class="c-time"><%= activity.time %></p>
+      <p class="p-time">Once a month </p>
+      <div>
+        <% if user.profile_image_url.present? %>
+        <%= image_tag user.profile_image_url(:thumb), size:'30x30' %>
+        <% else %>
+        <%= image_tag 'people_image.jpg' %>
+        <% end %>
+        <p class="act-name"><%= user.name %></p>
+        <p class="act-d"><%= user.age %>/<%= user.gender_initial %>/Toronto</p>
+        <div class="clr"></div>
+      </div>
+    </div>
+    <div class="clr"></div>
+  </div>
+<% end %>
