@@ -159,6 +159,13 @@ ActiveRecord::Schema.define(version: 20140219213723) do
     t.datetime "updated_at"
   end
 
+  create_table "hiddens", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "hidden_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "messages", force: true do |t|
     t.integer  "conversation_id"
     t.integer  "sender_id"
