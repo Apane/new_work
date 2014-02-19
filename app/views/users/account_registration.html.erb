@@ -115,115 +115,69 @@
 
         <div id="tabs-5">
           <div class="event-m">
-            <a href="events-03.html">
+            <% @events.each do |event| %>
+              <%= link_to event do %>
               <div class="col-md-12 event_m">
                 <div class="event-image">
-                  <%= image_tag 'event_image.jpg' %>
+                  <% if event.image.present? %>
+                    <%= image_tag(event.image_url) %>
+                  <% else %>
+                    <%= image_tag 'event_image.jpg' %>
+                  <% end %>
                 </div>
 
                 <div class="event-about">
-                  <h3>Bodybuilding Tips &amp; Drinks!</h3>
-                  <p class="place-map">Spaggos italian Cuisine, Los Angeles</p>
-                  <p class="date">Wednesday, December 11,2013 </p>
-                  <p class="c-time">9:00 am </p>
+                  <h3><%= event.title %></h3>
+                  <p class="place-map"><%= event.location_name %>, <%= event.city %></p>
+                  <p class="date"><%= event.date.strftime("%A, %B %d, %Y") %></p>
+                  <p class="c-time"><%= event.time %></p>
                   <div>
+                    <% if event.user.profile_image_url.present? %>
+                    <%= image_tag event.user.profile_image_url(:thumb), size:'30x30' %>
+                    <% else %>
                     <%= image_tag 'people_image.jpg' %>
+                    <% end %>
                     <p class="host-by">Hosted by :</p>
-                    <p class="host-by-name">Anthony Panepinto</p>
+                    <p class="host-by-name"><%= event.user.name %></p>
                   </div>
                 </div>
                 <div class="clr"></div>
               </div>
-            </a>
-
-            <a href="events-03.html">
-              <div class="col-md-12 event_m">
-                <div class="event-image">
-                  <%= image_tag 'event_image.jpg' %>
-                </div>
-
-                <div class="event-about">
-                  <h3>Bodybuilding Tips &amp; Drinks!</h3>
-                  <p class="place-map">Spaggos italian Cuisine, Los Angeles</p>
-                  <p class="date">Wednesday, December 11,2013 </p>
-                  <p class="c-time">9:00 am </p>
-                  <div>
-                    <%= image_tag 'people_image.jpg' %>
-                    <p class="host-by">Hosted by :</p>
-                    <p class="host-by-name">Anthony Panepinto</p>
-                  </div>
-                </div>
-                <div class="clr"></div>
-              </div>
-            </a>
-
-            <a href="events-03.html">
-              <div class="col-md-12 event_m">
-                <div class="event-image">
-                  <%= image_tag 'event_image.jpg' %>
-                </div>
-
-                <div class="event-about">
-                  <h3>Bodybuilding Tips &amp; Drinks!</h3>
-                  <p class="place-map">Spaggos italian Cuisine, Los Angeles</p>
-                  <p class="date">Wednesday, December 11,2013 </p>
-                  <p class="c-time">9:00 am </p>
-                  <div>
-                    <%= image_tag 'people_image.jpg' %>
-                    <p class="host-by">Hosted by :</p>
-                    <p class="host-by-name">Anthony Panepinto</p>
-                  </div>
-                </div>
-                <div class="clr"></div>
-              </div>
-            </a>
-
-            <a href="events-03.html">
-              <div class="col-md-12 event_m border-none">
-                <div class="event-image">
-                  <%= image_tag 'event_image.jpg' %>
-                </div>
-
-                <div class="event-about">
-                  <h3>Bodybuilding Tips &amp; Drinks!</h3>
-                  <p class="place-map">Spaggos italian Cuisine, Los Angeles</p>
-                  <p class="date">Wednesday, December 11,2013 </p>
-                  <p class="c-time">9:00 am </p>
-                  <div>
-                    <%= image_tag 'people_image.jpg' %>
-                    <p class="host-by">Hosted by :</p>
-                    <p class="host-by-name">Anthony Panepinto</p>
-                  </div>
-                </div>
-                <div class="clr"></div>
-              </div>
-            </a>
+              <% end %>
+            <% end %>
           </div>
         </div>
 
         <div id="tabs-6">
           <div class="activity_m">
-            <a href="activity-02.html">
+            <% @activities.each do |act| %>
+            <% user = act.user %>
+            <%= link_to act do %>
               <div class="col-md-12 event_m">
                 <div class="event-image">
                   <%= image_tag 'event_image.jpg' %>
                 </div>
                 <div class="event-about">
-                  <h3>I am looking for a Tennis Partner</h3>
-                  <p class="place-map">Spaggos italian Cuisine, Los Angeles</p>
-                  <p class="date">Wednesday, December 11,2013 </p>
-                  <p class="c-time">9:00 am </p>
-                  <p class="p-time">Once a month </p>
+                  <h3>I am looking for a <%= act.title %> Partner</h3>
+                  <p class="place-map"><%= act.location_name %>, <%= act.city %></p>
+                  <p class="date"><%= act.date.strftime("%A, %B %d, %Y") %></p>
+                  <p class="c-time"><%= act.time %></p>
+                  <p class="p-time"><%= act.frequency %></p>
                   <div>
+                    <% if user.profile_image_url.present? %>
+                    <%= image_tag user.profile_image_url(:thumb), size:'30x30' %>
+                    <% else %>
                     <%= image_tag 'people_image.jpg' %>
-                    <p class="act-name">Anthony Panepinto</p>
-                    <p class="act-d">22/M/Toronto</p>
+                    <% end %>
+                    <p class="act-name"><%= user.name %></p>
+                    <p class="act-d"><%= user.age %>/<%= user.gender_initial %>/Toronto</p>
                     <div class="clr"></div>
                   </div>
                 </div>
                 <div class="clr"></div>
               </div>
-            </a>
+            <% end %>
+            <% end %>
           </div>
         </div>
 

@@ -10,7 +10,7 @@
       <p class="place-map"><%= activity.location_name %>, <%= activity.city %></p>
       <p class="date"><%= activity.date.strftime("%A, %B %d, %Y") %></p>
       <p class="c-time"><%= activity.time %></p>
-      <p class="p-time">Once a month </p>
+      <p class="p-time"><%= activity.frequency %></p>
       <div>
         <% if user.profile_image_url.present? %>
         <%= image_tag user.profile_image_url(:thumb), size:'30x30' %>

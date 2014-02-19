@@ -73,6 +73,8 @@ class UsersController < ApplicationController
   def account_registration
     @hidden_users = User.where(id: current_user.hidden_users.pluck(:hidden_user_id))
     @blocked_users = User.where(id: current_user.blocked_users.pluck(:blocked_user_id))
+    @events = current_user.events
+    @activities = current_user.activities
   end
 
  private
