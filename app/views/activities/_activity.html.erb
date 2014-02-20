@@ -2,7 +2,11 @@
 <%= link_to activity do %>
   <div class="col-md-12 event_m">
     <div class="event-image">
-      <%= image_tag 'event_image.jpg', html: {align: 'image'} %>
+      <% if activity.image.present? %>
+        <%= image_tag(activity.image_url) %>
+      <% else %>
+        <%= image_tag 'event_image.jpg' %>
+      <% end %>
     </div>
 
     <div class="event-about">

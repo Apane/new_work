@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140219213723) do
+ActiveRecord::Schema.define(version: 20140220181155) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "activities", force: true do |t|
     t.integer  "user_id"
@@ -38,6 +41,7 @@ ActiveRecord::Schema.define(version: 20140219213723) do
     t.integer  "age_max",       default: 80
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image"
   end
 
   add_index "activities", ["user_id"], name: "index_activities_on_user_id", using: :btree
