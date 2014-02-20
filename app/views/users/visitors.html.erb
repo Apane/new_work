@@ -19,6 +19,7 @@
         </div>
       </div>
       <% @visitors.each do |visitor| %>
+      <%= link_to profile_path(visitor) do %>
       <div class="col-md-12 users_info visitors">
         <div class="row">
           <div class="col-md-12">
@@ -44,7 +45,7 @@
         </div>
       </div>
       <% end %>
+      <% end %>
     </div>
   </div>
-  <%= render 'users/visitors_filter' %>
 </div>
