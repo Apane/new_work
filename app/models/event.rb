@@ -91,7 +91,9 @@ class Event < ActiveRecord::Base
     events = events.where(category_id: cat_ids) if cat_ids.present?
     events = events.where(gender: gender) unless gender.empty?
     events = events.where(ethnicity_id: ethnicity) unless ethnicity.empty?
-    events = events.where('age_min >= ?', age_min).where('age_max <= ?', age_max)
+    events_by_min = events.where(age_min: age_min..age_max)
+    events_by_max = events.where(age_max: age_min..age_max)
+    events = (events_by_min + events_by_max).uniq
     events
   end
 end
