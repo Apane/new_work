@@ -49,6 +49,8 @@
       <% event = @user.events.last %>
       <% if event.present? %>
       <div class="event-img">
+      <% @user.events.each do |event| %>
+      <%= link_to event_path(event) do %>
       <% if event.image.present? %>
         <%= image_tag(event.image_url) %>
       <% else %>
@@ -62,6 +64,8 @@
         <p class="c-time"><%= event.time %></p>
       </div>
       <% end %>
+      <% end %>
+      <% end %>
     </div>
   </div>
   <div class="col-md-12 events">
@@ -70,10 +74,14 @@
       <% activity = @user.activities.last %>
       <% if activity.present? %>
       <div class="event-img">
+      <% @user.activities.each do |a| %>
+      <%= link_to activity_path(activity) do %>
       <% if activity.image.present? %>
         <%= image_tag(activity.image_url) %>
       <% else %>
         <%= image_tag 'event_image.jpg' %>
+      <% end %>
+      <% end %>
       <% end %>
       </div>
       <div class="event-about">
