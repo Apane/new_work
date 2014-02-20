@@ -81,10 +81,16 @@ class EventsController < ApplicationController
 
   def attend
     @event = Event.find(params[:id])
+
     unless @event.is_private?
-      @event.event_participants.create(event_id: @event.id, user_id: current_user.id)
-      @participant = current_user
-      @event.create_join_notification(current_user)
+      @min_age = @event.age_min
+      @max_age = @event.age_max
+
+      if (@min_age..@max_age).include?(current_user.age)
+        @event.event_participants.create(event_id: @event.id, user_id: current_user.id)
+        @participant = current_user
+        @event.create_join_notification(current_user)
+      end
     end
 
     respond_to do |format|

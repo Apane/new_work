@@ -17,13 +17,11 @@ module EventsHelper
       unless event.owner_is?(current_user)
         if event.participants.include?(current_user)
           button_to 'Leave this event', stop_attend_event_path(event), method: :delete, remote: true,
-              confirm: 'Are you sure you want to stop attending this event?',
               class: 'btn btn-primary btn-lg btn-block creat-event margin-b'
         elsif event.participants.size >= max_attendees
           'no more places in this event'
         else
           button_to 'Rsvp to this event', attend_event_path(event), method: :post, remote: true,
-              confirm: 'Are you sure you want to RSVP for this event?',
               class: 'btn btn-primary btn-lg btn-block creat-event margin-b'
         end
       end
