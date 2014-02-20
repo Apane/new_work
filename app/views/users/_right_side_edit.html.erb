@@ -76,7 +76,11 @@
       <% event = current_user.events.last %>
       <% if event.present? %>
       <div class="event-img">
+      <% if event.image.present? %>
+        <%= image_tag(event.image_url) %>
+      <% else %>
         <%= image_tag 'event_image.jpg' %>
+      <% end %>
       </div>
       <div class="event-about">
         <h3><%= event.title %></h3>
@@ -89,13 +93,23 @@
   </div>
   <div class="col-md-12 events">
     <div class="row">
-      <p class="heading-text">Activities <span>(1)</span></p>
+      <p class="heading-text">Activities <span>(<%= current_user.activities.size %>)</span></p>
+      <% activity = current_user.activities.last %>
+      <% if activity.present? %>
       <div class="event-img">
+      <% if activity.image.present? %>
+        <%= image_tag(activity.image_url) %>
+      <% else %>
         <%= image_tag 'event_image.jpg' %>
+      <% end %>
       </div>
       <div class="event-about">
-        <h3>Bodybuilding Tips &amp; Drinks!</h3>
-        <p class="place-map">Spaggos italian Cuisine, Los Angeles</p>
+       <h3>I am looking for a <%= activity.title %> partner</h3>
+      <p class="place-map"><%= activity.location_name %>, <%= activity.city %></p>
+      <p class="date"><%= activity.date.strftime("%A, %B %d, %Y") %></p>
+      <p class="c-time"><%= activity.time %></p>
+      <p class="p-time"><%= activity.frequency %></p>
+      <% end %>
       </div>
     </div>
   </div>
