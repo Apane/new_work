@@ -34,7 +34,7 @@
       <div class="row">
         <div class="col-md-12">
          <div class="event-image-m">
-            <% if @eactivity.image.present? %>
+            <% if @activity.image.present? %>
               <%= image_tag(@activity.image_url) %>
             <% else %>
             <%= image_tag 'event_image.jpg' %>
