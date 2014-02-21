@@ -87,19 +87,21 @@ class EventsController < ApplicationController
       @min_age = @event.age_min
       @max_age = @event.age_max
       max_attendees = @event.max_attendees.present? ? (@event.max_attendees) : 100
+      @participants = @event.participants
 
       if (@min_age..@max_age).include?(current_user.age)
-        if @event.participants.size >= max_attendees
+        if @participants.size >= max_attendees
           @event.event_participants.create(event_id: @event.id, user_id: current_user.id, is_waiting: true)
         else
           @event.event_participants.create(event_id: @event.id, user_id: current_user.id)
         end
         @participant = current_user
+        @waiting_participants = @event.waiting_participants
         @event_participant = @event.event_participants.where(user_id: @participant.id).first
         @event.create_join_notification(current_user)
       end
     end
-
+    p "participants size is #{@participants.size}"
     respond_to do |format|
       format.html {redirect_to @event}
       format.js {}
@@ -113,7 +115,14 @@ class EventsController < ApplicationController
 
     @participant = @event.event_participants.where(user_id: current_user.id, event_id: @event.id).first
     @participant.destroy
-    @event.event_participants.where(is_waiting: true).order('id desc').first.update_attributes(is_waiting: false)
+
+    if @event.participants.size < @max_attendees
+      first_waiting = @event.event_participants.where(is_waiting: true).order('id desc').first
+      if first_waiting.present?
+        first_waiting.update_attributes(is_waiting: false)
+      end
+    end
+
     @event.create_leave_notification(current_user)
 
     respond_to do |format|

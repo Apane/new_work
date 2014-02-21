@@ -7,3 +7,10 @@ $('.participant_<%= @participant.user_id %>').fadeOut('400', function() {
   $('.attend_button').html("<%= j(button_to 'rsvp to this event', attend_event_path(@event), method: :post, remote: true,
                 class: 'btn btn-primary btn-lg btn-block creat-event margin-b') %> <div class='clearfix'></div>");
 <% end %>
+<% unless @event.waiting_participants.any? %>
+  $('span.waiting_list').fadeOut('slow', function() {
+    $(this).html('');
+  });
+<% else %>
+  $('.waiting_count').html('<%= @event.waiting_participants.size %> people are waiting');
+<% end %>

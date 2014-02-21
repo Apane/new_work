@@ -42,26 +42,11 @@
         </div>
       <% end %>
     </div>
-    <div class="panel-heading">
-      <h3 class="panel-title"><%= @event.waiting_participants.size %> people are waiting</h3>
-    </div>
-    <div class="panel-body pading-n event_waiting_participants">
-      <% @waiting_participants.each do |user| %>
-        <div class="row attending-peoples participant_<%= user.id %>">
-          <div class="col-xs-12">
-            <div class="attending-peoples-image">
-              <% if user.profile_image.present? %>
-                <%= image_tag(user.profile_image_url(:thumb), size: '35x35') %>
-              <% else %>
-                <%= image_tag("people_image.jpg") %>
-              <% end %>
-            </div>
-            <p><%= user.name %></p>
-            <div class="clr"></div>
-          </div>
-        </div>
-      <% end %>
-    </div>
+    <span class="waiting_list">
+    <% if @event.max_attendees.present? && @event.max_attendees > 0 && @waiting_participants.any? %>
+      <%= render 'waiting_list' %>
+    <% end %>
+    </span>
   </div>
 </div>
 

@@ -1,7 +1,12 @@
 <% if (@event.age_min..@event.age_max).include?(current_user.age) %>
-  <% if @event_participant.is_waiting %>
-    $('.event_waiting_participants').append("<%= j(render 'participant') %>");
-    $('.bs-example-modal-sm').modal('hide')
+  <% if @event_participant.is_waiting? %>
+    $('.bs-example-modal-sm').modal('hide');
+    if ($('span.waiting_participants').length > 0) {
+      $('.event_waiting_participants').append("<%= j(render 'participant') %>");
+      $('.waiting_count').html('<%= @waiting_participants.size %> people are waiting');
+    } else{
+      $('.waiting_list').html("<%= j(render 'events/waiting_list') %>");
+    };
   <% else %>
     $('.event_participants').append("<%= j(render 'participant') %>");
   <% end %>
