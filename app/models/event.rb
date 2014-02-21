@@ -31,9 +31,11 @@ class Event < ActiveRecord::Base
   }
 
   def set_min_max_age
-    ages = self.ages.split('-')
-    self.age_min = ages[0]
-    self.age_max = ages[1]
+    if self.ages.present?
+      ages = self.ages.split('-')
+      self.age_min = ages[0]
+      self.age_max = ages[1]
+    end
   end
 
   def update_event_date
