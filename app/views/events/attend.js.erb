@@ -1,8 +1,12 @@
 <% if (@event.age_min..@event.age_max).include?(current_user.age) %>
-$('.event_participants').append("<%= j(render 'participant') %>");
-$('.attend_button').html("<%= j(button_to 'Stop attending this event', stop_attend_event_path(@event), method: :delete, remote: true,
-            confirm: 'Are you sure you want to stop attending this event?',
-            class: 'btn btn-primary btn-lg btn-block creat-event margin-b') %> <div class='clearfix'></div>");
+  <% if @event_participant.is_waiting %>
+    $('.event_waiting_participants').append("<%= j(render 'participant') %>");
+    $('.bs-example-modal-sm').modal('hide')
+  <% else %>
+    $('.event_participants').append("<%= j(render 'participant') %>");
+  <% end %>
+  $('.attend_button').html("<%= j(button_to 'Stop attending this event', stop_attend_event_path(@event), method: :delete, remote: true,
+              class: 'btn btn-primary btn-lg btn-block creat-event margin-b') %> <div class='clearfix'></div>");
 <% else %>
   alert("Your age does not correspond to event requirements. min: <%= @event.age_min %>, max: <%= @event.age_max %>")
 <% end %>

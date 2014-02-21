@@ -50,6 +50,7 @@ class EventsController < ApplicationController
       # @event = Event.find(params[:id])
       @owner = @event.user
       @participants = @event.participants
+      @waiting_participants = @event.waiting_participants
     else
       redirect_to events_path, error: 'Event not found'
     end
@@ -85,10 +86,16 @@ class EventsController < ApplicationController
     unless @event.is_private?
       @min_age = @event.age_min
       @max_age = @event.age_max
+      max_attendees = @event.max_attendees.present? ? (@event.max_attendees) : 100
 
       if (@min_age..@max_age).include?(current_user.age)
-        @event.event_participants.create(event_id: @event.id, user_id: current_user.id)
+        if @event.participants.size >= max_attendees
+          @event.event_participants.create(event_id: @event.id, user_id: current_user.id, is_waiting: true)
+        else
+          @event.event_participants.create(event_id: @event.id, user_id: current_user.id)
+        end
         @participant = current_user
+        @event_participant = @event.event_participants.where(user_id: @participant.id).first
         @event.create_join_notification(current_user)
       end
     end
@@ -101,8 +108,12 @@ class EventsController < ApplicationController
 
   def stop_attend
     @event = Event.find(params[:id])
+    @attendees_count = @event.participants.size
+    @max_attendees = @event.max_attendees.present? ? (@event.max_attendees) : 100
+
     @participant = @event.event_participants.where(user_id: current_user.id, event_id: @event.id).first
     @participant.destroy
+    @event.event_participants.where(is_waiting: true).order('id desc').first.update_attributes(is_waiting: false)
     @event.create_leave_notification(current_user)
 
     respond_to do |format|

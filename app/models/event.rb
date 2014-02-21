@@ -16,7 +16,8 @@ class Event < ActiveRecord::Base
   has_many :comments, as: :commentable
   belongs_to :user
   has_many :event_participants, dependent: :destroy
-  has_many :participants, through: :event_participants, source: :user
+  has_many :participants, -> { where(event_participants: {is_waiting: false}) }, through: :event_participants, source: :user
+  has_many :waiting_participants, -> { where(event_participants: {is_waiting: true}) }, through: :event_participants, source: :user
   has_many :notifications, as: :noteable
   has_many :categories
 

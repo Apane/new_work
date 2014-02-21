@@ -1,5 +1,5 @@
 class EventParticipant < ActiveRecord::Base
-  attr_accessible :user_id, :event_id
+  attr_accessible :user_id, :event_id, :is_waiting
 
   belongs_to :user
   belongs_to :event

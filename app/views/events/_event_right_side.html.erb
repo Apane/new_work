@@ -26,7 +26,7 @@
       <h3 class="panel-title"><%= @event.participants.size %> people are attending</h3>
     </div>
     <div class="panel-body pading-n event_participants">
-      <% @event.participants.each do |user| %>
+      <% @participants.each do |user| %>
         <div class="row attending-peoples participant_<%= user.id %>">
           <div class="col-xs-12">
             <div class="attending-peoples-image">
@@ -41,6 +41,44 @@
           </div>
         </div>
       <% end %>
+    </div>
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= @event.waiting_participants.size %> people are waiting</h3>
+    </div>
+    <div class="panel-body pading-n event_waiting_participants">
+      <% @waiting_participants.each do |user| %>
+        <div class="row attending-peoples participant_<%= user.id %>">
+          <div class="col-xs-12">
+            <div class="attending-peoples-image">
+              <% if user.profile_image.present? %>
+                <%= image_tag(user.profile_image_url(:thumb), size: '35x35') %>
+              <% else %>
+                <%= image_tag("people_image.jpg") %>
+              <% end %>
+            </div>
+            <p><%= user.name %></p>
+            <div class="clr"></div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <center>
+        <h2>Attention!</h2>
+      </center>
+      <div class="modal-body">
+        This event has reached maximum number of participants, you can join as participant in waiting queue and if a participant will decline his participation, the first in waiting queue will be automatically added to participants.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <%= link_to 'Add me to waiting list', attend_event_path(@event), method: :post, remote: true, class: 'btn btn-primary creat-event' %>
+      </div>
     </div>
   </div>
 </div>

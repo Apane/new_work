@@ -7,7 +7,7 @@
     <div class="panel-body">
       <div>
         <%= best_in_place current_user, :birthday, {activator: ".edit-age",
-            nil: 'I am empty...', inner_class: 'form-control', type: :date} %>
+            nil: 'I am empty...', inner_class: 'form-control birthday_date', type: :date} %>
       </div>
     </div>
     <div class="panel-heading">
@@ -75,23 +75,23 @@
       <p class="heading-text">Events <span>(<%= current_user.events.size %>)</span></p>
       <% event = current_user.events.last %>
       <% if event.present? %>
-      <div class="event-img">
-      <% current_user.events.each do |event| %>
-      <%= link_to event_path(event) do %>
-      <% if event.image.present? %>
-        <%= image_tag(event.image_url) %>
-      <% else %>
-        <%= image_tag 'event_image.jpg' %>
-      <% end %>
-      </div>
-      <div class="event-about">
-        <h3><%= event.title %></h3>
-        <p class="place-map"><%= event.location_name %>, <%= event.city %></p>
-        <p class="date"><%= event.date.strftime("%A, %B %d, %Y") %></p>
-        <p class="c-time"><%= event.time %></p>
-      </div>
-      <% end %>
-      <% end %>
+        <% current_user.events.each do |event| %>
+          <%= link_to event_path(event) do %>
+            <div class="event-img">
+            <% if event.image.present? %>
+              <%= image_tag(event.image_url) %>
+            <% else %>
+              <%= image_tag 'event_image.jpg' %>
+            <% end %>
+            </div>
+            <div class="event-about">
+              <h3><%= event.title %></h3>
+              <p class="place-map"><%= event.location_name %>, <%= event.city %></p>
+              <p class="date"><%= event.date.strftime("%A, %B %d, %Y") %></p>
+              <p class="c-time"><%= event.time %></p>
+            </div>
+          <% end %>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -100,25 +100,37 @@
       <p class="heading-text">Activities <span>(<%= current_user.activities.size %>)</span></p>
       <% activity = current_user.activities.last %>
       <% if activity.present? %>
-      <div class="event-img">
-      <% current_user.activities.each do |activity| %>
-      <%= link_to activity_path(activity) do %>
-      <% if activity.image.present? %>
-        <%= image_tag(activity.image_url) %>
-      <% else %>
-        <%= image_tag 'event_image.jpg' %>
+        <% current_user.activities.each do |activity| %>
+          <%= link_to activity_path(activity) do %>
+            <div class="event-img">
+            <% if activity.image.present? %>
+              <%= image_tag(activity.image_url) %>
+            <% else %>
+              <%= image_tag 'event_image.jpg' %>
+            <% end %>
+            </div>
+            <div class="event-about">
+              <h3>I am looking for a <%= activity.title %> partner</h3>
+              <p class="place-map"><%= activity.location_name %>, <%= activity.city %></p>
+              <p class="date"><%= activity.date.strftime("%A, %B %d, %Y") %></p>
+              <p class="c-time"><%= activity.time %></p>
+              <p class="p-time"><%= activity.frequency %></p>
+            </div>
+          <% end %>
+        <% end %>
       <% end %>
-      </div>
-      <div class="event-about">
-       <h3>I am looking for a <%= activity.title %> partner</h3>
-      <p class="place-map"><%= activity.location_name %>, <%= activity.city %></p>
-      <p class="date"><%= activity.date.strftime("%A, %B %d, %Y") %></p>
-      <p class="c-time"><%= activity.time %></p>
-      <p class="p-time"><%= activity.frequency %></p>
-      <% end %>
-      <% end %>
-      <% end %>
-      </div>
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  $('span.edit-age').on('click', function(event) {
+    setTimeout(
+      function(){
+        $('td.day').on('click', function () {
+          alert('cool');
+        });
+    }, 2000);
+    //   $(this).closest("form").submit();
+  });
+</script>

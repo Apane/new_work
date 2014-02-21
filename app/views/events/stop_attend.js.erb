@@ -1,6 +1,9 @@
 $('.participant_<%= @participant.user_id %>').fadeOut('400', function() {
   $('.participant_<%= @participant.id %>').remove();
 });
-$('.attend_button').html("<%= j(button_to 'Attend this event', attend_event_path(@event), method: :post, remote: true,
-                confirm: 'Are you sure you want to RSVP for this event?',
+<% if @attendees_count >= @max_attendees %>
+  $('.attend_button').html("<button class='btn btn-primary btn-lg btn-block creat-event margin-b' data-toggle='modal' data-target='.bs-example-modal-sm'>Rsvp to this event</button>");
+<% else %>
+  $('.attend_button').html("<%= j(button_to 'rsvp to this event', attend_event_path(@event), method: :post, remote: true,
                 class: 'btn btn-primary btn-lg btn-block creat-event margin-b') %> <div class='clearfix'></div>");
+<% end %>
