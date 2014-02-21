@@ -63,7 +63,7 @@ Friendiose::Application.routes.draw do
   resources :questions
 
   unless Rails.application.config.consider_all_requests_local
-    match '*not_found', to: 'errors#error_404'
+    get '*not_found', to: 'errors#error_404'
   end
 
   # resources :favorites
