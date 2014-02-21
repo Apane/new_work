@@ -3987,7 +3987,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   position: relative;
   display: block;
   padding: 15px 15px;
-  font-family: 'ProximaNovaRegular';
+  font-family: 'museo', 'ProximaNovaRegular';
   font-size:14px;
   line-height:18 px;
   color:#8C8C8C;
@@ -5601,7 +5601,7 @@ a.list-group-item:focus {
 .panel-title {
     color: #414141;
     display: inline-block;
-    font-family: 'ProximaNovaBold';
+    font-family: 'museo', 'ProximaNovaRegular';
     font-size: 14px;
     margin-bottom: 0;
     margin-top: 0;
