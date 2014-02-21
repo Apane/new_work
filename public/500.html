@@ -1,25 +1,82 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>We're sorry, but something went wrong (500)</title>
-  <style type="text/css">
-    body { background-color: #fff; color: #666; text-align: center; font-family: arial, sans-serif; }
-    div.dialog {
-      width: 25em;
-      padding: 0 4em;
-      margin: 4em auto 0 auto;
-      border: 1px solid #ccc;
-      border-right-color: #999;
-      border-bottom-color: #999;
-    }
-    h1 { font-size: 100%; color: #f00; line-height: 1.5em; }
-  </style>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+<link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <title>Friendiose</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/mystyle.css" rel="stylesheet">
+     <link href="css/mediaquery.css" rel="stylesheet">
+
+     <link rel="stylesheet" href="css/selectify.css" />
+
+
+
+
 </head>
 
 <body>
-  <!-- This file lives in public/500.html -->
-  <div class="dialog">
-    <h1>We're sorry, but something went wrong.</h1>
-  </div>
+
+  <header class="navbar navbar-inverse">
+      <div class="container">
+        <div class="row">
+        <div class="col-md-3 logo">
+          <a href="index.html"><img src="images/logo.png" alt="logo"></a>
+        </div>
+
+
+
+        <div class="col-md-3 pull-right">
+      <a href="sign-in.html"><button type="button" class="btn btn-info sign-i-u">Sign IN</button></a>
+            <a href="sign-up.html"><button type="button" class="btn btn-info sign-i-u">Sign Up</button></a>
+        </div>
+
+        </div>
+      </div>
+    </header>
+
+  <div class="container">
+      <div class="row">
+        <div class="col-md-12 error_text">
+            <h1> Sorry, the page you requested is not found</h1>
+
+            <div class="col-md-12">
+              <div class="col-md-6 col-md-offset-3 text-center">
+              <a href="sign-up.html"><button class="btn btn-primary buttons_style" type="button">sign Up</button></a>
+                <a href="sign-in.html"><button class="btn btn-primary buttons_style" type="button">Login</button></a>
+                <a href="index.html"><button class="btn btn-primary buttons_style" type="button">Return to Home</button></a>
+              </div>
+            </div>
+
+        </div>
+        </div>
+    </div>
+
+
+  <footer>
+      <div class="container">
+        <p class="f-logo"><a href="index.html"><img src="images/footer_logo.png" alt="logo-image"></a></p>
+        <p class="links">
+        <a href="#">Blog</a>
+        <a href="#">About</a>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Copyright</a>
+        </p>
+      <p class="copy">2014 © Friendiose. All Rights Reserved</p>
+      </div>
+    </footer>
+
+
+
+
 </body>
+
+
 </html>
