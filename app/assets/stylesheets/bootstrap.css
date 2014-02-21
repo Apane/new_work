@@ -3981,6 +3981,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .nav > li {
   position: relative;
   display: block;
+  font-family: 'museo', 'ProximaNovaRegular';
+
 }
 
 .nav > li > a {
@@ -5598,6 +5600,7 @@ a.list-group-item:focus {
 .panel-heading:first-child {
     border-top: 0 none;
 }
+
 .panel-title {
     color: #414141;
     display: inline-block;

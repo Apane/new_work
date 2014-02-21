@@ -1,5 +1,5 @@
     /* Portrait tablet to landscape and desktop */
-    @media (min-width: 960px) and (max-width: 1200px) { 
+    @media (min-width: 960px) and (max-width: 1200px) {
 
 
 .panel-body > span {
@@ -103,7 +103,7 @@
 }
 
  /*-----------------Setting------------*/
- 
+
 .delet-b { padding-right: 47px; }
 
 .c-time{margin-top:8px;}
@@ -138,12 +138,12 @@
     margin-top: 10px;
 }
 .host-by {padding-top: 8px; }
-     
+
 }
 
 
 /* Portrait tablet to landscape and desktop */
-@media (min-width: 768px) and (max-width: 959px) { 
+@media (min-width: 768px) and (max-width: 959px) {
 
 .search_input {
     width: 91.8% !important;
@@ -155,12 +155,12 @@
 
 .ui-widget-content {
     margin: 0 0 10px 0;
-}	
+}
 	 }
-     
+
     /* Landscape phone to portrait tablet */
     @media (max-width: 767px) {
-	
+
 .setting {
     background: none repeat scroll 0 0 #FD8A4F;
     border: 1px solid #FEA87D;
@@ -177,17 +177,17 @@
 .m-text {
     width: 68%;
 }
-	
+
 	}
-     
+
    /* Landscape phones and down */
  @media (max-width: 480px) {
-	 
+
 .panel-body > span {
     color: #9B9B9B;
     display: inline-block;
     float: left;
-    font-family: 'ProximaNovaRegular';
+  font-family: 'museo', 'ProximaNovaRegular';
     font-size: 12px;
     line-height: 34px;
     margin-left: 8px;
@@ -197,7 +197,7 @@
     color: #9B9B9B;
     display: inline-block;
     float: left;
-    font-family: 'ProximaNovaRegular';
+  font-family: 'museo', 'ProximaNovaRegular';
     font-size: 14px;
     line-height: 34px;
     margin-left: 18px;
