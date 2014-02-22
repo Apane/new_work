@@ -3,7 +3,7 @@
   $('.bs-example-modal-sm').modal('show');
 <% else %>
   <% if @event_participant.is_waiting? %>
-    $('.modal-body').html("This event has reached maximum number of participants, you have joined as participant in waiting queue and if a participant will decline his participation, the first in waiting queue will be automatically added to participants.");
+    $('.modal-body').html("This event has reached the maximum number of attendees, you have been added to the waiting queue and if an attendee should stop attending, the first in the waiting queue will be automatically added as an attendee.");
     $('.bs-example-modal-sm').modal('show');
     if ($('span.waiting_participants').length > 0) {
         $('.event_waiting_participants').append("<%= j(render 'participant') %>");
