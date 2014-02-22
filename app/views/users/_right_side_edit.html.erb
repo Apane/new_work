@@ -16,7 +16,7 @@
     </div>
     <div class="panel-body">
       <div>
-        <%= best_in_place current_user, :education_id, type: :select,
+        <%= best_in_place current_user, :gender, type: :select,
             collection: User::GENDER.to_a,
             activator: ".edit-gender",
             nil: 'I am empty...',

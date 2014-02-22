@@ -27,8 +27,8 @@ class Event < ActiveRecord::Base
   mount_uploader :image, EventImageUploader
 
   GENDER = {
-    1 => "Female",
-    2 => "Male"
+    0 => "Female",
+    1 => "Male"
   }
 
   def set_min_max_age

@@ -1,9 +1,14 @@
-<% if (@event.age_min..@event.age_max).include?(current_user.age) %>
+<% if @notice.present? %>
+  $('.modal-body').html("Sorry you can't join because this event is <%= @notice %>");
+  $('.bs-example-modal-sm').modal('show');
+<% else %>
   <% if @event_participant.is_waiting? %>
-    $('.bs-example-modal-sm').modal('hide');
+    $('.modal-body').html("This event has reached maximum number of participants, you have joined as participant in waiting queue and if a participant will decline his participation, the first in waiting queue will be automatically added to participants.");
+    $('.bs-example-modal-sm').modal('show');
     if ($('span.waiting_participants').length > 0) {
-      $('.event_waiting_participants').append("<%= j(render 'participant') %>");
-      $('.waiting_count').html('<%= @waiting_participants.size %> people are waiting');
+        $('.event_waiting_participants').append("<%= j(render 'participant') %>");
+        $('.waiting_count').html('<%= @waiting_participants.size %> people are waiting');
+        $('span.waiting_list').fadeIn('slow', function() {});
     } else{
       $('.waiting_list').html("<%= j(render 'events/waiting_list') %>");
     };
@@ -12,6 +17,4 @@
   <% end %>
   $('.attend_button').html("<%= j(button_to 'Stop attending this event', stop_attend_event_path(@event), method: :delete, remote: true,
               class: 'btn btn-primary btn-lg btn-block creat-event margin-b') %> <div class='clearfix'></div>");
-<% else %>
-  alert("Your age does not correspond to event requirements. min: <%= @event.age_min %>, max: <%= @event.age_max %>")
 <% end %>

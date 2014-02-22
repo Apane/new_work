@@ -18,8 +18,6 @@ module EventsHelper
         if event.participants.include?(current_user) || event.waiting_participants.include?(current_user)
           button_to 'Leave this event', stop_attend_event_path(event), method: :delete, remote: true,
               class: 'btn btn-primary btn-lg btn-block creat-event margin-b'
-        elsif event.participants.size >= max_attendees
-          "<button class='btn btn-primary btn-lg btn-block creat-event margin-b' data-toggle='modal' data-target='.bs-example-modal-sm'>Rsvp to this event</button>".html_safe
         else
           button_to 'Rsvp to this event', attend_event_path(event), method: :post, remote: true,
               class: 'btn btn-primary btn-lg btn-block creat-event margin-b'
@@ -28,3 +26,6 @@ module EventsHelper
     end
   end
 end
+
+# elsif event.participants.size >= max_attendees
+# "<button class='btn btn-primary btn-lg btn-block creat-event margin-b' data-toggle='modal' data-target='.bs-example-modal-sm'>Rsvp to this event</button>".html_safe
