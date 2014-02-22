@@ -1,0 +1,10 @@
+$( document ).ajaxStart(function() {
+  $( ".event_info .loading" ).show();
+});
+
+$('.event_info .row').html("<%= j(render(@activities)) %>");
+$('h4.events_counter').html('<%= @activities.any? ? "Showing #{@activities.size} Upcoming activities" : "No activities to show" %>');
+
+$( document ).ajaxComplete(function() {
+  $( ".event_info .loading" ).fadeOut('fast', function() {});
+});

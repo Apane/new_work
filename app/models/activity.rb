@@ -57,4 +57,26 @@ class Activity < ActiveRecord::Base
   def frequency
     Activity::FREQUENCY[self.frequency_id]
   end
+
+  def self.scoped_by_search(user, distance, time, cat_ids, gender, ethnicity, age_min, age_max)
+    if time.present?
+      if time == '1'
+        time = Date.today
+      else
+        time = DateTime.now.tomorrow.to_date
+      end
+    end
+
+    #acts = activities
+    acts = self.all
+    acts = acts.within(distance, :origin => user) unless distance.empty?
+    acts = acts.where(date: time) if time.present?
+    acts = acts.where(category_id: cat_ids) if cat_ids.present?
+    acts = acts.where(gender: gender) unless gender.empty?
+    acts = acts.where(ethnicity_id: ethnicity) unless ethnicity.empty?
+    acts_by_min = acts.where(age_min: age_min..age_max)
+    acts_by_max = acts.where(age_max: age_min..age_max)
+    acts = (acts_by_min + acts_by_max).uniq
+    acts
+  end
 end
