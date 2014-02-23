@@ -1,5 +1,5 @@
 <div class="panel-heading">
-  <h3 class="panel-title waiting_count"><%= @waiting_participants.size %> people are waiting</h3>
+  <h3 class="panel-title waiting_count"><%= pluralize(@waiting_participants.size, 'person') %> waiting</h3>
 </div>
 <div class="panel-body pading-n event_waiting_participants">
   <% @waiting_participants.each do |user| %>
