@@ -1,6 +1,11 @@
 <div class="col-md-3">
 
+  <% if @owner == current_user %>
+   <%= link_to 'End Activity', activity_path(@activity), class: 'btn btn-danger btn-lg btn-block mark-icon',
+              method: :delete, data: {confirm: 'Are you sure?'} %>
+  <% else %>
   <button type="button" class="btn btn-primary btn-lg btn-block creat-event margin-b">i'm interested</button>
+  <% end %>
   <%= link_to 'Edit Activity Details', edit_activity_path(@activity), class: 'btn btn-primary btn-lg btn-block edit-event margin-b' %>
   <button type="button" class="btn btn-primary btn-lg btn-block report-i">Report</button>
   <div class="panel panel-default">
@@ -44,22 +49,33 @@
       <h3 class="panel-title">Address</h3>
     </div>
     <div class="panel-body">
+    <% if @owner.address.nil? %>
+      -
+    <% else %>
       <%= @owner.address %>
+    <% end %>
     </div>
 
     <div class="panel-heading">
       <h3 class="panel-title">Ethnicity</h3>
     </div>
     <div class="panel-body">
+    <% if @owner.ethnicity.name.nil? %>
+      -
+    <% else %>
       <%= @owner.ethnicity.name %>
+    <% end %>
     </div>
 
     <div class="panel-heading">
       <h3 class="panel-title">Education</h3>
     </div>
     <div class="panel-body">
-      <%= @owner.education.name %>
+      <% if @owner.ethnicity.name.nil? %>
+       -
+      <% else %>
+       <%= @owner.ethnicity.name %>
+      <% end %>
     </div>
-
   </div>
 </div>
