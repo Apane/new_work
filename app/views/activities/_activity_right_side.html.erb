@@ -3,10 +3,10 @@
   <% if @owner == current_user %>
    <%= link_to 'End Activity', activity_path(@activity), class: 'btn btn-danger btn-lg btn-block mark-icon',
               method: :delete, data: {confirm: 'Are you sure?'} %>
+  <%= link_to 'Edit Activity Details', edit_activity_path(@activity), class: 'btn btn-primary btn-lg btn-block edit-event margin-b' %>
   <% else %>
   <button type="button" class="btn btn-primary btn-lg btn-block creat-event margin-b">i'm interested</button>
   <% end %>
-  <%= link_to 'Edit Activity Details', edit_activity_path(@activity), class: 'btn btn-primary btn-lg btn-block edit-event margin-b' %>
   <button type="button" class="btn btn-primary btn-lg btn-block report-i">Report</button>
   <div class="panel panel-default">
 
