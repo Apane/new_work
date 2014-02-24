@@ -79,7 +79,7 @@
               <li class="hidden_user_<%= user.id %>">
                 <div class="col-md-8">
                   <div class="hide-user-image"><% if user.profile_image.present? %>
-                <%= image_tag(user.profile_image_url(:thumb), size: '50x50') %>
+                <%= image_tag(user.profile_image_url(:thumb), size: '70x70') %>
               <% else %>
                 <%= image_tag("people_image.jpg") %>
               <% end %></div>
@@ -105,7 +105,7 @@
               <li class="blocked_user_<%= user.id %>">
                 <div class="col-md-8">
                   <div class="hide-user-image"><% if user.profile_image.present? %>
-                <%= image_tag(user.profile_image_url(:thumb), size: '50x50') %>
+                <%= image_tag(user.profile_image_url(:thumb), size: '70x70') %>
               <% else %>
                 <%= image_tag("people_image.jpg") %>
               <% end %></div>
