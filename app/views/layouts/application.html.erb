@@ -57,12 +57,7 @@
   </head>
   <body class="<%= body_class_name %>">
     <%= render "shared/header" %>
-    <% flash.each do |name, msg| %>
-      <div class="alert alert-<%= name == :notice ? "success" : "warning" %> alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <%= msg %>
-      </div>
-    <% end %>
+
     <div class="container <%= container_class_name %>">
       <%= yield %>
     </div>
