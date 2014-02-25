@@ -52,7 +52,11 @@ Friendiose::Application.routes.draw do
     # delete 'destroy_favorite', on: :member
   end
 
-  resources :photos
+  resources :photos do
+    member do
+      match :add_as_profile, via: :put
+    end
+  end
 
   resources :events do #events/1/comments
     resources :comments

@@ -7,10 +7,10 @@
         <div class="col-md-12">
           <div class="user-image upload">
             <div class="loader"></div>
-            <% if current_user.profile_image.present? %>
-              <%= image_tag(current_user.profile_image_url) %>
+            <% if current_user.profile_photo.present? %>
+              <%= image_tag(current_user.profile_photo.file.medium.url, class: 'open-tab') %>
             <% else %>
-              <%= image_tag 'user-image.jpg' %>
+              <%= image_tag 'user-image.jpg', class: 'open-tab' %>
             <% end %>
           </div>
           <div class="users_about_fullinfo">
@@ -24,13 +24,13 @@
         </div>
       </div>
     </div>
-    <div style="display:none;">
-    <%= form_for current_user, :html => { :multipart => true }, :remote => true do |f| %>
-        <%= hidden_field_tag :upload_type, 'avatar' %>
-        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-        <%= f.file_field :profile_image %>
-    <% end %>
-    </div>
+    <!-- <div style="display:none;"> -->
+    <%#= form_for current_user, :html => { :multipart => true }, :remote => true do |f| %>
+        <%#= hidden_field_tag :upload_type, 'avatar' %>
+        <!-- <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden"> -->
+        <%#= f.file_field :profile_image %>
+    <%# end %>
+    <!-- </div> -->
 
     <div id="tabs">
       <ul>
@@ -86,20 +86,23 @@
   <%= render 'users/right_side_edit' %>
 </div>
 <script>
-  $(function() {
-    $( "#tabs" ).tabs();
-  });
+$(document).ready(function () {
+  $('#tabs').tabs();
 
-  $('.user-image').click(function() {
-      $('input[type=file]#user_profile_image').trigger('click');
+  $('.open-tab').click(function (event) {
+    $( "#tabs" ).tabs({ active: 1 });
   });
+});
+  // $('.user-image').click(function() {
+  //     $('input[type=file]#user_profile_image').trigger('click');
+  // });
 
   $('.up-new').click(function() {
       $('input[type=file]#photo_file').trigger('click');
   });
 
-  $('input[type=file]#user_profile_image').change(function() {
-    $('.edit_user').submit();
-    $('.loader').show();
-  });
+  // $('input[type=file]#user_profile_image').change(function() {
+  //   $('.edit_user').submit();
+  //   $('.loader').show();
+  // });
 </script>

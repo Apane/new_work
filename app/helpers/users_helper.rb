@@ -8,8 +8,8 @@ module UsersHelper
   end
 
   def user_avatar(user)
-    if user.profile_image.present?
-      html = link_to (image_tag user.profile_image_url(:thumb).to_s), edit_account_path
+    if user.profile_photo.present?
+      html = link_to (image_tag user.profile_photo.file.thumb.url), edit_account_path
     else
       link = link_to (image_tag "profile-placeholder1.png"), edit_account_path
       span = content_tag :span, class: "upload" do
@@ -23,8 +23,8 @@ module UsersHelper
   end
 
   def simple_user_avatar(user)
-    if user.profile_image.present?
-      html = link_to (image_tag user.profile_image_url(:small).to_s, class: 'img-polaroid', size: '50x50'), profile_path(user)
+    if user.profile_photo.present?
+      html = link_to (image_tag user.profile_photo.file.small.url, class: 'img-polaroid', size: '50x50'), profile_path(user)
     else
       html = link_to (image_tag "profile-placeholder1.png", size: '50x50'), profile_path(user)
     end
@@ -32,8 +32,8 @@ module UsersHelper
   end
 
   def avatar(user)
-    if user.profile_image.present?
-      html = image_tag user.profile_image_url(:small).to_s, class: 'media-object', size: '68x68'
+    if user.profile_photo.present?
+      html = image_tag user.profile_photo.file.small.url, class: 'media-object', size: '68x68'
     else
       html = image_tag "people_image.jpg", class: 'media-object', size: '68x68'
     end
@@ -41,7 +41,7 @@ module UsersHelper
   end
 
   def all_user_avatar(user)
-    if user.profile_image.present?
+    if user.profile_photo.present?
       html = link_to (image_tag user.profile_image_url(:all).to_s), user
     else
       html = link_to (image_tag "profile-placeholder1.png", size: '50x50'), user

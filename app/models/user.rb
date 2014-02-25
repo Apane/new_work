@@ -77,6 +77,10 @@ class User < ActiveRecord::Base
     1 => "Male",
   }
 
+  def profile_photo
+    self.photos.where(profile_photo: true).first
+  end
+
   def gender_hum
     User::GENDER[self.gender]
   end

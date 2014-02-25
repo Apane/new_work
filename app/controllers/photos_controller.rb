@@ -13,6 +13,23 @@ class PhotosController < ApplicationController
     @photo.destroy
   end
 
+  def add_as_profile
+    @photo = current_user.photos.find(params[:id])
+    if @photo.present?
+      current_profile_pic = current_user.profile_photo
+      if current_profile_pic.present?
+        current_profile_pic.update_attributes(profile_photo: false)
+      end
+
+      @photo.update_attributes(profile_photo: true)
+      notice = 'Profile picture updated'
+    else
+      notice = 'Photo not found!'
+    end
+
+    redirect_to :back, notice: notice
+  end
+
   private
   # Never trust parameters from the scary internet, only allow the white list through.
   #not needed with protected_attributes gem

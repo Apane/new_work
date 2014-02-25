@@ -1,14 +1,12 @@
 class Photo < ActiveRecord::Base
-  attr_accessible :file
+  attr_accessible :file, :profile_photo
 
   belongs_to :attachable, :polymorphic => true
-
   mount_uploader :file, FileUploader
+  before_create :default_name
 
-before_create :default_name
-
-def default_name
-  self.title ||= File.basename(file.filename, '.*').titleize if file
-end
+  def default_name
+    self.title ||= File.basename(file.filename, '.*').titleize if file
+  end
 
 end
