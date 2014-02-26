@@ -7,7 +7,6 @@
           <div class="user-image">
             <% if @user.profile_photo.present? %>
             <%= image_tag(@user.profile_photo.file.medium.url, class: 'open-tab') %>
-            <%= image_tag(@user.profile_photo.file.small.url) %>
             <% else %>
             <%= image_tag 'user-image.jpg' %>
             <% end %>
