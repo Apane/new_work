@@ -1,8 +1,8 @@
 <div class="row">
   <%#= Profile image upload  %>
   <div class="span4">
-    <% if @user.profile_image.present? %>
-    <%= image_tag @user.profile_image_url(:thumb).to_s%>
+    <% if @user.profile_photo.present? %>
+    <%= image_tag(@user.profile_photo.file.small.url) %>
     <% else %>
     <%= image_tag "profile-placeholder1.png" %>
     <% end %>

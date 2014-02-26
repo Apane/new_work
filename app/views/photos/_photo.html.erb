@@ -6,7 +6,7 @@
  -->
 
 <li class='photo_<%= photo.id %>'>
-  <%= photo.profile_photo? ? 'profile' : 'no profile' %>
+  <%= photo.profile_photo? ? '(current profile photo)' : '' %>
   <%= image_tag(photo.file.url) %>
   <p class="caption"><%= photo.title %> <span class="edit-icon"></span> </p>
   <p>Lorem ipsum dolor sit amet,consectetur adipisicing elit, sed do eiusmod tempor incidiunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
