@@ -14,14 +14,14 @@ class PhotosController < ApplicationController
   end
 
   def update
-     @user = User.find(params[:id])
-     @photo = current_user.photos.find(params[:id])
-    if @photo.update_attributes(params[:photo])
-       @photo.save
-      flash[:success] = "Photo updated."
-      redirect_to @user
-    else
-      flash[:error] = "Photo didnt update."
+    @photo = current_user.photos.find(params[:id])
+
+    respond_to do |format|
+      if @photo.update(params[:photo])
+        format.json { respond_with_bip(@photo) }
+      else
+        format.json { respond_with_bip(@photo) }
+      end
     end
   end
 
