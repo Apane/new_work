@@ -8,9 +8,8 @@
 <li class='photo_<%= photo.id %>'>
   <%= photo.profile_photo? ? '(current profile photo)' : '' %>
   <%= image_tag(photo.file.url) %>
-  <p class="caption"><%= photo.title %> <span class="edit-icon"></span> </p>
+  <p class="caption"><%= photo.title %></p>
   <p><div class="panel-heading">
-      <h3 class="panel-title">Caption</h3>
       <span class="edit-icon pull-right edit-caption"></span>
     </div>
     <div class="panel-body">
