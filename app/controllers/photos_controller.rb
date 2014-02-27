@@ -13,6 +13,17 @@ class PhotosController < ApplicationController
     @photo.destroy
   end
 
+  def update
+     @user = User.find(params[:id])
+     @photo = current_user.photos.find(params[:id])
+    if @photo.update_attributes(params[:photo])
+      flash[:success] = "Photo updated."
+      redirect_to @user
+    else
+      flash[:error] = "Photo no."
+    end
+  end
+
   def add_as_profile
     @photo = current_user.photos.find(params[:id])
     if @photo.present?
