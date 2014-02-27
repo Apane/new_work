@@ -9,7 +9,8 @@
   <%= photo.profile_photo? ? '(current profile photo)' : '' %>
   <%= image_tag(photo.file.url) %>
   <p class="caption"><%= photo.title %> <span class="edit-icon"></span> </p>
-  <p>Lorem ipsum dolor sit amet,consectetur adipisicing elit, sed do eiusmod tempor incidiunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+  <p><%= best_in_place photo, :description, activator: ".edit-caption",
+            nil: 'I am empty...', inner_class: 'form-control' %></p>
   <%= form_tag add_as_profile_photo_path(photo), class: 'form-inline', method: :put do %>
     <%= button_tag 'Set as profile picture', class: 'btn btn-primary btn-lg photo-b' %>
   <% end %>
