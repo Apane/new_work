@@ -8,7 +8,9 @@
 <li class='photo_<%= photo.id %>'>
   <%= photo.profile_photo? ? '(current profile photo)' : '' %>
   <%= image_tag(photo.file.url) %>
- <%= best_in_place photo, :title, activator: ".edit-caption.photo_#{photo.id}",  nil: 'I am empty...', inner_class: 'form-control' %><span class="edit-icon pull-right edit-caption photo_<%= photo.id %>"></span> </p>
+  <p class="caption"><%= best_in_place photo, :title, activator: ".edit-caption.photo_#{photo.id}",  nil: 'I am empty...', inner_class: 'form-control' %><span class="edit-icon pull-right edit-caption photo_<%= photo.id %>"></span> </p>
+  <p class="description"><%= text_field photo, :description, activator: ".edit-description.photo_#{photo.id}",  placeholder: '-', class: 'form-control' %><span class="edit-icon pull-right edit-description photo_<%= photo.id %>"></span></p>
+
   <%= form_tag add_as_profile_photo_path(photo), class: 'form-inline', method: :put do %>
     <%= button_tag 'Set as profile picture', class: 'btn btn-primary btn-lg photo-b' %>
   <% end %>
