@@ -11,11 +11,11 @@
   <p class="caption"><%= photo.title %> <span class="edit-icon"></span> </p>
   <p><div class="panel-heading">
       <h3 class="panel-title">Caption</h3>
-      <span class="edit-icon pull-right edit-occupation"></span>
+      <span class="edit-icon pull-right edit-caption"></span>
     </div>
     <div class="panel-body">
       <div>
-        <%= best_in_place photo, :description, activator: ".edit-occupation",
+        <%= best_in_place photo, :description, activator: ".edit-caption",
             nil: 'I am empty...', inner_class: 'form-control' %>
       </div>
     </div></p>
