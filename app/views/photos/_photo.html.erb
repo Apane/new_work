@@ -8,7 +8,7 @@
 <li class='photo_<%= photo.id %>'>
   <%= photo.profile_photo? ? '(current profile photo)' : '' %>
   <%= image_tag(photo.file.url) %>
-  <p class="caption"><%= best_in_place photo, :title, activator: ".edit-caption.photo_#{photo.id}",  nil: 'I am empty...', inner_class: 'form-control' %><span class="edit-icon pull-right edit-caption photo_<%= photo.id %>"></span> </p>
+  <p class="caption"><%= best_in_place photo, :title, activator: ".edit-caption.photo_#{photo.id}",  nil: 'Add a caption to your photo...', inner_class: 'form-control' %><span class="edit-icon pull-right edit-caption photo_<%= photo.id %>"></span> </p>
 
  <br />
 
