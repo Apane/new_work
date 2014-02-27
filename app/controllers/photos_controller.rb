@@ -17,10 +17,11 @@ class PhotosController < ApplicationController
      @user = User.find(params[:id])
      @photo = current_user.photos.find(params[:id])
     if @photo.update_attributes(params[:photo])
+       @photo.save
       flash[:success] = "Photo updated."
       redirect_to @user
     else
-      flash[:error] = "Photo no."
+      flash[:error] = "Photo didnt update."
     end
   end
 
