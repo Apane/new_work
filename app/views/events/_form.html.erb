@@ -127,11 +127,11 @@
               <div class="col-md-5 col-xs-5">
                 <label for="Date">Event Type :</label>
                 <div class="radio">
-                  <%= f.radio_button :event_type, '1', :checked => true %>
-                  <%= label :event_type, 'Private', value: '1' %>
+                  <%= f.radio_button :event_type, '1', class: 'private_event' %>
+                  <%= label :event_type, 'Private', value: '1', class: 'private_event' %>
                 </div>
                 <div class="radio">
-                  <%= f.radio_button :event_type, '0' %>
+                  <%= f.radio_button :event_type, '0', :checked => true %>
                   <%= label :event_type, 'Public', value: '0' %>
                 </div>
               </div>
@@ -269,4 +269,12 @@
     });
 
   })
+  $('.private_event').on('click', function(event) {
+    $.pnotify({
+      title: "Private type selected",
+      text: "Only invited users will be able to join this event",
+      type: "info",
+      icon: 'ui-icon ui-icon-signal-diag'
+    });
+  });
 </script>
