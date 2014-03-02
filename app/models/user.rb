@@ -206,18 +206,34 @@ class User < ActiveRecord::Base
   end
 
   def answered_to_about_questions?
-    if self.questions.where(for_about: true).map{|q| q.answer.empty?.to_s}.include? 'true'
-      return false
-    else
+    arr = self.questions.where(for_about: true).each do |q|
+      if q.answer.nil?
+        true.to_s
+      else
+        q.answer.empty? ? true.to_s : false.to_s
+      end
+    end
+
+    if arr.include? 'true'
       return true
+    else
+      return false
     end
   end
 
   def answered_to_top_5_questions?
-    if self.questions.where(for_about: nil).map{|q| q.answer.empty?.to_s}.include? 'true'
-      return false
-    else
+    arr = self.questions.where(for_about: nil).each do |q|
+      if q.answer.nil?
+        true.to_s
+      else
+        q.answer.empty? ? true.to_s : false.to_s
+      end
+    end
+
+    if arr.include? 'true'
       return true
+    else
+      return false
     end
   end
 
@@ -225,7 +241,10 @@ class User < ActiveRecord::Base
     rate = 0
     (rate = rate + 10) if self.profile_photo.present?
     (rate = rate + 10) if self.age.present?
-    (rate = rate + 10) unless self.address.empty?
+
+    if self.address != nil
+      (rate = rate + 10) unless self.address.empty?
+    end
     (rate = rate + 10) if self.ethnicity.present?
     (rate = rate + 10) if self.education.present?
     (rate = rate + 10) if self.answered_to_about_questions?
