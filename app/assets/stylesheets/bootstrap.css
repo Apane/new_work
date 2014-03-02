@@ -5278,17 +5278,17 @@ a.thumbnail:focus {
   color: #a47e3c;
 }
 
-.alert-danger {
+.alert-error, .alert-danger {
   color: #b94a48;
   background-color: #f2dede;
   border-color: #eed3d7;
 }
 
-.alert-danger hr {
+.alert-error hr, .alert-danger hr {
   border-top-color: #e6c1c7;
 }
 
-.alert-danger .alert-link {
+.alert-error .alert-link, .alert-danger .alert-link {
   color: #953b39;
 }
 
