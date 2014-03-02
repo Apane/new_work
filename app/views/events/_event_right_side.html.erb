@@ -1,6 +1,6 @@
 <div class="col-md-3">
     <span class="attend_button">
-    <%= attend_to_event(@event) %>
+    <%= attend_to_event(@event) unless @event.expired? %>
     </span>
     <% if @event.owner_is?(current_user) %>
       <%= link_to 'Close Event', event_path(@event), class: 'btn btn-danger btn-lg btn-block mark-icon',

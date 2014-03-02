@@ -8,6 +8,7 @@
       <% end %>
     </div>
 
+    <div class="pull-right text-muted"><%= "expired" if event.expired? %></div>
     <div class="event-about">
       <h3><%= event.title %></h3>
       <p class="place-map"><%= event.location_name %>, <%= event.city %></p>

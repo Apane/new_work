@@ -56,6 +56,10 @@ class Event < ActiveRecord::Base
     self.event_type
   end
 
+  def expired?
+    self.event_date <= Time.now
+  end
+
   # add owner to partipants list
   def add_owner_to_participants
    EventParticipant.create(user_id: self.user_id, event_id: self.id)

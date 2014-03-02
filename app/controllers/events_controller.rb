@@ -12,10 +12,11 @@ class EventsController < ApplicationController
       ethnicity = params[:search][:ethn] || nil
       age_min = params[:search][:age_min] || nil
       age_max = params[:search][:age_max] || nil
-      @events = Event.scoped_by_search(current_user, distance, time, cat_ids, gender, ethnicity, age_min, age_max)
+      @events = Event.where('event_date >= ?', Time.now.beginning_of_day).scoped_by_search(current_user, distance, time, cat_ids, gender, ethnicity, age_min, age_max)
     else
       #@events = Event.where('event_date > ?', DateTime.now)
-      @events = Event.all
+      @events = Event.where('event_date >= ?', Time.now.beginning_of_day)
+      # @events = Event.all
     end
 
     respond_to do |format|
