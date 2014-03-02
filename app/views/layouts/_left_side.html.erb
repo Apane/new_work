@@ -1,4 +1,12 @@
 <div class="col-md-3">
+  <div class="profile_completed">
+    <div class="title">Profile completion <%= current_user.profile_completed %>%</div>
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" aria-valuenow="<%= current_user.profile_completed %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= current_user.profile_completed %>%;">
+        <span class="sr-only"><%= current_user.profile_completed %>% Complete</span>
+      </div>
+    </div>
+  </div>
   <div role="complementary" class="bs-sidebar hidden-print affix-top" style="">
     <ul class="nav bs-sidenav">
       <li class="<%= 'active' if controller_name == 'profiles' %>">

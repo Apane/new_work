@@ -44,7 +44,7 @@
           <p class="summary-heading"><%= question.question %> <span class="edit-icon edit-icon-<%= question.id %>"></span> </p>
           <p class="summary-info <%= 'empty' if question.answer.present? && question.answer.length == 0 %>">
             <%= best_in_place question, :answer, :type => :textarea, activator: ".edit-icon-#{question.id}",
-                  nil: 'I am empty...', inner_class: 'form-control' %>
+                  nil: 'I am empty...' %>
           </p>
         </div>
         <% end %>
@@ -75,7 +75,7 @@
           <p class="summary-heading"><%= question.question %> <span class="edit-icon edit-icon-<%= question.id %>"></span></p>
           <p class="summary-info <%= 'empty' if question.answer.present? && question.answer.length == 0 %>">
             <%= best_in_place question, :answer, {:type => :textarea, activator: ".edit-icon-#{question.id}",
-                              nil: 'I am empty...', inner_class: 'form-control'} %>
+                              nil: 'I am empty...'} %>
           </p>
         </div>
         <% end %>

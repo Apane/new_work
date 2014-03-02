@@ -205,6 +205,35 @@ class User < ActiveRecord::Base
     end
   end
 
+  def answered_to_about_questions?
+    if self.questions.where(for_about: true).map{|q| q.answer.empty?.to_s}.include? 'true'
+      return false
+    else
+      return true
+    end
+  end
+
+  def answered_to_top_5_questions?
+    if self.questions.where(for_about: nil).map{|q| q.answer.empty?.to_s}.include? 'true'
+      return false
+    else
+      return true
+    end
+  end
+
+  def profile_completed
+    rate = 0
+    (rate = rate + 10) if self.profile_photo.present?
+    (rate = rate + 10) if self.age.present?
+    (rate = rate + 10) unless self.address.empty?
+    (rate = rate + 10) if self.ethnicity.present?
+    (rate = rate + 10) if self.education.present?
+    (rate = rate + 10) if self.answered_to_about_questions?
+    (rate = rate + 10) if self.answered_to_top_5_questions?
+
+    rate
+  end
+
   def self.scoped_by_search(terms, min_age, max_age, education_id, ethnicity_id, gender)
     min = min_age.present? ? min_age : 18
     max = max_age.present? ? max_age : 100
