@@ -237,6 +237,17 @@ class User < ActiveRecord::Base
     end
   end
 
+  def answered_questions
+    qs = []
+    self.questions.each do |q|
+      if !q.answer.nil?
+        qs << q if !q.answer.empty?
+      end
+    end
+
+    return qs
+  end
+
   def profile_completed
     rate = 0
     (rate = rate + 10) if self.profile_photo.present?
@@ -247,8 +258,10 @@ class User < ActiveRecord::Base
     end
     (rate = rate + 10) if self.ethnicity.present?
     (rate = rate + 10) if self.education.present?
-    (rate = rate + 10) if self.answered_to_about_questions?
-    (rate = rate + 10) if self.answered_to_top_5_questions?
+    # (rate = rate + 10) if self.answered_to_about_questions?
+    # (rate = rate + 10) if self.answered_to_top_5_questions?
+    (rate = rate + (5 * self.answered_questions.size))
+
 
     rate
   end
