@@ -1,0 +1,22 @@
+<div class="list-group result">
+  <%= link_to activity, class: 'list-group-item result_item' do %>
+    <div class="">
+      <div class="">
+        <div class="img-thumbnail result_image">
+          <% if activity.image.present? %>
+            <%= image_tag(activity.image_url(:thumb)) %>
+          <% else %>
+            <%= image_tag 'event_image.jpg' %>
+          <% end %>
+        </div>
+      </div>
+      <div class="">
+        <h4 class="list-group-item-heading"><%= activity.title %></h4>
+        <p class="list-group-item-text">
+          <%= activity.date.strftime("%A, %B %d, %Y") %>
+        </p>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  <% end %>
+</div>

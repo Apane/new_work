@@ -266,6 +266,11 @@ class User < ActiveRecord::Base
     rate
   end
 
+  def self.filtered(terms)
+    users = User.search(terms)
+    users
+  end
+
   def self.scoped_by_search(terms, min_age, max_age, education_id, ethnicity_id, gender)
     min = min_age.present? ? min_age : 18
     max = max_age.present? ? max_age : 100

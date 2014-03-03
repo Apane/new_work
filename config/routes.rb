@@ -1,5 +1,6 @@
 Friendiose::Application.routes.draw do
 
+  post "searches/index" => 'searches#index', as: :searches
   resources :activities do
     resources :comments
   end

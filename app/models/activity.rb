@@ -1,6 +1,9 @@
 class Activity < ActiveRecord::Base
   include PgSearch
 
+  pg_search_scope :search, against: [:title, :description],
+    using: {tsearch: {prefix: true, dictionary: "english"}}
+
   acts_as_mappable :default_units => :miles,
                    :default_formula => :sphere,
                    :lat_column_name => :lat,
@@ -56,6 +59,11 @@ class Activity < ActiveRecord::Base
 
   def frequency
     Activity::FREQUENCY[self.frequency_id]
+  end
+
+  def self.filtered(terms)
+    activities = Activity.search(terms)
+    activities
   end
 
   def self.scoped_by_search(user, distance, time, cat_ids, gender, ethnicity, age_min, age_max)

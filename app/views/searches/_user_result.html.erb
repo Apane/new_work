@@ -1,0 +1,22 @@
+<div class="list-group result">
+  <%= link_to profile_path(user), class: 'list-group-item result_item' do %>
+    <div class="">
+      <div class="">
+        <div class="img-thumbnail result_image">
+          <% if user.profile_photo.present? %>
+            <%= image_tag(user.profile_photo.file.thumb.url) %>
+          <% else %>
+            <%= image_tag("people_image.jpg") %>
+          <% end %>
+        </div>
+      </div>
+      <div class="">
+        <h4 class="list-group-item-heading"><%= user.name %></h4>
+        <p class="list-group-item-text">
+          <%= user.gender_hum %>, <%= user.address.present? ? user.address : 'address uknown' %>
+        </p>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  <% end %>
+</div>

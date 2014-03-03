@@ -1,0 +1,10 @@
+$('.results').html('');
+<% @users.each do |user| %>
+  $('.results').append('<%= j(render 'searches/user_result', user: user) %>');
+<% end %>
+<% @events.each do |event| %>
+  $('.results').append('<%= j(render 'searches/event_result', event: event) %>');
+<% end %>
+<% @activities.each do |activity| %>
+  $('.results').append('<%= j(render 'searches/activity_result', activity: activity) %>');
+<% end %>

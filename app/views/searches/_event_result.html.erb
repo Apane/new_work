@@ -1,0 +1,22 @@
+<div class="list-group result">
+  <%= link_to event, class: 'list-group-item result_item' do %>
+    <div class="">
+      <div class="">
+        <div class="img-thumbnail result_image">
+          <% if event.image.present? %>
+            <%= image_tag(event.image_url(:thumb)) %>
+          <% else %>
+            <%= image_tag 'event_image.jpg' %>
+          <% end %>
+        </div>
+      </div>
+      <div class="">
+        <h4 class="list-group-item-heading"><%= event.title %></h4>
+        <p class="list-group-item-text">
+          <%= event.date.strftime("%A, %B %d, %Y") %>
+        </p>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  <% end %>
+</div>

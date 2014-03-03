@@ -11,25 +11,29 @@
 
       <div class="col-md-6">
         <% if user_signed_in? %>
-        <ul class="nav navbar-nav">
-          <li class="dropdown">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-              <div>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </div>
-              <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><a href="#">All</a></li>
-              <li><%= link_to 'Browse', profiles_path %></li>
-              <li><%= link_to 'Events', events_path %></li>
-              <li><a href="#">Activities</a></li>
-            </ul>
-          </li>
-        </ul>
-        <input name="" type="text" class="search_input">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                <div>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </div>
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#">All</a></li>
+                <li><%= link_to 'Browse', profiles_path %></li>
+                <li><%= link_to 'Events', events_path %></li>
+                <li><a href="#">Activities</a></li>
+              </ul>
+            </li>
+          </ul>
+          <%= form_tag searches_path, remote: true, class: 'header_form' do %>
+            <%= text_field_tag :terms, '', name: 'search[terms]', class: 'search_input' %>
+          <% end %>
+          <div class="col-md-10 col-xs-10 results">
+          </div>
         <% end %>
       </div>
 
@@ -67,3 +71,8 @@
     </div>
   </div>
 </header>
+<script type="text/javascript">
+  $('input.search_input').bind('keyup', function(event) {
+    $('.header_form').submit();
+  });
+</script>

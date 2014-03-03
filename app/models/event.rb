@@ -1,6 +1,9 @@
 class Event < ActiveRecord::Base
   include PgSearch
 
+  pg_search_scope :search, against: [:title, :description],
+    using: {tsearch: {prefix: true, dictionary: "english"}}
+
   acts_as_mappable :default_units => :miles,
                    :default_formula => :sphere,
                    :lat_column_name => :lat,
@@ -81,6 +84,10 @@ class Event < ActiveRecord::Base
         self.notifications.create(user_id: p.id)
       end
     end
+  end
+
+  def self.filtered(terms)
+    events = Event.search(terms)
   end
 
   def self.scoped_by_search(user, distance, time, cat_ids, gender, ethnicity, age_min, age_max)
