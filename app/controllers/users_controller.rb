@@ -77,6 +77,12 @@ class UsersController < ApplicationController
     @activities = current_user.activities
   end
 
+  def update_profile_completness
+    respond_to do |format|
+      format.js
+    end
+  end
+
  private
     # Using a private method to encapsulate the permissible parameters
     # is just a good pattern since you'll be able to reuse the same
