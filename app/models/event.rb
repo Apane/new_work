@@ -110,4 +110,8 @@ class Event < ActiveRecord::Base
     events = (events_by_min + events_by_max).uniq
     events
   end
+
+  def self.clear_expired
+    where('event_date <= ?', 1.week.ago).delete_all
+  end
 end
