@@ -19,6 +19,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.Jcrop
 //= require jquery.iframe-transport
 //= require jquery.remotipart
 //= require jquery.ui.all

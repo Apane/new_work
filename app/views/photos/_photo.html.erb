@@ -1,13 +1,10 @@
-<!-- <li class="photo_<%= photo.id %>">
-  <%= image_tag(photo.file.thumb.url, class: 'img-polaroid') %>
-  <p>Lorem ipsum dolor sit amet,consectetur adipisicing elit, sed do eiusmod tempor incidiunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-  <%= link_to "delete", photo, :confirm => 'Are you sure?', :method => :delete, remote: true %>
-</li>
- -->
-
 <li class='photo_<%= photo.id %>'>
   <%= photo.profile_photo? ? '(current profile photo)' : '' %>
-  <%= image_tag(photo.file.url) %>
+  <%= link_to photo, remote: true do %>
+  <div class="photo_frame" style="background-image: url('<%= photo.file.large.url %>');">
+    <%#= link_to image_tag(photo.file.large.url), photo, remote: true %>
+  </div>
+  <% end %>
   <p class="caption"><%= best_in_place photo, :title, activator: ".edit-caption.photo_#{photo.id}",  nil: 'Add a caption to your photo...2', inner_class: 'form-control' %><span class="edit-icon pull-right edit-caption photo_<%= photo.id %>"></span></p>
 
  <br />
