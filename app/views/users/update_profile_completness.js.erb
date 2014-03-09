@@ -1,2 +1,5 @@
 $('.progress-bar').width("<%= current_user.profile_completed %>%");
 $('span.percentage').html('<%= current_user.profile_completed %>%');
+<% if current_user.has_completed_profile? %>
+  $('.profile_completed').fadeOut('fast');
+<% end %>

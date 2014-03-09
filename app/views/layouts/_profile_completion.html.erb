@@ -1,0 +1,8 @@
+<div class="profile_completed">
+  <div class="title">Profile completion <span class="percentage"><%= current_user.profile_completed %>%</span></div>
+  <div class="progress">
+    <div class="progress-bar" role="progressbar" aria-valuenow="<%= current_user.profile_completed %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= current_user.profile_completed %>%;">
+      <span class="sr-only"><%= current_user.profile_completed %>% Complete</span>
+    </div>
+  </div>
+</div>

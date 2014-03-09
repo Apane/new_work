@@ -252,18 +252,22 @@ class User < ActiveRecord::Base
     rate = 0
     (rate = rate + 10) if self.profile_photo.present?
     (rate = rate + 10) if self.age.present?
-
     if self.address != nil
       (rate = rate + 10) unless self.address.empty?
+    end
+    if self.occupation.present?
+      (rate = rate + 5) unless self.occupation.empty?
     end
     (rate = rate + 10) if self.ethnicity.present?
     (rate = rate + 10) if self.education.present?
     # (rate = rate + 10) if self.answered_to_about_questions?
     # (rate = rate + 10) if self.answered_to_top_5_questions?
     (rate = rate + (5 * self.answered_questions.size))
-
-
     rate
+  end
+
+  def has_completed_profile?
+    (self.profile_completed == 100) ? true : false
   end
 
   def self.filtered(terms)
