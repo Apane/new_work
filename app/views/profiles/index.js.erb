@@ -1,0 +1,10 @@
+$( document ).ajaxStart(function() {
+  $( ".users_list .loading" ).show();
+});
+
+$('.users_list').html("<%= j(render(@users)) %>");
+$('h4.events_counter').html('<%= @users.any? ? "Showing #{pluralize(@users.size, "people")} user" : "No users to show" %>');
+
+$( document ).ajaxComplete(function() {
+  $( ".users_list .loading" ).fadeOut('fast', function() {});
+});

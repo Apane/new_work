@@ -3,15 +3,16 @@ class ProfilesController < ApplicationController
 
   def index
     if params[:search]
-      @terms = params[:search][:terms] || nil
-      @min_age = params[:search][:min_age] || nil
-      @max_age = params[:search][:max_age] || nil
-      @zipcode = params[:search][:zipcode] || nil
-      @distance = params[:search][:distance] || nil
-      @education_id = params[:search][:education_id] || nil
-      @ethnicity_id = params[:search][:ethnicity_id] || nil
-      @gender = params[:search][:gender] || nil
-      @users = User.scoped_by_search(@terms, @min_age, @max_age, @education_id, @ethnicity_id, @gender)
+      terms = params[:search][:terms] || nil
+      min_age = params[:search][:age_min] || nil
+      max_age = params[:search][:age_max] || nil
+      zipcode = params[:search][:zipcode] || nil
+      distance = params[:search][:distance] || nil
+      education_id = params[:search][:education_id] || nil
+      # @ethnicity_id = params[:search][:ethnicity_id] || nil
+      ethnicity_ids = params[:search][:cat_ids].split('').uniq || nil
+      gender = params[:search][:gender] || nil
+      @users = User.scoped_by_search(terms, min_age, max_age, education_id, ethnicity_ids, gender)
     else
       @users = User.all
     end

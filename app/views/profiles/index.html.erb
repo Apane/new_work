@@ -5,7 +5,9 @@
     <div class="col-md-12 showing">
       <div class="row">
         <div class="col-md-12">
-          <h4>Showing <%= pluralize(@users.size, 'people') %> </h4>
+          <h4 class="events_counter">
+            <%= @users.any? ? "Showing #{pluralize(@users.size, 'people')}" : "No users to show" %>
+          </h4>
           <div class="col-md-3 row fr">
 <!--             <select class="form-control">
               <option value="">SORT BY</option>
@@ -18,7 +20,10 @@
         </div>
       </div>
     </div>
-    <%= render @users %>
+    <div class="users_list">
+      <div class="loading" style="display:none;"><h4>Loading events...</h4></div>
+      <%= render @users %>
+    </div>
   </div>
   <%= render 'layouts/right_side' %>
 </div>
