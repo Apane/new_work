@@ -22,8 +22,10 @@ class PhotosController < ApplicationController
 
     respond_to do |format|
       if @photo.update(params[:photo])
+        format.js
         format.json { respond_with_bip(@photo) }
       else
+        format.js
         format.json { respond_with_bip(@photo) }
       end
     end

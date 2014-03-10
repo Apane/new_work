@@ -34,19 +34,23 @@ class FileUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :thumb do
-    process :resize_to_limit => [37, 37]
+    process :crop
+    resize_to_limit(37, 37)
   end
 
   version :small do
-    process :resize_to_limit => [100, 100]
+    process :crop
+    resize_to_limit(100, 100)
   end
 
   version :medium do
-    process :resize_to_limit => [147, 147]
+    process :crop
+    resize_to_limit(147, 147)
   end
 
   version :large do
-    process :resize_to_limit => [558, 558]
+    # process :crop
+    resize_to_limit(558, 558)
   end
 
   def crop

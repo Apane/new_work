@@ -1,5 +1,5 @@
 class Photo < ActiveRecord::Base
-  attr_accessible :file, :profile_photo, :title
+  attr_accessible :file, :profile_photo, :title, :crop_x, :crop_y, :crop_w, :crop_h
 
   belongs_to :attachable, :polymorphic => true
   mount_uploader :file, FileUploader
@@ -13,7 +13,7 @@ class Photo < ActiveRecord::Base
   end
 
   def crop_avatar
-    file.recreate_versions! if crop_x.present?
+    self.file.recreate_versions! if crop_x.present?
   end
 
 end

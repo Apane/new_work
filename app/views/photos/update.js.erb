@@ -1,0 +1,8 @@
+$( document ).ajaxStart(function() {
+  $( ".crop_message" ).show();
+});
+
+$( document ).ajaxComplete(function() {
+  $( ".crop_message" ).fadeOut('fast', function() {});
+});
+$('#myModal').modal('hide');

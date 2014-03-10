@@ -1,4 +1,35 @@
-<img alt="<%= photo.title %>" src="<%= photo.file.large.url %>" style="max-width: 100%;height:auto;" id="cropbox">
+<img alt="<%= photo.title %>" src="<%= photo.file.large.url %>" id="cropbox">
+<%= form_for photo, remote: true do |f| %>
+  <div class="control-group">
+    <% %w[x y w h].each do |attribute| %>
+      <%= f.text_field "crop_#{attribute}", hidden: true %>
+    <% end %>
+    <%= f.submit "Crop", class: 'btn btn-primary btn-lg photo-b' %>
+    <span class="crop_message" style="display:none;">Processing ....</span>
+  </div>
+<% end %>
 <script type="text/javascript">
-  $('#cropbox').Jcrop();
+  jQuery(document).ready(function(){
+
+    jQuery('#cropbox').Jcrop({
+      onChange: showCoords,
+      onSelect: showCoords,
+      // setSelect: [0, 0, 558, 558],
+      bgColor: 'transparent',
+      aspectRatio: 1
+    });
+
+  });
+
+  // Simple event handler, called from onChange and onSelect
+  // event handlers, as per the Jcrop invocation above
+  function showCoords(c)
+  {
+    jQuery('#photo_crop_x').val(c.x);
+    jQuery('#photo_crop_y').val(c.y);
+    // jQuery('#x2').val(c.x2);
+    // jQuery('#y2').val(c.y2);
+    jQuery('#photo_crop_w').val(c.w);
+    jQuery('#photo_crop_h').val(c.h);
+  };
 </script>
