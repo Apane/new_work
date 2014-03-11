@@ -14,7 +14,7 @@ class ProfilesController < ApplicationController
       gender = params[:search][:gender] || nil
       @users = User.scoped_by_search(terms, min_age, max_age, education_id, ethnicity_ids, gender)
     else
-      @users = User.all
+      @users = User.page(params[:page]).per_page(5)
     end
   end
 

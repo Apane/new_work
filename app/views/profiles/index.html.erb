@@ -24,6 +24,7 @@
       <div class="loading" style="display:none;"><h4>Loading events...</h4></div>
       <%= render @users %>
     </div>
+    <div class="hidden"><%= will_paginate @users %></div>
   </div>
   <%= render 'layouts/right_side' %>
 </div>

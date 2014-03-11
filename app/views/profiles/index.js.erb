@@ -1,3 +1,11 @@
+<% if params[:search].present? %>
+<%
+  cat_ids = params[:search][:cat_ids] if params[:search][:cat_ids].present?
+  age_min = params[:search][:age_min] if params[:search][:age_min].present?
+  age_max = params[:search][:age_max] if params[:search][:age_max].present?
+  gender = params[:search][:gender] if params[:search][:gender].present?
+%>
+
 $( document ).ajaxStart(function() {
   $( ".users_list .loading" ).show();
 });
@@ -8,3 +16,15 @@ $('h4.events_counter').html('<%= @users.any? ? "Showing #{pluralize(@users.size,
 $( document ).ajaxComplete(function() {
   $( ".users_list .loading" ).fadeOut('fast', function() {});
 });
+
+// window.history.pushState(
+  // {},"", "/profiles?search[cat_ids=<%= cat_ids %>&search[age_min=<%= age_min %>&search[age_max=<%= age_max %>&search[gender=<%= gender %>"
+// );
+<% else %>
+  $('.users_list').append('<%= j render(@users) %>');
+  <% if @users.next_page %>
+    $('.pagination').replaceWith('<%= j will_paginate(@users) %>');
+  <% else %>
+    $('.pagination').remove();
+  <% end %>
+<% end %>

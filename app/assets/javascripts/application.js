@@ -40,6 +40,7 @@
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
 //= require photos
+//= require users
 
 
 $.pnotify.defaults.history = false
