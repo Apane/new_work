@@ -1,16 +1,25 @@
 ActiveAdmin.register Event do
   index do
     column :title
+    column 'Owner' do |event|
+      link_to event.user.name, admin_user_path(event.user)
+    end
+    column 'Event Type' do |event|
+      event.is_private? ? status_tag('private', :error) : status_tag('public', :ok)
+    end
     column :created_at
-    column :user
     default_actions
   end
 
 
   form do |f|
     f.inputs 'Details' do
-      f.input :country, :as => :string
-      f.input :city
+      f.input :location_name
+      f.input :date, as: :datepicker
+      f.input :time
+      f.input :age_min
+      f.input :age_max
+      f.input :description
     end
     f.actions
   end
@@ -18,7 +27,7 @@ ActiveAdmin.register Event do
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
-  # permit_params :list, :of, :attributes, :on, :model
+  permit_params :all
   #
   # or
   #
@@ -28,4 +37,13 @@ ActiveAdmin.register Event do
   #  permitted
   # end
 
+  filter :title
+  filter :user_id
+  filter :activity_type
+  filter :location
+  filter :country
+  filter :state
+  filter :city
+  filter :age_min
+  filter :age_max
 end
