@@ -72,3 +72,7 @@ span.notes_count, span.messages_count {
 }
 .result_image{width: 55px;}
 .result_image img{width: 100%;}
+
+.login-buttons {
+  margin-top: 12px;
+}

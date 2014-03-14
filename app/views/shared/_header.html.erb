@@ -23,7 +23,7 @@
               </a>
               <ul class="dropdown-menu">
                 <li><a href="#">All</a></li>
-                <li><%= link_to 'Browse', profiles_path %></li>
+                <li><%= link_to 'People', profiles_path %></li>
                 <li><%= link_to 'Events', events_path %></li>
                 <li><a href="#">Activities</a></li>
               </ul>
@@ -37,7 +37,7 @@
         <% end %>
       </div>
 
-      <div class="col-md-3 myaccount">
+      <div class="col-md-3 myaccount login-buttons">
         <% if user_signed_in? %>
           <%= link_to notifications_path, class: 'notes_area' do %>
             <%= image_tag('w_icon.png') %>
@@ -62,7 +62,7 @@
           </ul>
           <div class="clr"></div>
         <% else %>
-          <span>
+          <span class="login-buttons">
             <%= link_to 'Sign IN', new_user_session_path, class: 'btn btn-info sign-i-u' %>
             <%= link_to 'Sign UP', new_user_registration_path, class: 'btn btn-info sign-i-u' %>
           </span>
@@ -76,3 +76,4 @@
     $('.header_form').submit();
   });
 </script>
+
