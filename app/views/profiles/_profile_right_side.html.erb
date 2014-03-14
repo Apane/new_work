@@ -18,16 +18,16 @@
       <%= @user.gender_hum %>
     </div>
     <div class="panel-heading">
-      <h3 class="panel-title">Occupation</h3>
-    </div>
-    <div class="panel-body">
-      <%= @user.occupation.present? ? @user.occupation : '-' %>
-    </div>
-    <div class="panel-heading">
       <h3 class="panel-title">Location</h3>
     </div>
     <div class="panel-body">
       <%= @user.address.present? ? @user.address : '-' %>
+    </div>
+    <div class="panel-heading">
+      <h3 class="panel-title">Occupation</h3>
+    </div>
+    <div class="panel-body">
+      <%= @user.occupation.present? ? @user.occupation : '-' %>
     </div>
     <div class="panel-heading">
       <h3 class="panel-title">Ethnicity</h3>

@@ -5,7 +5,6 @@
     <%#= link_to image_tag(photo.file.large.url), photo, remote: true %>
   </div>
   <% end %>
-  <p class="caption"><%= best_in_place photo, :title, activator: ".edit-caption.photo_#{photo.id}",  nil: 'Add a caption to your photo...2', inner_class: 'form-control' %><span class="edit-icon pull-right edit-caption photo_<%= photo.id %>"></span></p>
 
  <br />
 
