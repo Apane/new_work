@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   include PgSearch
+  paginates_per 10
 
   acts_as_mappable :default_units => :miles,
                    :default_formula => :sphere,

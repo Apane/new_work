@@ -1,5 +1,7 @@
 Friendiose::Application.routes.draw do
 
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   post "searches/index" => 'searches#index', as: :searches
   resources :activities do
     resources :comments
