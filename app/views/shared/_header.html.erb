@@ -37,7 +37,7 @@
         <% end %>
       </div>
 
-      <div class="col-md-3 myaccount login-buttons">
+      <div class="col-md-3 myaccount">
         <% if user_signed_in? %>
           <%= link_to notifications_path, class: 'notes_area' do %>
             <%= image_tag('w_icon.png') %>
@@ -62,10 +62,10 @@
           </ul>
           <div class="clr"></div>
         <% else %>
-          <span class="login-buttons">
+          <span class="login-buttons"><div class="login-buttons">
             <%= link_to 'Sign IN', new_user_session_path, class: 'btn btn-info sign-i-u' %>
             <%= link_to 'Sign UP', new_user_registration_path, class: 'btn btn-info sign-i-u' %>
-          </span>
+          </span></div>
         <% end %>
       </div>
     </div>
