@@ -6,6 +6,10 @@
   </div>
   <% end %>
 
+ <br />
+
+ <p class="summary-info"><%= best_in_place photo, :description, type: :textarea, nil: 'Enter a Caption' %></p>
+
   <br />
   <% if controller_name == 'home' && action_name == 'welcome' %>
   <p class="summary-info"><%= best_in_place photo, :description, type: :textarea, nil: 'Enter a Caption' %></p>
