@@ -16,6 +16,6 @@
   <%= link_to "delete", photo, data: { confirm: 'Are you sure?' }, :method => :delete, remote: true, class: 'btn btn-primary btn-lg photo-b' %>
   <div class="photo-up-down"> <a href="#">up</a> <a href="#">down</a> </div>
   <% else %>
-  <p class="summary-info"><%= photo.description.present? ? photo.description : 'description missing' %></p>
+  <p class="summary-info"><%= photo.description.present? ? photo.description : '-' %></p>
   <% end %>
  </li>
