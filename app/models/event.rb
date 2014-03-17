@@ -25,6 +25,7 @@ class Event < ActiveRecord::Base
   has_many :categories
 
   before_save :set_min_max_age
+  before_validation :generate_slug
   after_create :update_event_date, :add_owner_to_participants
 
   mount_uploader :image, EventImageUploader
@@ -33,6 +34,8 @@ class Event < ActiveRecord::Base
     0 => "Female",
     1 => "Male"
   }
+
+  validates :slug, uniqueness: true, presence: true
 
   def set_min_max_age
     if self.ages.present?
@@ -113,5 +116,13 @@ class Event < ActiveRecord::Base
 
   def self.clear_expired
     where('event_date <= ?', 1.week.ago).delete_all
+  end
+
+  def to_param
+    slug
+  end
+
+  def generate_slug
+    self.slug ||= title.parameterize
   end
 end

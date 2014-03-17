@@ -46,7 +46,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.where(id: params[:id]).first
+    @event = Event.find_by_slug!(params[:id])
     if @event.present?
       @user = current_user
       # @event = Event.find(params[:id])
@@ -59,11 +59,11 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event = current_user.events.find(params[:id])
+    @event = current_user.events.find_by_slug!(params[:id])
   end
 
   def update
-     @event = current_user.events.find(params[:id])
+     @event = current_user.events.find_by_slug!(params[:id])
     if @event.update_attributes(params[:event])
       @event.update_event_date
       flash[:success] = "Event updated."
@@ -74,7 +74,7 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    @event = Event.find(params[:id])
+    @event = Event.find_by_slug!(params[:id])
     @event.destroy
 
     respond_to do |format|
@@ -84,7 +84,7 @@ class EventsController < ApplicationController
   end
 
   def attend
-    @event = Event.find(params[:id])
+    @event = Event.find_by_slug!(params[:id])
     @min_age = @event.age_min
     @max_age = @event.age_max
     p "user age #{current_user.age} / #{current_user.gender}"
@@ -117,7 +117,7 @@ class EventsController < ApplicationController
   end
 
   def stop_attend
-    @event = Event.find(params[:id])
+    @event = Event.find_by_slug!(params[:id])
     @attendees_count = @event.participants.size
     @max_attendees = @event.max_attendees.present? ? (@event.max_attendees) : 100
 
@@ -142,12 +142,13 @@ class EventsController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_event
-    @event = Event.find(params[:id])
+    @event = Event.find_by_slug!(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def event_params
     params.require(:event).permit(:title, :description, :date, :location, :time, :location_name,
-      :lng, :lat, :country, :postal_code, :state, :district, :event_type, :image)
+      :lng, :lat, :country, :postal_code, :state, :district, :event_type, :image, :slug)
   end
+
 end
