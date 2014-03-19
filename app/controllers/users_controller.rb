@@ -37,6 +37,13 @@ class UsersController < ApplicationController
     @questions_for_personality = @user.questions.for_personality.order('id asc')
   end
 
+  def edit_age
+  end
+
+  def update_age
+    current_user.update_attributes(birthday: params[:user][:birthday])
+  end
+
   def refresh_notifcations
     @new_messages = current_user.new_messages.count
   end

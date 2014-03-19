@@ -50,6 +50,8 @@ Friendiose::Application.routes.draw do
   post 'act_on_conversations' => 'conversations#act_on_conversations'
   get 'update_profile_completness' => 'users#update_profile_completness'
   get 'disable_account' => 'users#disable_account'
+  get 'edit_age' => 'users#edit_age'
+  put 'update_age' => 'users#update_age'
 
   resources :users do
     resources :questions

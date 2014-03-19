@@ -1,0 +1,5 @@
+<%= form_for current_user, url: update_age_path, method: :put, html:{role: 'form', remote: true} do |f| %>
+<div class="form-group">
+  <%= f.text_field :birthday, class: 'form-control' %>
+</div>
+<% end %>

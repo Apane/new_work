@@ -1,0 +1,5 @@
+$('.age_placeholder').html("<%= j render 'users/calendar_form' %>");
+$('#user_birthday').datepicker().on('changeDate', function(ev){
+  $('#user_birthday').datepicker('update');
+  $('.edit_user').submit();
+});

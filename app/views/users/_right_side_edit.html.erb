@@ -5,8 +5,9 @@
       <span class="edit-icon pull-right edit-age"></span>
     </div>
     <div class="panel-body">
-      <div>
-        <%= best_in_place current_user, :birthday, {activator: ".edit-age",
+      <div class="age_placeholder">
+        <%= current_user.age %>
+        <%#= best_in_place current_user, :birthday, {activator: ".edit-age",
             nil: 'I am empty...', inner_class: 'form-control birthday_date', type: :date} %>
       </div>
     </div>
@@ -121,12 +122,9 @@
 
 <script type="text/javascript">
   $('span.edit-age').on('click', function(event) {
-    setTimeout(
-      function(){
-        $('td.day').on('click', function () {
-          alert('cool');
-        });
-    }, 2000);
-    //   $(this).closest("form").submit();
+    $.ajax({
+      url: "/edit_age",
+      type: "GET"
+    });
   });
 </script>
