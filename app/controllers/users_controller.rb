@@ -83,6 +83,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def disable_account
+    current_user.disable_account
+    Devise.sign_out_all_scopes ? sign_out : sign_out(current_user)
+    redirect_to root_path, notice: 'Account was disabled. Sign in to enable it again.'
+  end
+
  private
     # Using a private method to encapsulate the permissible parameters
     # is just a good pattern since you'll be able to reuse the same

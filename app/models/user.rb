@@ -42,6 +42,8 @@ class User < ActiveRecord::Base
   has_many :hidden_users, dependent: :destroy
   has_many :blocked_users, dependent: :destroy
 
+  scope :active, -> { where(disabled_at: nil) }
+
   accepts_nested_attributes_for :photos
   mount_uploader :profile_image, ProfileImageUploader
 
@@ -286,5 +288,17 @@ class User < ActiveRecord::Base
     users = users.where(ethnicity_id: ethnicity_ids) if ethnicity_ids.present?
     users = users.where('gender = ?', gender) if gender.present?
     users
+  end
+
+  def disabled?
+    self.disabled_at.present? ? true : false
+  end
+
+  def disable_account
+    update_attribute(:disabled_at, Time.now)
+  end
+
+  def activate_account
+    update_attribute(:disabled_at, nil)
   end
 end

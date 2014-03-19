@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140314150452) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20140319142913) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -179,8 +176,10 @@ ActiveRecord::Schema.define(version: 20140314150452) do
     t.integer  "ethnicity_id"
     t.integer  "age_min",       default: 18
     t.integer  "age_max",       default: 80
+    t.string   "slug"
   end
 
+  add_index "events", ["slug"], name: "index_events_on_slug", using: :btree
   add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
 
   create_table "favorites", force: true do |t|
@@ -193,13 +192,6 @@ ActiveRecord::Schema.define(version: 20140314150452) do
   create_table "hidden_users", force: true do |t|
     t.integer  "user_id"
     t.integer  "hidden_user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "hiddens", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "hidden_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -285,6 +277,7 @@ ActiveRecord::Schema.define(version: 20140314150452) do
     t.float    "lat"
     t.float    "lng"
     t.string   "city"
+    t.datetime "disabled_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

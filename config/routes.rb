@@ -49,6 +49,7 @@ Friendiose::Application.routes.draw do
   get 'toggle_hidden' => 'users#toggle_hidden'
   post 'act_on_conversations' => 'conversations#act_on_conversations'
   get 'update_profile_completness' => 'users#update_profile_completness'
+  get 'disable_account' => 'users#disable_account'
 
   resources :users do
     resources :questions
