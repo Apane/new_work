@@ -6,6 +6,9 @@ class QuestionsController < ApplicationController
   # GET /questions.json
   def index
     @questions = current_user.questions.all
+    respond_to do |format|
+      format.js
+    end
   end
 
   # GET /questions/1
@@ -24,32 +27,33 @@ class QuestionsController < ApplicationController
 
   # POST /questions
   # POST /questions.json
-  def create
-    @question = current_user.questions.new(question_params)
+  # def create
+  #   @question = current_user.questions.new(question_params)
 
-    respond_to do |format|
-      if @question.save
-        format.html { redirect_to :back, notice: 'question was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @question }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @question.errors, status: :unprocessable_entity }
-        format.js
-      end
-    end
-  end
+  #   respond_to do |format|
+  #     if @question.save
+  #       # format.html { redirect_to :back, notice: 'question was successfully created.' }
+  #       # format.json { render action: 'show', status: :created, location: @question }
+  #       format.js
+  #     else
+  #       # format.html { render action: 'new' }
+  #       # format.json { render json: @question.errors, status: :unprocessable_entity }
+  #       format.js
+  #     end
+  #   end
+  # end
 
   # PATCH/PUT /questions/1
   # PATCH/PUT /questions/1.json
   def update
     respond_to do |format|
       if @question.update(question_params)
-        format.html { redirect_to :back, notice: 'question was successfully updated.' }
-        format.json { head :no_content }
+        # format.html { redirect_to :back, notice: 'question was successfully updated.' }
+        # format.json { head :no_content }
         format.js
       else
-        format.html { render action: 'edit' }
-        format.json { render json: @question.errors, status: :unprocessable_entity }
+        # format.html { render action: 'edit' }
+        # format.json { render json: @question.errors, status: :unprocessable_entity }
         format.js
       end
     end

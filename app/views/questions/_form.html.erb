@@ -1,5 +1,7 @@
-<%= form_for @question, remote: true do |f| %>
-  <%= f.text_area :answer, class: 'answer_textarea', rows: 5 %>
-  <%= f.submit 'Save', class: 'btn btn-primary' %>
-  <%= link_to 'Cancel', @question, remote: true, class: 'btn' %>
+<%= form_for @question, html: {remote: true, class: 'form'} do |f| %>
+  <div class="form-group">
+    <%= f.text_area :answer, class: 'form-control', rows: 8, style: 'resize: none;' %>
+  </div>
+  <%= f.submit 'Save', class: 'btn btn-default btn-lg creat-event' %>
+  <%= link_to 'Cancel', @question, remote: true, class: 'btn btn-default cencel-event' %>
 <% end %>
