@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140320090113) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
     t.text     "body"
@@ -196,6 +199,7 @@ ActiveRecord::Schema.define(version: 20140320090113) do
     t.datetime "updated_at"
   end
 
+<<<<<<< HEAD
   create_table "mail_settings", force: true do |t|
     t.integer  "user_id"
     t.boolean  "new_message",      default: true
@@ -204,6 +208,11 @@ ActiveRecord::Schema.define(version: 20140320090113) do
     t.boolean  "comment_on_event", default: true
     t.boolean  "viewed_profile",   default: true
     t.boolean  "newsletter",       default: true
+=======
+  create_table "hiddens", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "hidden_id"
+>>>>>>> updated migrations
     t.datetime "created_at"
     t.datetime "updated_at"
   end
