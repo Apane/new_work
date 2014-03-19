@@ -2,7 +2,7 @@ class PhotosController < ApplicationController
   before_filter :authenticate_user!
 
   def show
-    @photo = current_user.photos.find(params[:id])
+    @photo = Photo.find(params[:id])
   end
 
   def new

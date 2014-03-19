@@ -4,10 +4,12 @@
     <% %w[x y w h].each do |attribute| %>
       <%= f.text_field "crop_#{attribute}", hidden: true %>
     <% end %>
-    <%= f.submit "Crop", class: 'btn btn-primary btn-lg photo-b' %>
+    <%= f.submit "Crop", class: 'btn btn-primary btn-lg photo-b' if photo.is_owned_by?(current_user) %>
     <span class="crop_message" style="display:none;">Processing ....</span>
   </div>
 <% end %>
+
+<% if photo.is_owned_by?(current_user) %>
 <script type="text/javascript">
   jQuery(document).ready(function(){
 
@@ -33,3 +35,4 @@
     jQuery('#photo_crop_h').val(c.h);
   };
 </script>
+<% end %>

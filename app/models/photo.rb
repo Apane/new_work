@@ -1,5 +1,5 @@
 class Photo < ActiveRecord::Base
-  attr_accessible :file, :profile_photo, :title, :crop_x, :crop_y, :crop_w, :crop_h
+  attr_accessible :file, :profile_photo, :title, :crop_x, :crop_y, :crop_w, :crop_h, :description
 
   belongs_to :attachable, :polymorphic => true
   mount_uploader :file, FileUploader
@@ -16,4 +16,11 @@ class Photo < ActiveRecord::Base
     self.file.recreate_versions! if crop_x.present?
   end
 
+  def is_owned_by?(user)
+    if self.attachable == user
+      return true
+    else
+      return false
+    end
+  end
 end

@@ -1,9 +1,9 @@
 module MessagesHelper
   def message_receiver(conversation)
     if conversation.author == current_user
-      return conversation.companion.id
+      return conversation.companion
     elsif conversation.author != current_user
-      return conversation.author.id
+      return conversation.author
     end
   end
 

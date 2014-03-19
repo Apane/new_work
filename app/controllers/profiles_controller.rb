@@ -19,15 +19,19 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    @questions_for_about = @user.questions.for_about.order('id asc')
-    @questions_for_personality = @user.questions.for_personality.order('id asc')
-    visit = @user.visits.where(visitor: current_user).first
-    if visit.present?
-      visit.visited_at = Time.now
-      visit.save
+    @user = User.active.where(id: params[:id]).first
+    if @user.present?
+      @questions_for_about = @user.questions.for_about.order('id asc')
+      @questions_for_personality = @user.questions.for_personality.order('id asc')
+      visit = @user.visits.where(visitor: current_user).first
+      if visit.present?
+        visit.visited_at = Time.now
+        visit.save
+      else
+        @user.visits.create(visitor_id: current_user.id)
+      end
     else
-      @user.visits.create(visitor_id: current_user.id)
+      redirect_to profiles_path, notice: 'User not found or account disabled'
     end
   end
 end

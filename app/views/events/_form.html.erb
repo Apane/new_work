@@ -113,7 +113,7 @@
 
           <div class="form-group">
             <%= f.label :category_id, 'Category' %>
-            <%= f.select(:category_id, options_from_collection_for_select(Category.all, :id, :name), {include_blank: 'Other'},
+            <%= f.select(:category_id, options_from_collection_for_select(Category.all, :id, :name), {include_blank: 'Select Category'},
                           {class: 'form-control'})%>
           </div>
 

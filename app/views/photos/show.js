@@ -1,3 +1,3 @@
-$('.modal-title').html('<%= @photo.title %>');
-$('.modal-body').html('<%= j(render "modal_photo", photo: @photo) %>');
+$('.modal-title').html('<%= @photo.description %>');
+$('.modal-body').html('<%= j(render "photos/modal_photo", photo: @photo) %>');
 $('#myModal').modal();
