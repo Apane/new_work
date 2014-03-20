@@ -1,6 +1,6 @@
 module ActivitiesHelper
 
-def attend_to_activity(activity)
+  def attend_to_activity(activity)
     # use event.max_attendees + 1 as user who created event is a participant too
     if event.is_private? && event.user != current_user
       'This is private activity. You need an invitation to join to this activity.'

@@ -1,5 +1,6 @@
 ActiveAdmin.register Event do
   index do
+    selectable_column
     column :title
     column 'Owner' do |event|
       link_to event.user.name, admin_user_path(event.user)

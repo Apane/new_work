@@ -5,18 +5,18 @@ have not unlocked the feature, then we should tell them how many people
 have visited their profile.
 
 Misc:
--Ability to turn email notification on/off
+// -Ability to turn email notification on/off
 
 Settings:
--Change email notifications
+// -Change email notifications
 -Set a shorthand user profile name http://www.friendiose.com/[username]
 -In settings, people should be able to hide events and activities the have been to so that it does not show up on their profile.
 
 Email Notifications:
-  -When someone messages a user
-  -When they receive a reply
+  // -When someone messages a user
+  // -When they receive a reply
 When someone adds comments on events/activites they are subscribed to send email notification
-  -When someone joins or removes themselves from activity/event
+  // -When someone joins or removes themselves from activity/event
 
 Profile:
 -Set a user profile username or allow users to edit their first name and last name on their profile
@@ -61,20 +61,22 @@ password: 93646dfca11e00cac3332ab5c27ee98e
 
 -The Age should be aligned (the right side of the site should start where the tabs start so that it is aligned).
 
--Age should be automatically calculated by their birth-date which they input when they sign up. (I think you fixed this? so this is done.)
+// -Age should be automatically calculated by their birth-date which they input when they sign up. (I think you fixed this? so this is done.)
 
--Ethnicity should the following Choices
-    -Asian
-    -South Asian
-    -White / Caucasian
-    -Pacific Islander
-    -Hispanic / Latino
-    -Arab
-    -Black/African-descent
-    -Middle Eastern
-    -Native American
+// change in admin
+// -Ethnicity should the following Choices
+//     -Asian
+//     -South Asian
+//     -White / Caucasian
+//     -Pacific Islander
+//     -Hispanic / Latino
+//     -Arab
+//     -Black/African-descent
+//     -Middle Eastern
+//     -Native American
 
--For Ethnicity, they should be able to pick more than one.
+// that was not in agreement
+// -For Ethnicity, they should be able to pick more than one.
 
 -Education should have the following Options (Copy from OKCupid)
 First Drop Down:
@@ -137,7 +139,7 @@ https://www.dropbox.com/s/7zf7f3wa116efbb/Screenshot%202014-03-17%2020.58.58.png
 
 -The font on the right hand side of the profile for “Age” “Gender” are not the same as they were before
 
--The Top 5s are not working the way that was in the designs. (he's talking about the new design for Top 5 with all the little boxes.)
+-The Top 5s are not working the way that was in the designs. ("he's talking about the new design for Top 5 with all the little boxes.")
 
 -Visitors section is not working as we discussed upon.  They should have the option to unlock this feature for a month by tweeting, sharing on Facebook,
 
@@ -157,52 +159,63 @@ For Timing we should give them option to pick a day range instead of just today 
 For Who can Join/View Event when creating an event:
 -For age we need to allow them to have a range
 -For Gender options change “All” to “Any”
--We should let them pick more than one ethnicity
+// -We should let them pick more than one ethnicity
+// was not in docs
+
 -We can let them pick education level:
     -“Finished” “University” “Or higher”
     -“Working On” “Masters” “Or Higher”
     -Basically there needs to be three drop downs
--They should be able to select more than one occupation
+// -They should be able to select more than one occupation
+// was not in doc
 
 -When clicking on activities, the UI for the activity page needs to be more like the mocks
 
--The thumbnail of the host does not show up
+// -The thumbnail of the host does not show up
+// works for me
 
 -Nothing happens when I click interested
 
 -The UI on the messaging list is also messed p
+????????
 
--I should have a way to remove favorite from the favorites which I do not have right now
+// -I should have a way to remove favorite from the favorites which I do not have right now
+// there was no design for this, but cliking on favorited user will take you to his profile where you can remove it from favorites
 
--Whenever I am in favorites , the left hand side tab says I am in messaging.
+// -Whenever I am in favorites , the left hand side tab says I am in messaging.
 
 -The UI for favorite also does not match
 
 Admin Backend Feedback
 
--Is the “Last 10 Users” the last 10 users who logged in?  If so, can we edit the columns in there?  Can we add their last login time, location, gender, age, ethnicity and their email address.
+// -Is the “Last 10 Users” the last 10 users who logged in?  If so, can we edit the columns in there?  Can we add their last login time, location, gender, age, ethnicity and their email address.
 
--In the last 10 events, can we edit the columns in there.  If so, can we add location, date, time, date added, date updated.
+// -In the last 10 events, can we edit the columns in there.  If so, can we add location, date, time, date added, date updated.
 
--Does Events include activities?
+// -Does Events include activities?
+// NO
 
--Can I edit the columns and their order for the tables in the admin panel.
+// -Can I edit the columns and their order for the tables in the admin panel.
+// NO
 
 -How can I take out or add users from activity/event.
 
--How can I see the number of users who have last logged in, last updated their profile, time they joined, and all of their information.  Basically a data dump.
+// -How can I see the number of users who have last logged in,
+ // last updated their profile, time they joined, and all of their information.  Basically a data dump.
 
--I like the filters that you put in Activities tab. We should have the same type of filters for users.
+// -I like the filters that you put in Activities tab. We should have the same type of filters for users.
 
--Can we get analytics information to the admin such as connect with google analytics?
+// -Can we get analytics information to the admin such as connect with google analytics?
+// NO
 
--How can I go about sending users a reset password link in case they want to reset password.
+// -How can I go about sending users a reset password link in case they want to reset password.
+// they have Forogt password link for this
 
 -When a user clicks delete account, what happens in the backend?
 
--How can I filter by Gender, age, zip code, location, occupation, ethnicity, education, last modified date, last login date. We need to have these filter for users.
+//-How can I filter by Gender, age, zip code, location, occupation, ethnicity, education, last modified date, last login date. We need to have these filter for users.
 
--Will I be able to get a data dump of all the information from users?
+// -Will I be able to get a data dump of all the information from users?
 
 -Admins should be able be able to delete / inactive users?
 
@@ -210,12 +223,12 @@ Admin Backend Feedback
 
 -For Admin users, can we change from military time to 12 hour timing.
 
--In conversations tab, can we have who sent the message and to whom, if the receiver has read the message.  How do I know if this is a new message or part of a conversation.
+//-In conversations tab, can we have who sent the message and to whom, if the receiver has read the message.  How do I know if this is a new message or part of a conversation.
 
--What is the difference between conversations and messages?
+//-What is the difference between conversations and messages?
 
--For messages, there should be column for From Whom, To Whom, Read.
+// -For messages, there should be column for From Whom, To Whom, Read.
 
 -Are conversations comments that are left indents?
 
--In users, can we put more filters such as age, gender, ethnicity, school, occupation, education, zip code, location, username.
+//-In users, can we put more filters such as age, gender, ethnicity, school, occupation, education, zip code, location, username.

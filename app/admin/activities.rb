@@ -1,5 +1,6 @@
 ActiveAdmin.register Activity do
   index do
+    selectable_column
     column :title
     column :created_at
     column :user

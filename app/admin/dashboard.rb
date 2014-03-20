@@ -16,19 +16,33 @@ ActiveAdmin.register_page "Dashboard" do
           table_for User.last(10).map do |user|
             column(:full_name) {|user| link_to user.name, admin_user_path(user) }
             column(:completed) {|user| user.has_completed_profile? ? status_tag('yes', :ok) : status_tag("#{user.profile_completed}%", :error) }
-            column(:confirmed) { |user| user.confirmed? ? status_tag('yes', :ok) : status_tag('no', :error) }
-          end
-        end
-      end
-      column do
-        panel 'Last 10 events' do
-          table_for Event.last(10).map do |event|
-            column(:name) {|event| link_to((event.title.present? ? event.title : 'title missing'), admin_event_path(event)) }
-            column :tutors_count
+            #column(:confirmed) { |user| user.confirmed? ? status_tag('yes', :ok) : status_tag('no', :error) }
+            column(:gender) {|u| User::GENDER[u.gender][0]}
+            column(:last_sign_in_at) {|u| l u.last_sign_in_at, format: :short}
+            column :age
+            column :ethnicity
+            column :email
+            column(:signed_up_at) {|u| l u.created_at, format: :short}
           end
         end
       end
     end
+
+    columns do
+      column do
+        panel 'Last 10 events' do
+          table_for Event.last(10).map do |event|
+            column(:name) {|event| link_to((event.title.present? ? event.title : 'title missing'), admin_event_path(event)) }
+            column :location
+            column(:event_date) {|e| l e.event_date, format: :short}
+            column(:date_added) {|e| l e.created_at, format: :short}
+            column(:date_updated) {|e| l e.updated_at, format: :short}
+          end
+        end
+      end
+    end
+
+ #add location, date, time, date added, date updated.
 
     # Here is an example of a simple dashboard with columns and panels.
     #
