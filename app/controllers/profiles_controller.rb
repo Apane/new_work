@@ -28,8 +28,9 @@ class ProfilesController < ApplicationController
         visit.visited_at = Time.now
         visit.save
       else
-        @user.visits.create(visitor_id: current_user.id)
+        visit = @user.visits.create(visitor_id: current_user.id) if @user != current_user
       end
+      UserMailer.new_visitor(visit).deliver if @user.accepts_email_for_new_visitor?
     else
       redirect_to profiles_path, notice: 'User not found or account disabled'
     end

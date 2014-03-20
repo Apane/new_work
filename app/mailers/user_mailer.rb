@@ -27,6 +27,14 @@ class UserMailer < ActionMailer::Base
     @participant = participant
     mail to: participant.email, subject: "Friendiose - new comment to #{@commentable.title} #{@commentable.class.name.downcase}"
   end
+
+  def new_visitor(visit)
+    @user = visit.user
+    @visitor = visit.visitor
+
+    mail to: @user.email, subject: "Friendiose - #{@visitor.name} visited your profile"
+  end
+
   # def reply_to_request(request)
   #   @request = request
   #   @user = request.user

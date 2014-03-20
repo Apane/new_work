@@ -315,4 +315,8 @@ class User < ActiveRecord::Base
   def accepts_email_for_new_comment?
     self.mail_setting.comment_on_event?
   end
+
+  def accepts_email_for_new_visitor?
+    self.mail_setting.viewed_profile?
+  end
 end

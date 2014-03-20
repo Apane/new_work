@@ -25,7 +25,7 @@
           <div class="col-md-12">
             <div class="img-thumbnail">
               <% if visitor.profile_photo.present? %>
-                <%= image_tag(visitor.profile_photo.file.thumb.url) %>
+                <%= image_tag(visitor.profile_photo.file.small.url) %>
               <% else %>
                 <%= image_tag("people_image.jpg") %>
               <% end %>
