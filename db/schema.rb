@@ -199,7 +199,13 @@ ActiveRecord::Schema.define(version: 20140320090113) do
     t.datetime "updated_at"
   end
 
-<<<<<<< HEAD
+  create_table "hiddens", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "hidden_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "mail_settings", force: true do |t|
     t.integer  "user_id"
     t.boolean  "new_message",      default: true
@@ -208,11 +214,6 @@ ActiveRecord::Schema.define(version: 20140320090113) do
     t.boolean  "comment_on_event", default: true
     t.boolean  "viewed_profile",   default: true
     t.boolean  "newsletter",       default: true
-=======
-  create_table "hiddens", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "hidden_id"
->>>>>>> updated migrations
     t.datetime "created_at"
     t.datetime "updated_at"
   end
