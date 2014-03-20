@@ -1,0 +1,12 @@
+<p>
+  Hi <%= @participant.name %>, new comment was added to <b><%= @commentable.title %> <%= @commentable.class.name %></b>
+  by <b><%= @commenter.name %></b>!
+</p>
+
+<p>
+  <%= @participant.name %>
+</p>
+
+<p>
+  <%= link_to 'Go to event', event_url(@commentable) %>
+</p>

@@ -36,6 +36,7 @@ class Comment < ActiveRecord::Base
           self.notifications.create(user_id: p.id)
         end
       end
+      UserMailer.new_comment(self, self.commentable.user).deliver
     end
   end
 
