@@ -311,4 +311,8 @@ class User < ActiveRecord::Base
   def accepts_email_for_new_participant?
     self.mail_setting.join_event?
   end
+
+  def accepts_email_for_new_comment?
+    self.mail_setting.comment_on_event?
+  end
 end
