@@ -1,0 +1,11 @@
+<p>
+  Hi <%= @recipient.name %>, you have a new message from <%= @sender.name %>!
+</p>
+
+<p>
+  <%= @message.body %>
+</p>
+
+<p>
+  <%= link_to 'Reply to message', message_path(@message.conversation) %>
+</p>

@@ -1,6 +1,7 @@
 /* =========================================================
  * bootstrap-datepicker.js
  * http://www.eyecon.ro/bootstrap-datepicker
+ * http://vitalets.github.io/bootstrap-datepicker/
  * =========================================================
  * Copyright 2012 Stefan Petre
  * Improvements by Andrew Rowls

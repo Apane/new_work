@@ -19,6 +19,7 @@ class Message < ActiveRecord::Base
     Pusher["new_messages_in_conversation_#{self.conversation_id}"].trigger('add_message_to_conversation', {
       conversation_id: self.conversation_id
     })
+    UserMailer.new_message(self).deliver if self.recipient.accepts_email_for_new_message?
   end
 
   def new?
