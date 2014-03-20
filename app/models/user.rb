@@ -307,4 +307,8 @@ class User < ActiveRecord::Base
   def accepts_email_for_new_message?
     self.mail_setting.new_message?
   end
+
+  def accepts_email_for_new_participant?
+    self.mail_setting.join_event?
+  end
 end

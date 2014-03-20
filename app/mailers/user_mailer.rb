@@ -13,6 +13,13 @@ class UserMailer < ActionMailer::Base
     mail to: @recipient.email, subject: "Friendiose - new message from #{@sender.name}"
   end
 
+  def new_participant(event_participant)
+    @event = event_participant.event
+    @owner = @event.user
+    @participant = event_participant.user
+    mail to: @owner.email, subject: "Friendiose - new attendee to #{@event.title} event"
+  end
+
   # def reply_to_request(request)
   #   @request = request
   #   @user = request.user
