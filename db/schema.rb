@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140319142913) do
+ActiveRecord::Schema.define(version: 20140320090113) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -192,6 +192,18 @@ ActiveRecord::Schema.define(version: 20140319142913) do
   create_table "hidden_users", force: true do |t|
     t.integer  "user_id"
     t.integer  "hidden_user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "mail_settings", force: true do |t|
+    t.integer  "user_id"
+    t.boolean  "new_message",      default: true
+    t.boolean  "new_reply",        default: true
+    t.boolean  "join_event",       default: true
+    t.boolean  "comment_on_event", default: true
+    t.boolean  "viewed_profile",   default: true
+    t.boolean  "newsletter",       default: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end

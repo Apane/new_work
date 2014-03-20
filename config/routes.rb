@@ -16,6 +16,8 @@ Friendiose::Application.routes.draw do
     end
   end
 
+  resources :mail_settings, only: [:edit, :update]
+
   # get 'auth/:provider/callback', to: 'sessions#create'
   # get 'auth/failure', to: redirect('/')
   get 'pusher/auth' => 'pusher#auth'

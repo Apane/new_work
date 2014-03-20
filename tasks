@@ -1,7 +1,0 @@
--Can we make the text box a rich text editor so that users can change the color and the font size of the text. (forget it, cant do in place)
--Can we give them a pop-up alerting them what Private / Public Does whenever they change the setting (public being default). (we can do with notification)
--The limitation filter should be for viewing the event and not joining (if they cannot view the event, they cannot join it). (if u need filters, then there would be no point for this)
--Host should also be counted as a person attending the event. (update ajax when they join so he see's the host is added in real time)
--It seems a little unintuitive with the filters, there should be a refresh button on the top or something so that people know that the search is being done reach time.(ill explain the filters update in ajax is better, and see if he stil wants the butotn)
--For past events, can we have something that marks it as past event clearly.  I don’t mind keeping the event for a week (try cronjob)
--When I move away from messages, the messages should collapse (il find what hes talking about)

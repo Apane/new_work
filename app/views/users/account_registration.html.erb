@@ -15,28 +15,30 @@
 
         <div id="tabs-1">
           <div class="notifications">
+            <%= form_for current_user.mail_setting do |f| %>
             <div class="checkbox">
-              <input type="checkbox" value="check1" name="check" id="check1">
-              <label for="check1">Receive a new message</label>
+              <%= f.check_box :new_message %>
+              <%= f.label :new_message, 'Receive a new message' %>
               <br>
-              <input type="checkbox" value="check2" name="check" id="check2">
-              <label for="check2">Receive a new reply</label>
+              <%= f.check_box :new_reply %>
+              <%= f.label :new_reply, 'Receive a new reply' %>
               <br>
-              <input type="checkbox" value="check3" name="check" id="check3">
-              <label for="check3">Someone joins your event</label>
+              <%= f.check_box :join_event %>
+              <%= f.label :join_event, 'Someone joins your event' %>
               <br>
-              <input type="checkbox" value="check4" name="check" id="check4">
-              <label for="check4">New comment on your event</label>
+              <%= f.check_box :comment_on_event %>
+              <%= f.label :comment_on_event, 'New comment on your event' %>
               <br>
-              <input type="checkbox" value="check5" name="check" id="check5">
-              <label for="check5">Someone viewed your profile</label>
+              <%= f.check_box :viewed_profile %>
+              <%= f.label :viewed_profile, 'Someone viewed your profile' %>
               <br>
-              <input type="checkbox" value="check6" name="check" id="check6">
-              <label for="check6">Newsletter</label>
+              <%= f.check_box :newsletter %>
+              <%= f.label :newsletter, 'Newsletter' %>
               <br>
               <br>
               <button type="submit" class="btn btn-default send-m-button"> Save Changes</button>
             </div>
+            <% end %>
           </div>
         </div>
 

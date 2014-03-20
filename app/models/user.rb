@@ -41,6 +41,7 @@ class User < ActiveRecord::Base
   has_many :people_who_favorited_me, class_name: 'Favorite', foreign_key: 'favorite_id'
   has_many :hidden_users, dependent: :destroy
   has_many :blocked_users, dependent: :destroy
+  has_one :mail_setting, dependent: :destroy
 
   scope :active, -> { where(disabled_at: nil) }
 
@@ -52,7 +53,7 @@ class User < ActiveRecord::Base
   validates_length_of :blurb, :minimum => 5, :maximum => 140, :allow_blank => true
 
 
-  after_create :create_questions, :set_age
+  after_create :create_questions_and_mail_settings, :set_age
   before_save :set_age, :get_gps_data
 
   # pg_search_scope :search_by_full_name, :against => [:first_name, :last_name], :using => [:tsearch]
@@ -119,9 +120,10 @@ class User < ActiveRecord::Base
     end
   end
 
-  def create_questions
+  def create_questions_and_mail_settings
     Question::QUESTIONS_FOR_ABOUT.map{|q| self.questions.create(question: q, for_about: true)}
     Question::QUESTIONS_FOR_PERSONALITY.map{|q| self.questions.create(question: q, for_personality: true)}
+    MailSetting.create(user_id: self.id)
   end
 
   def number_of_users
@@ -300,5 +302,9 @@ class User < ActiveRecord::Base
 
   def activate_account
     update_attribute(:disabled_at, nil)
+  end
+
+  def accepts_email_for_new_message?
+    self.mail_setting.new_message?
   end
 end
