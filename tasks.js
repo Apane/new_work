@@ -59,7 +59,7 @@ password: 93646dfca11e00cac3332ab5c27ee98e
 -When I go to a profile, the Block User button in not aligned right. (might be his browser)
 
 
--The Age should be aligned (the right side of the site should start where the tabs start so that it is aligned).
+// -The Age should be aligned (the right side of the site should start where the tabs start so that it is aligned).
 
 // -Age should be automatically calculated by their birth-date which they input when they sign up. (I think you fixed this? so this is done.)
 
