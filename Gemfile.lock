@@ -77,6 +77,10 @@ GEM
       activesupport (>= 3.0.0)
     arel (4.0.1)
     atomic (1.1.14)
+    autoparse (0.3.3)
+      addressable (>= 2.3.1)
+      extlib (>= 0.9.15)
+      multi_json (>= 1.0.0)
     awesome_nested_set (2.1.6)
       activerecord (>= 3.0.0)
     aws-sdk (1.32.0)
@@ -128,6 +132,7 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.0.2)
+    extlib (0.9.16)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.3)
@@ -141,6 +146,17 @@ GEM
     geokit-rails (2.0.1)
       geokit (~> 1.5)
       rails (>= 3.0)
+    google-api-client (0.7.1)
+      addressable (>= 2.3.2)
+      autoparse (>= 0.3.3)
+      extlib (>= 0.9.15)
+      faraday (>= 0.9.0)
+      jwt (>= 0.1.5)
+      launchy (>= 2.1.1)
+      multi_json (>= 1.0.0)
+      retriable (>= 1.4)
+      signet (>= 0.5.0)
+      uuidtools (>= 2.1.0)
     has_scope (0.6.0.rc)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
@@ -168,6 +184,8 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.8.1)
+    launchy (2.4.2)
+      addressable (~> 2.3)
     libv8 (3.16.14.3)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -192,6 +210,8 @@ GEM
       hashie (>= 1.2, < 3)
       rack (~> 1.0)
     omniauth-facebook (1.6.0)
+      omniauth-oauth2 (~> 1.1)
+    omniauth-gplus (1.2.0)
       omniauth-oauth2 (~> 1.1)
     omniauth-linkedin (0.1.0)
       omniauth-oauth (~> 1.0)
@@ -258,6 +278,7 @@ GEM
     remotipart (1.2.1)
     responders (1.0.0)
       railties (>= 3.2, < 5)
+    retriable (1.4.1)
     rmagick (2.13.2)
     roadie (2.4.3)
       actionmailer (> 3.0.0, < 5.0.0)
@@ -288,6 +309,11 @@ GEM
       rubyzip (~> 1.0)
       websocket (~> 1.0.4)
     signature (0.1.7)
+    signet (0.5.0)
+      addressable (>= 2.2.3)
+      faraday (>= 0.9.0.rc5)
+      jwt (>= 0.1.5)
+      multi_json (>= 1.0.0)
     simple_form (1.4.1)
     sprockets (2.10.1)
       hike (~> 1.2)
@@ -349,6 +375,7 @@ DEPENDENCIES
   figaro
   geokit
   geokit-rails
+  google-api-client
   jbuilder (~> 1.0.1)
   jquery-fileupload-rails
   jquery-rails
@@ -357,6 +384,7 @@ DEPENDENCIES
   kaminari
   nested_form
   omniauth-facebook
+  omniauth-gplus (~> 1.0)
   omniauth-linkedin
   omniauth-twitter
   pg

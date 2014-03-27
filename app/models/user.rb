@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable, :confirmable, :lockable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
-         :omniauth_providers => [:facebook, :twitter, :linkedin]
+         :omniauth_providers => [:facebook, :twitter, :linkedin, :gplus]
 
   attr_accessible :email, :password, :password_confirmation, :zip, :remember_me, :first_name, :last_name,
                   :birthday, :current_password, :occupation, :address, :interests, :aboutme, :profile_image,
@@ -171,6 +171,9 @@ class User < ActiveRecord::Base
     elsif social == 'linkedin'
       auth = self.authorizations.where(provider: 'LinkedIn').first
       auth.update_attributes(token: nil, secret: nil)
+    elsif social == 'googleplus'
+      auth = self.authorizations.where(provider: 'GooglePlus').first
+      auth.update_attributes(token: nil, secret: nil)
     end
   end
 
@@ -203,6 +206,15 @@ class User < ActiveRecord::Base
 
   def has_li_connection?
     auth = self.authorizations.where(provider: 'LinkedIn').first
+    if auth.present?
+      auth.token.present?
+    else
+      false
+    end
+  end
+
+  def has_gp_connection?
+    auth = self.authorizations.where(provider: 'GPlus').first
     if auth.present?
       auth.token.present?
     else
