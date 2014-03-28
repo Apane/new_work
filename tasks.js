@@ -37,7 +37,7 @@ comment on events, activities, someone joined their event or activity.
  Anything that deserves notification or user’s attention then we should
 implement it.
 
-• Add Google plus as a form of validation
+// Add Google plus as a form of validation
 
 New feedback:
 

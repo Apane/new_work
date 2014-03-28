@@ -26,7 +26,9 @@ private
 
   def oauthorize(kind)
     @user = find_for_ouath(kind, env["omniauth.auth"], current_user)
+
     if @user
+      kind = 'Google+' if kind == 'GPlus'
       flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => kind
       session["devise.#{kind.downcase}_data"] = env["omniauth.auth"]
       sign_in_and_redirect @user, :event => :authentication

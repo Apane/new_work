@@ -171,8 +171,8 @@ class User < ActiveRecord::Base
     elsif social == 'linkedin'
       auth = self.authorizations.where(provider: 'LinkedIn').first
       auth.update_attributes(token: nil, secret: nil)
-    elsif social == 'googleplus'
-      auth = self.authorizations.where(provider: 'GooglePlus').first
+    elsif social == 'gplus'
+      auth = self.authorizations.where(provider: 'GPlus').first
       auth.update_attributes(token: nil, secret: nil)
     end
   end

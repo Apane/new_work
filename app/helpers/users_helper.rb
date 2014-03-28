@@ -50,17 +50,18 @@ module UsersHelper
   end
 
   def check_connection(provider)
+    (provider == 'GPlus') ? (provider_name = 'Google+') : (provider_name = provider)
     if current_user.has_connection_with(provider)
       link_to disconnect_path(social: provider.downcase) do
         content_tag :div, class: "verified-m #{provider.downcase}-verified row" do
-          (content_tag :p, provider) +
+          (content_tag :p, provider_name) +
           (content_tag :span, 'Verified', class: "verified")
         end
       end
     else
       link_to user_omniauth_authorize_path(provider: provider.downcase) do
         content_tag :div, class: "verified-m #{provider.downcase}-verified row" do
-          (content_tag :p, provider) +
+          (content_tag :p, provider_name) +
           (content_tag :span, 'Click to verify', class: "un-verified")
         end
       end
