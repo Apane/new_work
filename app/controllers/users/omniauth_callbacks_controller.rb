@@ -65,7 +65,7 @@ private
         auth_attr = { :uid => uid, :token => access_token['credentials']['token'],
           :secret => access_token['credentials']['secret'], :first_name => access_token['info']['first_name'],
           :last_name => access_token['info']['last_name'],
-          :link => access_token['info']['public_profile_url'] }
+          :link => access_token['info']['image'] }
     else
       raise 'Provider #{provider} not handled'
     end
