@@ -51,7 +51,7 @@ private
         auth_attr = { :uid => uid, :token => access_token['credentials']['token'],
           :secret => access_token['credentials']['secret'], :first_name => access_token['info']['first_name'],
           :last_name => access_token['info']['last_name'], :name => name,
-          :link => "http://twitter.com/#{name}" }
+          :link => "http://twitter.com/#{name}", :connections_count => access_token['extra']['raw_info']['followers_count'] }
       when 'LinkedIn'
         uid = access_token['uid']
         name = access_token['info']['name']
@@ -88,7 +88,7 @@ private
       user.authorizations << auth
     end
     auth.update_attributes auth_attr
-
+    auth.update_connections_number(provider)
     return user
   end
 

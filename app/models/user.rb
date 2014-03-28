@@ -186,6 +186,21 @@ class User < ActiveRecord::Base
     end
   end
 
+  def connections_count(provider)
+    authorization = self.authorizations.where(provider: provider).first
+    if authorization.present?
+      if provider == 'Facebook'
+        "#{authorization.connections_count} Friends"
+      elsif provider == 'Twitter'
+        "#{authorization.connections_count} Followers"
+      elsif provider == 'LinkedIn'
+        "#{authorization.connections_count} Connections"
+      end
+    else
+      ""
+    end
+  end
+
   def has_fb_connection?
     auth = self.authorizations.where(provider: 'Facebook').first
     if auth.present?

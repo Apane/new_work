@@ -67,4 +67,27 @@ module UsersHelper
       end
     end
   end
+
+  def social_connection(provider, user)
+    (provider == 'GPlus') ? (provider_name = 'Google+') : (provider_name = provider)
+    if user.has_connection_with(provider)
+      content_tag :div, class: "verified-m #{provider.downcase}-verified row" do
+        (content_tag :p, provider_name) +
+        (content_tag :span, user.connections_count(provider))
+      end
+    else
+      content_tag :div, class: "verified-m #{provider.downcase}-verified row" do
+        (content_tag :p, provider_name) +
+        (content_tag :span, 'not connected')
+      end
+    end
+  end
+
+  def user_verifications
+    if (controller_name == 'home' && action_name == 'welcome')
+      render 'users/verifications'
+    elsif (controller_name == 'profiles' && action_name == 'show')
+      render 'profiles/verifications'
+    end
+  end
 end

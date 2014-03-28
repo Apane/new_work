@@ -184,9 +184,17 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.8.1)
+    koala (1.8.0)
+      addressable
+      faraday
+      multi_json
     launchy (2.4.2)
       addressable (~> 2.3)
     libv8 (3.16.14.3)
+    linkedin (0.4.6)
+      hashie (>= 1.2, < 2.1)
+      multi_json (~> 1.0)
+      oauth (~> 0.4)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -382,6 +390,8 @@ DEPENDENCIES
   jquery-ui-rails
   json (~> 1.4)
   kaminari
+  koala (~> 1.8.0rc1)
+  linkedin
   nested_form
   omniauth-facebook
   omniauth-gplus (~> 1.0)

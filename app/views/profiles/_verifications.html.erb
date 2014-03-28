@@ -1,0 +1,25 @@
+<div class="panel panel-default">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Verfications</h3>
+    </div>
+    <div class="panel-body verified-s">
+      <a href="#">
+        <div class="email-verified row">
+          <p>Email Address</p>
+          <span class="verified">Verified</span>
+        </div>
+      </a>
+      <a href="#">
+        <div class="verified-m phone-verified row">
+          <p>Phone Number</p>
+          <span class="verified">Verified</span>
+        </div>
+      </a>
+      <%= social_connection('Facebook', @user)%>
+      <%= social_connection('LinkedIn', @user)%>
+      <%= social_connection('Twitter', @user)%>
+      <%= social_connection('GPlus', @user)%>
+    </div>
+  </div>
+</div>
