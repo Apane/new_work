@@ -21,9 +21,12 @@ class Activity < ActiveRecord::Base
 
   acts_as_commentable
   has_many :comments, as: :commentable
+  has_many :activity_participants, dependent: :destroy
+  has_many :participants, through: :activity_participants, source: :user
+
   belongs_to :user
   before_save :set_min_max_age
-  after_create :update_event_date #, :add_owner_to_participants
+  after_create :update_event_date, :add_owner_to_participants
 
   mount_uploader :image, ActivityImageUploader
 
@@ -33,6 +36,10 @@ class Activity < ActiveRecord::Base
     2 => "Once a week",
     3 => "Once a month"
   }
+
+  def add_owner_to_participants
+    ActivityParticipant.create(user_id: self.user_id, activity_id: self.id)
+  end
 
   def set_min_max_age
     ages = self.ages.split('-')

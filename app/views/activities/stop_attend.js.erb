@@ -1,0 +1,10 @@
+// $('.participant_<%#= @participant.user_id %>').fadeOut('400', function() {
+//   $('.participant_<%#= @participant.id %>').remove();
+// });
+$('.attend_button').html("<%= j(button_to 'I am interested', attend_activity_path(@activity), method: :post, remote: true,
+                class: 'btn btn-primary btn-lg btn-block creat-event margin-b') %> <div class='clearfix'></div>");
+<%# if @event.waiting_participants.any? %>
+  // $('.waiting_count').html('<%#= @event.waiting_participants.size %> people are waiting');
+<%# else %>
+  // $('span.waiting_list').fadeOut('slow', function() {});
+<%# end %>

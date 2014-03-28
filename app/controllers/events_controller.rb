@@ -87,8 +87,8 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @min_age = @event.age_min
     @max_age = @event.age_max
-    p "user age #{current_user.age} / #{current_user.gender}"
-    p "event age #{@min_age} - #{@max_age} / #{@event.gender}"
+    # p "user age #{current_user.age} / #{current_user.gender}"
+    # p "event age #{@min_age} - #{@max_age} / #{@event.gender}"
 
     if @event.is_private?
       @notice = "private"

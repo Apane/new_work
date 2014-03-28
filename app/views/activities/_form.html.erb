@@ -143,13 +143,13 @@
             </div>
             <div class="col-md-3 col-xs-3">
               <div class="radio">
-                <%= f.radio_button :activity_type, '1', :checked => true %>
+                <%= f.radio_button :activity_type, '1' %>
                 <%= label :activity_type, 'Private', value: '1' %>
               </div>
             </div>
             <div class="col-md-3 col-xs-3">
               <div class="radio">
-                <%= f.radio_button :activity_type, '0' %>
+                <%= f.radio_button :activity_type, '0', :checked => true %>
                 <%= label :activity_type, 'Public', value: '0' %>
               </div>
             </div>

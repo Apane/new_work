@@ -20,6 +20,13 @@ class UserMailer < ActionMailer::Base
     mail to: @owner.email, subject: "Friendiose - new attendee to #{@event.title} event"
   end
 
+  def new_activity_participant(participant)
+    @activity = participant.activity
+    @owner = @activity.user
+    @participant = participant.user
+    mail to: @owner.email, subject: "Friendiose - user interested in your #{@activity.title} activity"
+  end
+
   def new_comment(comment, participant)
     @comment = comment
     @commenter = comment.user

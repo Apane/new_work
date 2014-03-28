@@ -31,7 +31,9 @@ class User < ActiveRecord::Base
   belongs_to  :ethnicity
   belongs_to  :education
   has_many :event_participants, dependent: :destroy
+  has_many :activity_participants, dependent: :destroy
   has_many :attended_events, through: :event_participants, source: :event
+  has_many :attended_activities, through: :activity_participants, source: :activity
   has_many :notifications
   has_many :new_notifications, -> { where is_opened: false }, class_name: 'Notification'
   has_many :visits, dependent: :destroy

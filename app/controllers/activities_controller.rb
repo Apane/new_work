@@ -90,6 +90,44 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  def attend
+    @activity = Activity.find(params[:id])
+    @min_age = @activity.age_min
+    @max_age = @activity.age_max
+
+    if @activity.is_private?
+      @notice = "private"
+    elsif !(@min_age..@max_age).include?(current_user.age)
+      @notice = "restricted by age, only those whos age are between #{@min_age} and #{@max_age} are allowed."
+    elsif @activity.gender.present? && @activity.gender != current_user.gender
+      @notice = "restricted by gender, only #{Event::GENDER[@activity.gender].downcase} are allowed."
+    else
+      @activity.activity_participants.create(activity_id: @activity.id, user_id: current_user.id)
+    #   @participant = current_user
+    #   @waiting_participants = @event.waiting_participants
+    #   @event_participant = @event.event_participants.where(user_id: @participant.id).first
+    #   @event.create_join_notification(current_user)
+    end
+
+    respond_to do |format|
+      format.html {redirect_to @activity}
+      format.js {}
+    end
+  end
+
+  def stop_attend
+    @activity = Activity.find(params[:id])
+    # @attendees_count = @event.participants.size
+    @participant = @activity.activity_participants.where(user_id: current_user.id, activity_id: @activity.id).first
+    @participant.destroy
+    # @event.create_leave_notification(current_user)
+
+    respond_to do |format|
+      format.html {redirect_to @activity}
+      format.js
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_activity

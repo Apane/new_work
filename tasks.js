@@ -20,7 +20,7 @@ the have been to so that it does not show up on their profile.
   // -When someone joins or removes themselves from activity/event
 
 Profile:
--Being able to see the number of followers on Twitter, number of friends on facebook, and validate from LinkedIn.
+// -Being able to see the number of followers on Twitter, number of friends on facebook, and validate from LinkedIn.
 
 -Being able to flag user profile and photos (UI changes and also functionality).
  We also need to notify the owner of the site (me) regarding this.
@@ -171,7 +171,7 @@ For Who can Join/View Event when creating an event:
 // -The thumbnail of the host does not show up
 // works for me
 
--Nothing happens when I click interested
+// -Nothing happens when I click interested - Something is happening now
 
 ??? -The UI on the messaging list is also messed up
 
