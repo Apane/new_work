@@ -4,7 +4,7 @@
   <%= add_to_hidden_users %>
   <%= add_to_blocked_users %>
   <div class="clr"></div>
-  <% if current_user %>
+  <% if @user == current_user %>
   <div class="panel panel-default">
   <% else %>
   <div class="panel panel-default prof">
