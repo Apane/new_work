@@ -5237,9 +5237,13 @@ a.thumbnail:focus {
 }
 
 .alert-success {
-  color: #468847;
-  background-color: #dff0d8;
-  border-color: #d6e9c6;
+  color: black;
+  background-color: #FFF;
+  border-color: #FFF3EC;
+  text-align: center;
+  width: 43%;
+  margin: 0 auto;
+  margin-bottom: 20px;
 }
 
 .alert-success hr {
