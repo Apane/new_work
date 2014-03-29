@@ -73,7 +73,8 @@ module UsersHelper
     if user.has_connection_with(provider)
       content_tag :div, class: "verified-m #{provider.downcase}-verified row" do
         (content_tag :p, provider_name) +
-        (content_tag :span, user.connections_count(provider))
+        (content_tag :span, user.connections_count(provider)) +
+        (content_tag :span, 'Verified', class: "verified")
       end
     else
       content_tag :div, class: "verified-m #{provider.downcase}-verified row" do
