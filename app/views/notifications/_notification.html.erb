@@ -1,16 +1,22 @@
-<li class="<%#= notification.new? ? 'unread' : 'read' %>">
+<li class="<%= notification.is_opened? ? 'read' : 'unread' %>" id="notification_<%= notification.id %>">
   <div class="checkbox">
-    <input type="checkbox" value="check<%= notification.id %>" name="check" id="check<%= notification.id %>">
-    <label for="check<%= notification.id %>"></label>
+    <input type="checkbox" value="<%= notification.id %>" name="notifications[n_<%= notification.id %>]" id="check_<%= notification.id %>">
+    <label for="check_<%= notification.id %>"></label>
   </div>
-  <%#= link_to message_path(messages.last.conversation) do %>
-    <div class="m-image"><%= avatar(notification.user) %></div>
+  <%= link_to notification do %>
+    <div class="m-image"><%= avatar(notification.noter) %></div>
     <div class="m-text">
-      <p class="m-name"><%= notification.user.name %></p>
-      <span class="pull-right"><span class="reply-m"></span><%= time_ago_in_words(notification.created_at) %></span>
-      <p><%#= sanitize(messages.last.body.truncate(100, omision: "...")) %></p>
+      <p class="m-name"><%= raw(notification.content) %></p>
+      <span class="pull-right">
+        <span class="reply-m"></span><%= time_ago_in_words(notification.created_at) %>
+      </span>
+      <div class="clearfix"></div>
+      <p class="pull-right toggle_notification">
+        <%= link_to 'Mark as read', mark_notification_as_read_notification_path(notification), remote: true unless notification.is_opened? %>
+      </p>
+
     </div>
     <%#= link_to 'Delete', conversation_path(messages.last.conversation),  method: :delete, data: {confirm: 'Are you sure?'} %>
-  <%# end %>
+  <% end %>
   <div class="clr"></div>
 </li>

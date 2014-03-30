@@ -72,7 +72,7 @@ class Event < ActiveRecord::Base
     participants = self.participants.where('user_id <> ?', participant.id)
     if participants.any?
       participants.each do |p|
-        self.notifications.create(user_id: p.id)
+        Notification.send_notification(p, participant, self, "#{participant.name} joined #{self.title.html_safe} event!")
       end
     end
   end
@@ -81,7 +81,7 @@ class Event < ActiveRecord::Base
     participants = self.participants.where('user_id <> ?', participant.id)
     if participants.any?
       participants.each do |p|
-        self.notifications.create(user_id: p.id)
+        Notification.send_notification(p, participant, self, "#{participant.name} left #{self.title.html_safe} event!")
       end
     end
   end

@@ -1,12 +1,12 @@
 <center>
-  <h3>Working on it</h3>
+  <h3>Notifications</h3>
 </center>
 
 <div class="row">
   <%= render 'layouts/left_side' %>
   <div role="main" class="col-md-6">
     <div class="message-info">
-      <button type="button" class="btn btn-primary buttons-bg delete-icon"> Delete</button>
+      <button type="button" class="btn btn-primary buttons-bg delete-icon delete_notifications"> Delete</button>
       <div class="col-md-12 inbox-messages">
         <div class="row">
           <div class="col-md-12 inbox-m">
@@ -14,7 +14,9 @@
           </div>
 
           <ul>
-            <%= render current_user.new_notifications %>
+            <%= form_tag '/delete_notifications', class: 'delete_notifications_form' do %>
+            <%= render @notifications %>
+            <% end %>
           </ul>
         </div>
       </div>
@@ -22,3 +24,8 @@
   </div>
   </div>
 </div>
+<script type="text/javascript">
+  $('.delete_notifications').on('click', function(event) {
+    $('.delete_notifications_form').submit();
+  });
+</script>

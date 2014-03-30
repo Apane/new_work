@@ -31,11 +31,11 @@ Uncategorized:
 show persons name, address and snippit of what they wrote in about me first column (if u can fit it).
 
 
--Notificatoins (the red on the header of facebook).  We need ot notify them when
-someone has viewed their profile, if they received a new message, new
-comment on events, activities, someone joined their event or activity.
- Anything that deserves notification or user’s attention then we should
-implement it.
+// -Notificatoins (the red on the header of facebook).  We need ot notify them when
+// someone has viewed their profile, if they received a new message, new
+// comment on events, activities, someone joined their event or activity.
+//  Anything that deserves notification or user’s attention then we should
+// implement it.
 
 // Add Google plus as a form of validation
 
@@ -194,7 +194,7 @@ For Who can Join/View Event when creating an event:
 // -Can I edit the columns and their order for the tables in the admin panel.
 // NO
 
- -How can I take out or add users from activity/event. - You can not
+ // -How can I take out or add users from activity/event. - You can not
 
 // -How can I see the number of users who have last logged in,
  // last updated their profile, time they joined, and all of their information.  Basically a data dump.

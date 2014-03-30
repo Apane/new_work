@@ -29,6 +29,28 @@
       <p class="host-by-title">Anthony Panepinto</p>
     </div>
 
+
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= pluralize(@participants.size, 'person')  %> interested</h3>
+    </div>
+    <div class="panel-body pading-n event_participants">
+      <% @participants.each do |user| %>
+        <div class="row attending-peoples participant_<%= user.id %>">
+          <div class="col-xs-12">
+            <div class="attending-peoples-image">
+              <% if user.profile_image.present? %>
+                <%= image_tag(user.profile_image_url(:thumb), size: '35x35') %>
+              <% else %>
+                <%= image_tag("people_image.jpg") %>
+              <% end %>
+            </div>
+            <p><%= user.name %></p>
+            <div class="clr"></div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
     <div class="panel-heading">
       <h3 class="panel-title">Age</h3>
     </div>

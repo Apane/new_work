@@ -23,7 +23,7 @@
       <p class="host-by-title"><%= @owner.name %></p>
     </div>
     <div class="panel-heading">
-      <h3 class="panel-title"><%= pluralize(@event.participants.size, 'person')  %> attending</h3>
+      <h3 class="panel-title"><%= pluralize(@participants.size, 'person')  %> attending</h3>
     </div>
     <div class="panel-body pading-n event_participants">
       <% @participants.each do |user| %>

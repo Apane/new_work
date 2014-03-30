@@ -51,7 +51,7 @@
           <div class="clr"></div>
           <div class="activity-about-info">
             <p>
-              <%= @activity.description %>
+              <%= sanitize(raw(@activity.description)) %>
             </p>
           </div>
           <div class="clr"></div>

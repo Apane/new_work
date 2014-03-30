@@ -100,13 +100,13 @@ class EventsController < ApplicationController
       max_attendees = @event.max_attendees.present? ? (@event.max_attendees) : 100
       @participants = @event.participants
       if @participants.size >= max_attendees
-        @event.event_participants.create(event_id: @event.id, user_id: current_user.id, is_waiting: true)
+        @event_participant = @event.event_participants.create(event_id: @event.id, user_id: current_user.id, is_waiting: true)
       else
-        @event.event_participants.create(event_id: @event.id, user_id: current_user.id)
+        @event_participant = @event.event_participants.create(event_id: @event.id, user_id: current_user.id)
       end
       @participant = current_user
       @waiting_participants = @event.waiting_participants
-      @event_participant = @event.event_participants.where(user_id: @participant.id).first
+      # @event_participant = @event.event_participants.where(user_id: @participant.id).first
       @event.create_join_notification(current_user)
     end
 

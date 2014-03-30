@@ -34,7 +34,7 @@ class ActivitiesController < ApplicationController
       @user = current_user
       # @event = Event.find(params[:id])
       @owner = @activity.user
-      # @participants = @activity.participants
+      @participants = @activity.participants
     else
       redirect_to events_path, error: 'Event not found'
     end
@@ -106,7 +106,7 @@ class ActivitiesController < ApplicationController
     #   @participant = current_user
     #   @waiting_participants = @event.waiting_participants
     #   @event_participant = @event.event_participants.where(user_id: @participant.id).first
-    #   @event.create_join_notification(current_user)
+      @activity.create_join_notification(current_user)
     end
 
     respond_to do |format|

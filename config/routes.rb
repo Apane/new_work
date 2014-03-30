@@ -19,6 +19,11 @@ Friendiose::Application.routes.draw do
   end
 
   resources :mail_settings, only: [:edit, :update]
+  resources :notifications, only: [:index, :show] do
+    member do
+      get :mark_as_read, as: :mark_notification_as_read
+    end
+  end
 
   # get 'auth/:provider/callback', to: 'sessions#create'
   # get 'auth/failure', to: redirect('/')
@@ -41,7 +46,9 @@ Friendiose::Application.routes.draw do
   get 'disconnect' => 'users#disconnect'
   get 'profiles' => "profiles#index"
   get 'sent' => 'messages#sent'
-  get 'notifications' => 'notifications#index'
+  # get 'notifications' => 'notifications#index'
+  # get 'notifications/mark_as_read/:id' => 'notifications#mark_as_read', as: :mark_notification_as_read
+  post 'delete_notifications' => 'notifications#delete_notifications'
   get 'visitors' => 'users#visitors'
   get 'expand_your_social_circle' => 'seo#expand_your_social_circle'
   get 'find_new_friends' => 'seo#find_new_friends'

@@ -10,6 +10,9 @@ class EventParticipant < ActiveRecord::Base
   after_create :notify_owner
 
   def notify_owner # owner gets email when new participant joins to event
-    UserMailer.new_participant(self).deliver if self.event.user.accepts_email_for_new_participant?
+    event = self.event
+    if self.user_id != event.user_id #do not send to event owner when self join after event is created
+      UserMailer.new_participant(self).deliver if event.user.accepts_email_for_new_participant?
+    end
   end
 end
