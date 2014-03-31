@@ -77,9 +77,7 @@ module UsersHelper
         has_connections_count?(user, provider)
       end
     else
-      content_tag :div, class: "verified-m #{provider.downcase}-verified row" do
-        (content_tag :p, provider_name) +
-        (content_tag :span, 'not connected')
+     ''
       end
     end
   end
