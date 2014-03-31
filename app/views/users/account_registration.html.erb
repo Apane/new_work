@@ -167,8 +167,8 @@
             <%= link_to act do %>
               <div class="col-md-12 event_m">
                 <div class="event-image">
-                <% if activity.image.present? %>
-                    <%= image_tag(activity.image_url) %>
+                <% if act.image.present? %>
+                    <%= image_tag(act.image_url) %>
                   <% else %>
                     <%= image_tag 'event_image.jpg' %>
                   <% end %>
@@ -180,8 +180,8 @@
                   <p class="c-time"><%= act.time %></p>
                   <p class="p-time"><%= act.frequency %></p>
                   <div>
-                    <% if activity.user.profile_photo.present? %>
-                    <%= image_tag (activity.user.profile_photo.file.small.url, size: '30x30') %>
+                    <% if act.user.profile_photo.present? %>
+                    <%= image_tag (act.user.profile_photo.file.small.url, size: '30x30') %>
                     <% else %>
                     <%= image_tag 'people_image.jpg' %>
                     <% end %>
