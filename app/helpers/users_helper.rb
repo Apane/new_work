@@ -78,7 +78,6 @@ module UsersHelper
       end
     else
      nil
-      end
     end
   end
 
