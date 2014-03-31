@@ -42,7 +42,7 @@ Friendiose::Application.routes.draw do
     get 'settings' => 'users#account_registration', as: :settings
   # end
 
-  get 'profile/:id' => "profiles#show", as: :profile
+  get 'profiles/:id' => "profiles#show", as: :profile
   get 'disconnect' => 'users#disconnect'
   get 'profiles' => "profiles#index"
   get 'sent' => 'messages#sent'

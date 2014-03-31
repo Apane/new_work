@@ -30,8 +30,10 @@ class ProfilesController < ApplicationController
       else
         visit = @user.visits.create(visitor_id: current_user.id) if @user != current_user
       end
-      UserMailer.new_visitor(visit).deliver if @user.accepts_email_for_new_visitor?
-      Notification.send_notification(@user, current_user, @user, "#{current_user.name} viewed your profile.")
+      if @user != current_user
+        UserMailer.new_visitor(visit).deliver if @user.accepts_email_for_new_visitor?
+        Notification.send_notification(@user, current_user, @user, "#{current_user.name} viewed your profile.")
+      end
     else
       redirect_to profiles_path, notice: 'User not found or account disabled'
     end

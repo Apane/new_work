@@ -8,7 +8,11 @@ class NotificationsController < ApplicationController
   def show
     @notification = current_user.notifications.find(params[:id])
     @notification.mark_as_read
-    redirect_to @notification.noteable
+    if @notification.noteable_type == 'User'
+      redirect_to profile_path(@notification.noter)
+    else
+      redirect_to @notification.noteable
+    end
   end
 
   def mark_as_read
