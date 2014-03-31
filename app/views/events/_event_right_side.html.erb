@@ -31,7 +31,7 @@
           <div class="col-xs-12">
             <div class="attending-peoples-image">
               <% if user.profile_photo.present? %>
-                <%= image_tag(user.profile_photo.file.thumb.url) %>
+                <%= image_tag(user.profile_photo.file.small.url, class: 'media-object', size: '35x35') %>
               <% else %>
                 <%= image_tag("people_image.jpg") %>
               <% end %>
