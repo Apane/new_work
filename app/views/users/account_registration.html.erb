@@ -145,7 +145,7 @@
                   <p class="c-time"><%= event.time %></p>
                   <div>
                     <% if event.user.profile_photo.present? %>
-                    <%= image_tag event.user.profile_photo.file.small.url, size: '30x30' %>
+                    <%= image_tag (event.user.profile_photo.file.small.url, size: '30x30') %>
                     <% else %>
                     <%= image_tag 'people_image.jpg' %>
                     <% end %>
@@ -180,8 +180,8 @@
                   <p class="c-time"><%= act.time %></p>
                   <p class="p-time"><%= act.frequency %></p>
                   <div>
-                    <% if user.profile_photo.present? %>
-                    <%= image_tag user.profile_photo.file.small.url, size: '30x30' %>
+                    <% if activity.user.profile_photo.present? %>
+                    <%= image_tag (activity.user.profile_photo.file.small.url, size: '30x30') %>
                     <% else %>
                     <%= image_tag 'people_image.jpg' %>
                     <% end %>
