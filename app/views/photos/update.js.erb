@@ -2,9 +2,9 @@ $( document ).ajaxStart(function() {
   $( ".crop_message" ).html('Processing ....');
 });
 
-$( document ).ajaxComplete(function() {
-  $( ".crop_message" ).html('');
+// $( document ).ajaxComplete(function() {
+  // $( ".crop_message" ).html('');
   imageUrl = '<%= @photo.file.url(:large) %>'
   $('#frame_<%= @photo.id %>').css("background-image", 'url(' + imageUrl + ')');
-});
+// });
 $('#myModal').modal('hide');
