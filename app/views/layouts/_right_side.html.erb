@@ -32,10 +32,10 @@
             </select>
             <span style="margin-left: 25px;">To </span>
             <select class="form-control age_select_two form_select" style="width:28%;" name="search[age_max]">
-              <% [*1..79].each do |n| %>
+              <option value="20" selected='selected'> 20 </option>
+              <% [*21..80].each do |n| %>
                 <option value="<%= n %>"> <%= n %> </option>
               <% end %>
-              <option value="80" selected='selected'> 80 </option>
             </select>
             <div class="clr"></div>
           </div>

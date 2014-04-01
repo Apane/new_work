@@ -13,5 +13,7 @@ class HomeController < ApplicationController
     @user = current_user
     @questions_for_about = @user.questions.for_about.order('id asc')
     @questions_for_personality = @user.questions.for_personality.order('id asc')
+    @events = current_user.events
+    @activities = current_user.activities
   end
 end

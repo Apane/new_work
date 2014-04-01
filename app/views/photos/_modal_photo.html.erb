@@ -1,11 +1,11 @@
-<img alt="<%= photo.title %>" src="<%= photo.file.large.url %>" id="cropbox">
+<img alt="<%= photo.title %>" src="<%= photo.file.url(:large) %>" id="cropbox">
 <%= form_for photo, remote: true do |f| %>
   <div class="control-group">
     <% %w[x y w h].each do |attribute| %>
       <%= f.text_field "crop_#{attribute}", hidden: true %>
     <% end %>
     <%= f.submit "Crop", class: 'btn btn-primary btn-lg photo-b' if photo.is_owned_by?(current_user) %>
-    <span class="crop_message" style="display:none;">Processing ....</span>
+    <span class="crop_message"></span>
   </div>
 <% end %>
 

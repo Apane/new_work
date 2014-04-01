@@ -31,10 +31,11 @@ class Comment < ActiveRecord::Base
   def create_notification
     if self.commentable_type == 'Event'
       owner = self.commentable.user
+      user = self.user
       participants = self.commentable.participants.where('user_id <> ?', self.user_id)
       if participants.any?
         participants.each do |p|
-          self.notifications.create(user_id: p.id)
+          Notification.send_notification(p, user, self, "#{user.name} commented on #{self.commentable.title} event!")
         end
       end
       UserMailer.new_comment(self, owner).deliver if owner.accepts_email_for_new_comment?

@@ -1,4 +1,4 @@
-<% unless user.hidden_for?(current_user) || user.blocked_for?(current_user) %>
+<% unless user.hidden_for?(current_user) || user.blocked_for?(current_user) || user == current_user %>
 <%= link_to profile_path(user) do %>
   <div class="col-md-12 users_info">
     <div class="row">

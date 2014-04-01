@@ -1,6 +1,6 @@
 <div class="send-message-details">
   <div class="s-image">
-    <%= avatar(message.sender) %>
+    <%= link_to avatar(message.sender), profile_path(message.sender) %>
   </div>
 
   <div class="s-about">
@@ -8,7 +8,7 @@
       <% if message.sender == current_user %>
         Me
       <% else %>
-        <%= message.sender.name %>
+        <%= link_to message.sender.name, profile_path(message.sender) %>
       <% end %>
     </h4>
     <span class="s-time-date pull-right"><%= timeago_tag(message.created_at) %></span>

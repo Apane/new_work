@@ -1,7 +1,7 @@
 <li class='photo_<%= photo.id %>'>
   <%= photo.profile_photo? ? '(current profile photo)' : '' %>
   <%= link_to photo, remote: true do %>
-  <div class="photo_frame" style="background-image: url('<%= photo.file.large.url %>');">
+  <div class="photo_frame" id="frame_<%= photo.id %>" style="background-image: url('<%= photo.file.url(:large) %>');">
     <%#= link_to image_tag(photo.file.large.url), photo, remote: true %>
     </div>
 

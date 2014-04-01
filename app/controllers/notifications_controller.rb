@@ -10,6 +10,8 @@ class NotificationsController < ApplicationController
     @notification.mark_as_read
     if @notification.noteable_type == 'User'
       redirect_to profile_path(@notification.noter)
+    elsif @notification.noteable_type == 'Comment'
+      redirect_to event_path(@notification.noteable.commentable)
     else
       redirect_to @notification.noteable
     end

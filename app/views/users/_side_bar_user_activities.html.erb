@@ -1,0 +1,24 @@
+<div class="col-md-12 events">
+  <div class="row">
+    <p class="heading-text">Activities <span>(<%= @activities.size %>)</span></p>
+    <% activity = @activities.last %>
+    <% if activity.present? %>
+      <%= link_to activity_path(activity) do %>
+        <div class="event-img">
+        <% if activity.image.present? %>
+          <%= image_tag(activity.image_url) %>
+        <% else %>
+          <%= image_tag 'event_image.jpg' %>
+        <% end %>
+        </div>
+        <div class="event-about">
+          <h3>I am looking for a <%= activity.title %> partner</h3>
+          <p class="place-map"><%= activity.location_name %>, <%= activity.city %></p>
+          <p class="date"><%= activity.date.strftime("%A, %B %d, %Y") %></p>
+          <p class="c-time"><%= activity.time %></p>
+          <p class="p-time"><%= activity.frequency %></p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

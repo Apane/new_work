@@ -16,7 +16,10 @@
       <ul class="categoryitems">
         <li class="<%= 'active' if controller_name == 'messages' && action_name == 'index' %>">
           <%= link_to messages_path do %>
-            Inbox <span class="t-inbox"><%= current_user.new_messages.size %></span>
+            Inbox
+            <% if current_user.new_messages.any? %>
+            <span class="t-inbox"><%= current_user.new_messages.size %></span>
+            <% end %>
           <% end %>
         <li class="<%= 'active' if controller_name == 'messages' && action_name == 'sent' %>">
           <%= link_to 'Outbox', sent_path %>

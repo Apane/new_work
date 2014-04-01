@@ -16,7 +16,7 @@
           <div class="users_about_fullinfo">
             <h3><%= current_user.name %></h3>
             <p class="edit-about-text">
-              <%= best_in_place current_user, :blurb, activator: ".edit-blurb", nil: 'Click here to add a short blurb (maximum 140 characters)', inner_class: 'form-control' %>
+              <%= best_in_place current_user, :blurb, activator: ".edit-blurb", nil: 'Click here to add a short blurb (maximum 140 characters)', inner_class: 'form-control', ok_button: 'Save', ok_button_class: 'btn btn-default btn-lg creat-event' %>
               <span class="edit-icon edit-blurb"></span>
             </p>
           </div>

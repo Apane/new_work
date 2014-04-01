@@ -49,7 +49,7 @@ class FileUploader < CarrierWave::Uploader::Base
   end
 
   version :large do
-    # process :crop
+    process :crop
     resize_to_limit(558, 558)
   end
 
