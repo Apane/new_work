@@ -84,14 +84,14 @@
             <div class="clr"></div>
           </div>
 
-          <div class="gender event_time_filter">
+          <div class="gender">
             <span>Gender</span>
             <%= select_tag(:time, options_for_select( Event::GENDER.invert.to_a),
                 {name: 'search[gen]', id: 'time_select', class: 'form-control form_select', prompt: 'All'}) %>
             <div class="clr"></div>
           </div>
 
-          <div class="gender event_time_filter">
+          <div class="gender">
             <span>Ethnicity</span>
             <%= select_tag(:ethnicity_id, options_for_select( Ethnicity.all.collect{|e| [e.name, e.id]}),
                 {name: 'search[ethn]', id: 'time_select', class: 'form-control form_select', prompt: 'All'}) %>
