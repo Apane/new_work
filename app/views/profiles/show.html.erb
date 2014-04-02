@@ -6,7 +6,7 @@
         <div class="col-md-12">
           <div class="user-image">
             <% if @user.profile_photo.present? %>
-            <%= image_tag(@user.profile_photo.file.medium.url, class: 'open-tab') %>
+            <%= image_tag(@user.profile_photo.file.selfcrop.url, class: 'open-tab') %>
             <% else %>
             <%= image_tag 'user-image.jpg' %>
             <% end %>

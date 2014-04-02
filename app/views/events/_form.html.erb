@@ -61,33 +61,33 @@
           <p class="creat-event-details">Event Details</p>
           <div class="form-group">
             <%= f.label :title, 'Event Title:' %>
-            <%= f.text_field :title, class: 'form-control' %>
+            <%= f.text_field :title, class: 'form-control', required: true %>
           </div>
           <div class="form-group">
             <%= f.label :image, 'Event Image' %>
-            <%= f.file_field :image, class: 'form-control' %>
+            <%= f.file_field :image, class: 'form-control', required: true %>
           </div>
           <div class="form-group">
             <%= f.label :location_name, 'Location Name:' %>
-            <%= f.text_field :location_name, class: 'form-control' %>
+            <%= f.text_field :location_name, class: 'form-control', required: true %>
           </div>
           <div class="form-group">
             <%= f.label :location, 'Location Address:' %>
-            <%= f.text_field :location, class: 'form-control' %>
+            <%= f.text_field :location, class: 'form-control', required: true %>
           </div>
           <div class="form-group">
             <div class="row">
               <div class="col-md-4 col-xs-4">
                 <%= f.label :city, 'City:' %>
-                <%= f.text_field :city, class: 'form-control' %>
+                <%= f.text_field :city, class: 'form-control', required: true %>
               </div>
               <div class="col-md-4 col-xs-4">
                 <%= f.label :state, 'State' %>
-                <%= f.text_field :state, class: 'form-control' %>
+                <%= f.text_field :state, class: 'form-control', required: true %>
               </div>
               <div class="col-md-4 col-xs-4">
                 <%= f.label :postal_code, 'Zip:' %>
-                <%= f.text_field :postal_code, class: 'form-control' %>
+                <%= f.text_field :postal_code, class: 'form-control', required: true %>
               </div>
             </div>
           </div>
@@ -261,7 +261,6 @@
         "font-styles": true, //Font styling, e.g. h1, h2, etc.
         "emphasis": true, //Italics, bold, etc.
         "lists": true, //(Un)ordered lists, e.g. Bullets, Numbers.
-        "html": true, //Button which allows you to edit the generated HTML.
         "link": true, //Button to insert a link.
         "image": false, //Button to insert an image.
         "color": false //Button to change color of font

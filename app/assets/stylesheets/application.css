@@ -12,6 +12,7 @@
  *= require jquery.Jcrop
  *= require_self
  *= require jquery.ui.all
+ *= require bootstrap.min
  *= require bootstrap
  *= require mediaquery
  *= require tabs_css
@@ -21,7 +22,7 @@
  *= require jquery.fileupload-ui
  *= require jquery.pnotify.default
  *= require jquery.pnotify.default.icons
- *= require bootstrap-wysihtml5
+ *= require bootstrap-wysihtml5/b3
  *= require jquery.timepicker
  *= require mystyle
 */
@@ -41,10 +42,21 @@
   cursor: pointer;
 }
 span.notes_count, span.messages_count {
+/*  position: absolute;
+  margin-top: -10px;
+  margin-left: -10px;
+  color: #fff;*/
+}
+
+.messages_count_container, .notes_count_container{
   position: absolute;
   margin-top: -10px;
   margin-left: -10px;
   color: #fff;
+  min-width: 23px;
+  text-align: center;
+  height: 21px;
+  border-radius: 4px;
 }
 
 #background_cycler{padding:0;margin:0;width:100%;position:absolute;top:0;left:0;z-index:-1}

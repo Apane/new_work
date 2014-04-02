@@ -33,6 +33,11 @@ class FileUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
+  version :selfcrop do
+    process :crop
+    process :self_crop
+  end
+
   version :thumb do
     process :crop
     resize_to_limit(37, 37)
@@ -52,6 +57,7 @@ class FileUploader < CarrierWave::Uploader::Base
     process :crop
     resize_to_limit(558, 558)
   end
+# crop_x"=>"0", "crop_y"=>"0", "crop_w"=>"314", "crop_h"=>"314"
 
   def crop
     if model.crop_x.present?
@@ -64,6 +70,20 @@ class FileUploader < CarrierWave::Uploader::Base
         img.crop!(x, y, w, h)
       end
     end
+  end
+
+
+  def self_crop
+    # if model.crop_x.present?
+      resize_to_limit(600, 600)
+      manipulate! do |img|
+        x = 0
+        y = 0
+        w = 314
+        h = 314
+        img.crop!(x, y, w, h)
+      end
+    # end
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

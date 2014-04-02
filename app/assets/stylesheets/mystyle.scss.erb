@@ -452,7 +452,7 @@ footer .copy {
 .myaccount > a {
   display: block;
   float: left;
-  line-height: 48px;
+  // line-height: 48px;
   margin-left: 7px !important;
   margin-top: 15px;
   width: 30px;
@@ -576,17 +576,17 @@ footer .copy {
   margin:0px;
 }
 
-.time {
-  background:#FAFAFA;
-  border: 1px solid #CCCCCC;
-  border-radius: 6px;
-  overflow: hidden;
-  width: 100%;
-}
-.time > select {
-  padding: 7px;
-  width: 100%;
-}
+// .time {
+//   background:#FAFAFA;
+//   border: 1px solid #CCCCCC;
+//   border-radius: 6px;
+//   overflow: hidden;
+//   width: 100%;
+// }
+// .time > select {
+//   padding: 7px;
+//   width: 100%;
+// }
 .age > select {
   border: 1px solid #9C9C9C;
   border-radius: 6px;
@@ -598,7 +598,7 @@ footer .copy {
   display: inline-block;
   font-family: 'museo', 'ProximaNovaRegular';
   font-size: 14px;
-  line-height: 34px;
+  line-height: 37px;
   margin-left: 8px;
   float:left;
   margin-right:5px;
@@ -628,10 +628,10 @@ footer .copy {
   border-radius: 5px;
   height: 33px;
   margin-left: 9px;
-  margin-right: 18px;
-  padding-right: 6px;
+  margin-right: 10px;
+  padding-right: 5px;
   text-align: right;
-  width: 70px;
+  width: 45px;
 }
 .creat-event {
   background: #f88e21; /* Old browsers */
@@ -1015,7 +1015,7 @@ p.text-right {
   width:100%;
   border-radius:4px;
 }
-.attending-peoples .col-xs-12 > p {
+.attending-peoples .col-xs-12 > a > p {
   color: #414141;
   display: inline-block;
   font-family: 'museo', 'ProximaNovaRegular';
@@ -1083,7 +1083,8 @@ p.text-right {
   font-family: 'museo', 'ProximaNovaRegular';
   font-size:14px;
   margin:30px 0;
-  color:#808080;
+  // color:#808080;
+  color: #000;
 }
 .event-info ul li {
   border-bottom: 1px solid #F2F2F2;
@@ -1093,15 +1094,26 @@ p.text-right {
   line-height: 58px;
   padding-left: 43px;
 }
-.event-info ul li:nth-child(1) {
+// .event-info ul li:nth-child(1), .event-info ul li:nth-child(2) {
+//   background:url("<%= asset_path('event-info-icons.png') %>") no-repeat 0px 8px;
+// }
+// .event-info ul li:nth-child(3) {
+//   background:url("<%= asset_path('event-info-icons.png') %>") no-repeat 0px -36px;
+// }
+// .event-info ul li:nth-child(4) {
+//   background:url("<%= asset_path('event-info-icons.png') %>") no-repeat 0px -84px;
+// }
+
+.event-info ul li.address{
   background:url("<%= asset_path('event-info-icons.png') %>") no-repeat 0px 8px;
 }
-.event-info ul li:nth-child(2) {
+.event-info ul li.date{
   background:url("<%= asset_path('event-info-icons.png') %>") no-repeat 0px -36px;
 }
-.event-info ul li:nth-child(3) {
+.event-info ul li.time{
   background:url("<%= asset_path('event-info-icons.png') %>") no-repeat 0px -84px;
 }
+
 
 .event-comment {
   background: none repeat scroll 0 0 #FFFFFF;
@@ -2164,3 +2176,26 @@ h1.logout {
   margin-left: auto;
   margin-right: auto;
 }
+
+p.connections_count{
+  font-size: 12px;
+}
+
+.connections_panel{
+  margin-bottom: 0px;
+}
+
+.bold{
+  font-weight: bold;
+}
+.event_time_filter, .event_age_filter, .event_category_filter{
+  margin-top: -15px;
+}
+.users_info, .visitors{
+  .img-thumbnail{
+    width: 120px; height: 120px;
+    img{width: 100%; height: 100%;}
+  }
+}
+.blurb-ok, .blurb-cancel, .update_question{font-size: 14px;padding: 3px;margin-top: 10px; margin-bottom: 0;}
+.update_question{padding: 5px;}

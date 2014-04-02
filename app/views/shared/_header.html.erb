@@ -41,11 +41,15 @@
         <% if user_signed_in? %>
           <%= link_to notifications_path, class: 'notes_area' do %>
             <%= image_tag('w_icon.png') %>
-            <span class="notes_count"><%= current_user.new_notifications.size if current_user.new_notifications.any? %></span>
+            <span class="notes_count_container" style="<%= 'background: #00d842;' if current_user.new_notifications.any? %>">
+              <span class="notes_count"><%= current_user.new_notifications.size if current_user.new_notifications.any? %></span>
+            </span>
           <% end %>
           <%= link_to messages_path, class: 'messages_area' do %>
             <%= image_tag('inbox_icon.png') %>
-            <span class="messages_count"><%= current_user.new_messages.size if current_user.new_messages.any? %></span>
+            <span class="messages_count_container" style="<%= 'background: #00d842;' if current_user.new_messages.any? %>">
+              <span class="messages_count"><%= current_user.new_messages.size if current_user.new_messages.any? %></span>
+            </span>
           <% end %>
           <ul class="setting">
             <li class="dropdown">

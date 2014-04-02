@@ -42,9 +42,10 @@
           </div>
           <div class="event-info">
             <ul>
-              <li><%= @event.location_name %>, <%= @event.city %></li>
-              <li><%= @event.date.strftime("%A, %B %d, %Y") %></li>
-              <li><%= @event.time %></li>
+              <li class="address"><%= @event.location_name %></li>
+              <li class="address tooltip_element" data-toggle="tooltip" data-placement="top" title="<%= @event.location %>"><%= truncate(@event.location, omission: '...', length: 40) %></li>
+              <li class="date"><%= @event.date.strftime("%A, %B %d, %Y") %></li>
+              <li class="time"><%= @event.time %></li>
             </ul>
           </div>
           <div class="clr"></div>

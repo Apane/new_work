@@ -55,7 +55,8 @@ module UsersHelper
       link_to disconnect_path(social: provider.downcase) do
         content_tag :div, class: "verified-m #{provider.downcase}-verified row" do
           (content_tag :p, provider_name) +
-          (content_tag :span, 'Verified', class: "verified")
+          (content_tag :span, 'Verified', class: "verified") +
+          (content_tag :p, current_user.connections_count(provider), class: 'connections_count')
         end
       end
     else

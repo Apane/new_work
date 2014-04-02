@@ -18,7 +18,7 @@
     <div id="multiAccordion2">
       <h3 class="panel-title panel-heading-text border-t"><a href="#">Time</a></h3>
       <div>
-        <div class="panel-body">
+        <div class="panel-body event_time_filter">
           <div class="times">
             <%= select_tag(:time, options_for_select( [['Today', 1], ['Tomorrow', 2]]),
                 {name: 'search[time]', id: 'time_select', class: 'form-control form_select', prompt: 'All'}) %>
@@ -30,7 +30,7 @@
     <div id="multiAccordion3">
       <h3 class="panel-title panel-heading-text border-t"><a href="#">Attendees</a></h3>
       <div>
-        <div class="panel-body">
+        <div class="panel-body event_age_filter">
           <div class="age">
             <span>Age </span>
             <select class="form-control age_select_one form_select" style="width:30%;" name="search[age_min]">
@@ -57,7 +57,7 @@
                <option value="38"> 38 </option>
                <option value="39"> 39 </option>
             </select>
-            <span style="margin-left: 25px;">To </span>
+            <span style="margin-left: 16px;">To </span>
             <select class="form-control age_select_two form_select" style="width:30%;" name="search[age_max]">
                <option value="19"> 19 </option>
                <option value="20"> 20 </option>
@@ -102,7 +102,7 @@
     <div id="multiAccordion4">
      <h3 class="panel-title panel-heading-text border-t"><a href="#">Category</a></h3>
      <div>
-       <div class="panel-body">
+       <div class="panel-body event_category_filter">
         <div class="checkbox">
           <% Category.all.each do |cat| %>
           <input id="c_<%= cat.id %>" type="checkbox" data-catid="<%= cat.id %>">

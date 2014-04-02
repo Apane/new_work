@@ -1,4 +1,9 @@
 $('li#notification_<%= @notification.id %>').removeClass('unread').addClass('read');
 $('li#notification_<%= @notification.id %> .toggle_notification').html('');
 notes_count = parseInt($('.notes_count').html()) - 1;
-if (notes_count > 0) {$('.notes_count').html(notes_count);} else{$('.notes_count').html('');};
+if (notes_count > 0)
+  {$('.notes_count').html(notes_count);}
+else{
+  $('.notes_count').html('');
+  $('.notes_count_container').css('background-color', '');
+};

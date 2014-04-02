@@ -33,7 +33,7 @@
 //= require new_design/ddaccordion.js
 //= require pnotify
 //= require best_in_place
-//= require bootstrap-wysihtml5
+//= require bootstrap-wysihtml5/b3
 //= require jquery.autoSave
 //= require rails-timeago
 //= require landing
@@ -59,5 +59,5 @@ $(window).load(function(){
   $('#background_cycler').show(0);//fade the background back in once all the images are loaded
     // run every 7s
   setInterval('cycleImages()', 2100);
+  $('.tooltip_element').tooltip();
 })
-

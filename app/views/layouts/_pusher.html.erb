@@ -23,6 +23,7 @@
     $('span.t-inbox, span.messages_count').html(
       data.new_messages_count
     );
+    $('.messages_count_container').css('background-color', '#00d842');
     $.pnotify({
       title: data.message_title,
       text: data.message,
@@ -39,6 +40,7 @@
       } else{
         $('.notes_area span.notes_count').html('1');
       };
+      $('.notes_count_container').css('background-color', '#00d842');
       $.pnotify({
         title: data.notification_title,
         text: data.message,
