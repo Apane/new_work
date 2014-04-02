@@ -4,7 +4,7 @@
       <div id="multiAccordion1">
         <h3 class="panel-title panel-heading-text"><a href="#">Age</a></h3>
         <div>
-          <div class="panel-body age">
+          <div class="panel-body age event_time_filter">
             <span>Age </span>
             <select class="form-control age_select_one form_select" style="width:28%;" name="search[age_min]">
                <option value="18"> 18 </option>
@@ -45,7 +45,7 @@
       <div id="multiAccordion2">
         <h3 class="panel-title panel-heading-text border-t"><a href="#">Gender</a></h3>
         <div>
-          <div class="panel-body genders">
+          <div class="panel-body genders event_time_filter">
             <span>Show Only</span>
 
             <select class="select-style form_select" style="width: 44%;" name="search[gender]">
@@ -61,7 +61,7 @@
       <div id="multiAccordion3">
         <h3 class="panel-title panel-heading-text border-t"><a href="#">Ethnicity</a></h3>
         <div>
-          <div class="panel-body">
+          <div class="panel-body event_category_filter">
             <div class="checkbox">
               <% Ethnicity.all.each do |cat| %>
               <input id="c_<%= cat.id %>" type="checkbox" data-catid="<%= cat.id %>">
@@ -77,7 +77,7 @@
       <div id="multiAccordion4">
         <h3 class="panel-title panel-heading-text border-t"><a href="#">Interest</a></h3>
         <div>
-          <div class="panel-body">
+          <div class="panel-body event_category_filter">
 
             <div class="checkbox">
               <input id="check9" type="checkbox" name="check" value="check9">
