@@ -324,7 +324,7 @@ textarea {
 }
 
 a {
-  color: #428bca;
+  color: #D6AF9C;
   text-decoration: none;
 }
 
@@ -3447,7 +3447,7 @@ input[type="button"].btn-block {
 .dropdown-menu > .active > a:focus {
   color: #ffffff;
   text-decoration: none;
-  background-color: #428bca;
+  background-color: #D6AF9C;
   outline: 0;
 }
 
