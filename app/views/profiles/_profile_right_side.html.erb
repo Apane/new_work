@@ -46,7 +46,7 @@
       <%= @user.education.present? ? @user.education.name : '-' %>
     </div>
     </div>
-  </div>
      <%= render 'profiles/right_bar_user_events' if @user.events.any? %>
      <%= render 'profiles/right_bar_user_activities' if @user.activities.any? %>
+  </div>
 </div>
