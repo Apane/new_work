@@ -5243,11 +5243,13 @@ a.thumbnail:focus {
 .alert-success {
   color: black;
   background-color: #D5F7D8;
-  border-color: #FFF3EC;
   text-align: center;
   width: 43%;
   margin: 0 auto;
   margin-bottom: 20px;
+  -webkit-box-shadow: 2px 10px 5px 0px rgba(50, 50, 50, 0.35);
+  -moz-box-shadow:    2px 10px 5px 0px rgba(50, 50, 50, 0.35);
+  box-shadow:         2px 10px 5px 0px rgba(50, 50, 50, 0.35);
 }
 
 .alert-success hr {
@@ -5275,11 +5277,13 @@ a.thumbnail:focus {
 .alert-warning {
   color: black;
   background-color: #FCDAD9;
-  border-color: #FFF3EC;
   text-align: center;
   width: 43%;
   margin: 0 auto;
   margin-bottom: 20px;
+  -webkit-box-shadow: 2px 10px 5px 0px rgba(50, 50, 50, 0.35);
+  -moz-box-shadow:    2px 10px 5px 0px rgba(50, 50, 50, 0.35);
+  box-shadow:         2px 10px 5px 0px rgba(50, 50, 50, 0.35);
 }
 
 .alert-warning hr {
