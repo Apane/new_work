@@ -22,10 +22,10 @@
       <%= @user.gender_hum %>
     </div>
     <div class="panel-heading">
-      <h3 class="panel-title">Zip Code</h3>
+      <h3 class="panel-title">Location</h3>
     </div>
     <div class="panel-body">
-      <%= @user.zip.present? ? @user.zip : '-' %>
+      <%= @user.address.present? ? @user.address : '-' %>
     </div>
     <div class="panel-heading">
       <h3 class="panel-title">Occupation</h3>
@@ -45,8 +45,8 @@
     <div class="panel-body">
       <%= @user.education.present? ? @user.education.name : '-' %>
     </div>
+      <%= render 'profiles/right_bar_user_events' if @user.events.any? %>
+      <%= render 'profiles/right_bar_user_activities' if @user.activities.any? %>
+    </div>
   </div>
-  </div>
-  <%= render 'profiles/right_bar_user_events' if @user.events.any? %>
-  <%= render 'profiles/right_bar_user_activities' if @user.activities.any? %>
 </div>
