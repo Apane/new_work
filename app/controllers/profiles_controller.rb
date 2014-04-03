@@ -12,9 +12,9 @@ class ProfilesController < ApplicationController
       # @ethnicity_id = params[:search][:ethnicity_id] || nil
       ethnicity_ids = params[:search][:cat_ids].split('').uniq || nil
       gender = params[:search][:gender] || nil
-      @users = User.active.scoped_by_search(terms, min_age, max_age, education_id, ethnicity_ids, gender)
-    else
-      @users = User.active.page params[:page]
+       @users = User.active.scoped_by_search(terms, min_age, max_age, education_id, ethnicity_ids, gender).where.not(id: current_user.id)
+  else
+    @users = User.active.where.not(id: current_user.id).page params[:page]
     end
   end
 
