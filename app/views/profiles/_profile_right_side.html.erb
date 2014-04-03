@@ -46,53 +46,7 @@
       <%= @user.education.present? ? @user.education.name : '-' %>
     </div>
   </div>
-
-   <div class="col-md-12 events">
-    <div class="row">
-      <p class="heading-text">Events <span>(<%= @user.events.size %>)</span></p>
-     <% event = @user.events.last %>
-      <% if event.present? %>
-        <%= link_to event_path(event) do %>
-          <div class="event-img">
-          <% if event.image.present? %>
-            <%= image_tag(event.image_url) %>
-          <% else %>
-            <%= image_tag 'event_image.jpg' %>
-          <% end %>
-          </div>
-          <div class="event-about">
-            <h3><%= event.title %></h3>
-            <p class="place-map"><%= event.location_name %>, <%= event.city %></p>
-            <p class="date"><%= event.date.strftime("%A, %B %d, %Y") %></p>
-            <p class="c-time"><%= event.time %></p>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
   </div>
-  <div class="col-md-12 events">
-    <div class="row">
-      <p class="heading-text">Activities <span>(<%= @user.activities.size %>)</span></p>
-     <% activity = @user.activities.last %>
-      <% if activity.present? %>
-        <%= link_to activity_path(activity) do %>
-          <div class="event-img">
-          <% if activity.image.present? %>
-            <%= image_tag(activity.image_url) %>
-          <% else %>
-            <%= image_tag 'event_image.jpg' %>
-          <% end %>
-          </div>
-          <div class="event-about">
-            <h3>I am looking for a <%= activity.title %> partner</h3>
-            <p class="place-map"><%= activity.location_name %>, <%= activity.city %></p>
-            <p class="date"><%= activity.date.strftime("%A, %B %d, %Y") %></p>
-            <p class="c-time"><%= activity.time %></p>
-            <p class="p-time"><%= activity.frequency %></p>
-          </div>
-         <% end %>
-        <% end %>
-      </div>
-    </div>
-  </div>
+  <%= render 'profiles/right_bar_user_events' if @user.events.any? %>
+  <%= render 'profiles/right_bar_user_activities' if @user.activities.any? %>
 </div>

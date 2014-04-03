@@ -1,0 +1,23 @@
+   <div class="col-md-12 events">
+    <div class="row">
+      <p class="heading-text">Events <span>(<%= @user.events.size %>)</span></p>
+     <% event = @user.events.last %>
+      <% if event.present? %>
+        <%= link_to event_path(event) do %>
+          <div class="event-img">
+          <% if event.image.present? %>
+            <%= image_tag(event.image_url) %>
+          <% else %>
+            <%= image_tag 'event_image.jpg' %>
+          <% end %>
+          </div>
+          <div class="event-about">
+            <h3><%= event.title %></h3>
+            <p class="place-map"><%= event.location_name %>, <%= event.city %></p>
+            <p class="date"><%= event.date.strftime("%A, %B %d, %Y") %></p>
+            <p class="c-time"><%= event.time %></p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
