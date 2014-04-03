@@ -45,6 +45,16 @@
                 <label for="exampleInputEmail1"></label>
                 <%= f.text_field :zip, class: 'form-control', id: 'zip', placeholder: 'Zip' %>
               </div>
+              <div class="form-group">
+              <label for="Date" style="display:block; margin-bottom:5px; text-decoration: underline;">Date of Birth :</label>
+              <div class="row birth-date">
+                <%= f.date_select :birthday, {
+                  :order => [:month, :day, :year],
+                  :start_year => 1950,
+                  :end_year => 2004} %>
+              </div>
+              <div class="clr"></div>
+            </div>
               <div class="col-md-12 text-center sign-b">
                 <%= f.submit 'Create Account', class: 'btn btn-default creat-event' %>
                 <p>By clicking the button you agree to<br>
@@ -97,3 +107,11 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+    $( document ).ready(function() {
+      $("select").selectify();
+
+      $( ".selectify" ).wrap( "<div class='col-xs-4'></div>" );
+    });
+</script>

@@ -67,11 +67,11 @@
               <div class="clr"></div>
             </div>
             <div class="form-group">
-              <label for="Date" style="display:block; margin-bottom:5px;">Date of Birth :</label>
+              <label for="Date" style="display:block; margin-bottom:5px; text-decoration:">Date of Birth :</label>
               <div class="row birth-date">
                 <%= f.date_select :birthday, {
                   :order => [:month, :day, :year],
-                  :start_year => 1940,
+                  :start_year => 1950,
                   :end_year => 2004} %>
               </div>
               <div class="clr"></div>
