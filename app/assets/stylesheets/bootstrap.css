@@ -5246,6 +5246,7 @@ a.thumbnail:focus {
   -webkit-box-shadow: 2px 10px 5px 0px rgba(50, 50, 50, 0.35);
   -moz-box-shadow:    2px 10px 5px 0px rgba(50, 50, 50, 0.35);
   box-shadow:         2px 10px 5px 0px rgba(50, 50, 50, 0.35);
+  font-weight: bold;
 }
 
 .alert-success hr {
@@ -5280,6 +5281,7 @@ a.thumbnail:focus {
   -webkit-box-shadow: 2px 10px 5px 0px rgba(50, 50, 50, 0.35);
   -moz-box-shadow:    2px 10px 5px 0px rgba(50, 50, 50, 0.35);
   box-shadow:         2px 10px 5px 0px rgba(50, 50, 50, 0.35);
+  font-weight: bold;
 }
 
 .alert-warning hr {
