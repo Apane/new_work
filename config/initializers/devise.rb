@@ -238,7 +238,7 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
 
-  config.omniauth :facebook, ENV['FR_FACEBOOK_KEY'], ENV['FR_FACEBOOK_SECRET'], :scope => 'email,user_birthday'
+  config.omniauth :facebook, ENV['FR_FACEBOOK_KEY'], ENV['FR_FACEBOOK_SECRET'], :scope => 'email,user_birthday,publish_actions'
   config.omniauth :twitter, ENV['TWITTER_CONSUMER_KEY'], ENV['TWITTER_CONSUMER_SECRET']
   config.omniauth :linked_in, ENV['FR_LINKEDIN_KEY'], ENV['FR_LINKEDIN_SECRET'], :scope => 'r_fullprofile r_emailaddress r_network'
   config.omniauth :gplus, ENV['GPLUS_KEY'], ENV['GPLUS_SECRET'], scope: 'userinfo.email, userinfo.profile'

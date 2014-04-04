@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :zip, :remember_me, :first_name, :last_name,
                   :birthday, :current_password, :occupation, :address, :interests, :aboutme, :profile_image,
                   :photos_attributes, :age, :education_id, :ethnicity_id, :blurb, :gender, :email_confirmation,
-                  :lat, :lng
+                  :lat, :lng, :open_visitors_at
 
   attr_accessor :email_confirmation
 
@@ -347,5 +347,13 @@ class User < ActiveRecord::Base
 
   def accepts_email_for_new_visitor?
     self.mail_setting.viewed_profile?
+  end
+
+  def has_opened_visitors?
+    if self.open_visitors_at != nil
+      (self.open_visitors_at < 1.month.from_now) ? true : false
+    else
+      false
+    end
   end
 end

@@ -18,6 +18,7 @@
           </div>
         </div>
       </div>
+      <% if current_user.has_opened_visitors? %>
       <% @visitors.each do |visitor| %>
       <%= link_to profile_path(visitor) do %>
       <div class="col-md-12 users_info visitors">
@@ -46,7 +47,40 @@
       </div>
       <% end %>
       <% end %>
+      <% else %>
+        <div class="col-md-12">
+          <h3><center>You need to open this feature by posting to facebook or twitter.</center></h3>
+          <center>
+            <button class="btn btn-default btn-lg creat-event" data-toggle="modal" data-target="#fb_modal">
+              Post to facebook
+            </button>
+            <button class="btn btn-default btn-lg creat-event" data-toggle="modal" data-target="#fb_modal">
+              Post on twitter
+            </button>
+          </center>
+        </div>
+      <% end %>
     </div>
   </div>
     <%#= render 'users/visitors_filter' %>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="fb_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Post to facebook</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>
