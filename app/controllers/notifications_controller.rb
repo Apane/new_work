@@ -3,6 +3,7 @@ class NotificationsController < ApplicationController
 
   def index
     @notifications = current_user.notifications.order('id desc')
+    @notifications.where(is_opened: false).update_all(is_opened: true)
   end
 
   def show
