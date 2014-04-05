@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140404211121) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
     t.text     "body"
@@ -203,6 +206,13 @@ ActiveRecord::Schema.define(version: 20140404211121) do
   create_table "hidden_users", force: true do |t|
     t.integer  "user_id"
     t.integer  "hidden_user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "hiddens", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "hidden_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
