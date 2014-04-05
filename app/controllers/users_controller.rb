@@ -100,6 +100,17 @@ class UsersController < ApplicationController
     redirect_to root_path, notice: 'Account was disabled. Sign in to enable it again.'
   end
 
+  def post_to_facebook
+    current_user.post_to_wall
+    current_user.open_visitors_at = Time.now
+    current_user.save(validation: false)
+    redirect_to :back
+  end
+
+  def tweet
+
+  end
+
  private
     # Using a private method to encapsulate the permissible parameters
     # is just a good pattern since you'll be able to reuse the same

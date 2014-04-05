@@ -63,11 +63,10 @@ Friendiose::Application.routes.draw do
   get 'disable_account' => 'users#disable_account'
   get 'edit_age' => 'users#edit_age'
   put 'update_age' => 'users#update_age'
+  get 'post_to_facebook' => 'users#post_to_facebook', as: :post_to_facebook
 
   resources :users do
     resources :questions
-    # post 'add_favorite', on: :member
-    # delete 'destroy_favorite', on: :member
   end
 
   resources :photos do

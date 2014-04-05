@@ -356,4 +356,11 @@ class User < ActiveRecord::Base
       false
     end
   end
+
+  def post_to_wall
+    token = self.authorizations.where(provider: 'Facebook').first.token
+    graph = Koala::Facebook::API.new(token)
+    graph.put_wall_post("Hey! I just joined Friendiose.com, check it out and meet new friends!",
+     {:name => "friendiose.com", :link => "http://www.friendiose.com"}, "me")
+  end
 end
