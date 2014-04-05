@@ -104,14 +104,14 @@ class UsersController < ApplicationController
     current_user.post_to_wall
     current_user.open_visitors_at = Time.now
     current_user.save(validation: false)
-    redirect_to :back
+    redirect_to :back, notice: "Congrats, you've successfully unlocked this premium feature. Your message has been posted to Facebook. You can now see who viewed your profile for 1 month!"
   end
 
   def post_to_twitter
     current_user.post_tweets
     current_user.open_visitors_at = Time.now
     current_user.save(validation: false)
-    redirect_to :back
+    redirect_to :back, notice: "Congrats, you've successfully unlocked this premium feature. Your message has been posted to Twitter. You can now see who viewed your profile for 1 month!"
   end
 
  private

@@ -1,5 +1,6 @@
 <div class="row attending-peoples participant_<%= @participant.id %>">
   <div class="col-xs-12">
+    <%= link_to profile_path(@participant) do %>
     <div class="attending-peoples-image">
       <% if @participant.profile_photo.present? %>
         <%= image_tag(@participant.profile_photo.file.small.url) %>
@@ -7,7 +8,8 @@
         <%= image_tag("people_image.jpg") %>
       <% end %>
     </div>
-    <p><%= @participant.name %></p>
+    <p><%= (current_user == @participant) ? 'Me' : @participant.name %></p>
+    <% end %>
     <div class="clr"></div>
   </div>
 </div>

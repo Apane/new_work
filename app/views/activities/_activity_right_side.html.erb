@@ -37,14 +37,16 @@
       <% @participants.each do |user| %>
         <div class="row attending-peoples participant_<%= user.id %>">
           <div class="col-xs-12">
+            <%= link_to profile_path(user) do %>
             <div class="attending-peoples-image">
-              <% if user.profile_image.present? %>
-                <%= image_tag(user.profile_image_url(:thumb), size: '35x35') %>
+              <% if user.profile_photo.present? %>
+                <%= image_tag(user.profile_photo.file.thumb.url) %>
               <% else %>
                 <%= image_tag("people_image.jpg") %>
               <% end %>
             </div>
-            <p><%= user.name %></p>
+            <p><%= (current_user == user) ? 'Me' : user.name %></p>
+            <% end %>
             <div class="clr"></div>
           </div>
         </div>

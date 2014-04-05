@@ -64,8 +64,14 @@
         <div class="form-info">
           <p class="creat-event-details">Activity image</p>
           <div class="form-group">
-            <%= f.label :image, 'Activity Image' %>
-            <%= f.file_field :image, class: 'form-control' %>
+            <button class="btn btn-primary btn-lg up-new" type="button">Activity Photo</button>
+            <div style="display:none;">
+              <%= f.file_field :image, class: 'form-control' %>
+            </div>
+            <div class="pull-right">
+              <%= f.check_box :remove_image %>
+              <span style="margin:20px 0 0 10px;">Remove photo</span>
+            </div>
           </div>
         </div>
         <div class="form-info">
@@ -282,4 +288,8 @@
     });
 
   })
+
+  $('.up-new').click(function() {
+    $('input[type=file]#activity_image').trigger('click');
+  });
 </script>

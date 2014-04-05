@@ -52,26 +52,15 @@
           <h3><center>This is a premium feature</center></h3>
           <h5><center>You can unlock by:</center></h5>
           <br />
-
- <div class="social-buttons" style="background-color: transparent;">
-          <center style="margin-right: 45px;">Posting to Facebook about Friendiose: </center><br/>
-
-          <%= link_to 'Post to Facebook', post_to_facebook_path, class: 'zocial facebook facebook-btn', style: "margin-left: -35px;" %>
-
-          <hr />
-
-          <center style="margin-right: 45px;">Tweeting about Friendiose: </center><br/>
-
-
-    <a href class="zocial twitter" data-toggle="modal" data-target="#fb_modal" style="margin-left: -35px;">
-              Share on Twitter
-            </a>
-
+          <div class="social-buttons" style="background-color: transparent;">
+            <center style="margin-right: 45px;">Posting to Facebook about Friendiose: </center><br/>
+              <%= link_to 'Post to Facebook', post_to_facebook_path, class: 'zocial facebook facebook-btn', style: "margin-left: -35px;" %>
+              <hr />
+            <center style="margin-right: 45px;">Tweeting about Friendiose: </center><br/>
+            <%= link_to 'Share on Twitter', post_to_twitter_path, class: 'zocial twitter', style: 'margin-left: -35px;' %>
             <br />
             <hr />
-
-    </div>
-
+          </div>
         </div>
       <% end %>
     </div>

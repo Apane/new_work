@@ -12,7 +12,7 @@ class Activity < ActiveRecord::Base
   attr_accessible :title, :description, :location, :date, :time, :activity_date,
         :lat, :lng, :location_name, :activity_type, :postal_code, :country,
         :state, :city, :frequency_id, :category_id, :gender, :ethnicity_id,
-        :age_min, :age_max, :ages, :district, :image
+        :age_min, :age_max, :ages, :district, :image, :remove_image
 
   validates :title, :description, :date, :location, :date, :time, :location_name,
             :city, :state, :postal_code, presence: true

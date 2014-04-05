@@ -138,6 +138,7 @@ class ActivitiesController < ApplicationController
     def activity_params
       params.require(:activity).permit(:title, :description, :location, :date, :time, :activity_date,
         :lat, :lng, :location, :location_name, :activity_type, :postal_code, :country, :state, :city,
-        :frequency_id, :category_id, :gender, :ethnicity_id, :age_min, :age_max, :ages, :district, :image)
+        :frequency_id, :category_id, :gender, :ethnicity_id, :age_min, :age_max, :ages, :district, :image,
+        :remove_image)
     end
 end

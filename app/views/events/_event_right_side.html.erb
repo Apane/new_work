@@ -39,7 +39,7 @@
                 <%= image_tag("people_image.jpg") %>
               <% end %>
             </div>
-            <p><%= user.name %></p>
+            <p><%= (current_user == user) ? 'Me' : user.name %></p>
             <% end %>
             <div class="clr"></div>
           </div>

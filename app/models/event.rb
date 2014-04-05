@@ -11,7 +11,7 @@ class Event < ActiveRecord::Base
 
   attr_accessible :title, :description, :location, :date, :time, :event_date, :lat, :lng, :location_name, :gender,
       :event_type, :max_attendees, :postal_code, :country, :state, :district, :city, :image, :category_id, :ethnicity_id,
-      :ages
+      :ages, :remove_image
 
   attr_accessor :ages
 

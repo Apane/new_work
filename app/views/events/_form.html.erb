@@ -64,8 +64,14 @@
             <%= f.text_field :title, class: 'form-control', required: true %>
           </div>
           <div class="form-group">
-            <%= f.label :image, 'Event Image' %>
-            <%= f.file_field :image, class: 'form-control', required: true %>
+            <button class="btn btn-primary btn-lg up-new" type="button">Event Photo</button>
+            <div style="display:none;">
+              <%= f.file_field :image, class: 'form-control' %>
+            </div>
+            <div class="pull-right">
+              <%= f.check_box :remove_image %>
+              <span style="margin:20px 0 0 10px;">Remove photo</span>
+            </div>
           </div>
           <div class="form-group">
             <%= f.label :location_name, 'Location Name:' %>
@@ -275,5 +281,9 @@
       type: "info",
       icon: 'ui-icon ui-icon-signal-diag'
     });
+  });
+
+  $('.up-new').click(function() {
+    $('input[type=file]#event_image').trigger('click');
   });
 </script>
