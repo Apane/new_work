@@ -9,7 +9,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     build_resource(sign_up_params)
-    unless @zip_codes.include?(resource.zip)
+    if @zip_codes.include?(resource.zip)
      if resource.save
         if resource.active_for_authentication?
           set_flash_message :notice, :signed_up if is_navigational_format?
@@ -25,7 +25,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
         respond_with resource
       end
     else
-      redirect_to home_path, error: 'You are not allowed to sign up from this address.'
+      TempEmail.create(email: params[:user][:email], first_name: params[:user][:first_name],
+        last_name: params[:user][:last_name], zip: params[:user][:zip])
+      notice = "Sorry #{params[:user][:first_name]}, we are not accepting sign-ups from outside of New York at the moment, however, we will notify you when we launch in your area!"
+      redirect_to root_path, notice: notice
     end
   end
 

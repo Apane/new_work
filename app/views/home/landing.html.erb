@@ -27,23 +27,23 @@
             <form role="form">
               <div class="form-group">
                 <label for="exampleInputEmail1"></label>
-                <%= f.text_field :first_name, class: 'form-control', id: 'Email1', placeholder: 'First Name' %>
+                <%= f.text_field :first_name, class: 'form-control', id: 'Email1', placeholder: 'First Name', required: true %>
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1"></label>
-                <%= f.text_field :last_name, class: 'form-control', id: 'Email1', placeholder: 'Last Name' %>
+                <%= f.text_field :last_name, class: 'form-control', id: 'Email1', placeholder: 'Last Name', required: true %>
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1"></label>
-                <%= f.email_field :email, class: 'form-control', id: 'Email1', placeholder: 'Email' %>
+                <%= f.email_field :email, class: 'form-control', id: 'Email1', placeholder: 'Email', required: true %>
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1"></label>
-                <%= f.password_field :password, class: 'form-control', id: 'Password', placeholder: 'Password' %>
+                <%= f.password_field :password, class: 'form-control', id: 'Password', placeholder: 'Password', required: true %>
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1"></label>
-                <%= f.text_field :zip, class: 'form-control', id: 'zip', placeholder: 'Zip' %>
+                <%= f.text_field :zip, class: 'form-control', id: 'zip', placeholder: 'Zip', required: true %>
               </div>
               <div class="form-group">
               <label for="Date" style="display:block; margin-bottom:5px; text-decoration: underline;">Date of Birth :</label>

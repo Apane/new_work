@@ -16,9 +16,9 @@ ActiveAdmin.register_page "Dashboard" do
           table_for User.last(10).map do |user|
             column(:full_name) {|user| link_to user.name, admin_user_path(user) }
             column(:completed) {|user| user.has_completed_profile? ? status_tag('yes', :ok) : status_tag("#{user.profile_completed}%", :error) }
-            #column(:confirmed) { |user| user.confirmed? ? status_tag('yes', :ok) : status_tag('no', :error) }
-            column(:gender) {|u| User::GENDER[u.gender][0]}
-            column(:last_sign_in_at) {|u| l u.last_sign_in_at, format: :short}
+            column(:confirmed) { |user| user.confirmed? ? status_tag('yes', :ok) : status_tag('no', :error) }
+            column(:gender) {|u| User::GENDER[u.gender][0] if u.gender != nil}
+            column(:last_sign_in_at) {|u| l u.last_sign_in_at, format: :short unless u.last_sign_in_at == nil}
             column :age
             column :ethnicity
             column :email
