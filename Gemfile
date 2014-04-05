@@ -47,6 +47,7 @@ gem 'jquery-fileupload-rails'
 gem 'carrierwave-aws'
 gem 'best_in_place', :git => 'https://github.com/bernat/best_in_place.git'
 gem 'omniauth-twitter'
+gem 'twitter' # A Ruby interface to the Twitter API.
 gem 'omniauth-facebook'
 gem "koala", "~> 1.8.0rc1" # Facebook library for Ruby, supporting the Graph API, the REST API, realtime updates, test users, and OAuth validation.
 gem 'omniauth-linkedin'

@@ -107,8 +107,11 @@ class UsersController < ApplicationController
     redirect_to :back
   end
 
-  def tweet
-
+  def post_to_twitter
+    current_user.post_tweets
+    current_user.open_visitors_at = Time.now
+    current_user.save(validation: false)
+    redirect_to :back
   end
 
  private

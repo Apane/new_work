@@ -363,4 +363,24 @@ class User < ActiveRecord::Base
     graph.put_wall_post("Hey! I just joined Friendiose.com, check it out and meet new friends!",
      {:name => "friendiose.com", :link => "http://www.friendiose.com"}, "me")
   end
+
+  def post_tweets #(message)
+    auth = self.authorizations.where(provider: 'Twitter').first
+    auth_token = auth.token
+    auth_secret = auth.secret
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key = ENV['TWITTER_CONSUMER_KEY']
+      config.consumer_secret = ENV['TWITTER_CONSUMER_SECRET']
+      config.oauth_token = auth_token
+      config.oauth_token_secret = auth_secret
+    end
+
+    begin
+      client.update("Hey! I just joined friendiose.com, check it out and meet new friends!")
+      return true
+    rescue Exception => e
+      self.errors.add(:oauth_token, "Unable to send to twitter: #{e.to_s}")
+      return false
+    end
+  end
 end
