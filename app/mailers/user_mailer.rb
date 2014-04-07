@@ -17,7 +17,7 @@ class UserMailer < ActionMailer::Base
     @event = event_participant.event
     @owner = @event.user
     @participant = event_participant.user
-    mail to: @owner.email, subject: "Friendiose - #{@participant.name}, has RSVP'd for your #{@event.title} event"
+    mail to: @owner.email, subject: "#{@owner.name}, #{@participant.name} is attending your #{@event.title} event"
   end
 
   def new_activity_participant(participant)
