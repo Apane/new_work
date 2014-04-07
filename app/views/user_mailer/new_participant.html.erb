@@ -1,7 +1,9 @@
 <p>
   Hi <%= @owner.name %>,
   <br/><br/>
-  <%= image_tag @participant.profile_photo.file.small.url %> - <%= @participant.name %> has joined your event <b><%= @event.title %></b>!
+  <%= image_tag @participant.profile_photo.file.small.url %>
+  <br/><br/>
+  <%= @participant.name %> has joined your event <b><%= @event.title %></b>!
 </p>
 
 <p>
