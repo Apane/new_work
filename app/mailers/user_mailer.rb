@@ -10,7 +10,7 @@ class UserMailer < ActionMailer::Base
     @message = message
     @recipient = message.recipient
     @sender = message.sender
-    mail to: @recipient.email, subject: "Friendiose - #{@recipient}, You have received a new message from #{@sender.name}"
+    mail to: @recipient.email, subject: "#{@recipient}, You have received a new message from #{@sender.name}"
   end
 
   def new_participant(event_participant)
@@ -24,7 +24,7 @@ class UserMailer < ActionMailer::Base
     @activity = participant.activity
     @owner = @activity.user
     @participant = participant.user
-    mail to: @owner.email, subject: "Friendiose - #{@participant.name} is interested in your #{@activity.title} activity"
+    mail to: @owner.email, subject: "#{@participant.name} is interested in your #{@activity.title} activity"
   end
 
   def new_comment(comment, participant)
@@ -32,7 +32,7 @@ class UserMailer < ActionMailer::Base
     @commenter = comment.user
     @commentable = comment.commentable
     @participant = participant
-    mail to: participant.email, subject: "Friendiose - New comment by #{@commenter.name} on #{@commentable.title} (#{@commentable.class.name.downcase})"
+    mail to: participant.email, subject: "New comment by #{@commenter.name} on #{@commentable.title} (#{@commentable.class.name.downcase})"
   end
 
   def new_visitor(visit)
