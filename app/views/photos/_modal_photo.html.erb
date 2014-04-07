@@ -4,7 +4,7 @@
     <% %w[x y w h].each do |attribute| %>
       <%= f.text_field "crop_#{attribute}", hidden: true %>
     <% end %>
-    <%= f.submit "Crop", class: 'btn btn-primary btn-lg photo-b' if photo.is_owned_by?(current_user) %>
+    <%= f.submit "Crop", class: 'btn btn-primary btn-lg photo-b', disable_with: 'Saving photo...' if photo.is_owned_by?(current_user) %>
     <span class="crop_message"></span>
   </div>
 <% end %>

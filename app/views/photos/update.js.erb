@@ -1,10 +1,11 @@
-$( document ).ajaxStart(function() {
-  $( ".crop_message" ).html('Processing ....');
-});
+// $( document ).ajaxStart(function() {
+//   // $( ".crop_message" ).html('Processing ....');
+//   alert('started')
+// });
 
-// $( document ).ajaxComplete(function() {
-  // $( ".crop_message" ).html('');
+$( document ).ajaxSuccess(function() {
+  // alert('Completed')
   imageUrl = '<%= @photo.file.url(:large) %>'
   $('#frame_<%= @photo.id %>').css("background-image", 'url(' + imageUrl + ')');
-// });
+});
 $('#myModal').modal('hide');
