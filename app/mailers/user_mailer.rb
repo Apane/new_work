@@ -17,14 +17,14 @@ class UserMailer < ActionMailer::Base
     @event = event_participant.event
     @owner = @event.user
     @participant = event_participant.user
-    mail to: @owner.email, subject: "Friendiose - #{@participant}, has RSVP'd for your #{@event.title} event"
+    mail to: @owner.email, subject: "Friendiose - #{@participant.name}, has RSVP'd for your #{@event.title} event"
   end
 
   def new_activity_participant(participant)
     @activity = participant.activity
     @owner = @activity.user
     @participant = participant.user
-    mail to: @owner.email, subject: "Friendiose - #{@participant} is interested in your #{@activity.title} activity"
+    mail to: @owner.email, subject: "Friendiose - #{@participant.name} is interested in your #{@activity.title} activity"
   end
 
   def new_comment(comment, participant)
