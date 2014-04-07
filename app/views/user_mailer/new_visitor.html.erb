@@ -1,11 +1,15 @@
 <p>
-  Hi <%= @user.name %>, your profile was visited by <b><%= @visitor.name %></b>!
-</p>
-
-<p>
-  <%= @comment %>
+  Hi <%= @user.name %>,
+  <br/>
+  <br/>
+  <b><%= @visitor.name %></b> viewed your profile.
 </p>
 
 <p>
   <%= link_to 'See more', visitors_url %>
+</p>
+
+<p>
+  Thanks,<br />
+  Friendiose Team
 </p>

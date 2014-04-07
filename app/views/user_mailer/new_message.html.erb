@@ -1,5 +1,7 @@
 <p>
-  Hi <%= @recipient.name %>, you have a new message from <%= @sender.name %>!
+  Hi <%= @recipient.name %>,
+  <br/><br/>
+  You have recieved the following message from <%= @sender.name %>:
 </p>
 
 <p>
@@ -8,4 +10,9 @@
 
 <p>
   <%= link_to 'Reply to message', message_url(@message.conversation) %>
+</p>
+
+<p>
+  Thanks,<br />
+  Friendiose Team
 </p>

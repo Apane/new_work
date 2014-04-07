@@ -1,11 +1,14 @@
 <p>
-  Hi <%= @owner.name %>, new participant to <b><%= @event.title %></b>  event!
-</p>
-
-<p>
-  <%= @participant.name %>
+  Hi <%= @owner.name %>,
+  <br/><br/>
+  #{@participant.profile_photo.thumb.file.url} - #{@participant.name} has joined your event <b><%= @event.title %></b>!
 </p>
 
 <p>
   <%= link_to 'Go to event', event_url(@event) %>
+</p>
+
+<p>
+  Thanks,<br />
+  Friendiose Team
 </p>

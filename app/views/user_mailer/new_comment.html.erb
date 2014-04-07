@@ -1,11 +1,11 @@
 <p>
   Hi <%= @participant.name %>,
   <br /><br />
-  <b><%= @commenter.name %></b> has posted a new comment on <b><%= @commentable.title %> <%= @commentable.class.name %>:</b>
+  <b><%= @commenter.name %></b> has posted a new comment on your <%= @commentable.class.name.downcase %> <b><%= @commentable.title %>:</b>
 </p>
 
 <p>
-  <%= @comment %>
+  <%= @comment.body %>
 </p>
 
 <p>
@@ -13,7 +13,6 @@
 </p>
 
 <p>
-  Thanks,
+  Thanks,<br />
   Friendiose Team
 </p>
-

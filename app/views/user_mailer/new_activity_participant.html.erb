@@ -1,11 +1,18 @@
 <p>
-  Hi <%= @owner.name %>, new participant to <b><%= @activity.title %></b>  activity!
+  Hi <%= @owner.name %>,
+  <br/><br/>
+  #{@participant.name} has shown interest in your posted activity (<b><%= @activity.title %></b>)
 </p>
 
 <p>
-  <%= link_to @participant.name, profile_url(@participant) %>
+  Go ahead and <%= link_to 'respond back with a message', profile_url(@participant) %>
 </p>
 
 <p>
   <%= link_to 'Go to activity', activity_url(@activity) %>
+</p>
+
+<p>
+  Thanks,<br />
+  Friendiose Team
 </p>
