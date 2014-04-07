@@ -114,6 +114,16 @@ class UsersController < ApplicationController
     redirect_to :back, notice: "Congrats, you've successfully unlocked this premium feature. Your message has been posted to Twitter. You can now see who viewed your profile for 1 month!"
   end
 
+  def users_interests
+    pref = params[:user].to_json
+    current_user.preferences = pref
+    current_user.save(validation: false)
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js
+    end
+  end
+
  private
     # Using a private method to encapsulate the permissible parameters
     # is just a good pattern since you'll be able to reuse the same

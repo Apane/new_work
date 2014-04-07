@@ -1,0 +1,90 @@
+<div class="col-md-12 top-five">
+  <div class="row">
+    <div class="col-md-6">
+      <p>Books</p>
+      <ul>
+      <% @books.each do |id, value| %>
+        <li><%= value %></li>
+      <% end %>
+      </ul>
+    </div>
+
+    <div class="col-md-6">
+      <p>Movies</p>
+      <ul>
+      <% @movies.each do |id, value| %>
+        <li><%= value %></li>
+      <% end %>
+      </ul>
+    </div>
+
+
+    <div class="col-md-6">
+      <p>Blogs</p>
+      <ul>
+      <% @blogs.each do |id, value| %>
+        <li><%= value %></li>
+      <% end %>
+      </ul>
+    </div>
+
+    <div class="col-md-6">
+      <p>Website</p>
+      <ul>
+      <% @websites.each do |id, value| %>
+        <li><%= value %></li>
+      <% end %>
+      </ul>
+    </div>
+
+
+    <div class="col-md-6">
+      <p>People</p>
+      <ul>
+      <% @people.each do |id, value| %>
+        <li><%= value %></li>
+      <% end %>
+      </ul>
+    </div>
+
+    <div class="col-md-6">
+      <p>Things</p>
+      <ul>
+      <% @things.each do |id, value| %>
+        <li><%= value %></li>
+      <% end %>
+      </ul>
+    </div>
+
+
+    <div class="col-md-6">
+      <p>Activities</p>
+      <ul>
+      <% @pref_activities.each do |id, value| %>
+        <li><%= value %></li>
+      <% end %>
+      </ul>
+    </div>
+
+    <div class="col-md-6">
+      <p>Values</p>
+      <ul>
+      <% @values.each do |id, value| %>
+        <li><%= value %></li>
+      <% end %>
+      </ul>
+    </div>
+
+
+    <div class="col-md-6">
+      <p>Pet Peeves</p>
+      <ul>
+      <% @pets.each do |id, value| %>
+        <li><%= value %></li>
+      <% end %>
+      </ul>
+    </div>
+
+    <div class="clr"></div>
+  </div>
+</div>

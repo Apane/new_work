@@ -72,17 +72,18 @@
       </div>
 
       <div id="tabs-3">
-        <% @questions_for_personality.each_with_index do |question, index| %>
-        <div class="about-summary">
-          <p class="summary-heading"><%= question.question %>
-            <span class="edit-icon edit-question" data-id="<%= question.id %>" id="edit_link_<%= question.id %>">
+        <%= render 'home/top_five' %>
+        <%# @questions_for_personality.each_with_index do |question, index| %>
+<!--         <div class="about-summary">
+          <p class="summary-heading"><%#= question.question %>
+            <span class="edit-icon edit-question" data-id="<%#= question.id %>" id="edit_link_<%#= question.id %>">
             </span>
           </p>
-          <p class="summary-info <%= 'empty' if question.answer.present? && question.answer.length == 0 %>" id="answer_<%= question.id %>">
-            <%= question.answer %>
+          <p class="summary-info <%#= 'empty' if question.answer.present? && question.answer.length == 0 %>" id="answer_<%#= question.id %>">
+            <%#= question.answer %>
           </p>
-        </div>
-        <% end %>
+        </div> -->
+        <%# end %>
       </div>
     </div>
   </div>

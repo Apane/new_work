@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :zip, :remember_me, :first_name, :last_name,
                   :birthday, :current_password, :occupation, :address, :interests, :aboutme, :profile_image,
                   :photos_attributes, :age, :education_id, :ethnicity_id, :blurb, :gender, :email_confirmation,
-                  :lat, :lng, :open_visitors_at
+                  :lat, :lng, :open_visitors_at, :preferences
 
   attr_accessor :email_confirmation
 
@@ -124,7 +124,7 @@ class User < ActiveRecord::Base
 
   def create_questions_and_mail_settings
     Question::QUESTIONS_FOR_ABOUT.map{|q| self.questions.create(question: q, for_about: true)}
-    Question::QUESTIONS_FOR_PERSONALITY.map{|q| self.questions.create(question: q, for_personality: true)}
+    # Question::QUESTIONS_FOR_PERSONALITY.map{|q| self.questions.create(question: q, for_personality: true)}
     MailSetting.create(user_id: self.id)
   end
 

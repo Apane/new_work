@@ -49,14 +49,15 @@
         </div>
       </div>
       <div id="tabs-3">
-        <% @questions_for_personality.each_with_index do |question, index| %>
-        <div class="about-summary">
-          <p class="summary-heading"><%= question.question %></p>
-          <p class="summary-info <%= 'empty' if question.answer.present? && question.answer.length == 0 %>">
-            <%= question.answer %>
+        <%= render 'profiles/top_five' %>
+        <%# @questions_for_personality.each_with_index do |question, index| %>
+<!--         <div class="about-summary">
+          <p class="summary-heading"><%#= question.question %></p>
+          <p class="summary-info <%#= 'empty' if question.answer.present? && question.answer.length == 0 %>">
+            <%#= question.answer %>
           </p>
-        </div>
-        <% end %>
+        </div> -->
+        <%# end %>
       </div>
     </div>
   </div>

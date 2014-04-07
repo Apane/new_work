@@ -1,0 +1,97 @@
+<div class="col-md-12 top-five">
+  <div class="row">
+    <%= form_tag '/users_interests', remote: true do %>
+    <div class="col-md-6">
+      <p>Books</p>
+      <ul>
+      <% @books.each do |id, value| %>
+        <li><input type="text" class="form-control" name="user[books][<%= id %>]" value='<%= value %>'></li>
+      <% end %>
+      </ul>
+    </div>
+
+    <div class="col-md-6">
+      <p>Movies</p>
+      <ul>
+      <% @movies.each do |id, value| %>
+        <li><input type="text" class="form-control" name="user[movies][<%= id %>]" value='<%= value %>'></li>
+      <% end %>
+      </ul>
+    </div>
+
+
+    <div class="col-md-6">
+      <p>Blogs</p>
+      <ul>
+      <% @blogs.each do |id, value| %>
+        <li><input type="text" class="form-control" name="user[blogs][<%= id %>]" value='<%= value %>'></li>
+      <% end %>
+      </ul>
+    </div>
+
+    <div class="col-md-6">
+      <p>Website</p>
+      <ul>
+      <% @websites.each do |id, value| %>
+        <li><input type="text" class="form-control" name="user[websites][<%= id %>]" value='<%= value %>'></li>
+      <% end %>
+      </ul>
+    </div>
+
+
+    <div class="col-md-6">
+      <p>People</p>
+      <ul>
+      <% @people.each do |id, value| %>
+        <li><input type="text" class="form-control" name="user[people][<%= id %>]" value='<%= value %>'></li>
+      <% end %>
+      </ul>
+    </div>
+
+    <div class="col-md-6">
+      <p>Things</p>
+      <ul>
+      <% @things.each do |id, value| %>
+        <li><input type="text" class="form-control" name="user[things][<%= id %>]" value='<%= value %>'></li>
+      <% end %>
+      </ul>
+    </div>
+
+
+    <div class="col-md-6">
+      <p>Activities</p>
+      <ul>
+      <% @pref_activities.each do |id, value| %>
+        <li><input type="text" class="form-control" name="user[activities][<%= id %>]" value='<%= value %>'></li>
+      <% end %>
+      </ul>
+    </div>
+
+    <div class="col-md-6">
+      <p>Values</p>
+      <ul>
+      <% @values.each do |id, value| %>
+        <li><input type="text" class="form-control" name="user[values][<%= id %>]" value='<%= value %>'></li>
+      <% end %>
+      </ul>
+    </div>
+
+
+    <div class="col-md-6">
+      <p>Pet Peeves</p>
+      <ul>
+      <% @pets.each do |id, value| %>
+        <li><input type="text" class="form-control" name="user[pets][<%= id %>]" value='<%= value %>'></li>
+      <% end %>
+      </ul>
+    </div>
+
+    <div class="clr"></div>
+    <div class="col-md-12 text-center">
+      <%= submit_tag 'Save Changes', class: 'btn btn-default send-m-button', disable_with: 'Saving....' %>
+      <br>
+      <div class="clr"></div>
+    </div>
+    <% end %>
+  </div>
+</div>

@@ -65,6 +65,7 @@ Friendiose::Application.routes.draw do
   put 'update_age' => 'users#update_age'
   get 'post_to_facebook' => 'users#post_to_facebook', as: :post_to_facebook
   get 'post_to_twitter' => 'users#post_to_twitter', as: :post_to_twitter
+  post 'users_interests' => 'users#users_interests', as: :users_interests
 
   resources :users do
     resources :questions
