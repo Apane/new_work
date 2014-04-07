@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :zip, :remember_me, :first_name, :last_name,
                   :birthday, :current_password, :occupation, :address, :interests, :aboutme, :profile_image,
                   :photos_attributes, :age, :education_id, :ethnicity_id, :blurb, :gender, :email_confirmation,
-                  :lat, :lng, :open_visitors_at, :preferences
+                  :lat, :lng, :open_visitors_at, :preferences, :employer
 
   attr_accessor :email_confirmation
 

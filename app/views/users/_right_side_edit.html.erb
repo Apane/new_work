@@ -44,6 +44,16 @@
             nil: 'I am empty...', inner_class: 'form-control' %>
       </div>
     </div>
+   <div class="panel-heading">
+      <h3 class="panel-title bold">Employer</h3>
+      <span class="edit-icon pull-right edit-address"></span>
+    </div>
+    <div class="panel-body">
+      <div>
+        <%= best_in_place current_user, :employer, activator: ".edit-address",
+            nil: 'I am empty...', inner_class: 'form-control' %>
+      </div>
+    </div>
     <div class="panel-heading">
       <h3 class="panel-title bold">Ethnicity</h3>
       <span class="edit-icon pull-right edit-ethnicity"></span>
