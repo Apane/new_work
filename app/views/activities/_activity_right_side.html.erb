@@ -89,10 +89,10 @@
       <h3 class="panel-title">Ethnicity</h3>
     </div>
     <div class="panel-body">
-    <% if @owner.ethnicity.name.nil? %>
+    <% if @owner.ethnicity.nil? %>
       -
     <% else %>
-      <%= @owner.ethnicity.name %>
+      <%= @owner.ethnicity %>
     <% end %>
     </div>
 
@@ -100,10 +100,10 @@
       <h3 class="panel-title">Education</h3>
     </div>
     <div class="panel-body">
-      <% if @owner.ethnicity.name.nil? %>
+      <% if @owner.education.nil? %>
        -
       <% else %>
-       <%= @owner.ethnicity.name %>
+       <%= @owner.education %>
       <% end %>
     </div>
   </div>
