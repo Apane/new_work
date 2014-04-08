@@ -12,7 +12,7 @@
             <% end %>
           </div>
           <div class="users_about_fullinfo">
-            <h3><%= @user.name %></h3>
+            <h3><%= @user.username %></h3>
             <p>
               <%= @user.blurb %>
             </p>
@@ -44,7 +44,7 @@
               <%= render @user.photos %>
             </ul>
           <% else %>
-            <center>Sorry, <%= @user.first_name %> has no photos...</center>
+            <center>Sorry, <%= @user.username %> has no photos...</center>
           <% end %>
         </div>
       </div>

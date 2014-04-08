@@ -12,6 +12,16 @@
       </div>
     </div>
     <div class="panel-heading">
+      <h3 class="panel-title bold">Username</h3>
+      <span class="edit-icon pull-right edit-username"></span>
+    </div>
+    <div class="panel-body">
+      <div>
+        <%= best_in_place current_user, :username, activator: ".edit-username",
+            nil: 'I am empty...', inner_class: 'form-control' %>
+      </div>
+    </div>
+    <div class="panel-heading">
       <h3 class="panel-title bold">Gender</h3>
       <span class="edit-icon pull-right edit-gender"></span>
     </div>
@@ -24,7 +34,7 @@
             inner_class: 'form-control' %>
       </div>
     </div>
-   <div class="panel-heading">
+    <div class="panel-heading">
       <h3 class="panel-title bold">Location</h3>
       <span class="edit-icon pull-right edit-address"></span>
     </div>

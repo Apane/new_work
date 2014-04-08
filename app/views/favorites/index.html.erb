@@ -19,10 +19,6 @@
         </div>
       </div>
 
-
-      <%#= @favorites.map(&:name).to_sentence %>
-
-
       <% @favorites.each do |favorite| %>
       <%= link_to profile_path(favorite.favorited) do %>
       <div class="col-md-12 users_info visitors">
@@ -36,7 +32,7 @@
               <% end %>
             </div>
             <div class="users_about_info">
-              <h4><%= favorite.favorited.name %></h4>
+              <h4><%= favorite.favorited.username %></h4>
               <p class="visit-time">
                 <%= timeago_tag(favorite.created_at) %>
               </p>

@@ -1,6 +1,6 @@
 class ConversationsController < ApplicationController
   before_filter :authenticate_user!
-  before_action :set_conversation, only: [:show, :edit, :update]
+  before_action :set_conversation, only: [:show, :edit, :update, :report]
 
   # GET /conversations
   # GET /conversations.json
@@ -88,6 +88,17 @@ class ConversationsController < ApplicationController
       format.html { redirect_to :back }
       format.json { head :no_content }
     end
+  end
+
+  def report
+    @conversation.reports.create(user_id: current_user.id)
+    redirect_to :back, notice: ' Conversation has been reported! The administration will be notified.'
+  end
+
+  def block_user
+    companion = User.find(params[:id])
+    current_user.block(companion)
+    redirect_to :back, notice: "#{companion.username} blocked"
   end
 
   private

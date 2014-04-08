@@ -6,12 +6,12 @@
   <%= link_to 'Edit Activity Details', edit_activity_path(@activity), class: 'btn btn-primary btn-lg btn-block edit-event margin-b' %>
   <% else %>
   <!-- <button type="button" class="btn btn-primary btn-lg btn-block creat-event margin-b">i'm interested</button> -->
-    <span class="attend_button">
-      <%= attend_to_activity(@activity) %>
-    </span>
+  <span class="attend_button">
+    <%= attend_to_activity(@activity) %>
+  </span>
   <% end %>
   <% unless @owner == current_user %>
-  <button type="button" class="btn btn-primary btn-lg btn-block report-i">Report</button>
+  <%= link_to 'Report', report_activity_path(@activity), class: "btn btn-primary btn-lg btn-block report-i" %>
   <% end %>
   <div class="panel panel-default">
 
@@ -26,7 +26,7 @@
         <%= image_tag("people_image.jpg") %>
         <% end %>
       </div>
-      <p class="host-by-title"><%= @owner.name %></p>
+      <p class="host-by-title"><%= @owner.username %></p>
     </div>
 
 
@@ -45,7 +45,7 @@
                 <%= image_tag("people_image.jpg") %>
               <% end %>
             </div>
-            <p><%= (current_user == user) ? 'Me' : user.name %></p>
+            <p><%= (current_user == user) ? 'Me' : user.username %></p>
             <% end %>
             <div class="clr"></div>
           </div>

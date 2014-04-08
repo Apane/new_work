@@ -12,7 +12,7 @@
         </div>
 
         <div class="users_about_info">
-          <h4><%= user.name %></h4>
+          <h4><%= user.username %></h4>
           <p>
             <%= sanitize truncate(user.questions.first.answer, omision: "...", length: 300) %>
           </p>

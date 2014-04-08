@@ -4,6 +4,7 @@ class Photo < ActiveRecord::Base
   belongs_to :attachable, :polymorphic => true
   mount_uploader :file, FileUploader
   before_create :default_name
+  has_many :reports, as: :reportable
 
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
   after_update :crop_avatar

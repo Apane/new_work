@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :zip, :remember_me, :first_name, :last_name,
                   :birthday, :current_password, :occupation, :address, :interests, :aboutme, :profile_image,
                   :photos_attributes, :age, :education_id, :ethnicity_id, :blurb, :gender, :email_confirmation,
-                  :lat, :lng, :open_visitors_at, :preferences, :employer
+                  :lat, :lng, :open_visitors_at, :preferences, :employer, :username
 
   attr_accessor :email_confirmation
 
@@ -44,6 +44,7 @@ class User < ActiveRecord::Base
   has_many :hidden_users, dependent: :destroy
   has_many :blocked_users, dependent: :destroy
   has_one :mail_setting, dependent: :destroy
+  has_many :reports
 
   scope :active, -> { where(disabled_at: nil) }
 
@@ -53,10 +54,12 @@ class User < ActiveRecord::Base
   # validates :gender, :presence => true
   # validates :zip, :presence => true
   validates_length_of :blurb, :minimum => 5, :maximum => 140, :allow_blank => true
+  validates :username, :first_name, :last_name, :zip, :gender, presence: true
+  validates :username, uniqueness: true
 
 
   after_create :create_questions_and_mail_settings, :set_age
-  before_save :set_age, :get_gps_data
+  before_save :set_age, :get_gps_data, :username_to_downcase
 
   # pg_search_scope :search_by_full_name, :against => [:first_name, :last_name], :using => [:tsearch]
 
@@ -161,6 +164,10 @@ class User < ActiveRecord::Base
       self.lng = gps.lng
       self.city = gps.city
     end
+  end
+
+  def username_to_downcase
+    self.username = self.username.downcase
   end
 
   def disconnect(social)

@@ -8,7 +8,7 @@
       <% if message.sender == current_user %>
         Me
       <% else %>
-        <%= link_to message.sender.name, profile_path(message.sender) %>
+        <%= link_to message.sender.username, profile_path(message.sender) %>
       <% end %>
     </h4>
     <span class="s-time-date pull-right"><%= timeago_tag(message.created_at) %></span>

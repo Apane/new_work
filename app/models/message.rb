@@ -14,7 +14,7 @@ class Message < ActiveRecord::Base
       # message: truncate(self.body, :length => 150),
       message_title: 'New message',
       new_messages_count: self.recipient.inbox_messages.unread.count,
-      message: "<a href='/messages/#{self.conversation_id}'>You have a new message from #{self.sender.name}</a>".html_safe
+      message: "<a href='/messages/#{self.conversation_id}'>You have a new message from #{self.sender.username}</a>".html_safe
     })
     Pusher["new_messages_in_conversation_#{self.conversation_id}"].trigger('add_message_to_conversation', {
       conversation_id: self.conversation_id

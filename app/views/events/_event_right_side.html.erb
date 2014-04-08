@@ -1,6 +1,7 @@
 <div class="col-md-3">
     <span class="attend_button">
     <%= attend_to_event(@event) unless @event.expired? %>
+    <%= link_to 'Report', report_event_path(@event), class: "btn btn-primary btn-lg btn-block report-i" %>
     </span>
     <% if @event.owner_is?(current_user) %>
       <%= link_to 'Close Event', event_path(@event), class: 'btn btn-danger btn-lg btn-block mark-icon',
@@ -21,7 +22,7 @@
             <%= image_tag("people_image.jpg") %>
           <% end %>
         </div>
-        <p class="host-by-title"><%= @owner.name %></p>
+        <p class="host-by-title"><%= @owner.username %></p>
       <% end %>
     </div>
     <div class="panel-heading">
@@ -39,7 +40,7 @@
                 <%= image_tag("people_image.jpg") %>
               <% end %>
             </div>
-            <p><%= (current_user == user) ? 'Me' : user.name %></p>
+            <p><%= (current_user == user) ? 'Me' : user.username %></p>
             <% end %>
             <div class="clr"></div>
           </div>

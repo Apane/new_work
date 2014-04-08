@@ -17,14 +17,14 @@ class UserMailer < ActionMailer::Base
     @event = event_participant.event
     @owner = @event.user
     @participant = event_participant.user
-    mail to: @owner.email, subject: "#{@owner.name}, #{@participant.name} is attending your #{@event.title} event"
+    mail to: @owner.email, subject: "#{@participant.username} is attending the #{@event.title} event"
   end
 
   def new_activity_participant(participant)
     @activity = participant.activity
     @owner = @activity.user
     @participant = participant.user
-    mail to: @owner.email, subject: "#{@participant.name} is interested in your #{@activity.title} activity"
+    mail to: @owner.email, subject: "#{@participant.username} is interested in #{@activity.title} activity"
   end
 
   def new_comment(comment, participant)
@@ -32,14 +32,14 @@ class UserMailer < ActionMailer::Base
     @commenter = comment.user
     @commentable = comment.commentable
     @participant = participant
-    mail to: participant.email, subject: "New comment by #{@commenter.name} on #{@commentable.title} (#{@commentable.class.name.downcase})"
+    mail to: participant.email, subject: "New comment by #{@commenter.username} on #{@commentable.title} (#{@commentable.class.name.downcase})"
   end
 
   def new_visitor(visit)
     @user = visit.user
     @visitor = visit.visitor
 
-    mail to: @user.email, subject: "#{@visitor.name} viewed your Friendiose profile!"
+    mail to: @user.email, subject: "#{@visitor.username} viewed your Friendiose profile!"
   end
 
   # def reply_to_request(request)

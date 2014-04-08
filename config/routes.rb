@@ -7,6 +7,9 @@ Friendiose::Application.routes.draw do
     resources :comments
     post 'attend', on: :member
     delete 'stop_attend', on: :member
+    member do
+      get :report
+    end
   end
 
   get "favorites/index"
@@ -15,6 +18,7 @@ Friendiose::Application.routes.draw do
   resources :conversations do
     member do
       get :refresh_messages
+      get :report
     end
   end
 
@@ -58,6 +62,7 @@ Friendiose::Application.routes.draw do
   get 'toggle_favorite' => 'favorites#toggle_favorite'
   get 'toggle_blocked' => 'users#toggle_blocked'
   get 'toggle_hidden' => 'users#toggle_hidden'
+  get 'block_user/:id' => 'conversations#block_user', as: :block_user
   post 'act_on_conversations' => 'conversations#act_on_conversations'
   get 'update_profile_completness' => 'users#update_profile_completness'
   get 'disable_account' => 'users#disable_account'
@@ -81,6 +86,9 @@ Friendiose::Application.routes.draw do
     resources :comments
     post 'attend', on: :member
     delete 'stop_attend', on: :member
+    member do
+      get :report
+    end
   end
 
   resources :questions

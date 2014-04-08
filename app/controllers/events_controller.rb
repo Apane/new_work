@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_filter :set_event, only: [:report, :destroy, :attend, :stop_attend]
   before_filter :authenticate_user!
 
   def index
@@ -74,7 +75,6 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    @event = Event.find(params[:id])
     @event.destroy
 
     respond_to do |format|
@@ -84,7 +84,6 @@ class EventsController < ApplicationController
   end
 
   def attend
-    @event = Event.find(params[:id])
     @min_age = @event.age_min
     @max_age = @event.age_max
     # p "user age #{current_user.age} / #{current_user.gender}"
@@ -117,7 +116,6 @@ class EventsController < ApplicationController
   end
 
   def stop_attend
-    @event = Event.find(params[:id])
     @attendees_count = @event.participants.size
     @max_attendees = @event.max_attendees.present? ? (@event.max_attendees) : 100
 
@@ -137,6 +135,11 @@ class EventsController < ApplicationController
       format.html {redirect_to @event}
       format.js
     end
+  end
+
+  def report
+    @event.reports.create(user_id: current_user.id)
+    redirect_to :back, notice: ' Event has been reported! The administration will be notified.'
   end
 
   private

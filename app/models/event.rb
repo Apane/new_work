@@ -23,6 +23,7 @@ class Event < ActiveRecord::Base
   has_many :waiting_participants, -> { where(event_participants: {is_waiting: true}) }, through: :event_participants, source: :user
   has_many :notifications, as: :noteable
   has_many :categories
+  has_many :reports, as: :reportable
 
   before_save :set_min_max_age
   after_create :update_event_date, :add_owner_to_participants
@@ -72,7 +73,7 @@ class Event < ActiveRecord::Base
     participants = self.participants.where('user_id <> ?', participant.id)
     if participants.any?
       participants.each do |p|
-        Notification.send_notification(p, participant, self, "#{participant.name} joined #{self.title} event!")
+        Notification.send_notification(p, participant, self, "#{participant.username} joined #{self.title} event!")
       end
     end
   end
@@ -81,7 +82,7 @@ class Event < ActiveRecord::Base
     participants = self.participants.where('user_id <> ?', participant.id)
     if participants.any?
       participants.each do |p|
-        Notification.send_notification(p, participant, self, "#{participant.name} left #{self.title} event!")
+        Notification.send_notification(p, participant, self, "#{participant.username} left #{self.title} event!")
       end
     end
   end

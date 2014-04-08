@@ -23,7 +23,7 @@ class Comment < ActiveRecord::Base
       Pusher["notifications_for_event_#{self.commentable_id}"].trigger('new_comment', {
         user_id: self.user_id,
         message_title: 'New comment',
-        message: "<a href='/events/#{self.commentable_id}'>#{self.user.name} commented on #{self.commentable.title} event </a>".html_safe
+        message: "<a href='/events/#{self.commentable_id}'>#{self.user.username} commented on #{self.commentable.title} event </a>".html_safe
       })
     end
   end
@@ -35,7 +35,7 @@ class Comment < ActiveRecord::Base
       participants = self.commentable.participants.where('user_id <> ?', self.user_id)
       if participants.any?
         participants.each do |p|
-          Notification.send_notification(p, user, self, "#{user.name} commented on #{self.commentable.title} event!")
+          Notification.send_notification(p, user, self, "#{user.username} commented on #{self.commentable.title} event!")
         end
       end
       UserMailer.new_comment(self, owner).deliver if owner.accepts_email_for_new_comment?

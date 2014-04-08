@@ -23,6 +23,7 @@ class Activity < ActiveRecord::Base
   has_many :comments, as: :commentable
   has_many :activity_participants, dependent: :destroy
   has_many :participants, through: :activity_participants, source: :user
+  has_many :reports, as: :reportable
 
   belongs_to :user
   before_save :set_min_max_age
@@ -68,7 +69,7 @@ class Activity < ActiveRecord::Base
     participants = self.participants.where('user_id <> ?', participant.id)
     if participants.any?
       participants.each do |p|
-        Notification.send_notification(p, participant, self, "#{participant.name} is interested in #{self.title.html_safe} activity")
+        Notification.send_notification(p, participant, self, "#{participant.username} is interested in #{self.title.html_safe} activity")
       end
     end
   end

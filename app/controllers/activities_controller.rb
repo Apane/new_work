@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
   before_filter :authenticate_user!
-  before_action :set_activity, only: [:show, :edit, :update, :destroy]
+  before_action :set_activity, only: [:show, :edit, :update, :destroy, :attend, :stop_attend, :report]
 
   # GET /activities
   # GET /activities.json
@@ -91,7 +91,6 @@ class ActivitiesController < ApplicationController
   end
 
   def attend
-    @activity = Activity.find(params[:id])
     @min_age = @activity.age_min
     @max_age = @activity.age_max
 
@@ -116,7 +115,6 @@ class ActivitiesController < ApplicationController
   end
 
   def stop_attend
-    @activity = Activity.find(params[:id])
     # @attendees_count = @event.participants.size
     @participant = @activity.activity_participants.where(user_id: current_user.id, activity_id: @activity.id).first
     @participant.destroy
@@ -126,6 +124,11 @@ class ActivitiesController < ApplicationController
       format.html {redirect_to @activity}
       format.js
     end
+  end
+
+  def report
+    @activity.reports.create(user_id: current_user.id)
+    redirect_to :back, notice: ' Activity has been reported! The administration will be notified.'
   end
 
   private

@@ -11,7 +11,7 @@
     <div class="span8">
       <%# User name %>
       <span class="name1">
-        <%= @user.first_name.present? ? @user.first_name : "" %> <%= @user.last_name.present? ? @user.last_name : "" %>
+        <%= @user.username.present? ? @user.username : "" %> <%= @user.last_name.present? ? @user.last_name : "" %>
         <% if @user.blurb.present? %>
         <span class="bubble"><%= @user.blurb %></span>
         <% else %>
@@ -94,7 +94,7 @@
             <% if @user.photos.present? %>
             <span class="gallery"><%= render @user.photos %></span>
             <% else %>
-            <h5><%= @user.first_name %> hasn't uploaded any photos..</h5>
+            <h5><%= @user.username %> hasn't uploaded any photos..</h5>
             <% end %>
           </div>
           <div class="clearfix"></div>

@@ -5,7 +5,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-         <h4 class="modal-title" id="myModalLabel">Send message to <%= @user.name %></h4>
+         <h4 class="modal-title" id="myModalLabel">Send message to <%= @user.username %></h4>
       </div>
       <%= form_for current_user.sent_messages.new do |f| %>
       <div class="modal-body">

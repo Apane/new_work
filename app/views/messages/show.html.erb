@@ -23,15 +23,15 @@
   <%= render 'layouts/left_side' %>
   <div role="main" class="col-md-6">
     <div class="message-info">
-      <button type="button" class="btn btn-primary buttons-bg markas-icon"> Mark As Unread</button>
+      <!-- <button type="button" class="btn btn-primary buttons-bg markas-icon"> Mark As Unread</button> -->
       <button type="button" class="btn btn-primary buttons-bg delete-icon"> Delete</button>
-      <button type="button" class="btn btn-primary buttons-bg blocks-icon"> Block </button>
-      <button type="button" class="btn btn-primary buttons-bg report-icon"> Report</button>
+      <%= link_to 'Block', block_user_path(companion), class: 'btn btn-primary buttons-bg blocks-icon' %>
+      <%= link_to 'Report', report_conversation_path(@conversation), class: "btn btn-primary buttons-bg report-icon" %>
 
       <div class="col-md-12 inbox-messages">
         <div class="row">
           <div class="col-md-12 inbox-m">
-            <h4>Anthony Panepinto</h4>
+            <h4><%= companion.username %></h4>
           </div>
 
           <div class="send-message-m">
