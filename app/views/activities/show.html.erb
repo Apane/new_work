@@ -16,7 +16,7 @@
     });
   }
 
-  google.maps.activity.addDomListener(window, 'load', initialize);
+  google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 
 <div class="row">
@@ -30,26 +30,26 @@
         </div>
       </div>
     </div>
-    <div class="col-md-12 event-location">
+    <div class="col-md-12 activity-location">
       <div class="row">
         <div class="col-md-12">
-          <div class="event-image-m">
+         <div class="event-image-m">
             <% if @activity.image.present? %>
               <%= image_tag(@activity.image_url) %>
             <% else %>
             <%= image_tag 'event_image.jpg' %>
             <% end %>
           </div>
-          <div class="event-info">
+          <div class="activity-info">
             <ul>
-              <li class="address"><%= @activity.location_name %></li>
-              <li class="address tooltip_element" data-toggle="tooltip" data-placement="top" title="<%= @activity.location %>"><%= truncate(@activity.location, omission: '...', length: 40) %></li>
-              <li class="date"><%= @activity.date.strftime("%A, %B %d, %Y") %></li>
-              <li class="time"><%= @activity.time %></li>
+              <li><%= @activity.location_name %>, <%= @activity.city %></li>
+              <li><%= @activity.date.strftime("%A, %B %d, %Y") %></li>
+              <li><%= @activity.time %></li>
+              <li><%= @activity.frequency %></li>
             </ul>
           </div>
           <div class="clr"></div>
-          <div class="event-about-info">
+          <div class="activity-about-info">
             <p>
               <%= sanitize(raw(@activity.description)) %>
             </p>
@@ -59,9 +59,9 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <div class="event-map">
+          <div class="activity-map">
             <div style='width: 100%;'>
-              <div id="map" style='width: 100%; height: 250px;'></div>
+              <div id="map" style='width: 100%; height: 330px;'></div>
             </div>
           </div>
         </div>
@@ -70,7 +70,7 @@
     <div class="col-md-12">
       <div class="row">
         <p class="comments-n"><%= pluralize(@activity.comments.size, 'comment') %></p>
-        <div class="col-md-12 event-comment">
+        <div class="col-md-12 event-comment activitiy-comment">
           <%= form_for [@activity, @activity.comments.new], html: {class: 'form-horizontal', role: 'form'}, remote: true do |f| %>
             <div><%= f.hidden_field :user_id, value: current_user.id %></div>
             <div class="form-group">
@@ -103,5 +103,5 @@
       </div>
     </div>
   </div>
-  <%#= render 'activities/activity_right_side' %>
+  <%= render 'activities/activity_right_side' %>
 </div>
