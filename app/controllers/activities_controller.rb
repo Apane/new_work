@@ -4,7 +4,7 @@ class ActivitiesController < ApplicationController
 
   # GET /activities
   # GET /activities.json
-def index
+  def index
     @user = current_user
 
     if params[:search]
@@ -15,11 +15,10 @@ def index
       ethnicity = params[:search][:ethn] || nil
       age_min = params[:search][:age_min] || nil
       age_max = params[:search][:age_max] || nil
-      @activities = Activity.where('activity_date >= ?', Time.now.beginning_of_day).scoped_by_search(current_user, distance, time, cat_ids, gender, ethnicity, age_min, age_max)
+      @activities = Activity.scoped_by_search(current_user, distance, time, cat_ids, gender, ethnicity, age_min, age_max)
     else
       #@events = Event.where('event_date > ?', DateTime.now)
-      @activities = Activity.where('activity_date >= ?', Time.now.beginning_of_day)
-      # @events = Event.all
+      @activities = Activity.all
     end
 
     respond_to do |format|
@@ -30,11 +29,10 @@ def index
 
   # GET /activities/1
   # GET /activities/1.json
- def show
-  @activity = Activity.where(id: params[:id]).first
+  def show
     if @activity.present?
       @user = current_user
-    # @event = Event.find(params[:id])
+      # @event = Event.find(params[:id])
       @owner = @activity.user
       @participants = @activity.participants
     else
