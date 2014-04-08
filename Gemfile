@@ -25,6 +25,7 @@ gem 'nested_form'
 gem "figaro"
 gem 'acts_as_commentable_with_threading', git: "https://github.com/elight/acts_as_commentable_with_threading.git"
 gem 'roadie'
+gem 'rollbar'
 
 # asset gems
 gem 'uglifier', '>= 1.0.3'
