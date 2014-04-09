@@ -169,6 +169,8 @@ class User < ActiveRecord::Base
   def username_to_downcase
     if self.username
     self.username = self.username.downcase
+  else
+    self.username
     end
   end
 
