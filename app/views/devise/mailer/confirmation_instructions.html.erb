@@ -1,4 +1,9 @@
-<p>Dear <%= @resource.name %></p>
-<p>Welcome <%= @resource.email %>!</p>
-<p>You can confirm your account email through the link below:</p>
+<p>Hi <%= @resource.name %>,</p>
+<br /><br />
+<p>Thank you for joining Friendiose. Please click the link below to activate your account and verify your email:
+:</p>
 <p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @token) %></p>
+
+<p>Thanks,<br />
+Friendiose Team
+</p>
