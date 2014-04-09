@@ -4,7 +4,7 @@
       <p>Books</p>
       <ul>
       <% @books.each do |id, value| %>
-        <li style="font-size:12px;">- <%= value %></li>
+        <li style="font-size:12px;"><%= 1.next %> <%= value %></li>
       <% end %>
       </ul>
     </div>
@@ -70,7 +70,7 @@
       <p>Values</p>
       <ul>
       <% @values.each do |id, value| %>
-        <li style="font-size:12px;">- <%= value %></li>
+        <li style="font-size:12px;">1.enum <%= value %></li>
       <% end %>
       </ul>
     </div>
