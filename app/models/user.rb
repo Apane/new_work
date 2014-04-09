@@ -54,8 +54,8 @@ class User < ActiveRecord::Base
   # validates :gender, :presence => true
   # validates :zip, :presence => true
   validates_length_of :blurb, :minimum => 5, :maximum => 140, :allow_blank => true
- # validates :username, :first_name, :last_name, :zip, :gender, presence: true
- # validates :username, uniqueness: true
+  validates :first_name, :last_name, :zip, presence: true
+#  validates :username, uniqueness: true
 
 
   after_create :create_questions_and_mail_settings, :set_age
@@ -167,7 +167,9 @@ class User < ActiveRecord::Base
   end
 
   def username_to_downcase
+    if self.username
     self.username = self.username.downcase
+    end
   end
 
   def disconnect(social)
