@@ -84,37 +84,16 @@ class EventsController < ApplicationController
   end
 
   def attend
-    @min_age = @event.age_min
-    @max_age = @event.age_max
-    # p "user age #{current_user.age} / #{current_user.gender}"
-    # p "event age #{@min_age} - #{@max_age} / #{@event.gender}"
-    check_event_limits
+    @participant = current_user
+    res = @event.attend(current_user)
+    @event_participant= res[0]
+    @participants = res[1]
+    @waiting_participants = res[2]
+    @notice = res[3]
 
     respond_to do |format|
       format.html {redirect_to @event}
       format.js {}
-    end
-  end
-
-  def check_event_limits
-    if @event.is_private?
-      @notice = "private"
-    elsif !(@min_age..@max_age).include?(current_user.age)
-      @notice = "restricted by age, only those whos age are between #{@min_age} and #{@max_age} are allowed."
-    elsif @event.gender.present? && @event.gender != current_user.gender
-      @notice = "restricted by gender, only #{Event::GENDER[@event.gender].downcase} are allowed."
-    else
-      max_attendees = @event.max_attendees.present? ? (@event.max_attendees) : 100
-      @participants = @event.participants
-      if @participants.size >= max_attendees
-        @event_participant = @event.event_participants.create(event_id: @event.id, user_id: current_user.id, is_waiting: true)
-      else
-        @event_participant = @event.event_participants.create(event_id: @event.id, user_id: current_user.id)
-      end
-      @participant = current_user
-      @waiting_participants = @event.waiting_participants
-      # @event_participant = @event.event_participants.where(user_id: @participant.id).first
-      @event.create_notification(current_user, 'joined')
     end
   end
 

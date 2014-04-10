@@ -106,4 +106,28 @@ class Event < ActiveRecord::Base
   def self.clear_expired
     where('event_date <= ?', 1.week.ago).delete_all
   end
+
+  def attend(user)
+    if self.is_private?
+      notice = "private"
+    elsif !(age_min..age_max).include?(user.age)
+      notice = "restricted by age, only those whos age are between #{age_min} and #{age_max} are allowed."
+    elsif self.gender.present? && self.gender != current_user.gender
+      notice = "restricted by gender, only #{Event::GENDER[self.gender].downcase} are allowed."
+    else
+      notice = ''
+      max_attendees = self.max_attendees.present? ? (self.max_attendees) : 100
+      participants = self.participants
+      if participants.size >= max_attendees
+        event_participant = self.event_participants.create(event_id: self.id, user_id: user.id, is_waiting: true)
+      else
+        event_participant = self.event_participants.create(event_id: self.id, user_id: user.id)
+      end
+      participant = user
+      waiting_participants = self.waiting_participants
+      self.create_notification(user, 'joined')
+    end
+
+    return [event_participant, participants, waiting_participants, notice]
+  end
 end
