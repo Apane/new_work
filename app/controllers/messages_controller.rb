@@ -42,11 +42,9 @@ class MessagesController < ApplicationController
     respond_to do |format|
       if @message.save
         format.html { redirect_to profile_path(@message.recipient), notice: 'Message sent.' }
-        format.json { render action: 'show', status: :created, location: @message }
         format.js
       else
         format.html { redirect_to profile_path(@message.recipient), notice: 'Message not sent. Please try again.' }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
         format.js
       end
     end

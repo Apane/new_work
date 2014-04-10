@@ -60,21 +60,14 @@ class ConversationsController < ApplicationController
   def act_on_conversations
     ids = params[:conversations].to_a.map{|c| c[1]}
     conversations =  Conversation.where(id: ids)
-
-    if params[:act] == 'delete'
-      conversations.each do |c|
-        c.destroy
-      end
-    elsif params[:act] == 'unread'
-      conversations.each do |c|
-        c.messages.where(recipient_id: current_user.id).last.update_attributes(is_new: true)
-      end
-    elsif params[:act] == 'block_users'
-      user_ids = params[:users][:user_ids].split('').uniq
-      users = User.where(id: user_ids)
-      users.each do |u|
-        current_user.block(u)
-      end
+    act = params[:act]
+    conversations.map{|c| c.destroy} if act == 'delete'
+    conversations.map{|c| c.mark_as_unread(current_user)} if act == 'unread'
+    if act == 'block_users'
+      users = User.where(id: params[:users][:user_ids].split('').uniq)
+      users.map{|user| current_user.block(user)}
+    else
+      p "Uknown act param"
     end
     redirect_to :back
   end
