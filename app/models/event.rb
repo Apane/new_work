@@ -69,20 +69,11 @@ class Event < ActiveRecord::Base
    EventParticipant.create(user_id: self.user_id, event_id: self.id)
   end
 
-  def create_join_notification(participant)
+  def create_notification(participant, key)
     participants = self.participants.where('user_id <> ?', participant.id)
     if participants.any?
       participants.each do |p|
-        Notification.send_notification(p, participant, self, "#{participant.username} joined #{self.title} event!")
-      end
-    end
-  end
-
-  def create_leave_notification(participant)
-    participants = self.participants.where('user_id <> ?', participant.id)
-    if participants.any?
-      participants.each do |p|
-        Notification.send_notification(p, participant, self, "#{participant.username} left #{self.title} event!")
+        Notification.send_notification(p, participant, self, "#{participant.username} #{key} #{self.title} event!")
       end
     end
   end
@@ -100,7 +91,7 @@ class Event < ActiveRecord::Base
       end
     end
 
-    events = self.all
+    events = all
     events = events.within(distance, :origin => user) unless distance.empty?
     events = events.where(date: time) if time.present?
     events = events.where(category_id: cat_ids) if cat_ids.present?

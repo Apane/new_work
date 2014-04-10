@@ -114,7 +114,7 @@ class EventsController < ApplicationController
       @participant = current_user
       @waiting_participants = @event.waiting_participants
       # @event_participant = @event.event_participants.where(user_id: @participant.id).first
-      @event.create_join_notification(current_user)
+      @event.create_notification(current_user, 'joined')
     end
   end
 
@@ -132,7 +132,7 @@ class EventsController < ApplicationController
       end
     end
 
-    @event.create_leave_notification(current_user)
+    @event.create_notification(current_user, 'left')
 
     respond_to do |format|
       format.html {redirect_to @event}
