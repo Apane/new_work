@@ -20,4 +20,12 @@ class EventParticipant < ActiveRecord::Base
       UserMailer.new_participant(owner, participant, title, class_name).deliver if event.user.accepts_email_for_new_participant?
     end
   end
+
+  def remove_and_update_queue(event)
+    self.destroy
+    if event.participants.size < max_attendees
+      first_waiting = event.event_participants.where(is_waiting: true).order('id desc').first
+      first_waiting.update_attributes(is_waiting: false) if first_waiting.present?
+    end
+  end
 end
