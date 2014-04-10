@@ -88,7 +88,15 @@ class EventsController < ApplicationController
     @max_age = @event.age_max
     # p "user age #{current_user.age} / #{current_user.gender}"
     # p "event age #{@min_age} - #{@max_age} / #{@event.gender}"
+    check_event_limits
 
+    respond_to do |format|
+      format.html {redirect_to @event}
+      format.js {}
+    end
+  end
+
+  def check_event_limits
     if @event.is_private?
       @notice = "private"
     elsif !(@min_age..@max_age).include?(current_user.age)
@@ -107,11 +115,6 @@ class EventsController < ApplicationController
       @waiting_participants = @event.waiting_participants
       # @event_participant = @event.event_participants.where(user_id: @participant.id).first
       @event.create_join_notification(current_user)
-    end
-
-    respond_to do |format|
-      format.html {redirect_to @event}
-      format.js {}
     end
   end
 

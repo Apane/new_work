@@ -93,7 +93,15 @@ class ActivitiesController < ApplicationController
   def attend
     @min_age = @activity.age_min
     @max_age = @activity.age_max
+    check_activity_limits
 
+    respond_to do |format|
+      format.html {redirect_to @activity}
+      format.js {}
+    end
+  end
+
+  def check_activity_limits
     if @activity.is_private?
       @notice = "private"
     elsif !(@min_age..@max_age).include?(current_user.age)
@@ -102,23 +110,13 @@ class ActivitiesController < ApplicationController
       @notice = "restricted by gender, only #{Event::GENDER[@activity.gender].downcase} are allowed."
     else
       @activity.activity_participants.create(activity_id: @activity.id, user_id: current_user.id)
-    #   @participant = current_user
-    #   @waiting_participants = @event.waiting_participants
-    #   @event_participant = @event.event_participants.where(user_id: @participant.id).first
       @activity.create_join_notification(current_user)
-    end
-
-    respond_to do |format|
-      format.html {redirect_to @activity}
-      format.js {}
     end
   end
 
   def stop_attend
-    # @attendees_count = @event.participants.size
     @participant = @activity.activity_participants.where(user_id: current_user.id, activity_id: @activity.id).first
     @participant.destroy
-    # @event.create_leave_notification(current_user)
 
     respond_to do |format|
       format.html {redirect_to @activity}
