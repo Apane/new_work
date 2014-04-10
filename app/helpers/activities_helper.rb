@@ -10,13 +10,11 @@ module ActivitiesHelper
       unless activity.owner_is?(current_user)
         if activity.participants.include?(current_user)
           button_to 'Not Interested', stop_attend_activity_path(activity), method: :delete, remote: true,
-              confirm: 'Are you sure you want to stop attending this activity?',
               class: 'btn btn-primary btn-lg btn-block creat-event margin-b'
         # elsif event.participants.size >= max_attendees
         #   'this activity is full'
         else
           button_to "I'm Interested", attend_activity_path(activity), method: :post, remote: true,
-              confirm: 'Are you sure you want to join this activity?',
               class: 'btn btn-primary btn-lg btn-block creat-event margin-b'
         end
       end

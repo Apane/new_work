@@ -93,24 +93,12 @@ class ActivitiesController < ApplicationController
   def attend
     @min_age = @activity.age_min
     @max_age = @activity.age_max
-    check_activity_limits
+    res = @activity.attend(current_user)
+    @notice = res[0]
 
     respond_to do |format|
       format.html {redirect_to @activity}
       format.js {}
-    end
-  end
-
-  def check_activity_limits
-    if @activity.is_private?
-      @notice = "private"
-    elsif !(@min_age..@max_age).include?(current_user.age)
-      @notice = "restricted by age, only those whos age are between #{@min_age} and #{@max_age} are allowed."
-    elsif @activity.gender.present? && @activity.gender != current_user.gender
-      @notice = "restricted by gender, only #{Event::GENDER[@activity.gender].downcase} are allowed."
-    else
-      @activity.activity_participants.create(activity_id: @activity.id, user_id: current_user.id)
-      @activity.create_join_notification(current_user)
     end
   end
 

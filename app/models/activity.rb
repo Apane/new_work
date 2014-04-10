@@ -104,4 +104,18 @@ class Activity < ActiveRecord::Base
     acts = (acts_by_min + acts_by_max).uniq
     acts
   end
+
+  def attend(user)
+    if self.is_private?
+      notice = "private"
+    elsif !(age_min..age_max).include?(user.age)
+      notice = "restricted by age, only those whos age are between #{age_min} and #{age_max} are allowed."
+    elsif self.gender.present? && self.gender != user.gender
+      notice = "restricted by gender, only #{Event::GENDER[self.gender].downcase} are allowed."
+    else
+      self.activity_participants.create(activity_id: self.id, user_id: user.id)
+      self.create_join_notification(user)
+    end
+    return [notice]
+  end
 end

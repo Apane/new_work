@@ -59,7 +59,7 @@ private
           :secret => access_token['credentials']['secret'], :first_name => access_token['info']['first_name'],
           :last_name => access_token['info']['last_name'],
           :link => access_token['info']['public_profile_url'] }
-       when 'GPlus'
+      when 'GPlus'
         uid = access_token['uid']
         name = access_token['info']['email']
         auth_attr = { :uid => uid, :token => access_token['credentials']['token'],

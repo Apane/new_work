@@ -107,6 +107,10 @@ class Event < ActiveRecord::Base
     where('event_date <= ?', 1.week.ago).delete_all
   end
 
+  def max_event_attendees
+    return max_attendees.present? ? (self.max_attendees) : 100
+  end
+
   def attend(user)
     if self.is_private?
       notice = "private"
@@ -115,15 +119,13 @@ class Event < ActiveRecord::Base
     elsif self.gender.present? && self.gender != current_user.gender
       notice = "restricted by gender, only #{Event::GENDER[self.gender].downcase} are allowed."
     else
-      notice = ''
-      max_attendees = self.max_attendees.present? ? (self.max_attendees) : 100
+      max_attendees = self.max_event_attendees
       participants = self.participants
       if participants.size >= max_attendees
         event_participant = self.event_participants.create(event_id: self.id, user_id: user.id, is_waiting: true)
       else
         event_participant = self.event_participants.create(event_id: self.id, user_id: user.id)
       end
-      participant = user
       waiting_participants = self.waiting_participants
       self.create_notification(user, 'joined')
     end
