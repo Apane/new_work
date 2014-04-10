@@ -34,18 +34,7 @@ class ProfilesController < ApplicationController
 
     if @user.present?
       @questions_for_about = @user.questions.for_about.order('id asc')
-      @questions_for_personality = @user.questions.for_personality.order('id asc')
-      visit = @user.visits.where(visitor: current_user).first
-      if visit.present?
-        visit.visited_at = Time.now
-        visit.save
-      else
-        visit = @user.visits.create(visitor_id: current_user.id) if @user != current_user
-      end
-      if @user != current_user
-        UserMailer.new_visitor(visit).deliver if @user.accepts_email_for_new_visitor?
-        Notification.send_notification(@user, current_user, @user, "#{current_user.username} viewed your profile.")
-      end
+      @user.create_visit(current_user)
     else
       redirect_to profiles_path, notice: 'User not found or account disabled'
     end

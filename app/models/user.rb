@@ -388,4 +388,16 @@ class User < ActiveRecord::Base
       return false
     end
   end
+
+  def create_visit(visitor)
+    visit = self.visits.where(visitor: visitor).first
+    if visit.present?
+      visit.visited_at = Time.now
+      visit.save
+    else
+      visit = self.visits.create(visitor_id: visitor.id) if self != visitor
+    end
+    UserMailer.new_visitor(visit).deliver if self.accepts_email_for_new_visitor? if self != visitor
+    Notification.send_notification(self, visitor, self, "#{visitor.username} viewed your profile.") if self != visitor
+  end
 end
