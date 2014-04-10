@@ -175,19 +175,15 @@ class User < ActiveRecord::Base
   end
 
   def disconnect(social)
-    if social == 'facebook'
-      auth = self.authorizations.where(provider: 'Facebook').first
-      auth.update_attributes(token: nil, secret: nil)
-    elsif social == 'twitter'
-      auth = self.authorizations.where(provider: 'Twitter').first
-      auth.update_attributes(token: nil, secret: nil)
+    if social == 'gplus'
+      key = 'GPlus'
     elsif social == 'linkedin'
-      auth = self.authorizations.where(provider: 'LinkedIn').first
-      auth.update_attributes(token: nil, secret: nil)
-    elsif social == 'gplus'
-      auth = self.authorizations.where(provider: 'GPlus').first
-      auth.update_attributes(token: nil, secret: nil)
+      key = 'LinkedIn'
+    else
+      key = social.capitalize
     end
+    auth = self.authorizations.where(provider: key).first
+    auth.update_attributes(token: nil, secret: nil)
   end
 
   def has_connection_with(provider)
@@ -295,19 +291,17 @@ class User < ActiveRecord::Base
 
   def profile_completed
     rate = 0
-    (rate = rate + 10) if self.profile_photo.present?
-    (rate = rate + 10) if self.age.present?
-    if self.address != nil
-      (rate = rate + 10) unless self.address.empty?
+    (rate = rate + 10) if profile_photo.present?
+    (rate = rate + 10) if age.present?
+    if address != nil
+      (rate = rate + 10) unless address.empty?
     end
-    if self.occupation.present?
+    if occupation.present?
       (rate = rate + 5) unless self.occupation.empty?
     end
-    (rate = rate + 10) if self.ethnicity.present?
-    (rate = rate + 10) if self.education.present?
-    # (rate = rate + 10) if self.answered_to_about_questions?
-    # (rate = rate + 10) if self.answered_to_top_5_questions?
-    (rate = rate + (5 * self.answered_questions.size))
+    (rate = rate + 10) if ethnicity.present?
+    (rate = rate + 10) if education.present?
+    (rate = rate + (5 * answered_questions.size))
     rate
   end
 
