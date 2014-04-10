@@ -132,4 +132,22 @@ class Event < ActiveRecord::Base
 
     return [event_participant, participants, waiting_participants, notice]
   end
+
+  def stop_attend(user)
+    attendees_count = self.participants.size
+    max_attendees = self.max_attendees.present? ? (self.max_attendees) : 100
+
+    participant = self.event_participants.where(user_id: user.id, event_id: self.id).first
+    participant.destroy
+
+    if self.participants.size < max_attendees
+      first_waiting = self.event_participants.where(is_waiting: true).order('id desc').first
+      if first_waiting.present?
+        first_waiting.update_attributes(is_waiting: false)
+      end
+    end
+
+    self.create_notification(user, 'left')
+    return participant
+  end
 end
