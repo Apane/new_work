@@ -13,18 +13,14 @@ class UserMailer < ActionMailer::Base
     mail to: @recipient.email, subject: "#{@recipient}, You have received a new message from #{@sender.name}"
   end
 
-  def new_participant(event_participant)
-    @event = event_participant.event
-    @owner = @event.user
-    @participant = event_participant.user
-    mail to: @owner.email, subject: "#{@participant.username} is attending the #{@event.title} event"
-  end
+  def new_participant(owner, participant, title, class_name)
+    @owner = owner
+    @participant = participant
+    @title = title
+    @class_name = class_name.downcase
+    @action = (class_name == 'Event') ? 'attending' : 'interested'
 
-  def new_activity_participant(participant)
-    @activity = participant.activity
-    @owner = @activity.user
-    @participant = participant.user
-    mail to: @owner.email, subject: "#{@participant.username} is interested in #{@activity.title} activity"
+    mail to: @owner.email, subject: "#{@participant.username} is #{@action} the #{@title} #{@class_name}"
   end
 
   def new_comment(comment, participant)

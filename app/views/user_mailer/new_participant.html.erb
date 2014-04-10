@@ -1,13 +1,15 @@
 <p>
   Hi <%= @owner.name %>,
   <br/><br/>
-  <%= image_tag @participant.profile_photo.file.small.url %>
+  <% if @participant.profile_photo.present? %>
+    <%= image_tag(@participant.profile_photo.file.small.url) %>
+  <% end %>
   <br/><br/>
-  <%= @participant.username %> has joined your event: <br/> <b><%= @event.title %></b>!
+  <%= @participant.username %> has joined your <b><%= @title %></b> <%= @class_name %>!
 </p>
 
 <p>
-  <%= link_to 'Go to event', event_url(@event) %>
+  <%#= link_to 'Go to event', event_url(@event) %>
 </p>
 
 <p>
