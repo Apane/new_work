@@ -51,17 +51,13 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :photos
   mount_uploader :profile_image, ProfileImageUploader
 
-  # validates :gender, :presence => true
-  # validates :zip, :presence => true
   validates_length_of :blurb, :minimum => 5, :maximum => 140, :allow_blank => true
-  validates :first_name, :last_name, :zip, presence: true
-#  validates :username, uniqueness: true
+  validates :gender, :zip, :first_name, :last_name, :zip, presence: true
+  validates :username, uniqueness: true
 
 
   after_create :create_questions_and_mail_settings, :set_age
   before_save :set_age, :get_gps_data, :username_to_downcase
-
-  # pg_search_scope :search_by_full_name, :against => [:first_name, :last_name], :using => [:tsearch]
 
   pg_search_scope :search, against: [:first_name, :last_name],
     using: {tsearch: {prefix: true, dictionary: "english"}},

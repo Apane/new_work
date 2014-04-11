@@ -14,16 +14,16 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = current_user
 
     respond_to do |format|
       if @user.update(params[:user])
         format.html { redirect_to profile_path}
-        format.json { respond_with_bip(@user) }
+        format.json { respond_with_bip(current_user) }
         format.js
       else
         format.html { render edit}
-        format.json { respond_with_bip(@user) }
+        format.json { respond_with_bip(current_user) }
         format.js
       end
     end

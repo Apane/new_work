@@ -8,17 +8,9 @@ class ActivitiesController < ApplicationController
     @user = current_user
 
     if params[:search]
-      distance = params[:search][:distance] || nil
-      time = params[:search][:time] || nil
-      cat_ids = params[:search][:cat_ids].split('').uniq || nil
-      gender = params[:search][:gen] || nil
-      ethnicity = params[:search][:ethn] || nil
-      age_min = params[:search][:age_min] || nil
-      age_max = params[:search][:age_max] || nil
-      @activities = Activity.scoped_by_search(current_user, distance, time, cat_ids, gender, ethnicity, age_min, age_max)
+      @activities = Activity.scoped_by_search(current_user, params[:search])
     else
-      #@events = Event.where('event_date > ?', DateTime.now)
-      @activities = Activity.all
+      @activities = Activity.all #.where('activity_date >= ?', Time.now.beginning_of_day)
     end
 
     respond_to do |format|
