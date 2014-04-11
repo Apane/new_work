@@ -10,25 +10,29 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     build_resource(sign_up_params)
     if @zip_codes.include?(resource.zip)
-     if resource.save
-        if resource.active_for_authentication?
-          set_flash_message :notice, :signed_up if is_navigational_format?
-          sign_up(resource_name, resource)
-          respond_with resource, :location => after_sign_up_path_for(resource)
-        else
-          set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_navigational_format?
-          expire_session_data_after_sign_in!
-          respond_with resource, :location => after_inactive_sign_up_path_for(resource)
-        end
-      else
-        clean_up_passwords resource
-        respond_with resource
-      end
+      create_resource
     else
       TempEmail.create(email: params[:user][:email], first_name: params[:user][:first_name],
         last_name: params[:user][:last_name], zip: params[:user][:zip])
       notice = "Sorry #{params[:user][:first_name]}, we are not accepting sign-ups from outside of New York City Metro Area at the moment, however, we will notify you when we launch in your area!"
       redirect_to root_path, notice: notice
+    end
+  end
+
+  def create_resource
+    if resource.save
+      if resource.active_for_authentication?
+        set_flash_message :notice, :signed_up if is_navigational_format?
+        sign_up(resource_name, resource)
+        respond_with resource, :location => after_sign_up_path_for(resource)
+      else
+        set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_navigational_format?
+        expire_session_data_after_sign_in!
+        respond_with resource, :location => after_inactive_sign_up_path_for(resource)
+      end
+    else
+      clean_up_passwords resource
+      respond_with resource
     end
   end
 
