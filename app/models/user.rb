@@ -52,7 +52,7 @@ class User < ActiveRecord::Base
   mount_uploader :profile_image, ProfileImageUploader
 
   validates_length_of :blurb, :minimum => 5, :maximum => 140, :allow_blank => true
-  validates :gender, :zip, :first_name, :last_name, :zip, presence: true
+  # validates :gender, :zip, :first_name, :last_name, :zip, presence: true
   validates :username, uniqueness: true
 
 
@@ -242,38 +242,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  def answered_to_about_questions?
-    arr = self.questions.where(for_about: true).each do |q|
-      if q.answer.nil?
-        true.to_s
-      else
-        q.answer.empty? ? true.to_s : false.to_s
-      end
-    end
-
-    if arr.include? 'true'
-      return true
-    else
-      return false
-    end
-  end
-
-  def answered_to_top_5_questions?
-    arr = self.questions.where(for_about: nil).each do |q|
-      if q.answer.nil?
-        true.to_s
-      else
-        q.answer.empty? ? true.to_s : false.to_s
-      end
-    end
-
-    if arr.include? 'true'
-      return true
-    else
-      return false
-    end
-  end
-
   def answered_questions
     qs = []
     self.questions.each do |q|
@@ -287,17 +255,17 @@ class User < ActiveRecord::Base
 
   def profile_completed
     rate = 0
-    (rate = rate + 10) if profile_photo.present?
-    (rate = rate + 10) if age.present?
+    (rate += 10) if profile_photo.present?
+    (rate += 10) if age.present?
     if address != nil
-      (rate = rate + 10) unless address.empty?
+      (rate += 10) unless address.empty?
     end
     if occupation.present?
-      (rate = rate + 5) unless self.occupation.empty?
+      (rate += 5) unless occupation.empty?
     end
-    (rate = rate + 10) if ethnicity.present?
-    (rate = rate + 10) if education.present?
-    (rate = rate + (5 * answered_questions.size))
+    (rate += 10) if ethnicity.present?
+    (rate += 10) if education.present?
+    (rate += (5 * answered_questions.size))
     rate
   end
 
