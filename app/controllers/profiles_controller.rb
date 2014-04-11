@@ -3,18 +3,9 @@ class ProfilesController < ApplicationController
 
   def index
     if params[:search]
-      terms = params[:search][:terms] || nil
-      min_age = params[:search][:age_min] || nil
-      max_age = params[:search][:age_max] || nil
-      zipcode = params[:search][:zipcode] || nil
-      distance = params[:search][:distance] || nil
-      education_id = params[:search][:education_id] || nil
-      # @ethnicity_id = params[:search][:ethnicity_id] || nil
-      ethnicity_ids = params[:search][:cat_ids].split('').uniq || nil
-      gender = params[:search][:gender] || nil
-       @users = User.active.scoped_by_search(terms, min_age, max_age, education_id, ethnicity_ids, gender).where.not(id: current_user.id)
-  else
-    @users = User.active.where.not(id: current_user.id).page params[:page]
+      @users = User.active.scoped_by_search(params[:search]).where.not(id: current_user.id)
+    else
+      @users = User.active.where.not(id: current_user.id).page params[:page]
     end
   end
 
