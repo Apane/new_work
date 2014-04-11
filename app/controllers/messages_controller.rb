@@ -34,10 +34,7 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     @message = current_user.sent_messages.new(message_params)
-    unless @message.conversation.present?
-      conversation = Conversation.create(author_id: @message.sender_id, companion_id: @message.recipient_id)
-      @message.conversation_id = conversation.id
-    end
+    create_conversation
 
     respond_to do |format|
       if @message.save
@@ -47,6 +44,13 @@ class MessagesController < ApplicationController
         format.html { redirect_to profile_path(@message.recipient), notice: 'Message not sent. Please try again.' }
         format.js
       end
+    end
+  end
+
+  def create_conversation
+    unless @message.conversation.present?
+      conversation = Conversation.create(author_id: @message.sender_id, companion_id: @message.recipient_id)
+      @message.conversation_id = conversation.id
     end
   end
 
