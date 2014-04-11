@@ -23,13 +23,10 @@ class EventsController < ApplicationController
 
   def create
     @event = current_user.events.new(event_params)
-
-    respond_to do |format|
-      if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
-      else
-        format.html { render action: 'new' }
-      end
+    if @event.save
+      redirect_to @event, notice: 'Event was successfully created.'
+    else
+      render action: 'new'
     end
   end
 
@@ -37,7 +34,6 @@ class EventsController < ApplicationController
     @event = Event.where(id: params[:id]).first
     if @event.present?
       @user = current_user
-      # @event = Event.find(params[:id])
       @owner = @event.user
       @participants = @event.participants
       @waiting_participants = @event.waiting_participants

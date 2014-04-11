@@ -45,13 +45,10 @@ class ActivitiesController < ApplicationController
   # POST /activities.json
   def create
     @activity = current_user.activities.new(activity_params)
-
-    respond_to do |format|
-      if @activity.save
-        format.html { redirect_to @activity, notice: 'Activity was successfully created.' }
-      else
-        format.html { render action: 'new' }
-      end
+    if @activity.save
+      redirect_to @activity, notice: 'Activity was successfully created.'
+    else
+      render action: 'new'
     end
   end
 
