@@ -13,6 +13,15 @@ class Notification < ActiveRecord::Base
     })
   end
 
+  def self.prepare_notification(participants, user, object, message)
+    if participants.any?
+      participants.each do |p|
+        Notification.send_notification(p, user, object, message)
+      end
+    end
+  end
+
+
   def self.send_notification(user, noter, noteable, text)
     create(noteable_id: noteable.id,
       noteable_type: noteable.class.name,

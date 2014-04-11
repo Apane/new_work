@@ -29,17 +29,11 @@ class Comment < ActiveRecord::Base
   end
 
   def create_notification
-    if self.commentable_type == 'Event'
-      owner = self.commentable.user
-      user = self.user
-      participants = self.commentable.participants.where('user_id <> ?', self.user_id)
-      if participants.any?
-        participants.each do |p|
-          Notification.send_notification(p, user, self, "#{user.username} commented on #{self.commentable.title} event!")
-        end
-      end
-      UserMailer.new_comment(self, owner).deliver if owner.accepts_email_for_new_comment?
-    end
+    owner = self.commentable.user
+    user = self.user
+    participants = self.commentable.participants.where('user_id <> ?', self.user_id)
+    Notification.prepare_notification(participants, user, self, "#{user.username} commented on #{self.commentable.title} #{self.commentable_type.downcase}!")
+    UserMailer.new_comment(self, owner).deliver if owner.accepts_email_for_new_comment?
   end
 
   # Helper class method that allows you to build a comment

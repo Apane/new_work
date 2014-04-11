@@ -92,7 +92,7 @@
     <% if @owner.ethnicity.nil? %>
       -
     <% else %>
-      <%= @owner.ethnicity %>
+      <%= @owner.ethnicity.name %>
     <% end %>
     </div>
 
@@ -103,7 +103,7 @@
       <% if @owner.education.nil? %>
        -
       <% else %>
-       <%= @owner.education %>
+       <%= @owner.education.name %>
       <% end %>
     </div>
   </div>

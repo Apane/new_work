@@ -47,7 +47,7 @@ class EventsController < ApplicationController
   end
 
   def update
-     @event = current_user.events.find(params[:id])
+    @event = current_user.events.find(params[:id])
     if @event.update_attributes(params[:event])
       @event.update_event_date
       flash[:success] = "Event updated."

@@ -125,7 +125,7 @@ class Event < ActiveRecord::Base
       notice = "private"
     elsif !(age_min..age_max).include?(user.age)
       notice = "restricted by age, only those whos age are between #{age_min} and #{age_max} are allowed."
-    elsif self.gender.present? && self.gender != current_user.gender
+    elsif self.gender.present? && self.gender != user.gender
       notice = "restricted by gender, only #{Event::GENDER[self.gender].downcase} are allowed."
     else
       max_attendees = self.max_event_attendees
@@ -146,7 +146,7 @@ class Event < ActiveRecord::Base
     attendees_count = self.participants.size
     max_attendees = self.max_attendees.present? ? (self.max_attendees) : 100
     participant = self.event_participants.where(user_id: user.id, event_id: self.id).first
-    participant.remove_and_update_queue(self)
+    participant.remove_and_update_queue(self, max_attendees)
     self.create_notification(user, 'left')
     return participant
   end

@@ -1,7 +1,7 @@
 <p>
   Hi <%= @participant.username %>,
   <br /><br />
-  <b><%= @commenter.name %></b> has posted a new comment on your <%= @commentable.class.name.downcase %> <b><%= @commentable.title %>:</b>
+  <b><%= @commenter.name %></b> has posted a new comment on your <b><%= @commentable.title %></b> <%= @commentable_type.downcase %>:
 </p>
 
 <p>

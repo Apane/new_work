@@ -67,11 +67,7 @@ class Activity < ActiveRecord::Base
 
   def create_join_notification(participant)
     participants = self.participants.where('user_id <> ?', participant.id)
-    if participants.any?
-      participants.each do |p|
-        Notification.send_notification(p, participant, self, "#{participant.username} is interested in #{self.title.html_safe} activity")
-      end
-    end
+    Notification.prepare_notification(participants, participant, self, "#{participant.username} is interested in #{self.title.html_safe} activity")
   end
 
   def frequency

@@ -25,10 +25,11 @@ class UserMailer < ActionMailer::Base
 
   def new_comment(comment, participant)
     @comment = comment
+    @commentable_type = @comment.commentable_type
     @commenter = comment.user
     @commentable = comment.commentable
     @participant = participant
-    mail to: participant.email, subject: "New comment by #{@commenter.username} on #{@commentable.title} (#{@commentable.class.name.downcase})"
+    mail to: participant.email, subject: "New comment by #{@commenter.username} on #{@commentable.title} (#{@commentable_type.downcase})"
   end
 
   def new_visitor(visit)

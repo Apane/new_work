@@ -21,7 +21,7 @@ class EventParticipant < ActiveRecord::Base
     end
   end
 
-  def remove_and_update_queue(event)
+  def remove_and_update_queue(event, max_attendees)
     self.destroy
     if event.participants.size < max_attendees
       first_waiting = event.event_participants.where(is_waiting: true).order('id desc').first
