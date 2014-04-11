@@ -85,14 +85,13 @@ class Activity < ActiveRecord::Base
 
   def self.scoped_by_search(user, search)
     distance = search[:distance]
-    time = search[:time]
     cat_ids = search[:cat_ids].split('').uniq
     gender = search[:gen]
     ethnicity = search[:ethn]
     age_min = search[:age_min]
     age_max = search[:age_max]
 
-    if time.present?
+    if search[:time].present?
       if time == '1'
         time = Date.today
       else

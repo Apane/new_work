@@ -37,35 +37,27 @@ private
 
   def find_for_ouath(provider, access_token, resource=nil)
     user, email, name, uid, auth_attr = nil, nil, nil, {}
-    case provider
-      when "Facebook"
-        uid = access_token['uid']
-        email = access_token['info']['email']
-        auth_attr = { :uid => uid, :token => access_token['credentials']['token'],
-          :secret => nil, :first_name => access_token['info']['first_name'],
-          :last_name => access_token['info']['last_name'], :name => access_token['info']['name'],
-          :link => access_token['extra']['raw_info']['link'] }
-      when "Twitter"
-        uid = access_token['extra']['raw_info']['id']
-        name = access_token['extra']['raw_info']['name']
-        auth_attr = { :uid => uid, :token => access_token['credentials']['token'],
-          :secret => access_token['credentials']['secret'], :first_name => access_token['info']['first_name'],
-          :last_name => access_token['info']['last_name'], :name => name,
-          :link => "http://twitter.com/#{name}", :connections_count => access_token['extra']['raw_info']['followers_count'] }
-      when 'LinkedIn'
-        uid = access_token['uid']
-        name = access_token['info']['name']
-        auth_attr = { :uid => uid, :token => access_token['credentials']['token'],
-          :secret => access_token['credentials']['secret'], :first_name => access_token['info']['first_name'],
-          :last_name => access_token['info']['last_name'],
-          :link => access_token['info']['public_profile_url'] }
-      when 'GPlus'
-        uid = access_token['uid']
-        name = access_token['info']['email']
-        auth_attr = { :uid => uid, :token => access_token['credentials']['token'],
-          :secret => access_token['credentials']['secret'], :first_name => access_token['info']['first_name'],
-          :last_name => access_token['info']['last_name'],
-          :link => access_token['info']['image'] }
+    if provider == "Facebook"
+      uid = access_token['uid']
+      email = access_token['info']['email']
+      auth_attr = { :uid => uid, :token => access_token['credentials']['token'],
+        :secret => nil, :first_name => access_token['info']['first_name'],
+        :last_name => access_token['info']['last_name'], :name => access_token['info']['name'],
+        :link => access_token['extra']['raw_info']['link'] }
+    elsif provider == "Twitter"
+      uid = access_token['extra']['raw_info']['id']
+      name = access_token['extra']['raw_info']['name']
+      auth_attr = { :uid => uid, :token => access_token['credentials']['token'],
+        :secret => access_token['credentials']['secret'], :first_name => access_token['info']['first_name'],
+        :last_name => access_token['info']['last_name'], :name => name,
+        :link => "http://twitter.com/#{name}", :connections_count => access_token['extra']['raw_info']['followers_count'] }
+    elsif provider == 'LinkedIn' || provider == 'GPlus'
+      uid = access_token['uid']
+      name = access_token['info']['name']
+      auth_attr = { :uid => uid, :token => access_token['credentials']['token'],
+        :secret => access_token['credentials']['secret'], :first_name => access_token['info']['first_name'],
+        :last_name => access_token['info']['last_name'],
+        :link => (provider == 'LinkedIn') ? access_token['info']['public_profile_url'] : access_token['info']['image'] }
     else
       raise 'Provider #{provider} not handled'
     end
