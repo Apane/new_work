@@ -84,30 +84,20 @@ class Activity < ActiveRecord::Base
   end
 
   def self.scoped_by_search(user, search)
-    distance = search[:distance]
     cat_ids = search[:cat_ids].split('').uniq
-    gender = search[:gen]
-    ethnicity = search[:ethn]
-    age_min = search[:age_min]
-    age_max = search[:age_max]
-
     if search[:time].present?
-      if time == '1'
-        time = Date.today
-      else
-        time = DateTime.now.tomorrow.to_date
-      end
+      time = (time == '1' ?  Date.today : DateTime.now.tomorrow.to_date)
     end
 
-    #acts = activities
-    acts = self.all
-    acts = acts.within(distance, :origin => user) unless distance.empty?
+    #TODO find alternative for .all
+    acts = all
+    acts = acts.within(search[:distance], :origin => user) unless search[:distance].empty?
     acts = acts.where(date: time) if time.present?
     acts = acts.where(category_id: cat_ids) if cat_ids.present?
-    acts = acts.where(gender: gender) unless gender.empty?
-    acts = acts.where(ethnicity_id: ethnicity) unless ethnicity.empty?
-    acts_by_min = acts.where(age_min: age_min..age_max)
-    acts_by_max = acts.where(age_max: age_min..age_max)
+    acts = acts.where(gender: search[:gen]) unless search[:gen].empty?
+    acts = acts.where(ethnicity_id: search[:ethn]) unless search[:ethn].empty?
+    acts_by_min = acts.where(age_min: search[:age_min]..search[:age_max])
+    acts_by_max = acts.where(age_max: search[:age_min]..search[:age_max])
     acts = (acts_by_min + acts_by_max).uniq
     acts
   end

@@ -83,31 +83,19 @@ class Event < ActiveRecord::Base
   end
 
   def self.scoped_by_search(user, search)
-      distance = search[:distance]
-      time = search[:time]
-      cat_ids = search[:cat_ids].split('').uniq
-      gender = search[:gen]
-      ethnicity = search[:ethn]
-      age_min = search[:age_min]
-      age_max = search[:age_max]
-
-
-    if time.present?
-      if time == '1'
-        time = Date.today
-      else
-        time = DateTime.now.tomorrow.to_date
-      end
+    cat_ids = search[:cat_ids].split('').uniq
+    if search[:time].present?
+      time = (time == '1' ? Date.today : DateTime.now.tomorrow.to_date)
     end
 
     events = all
-    events = events.within(distance, :origin => user) unless distance.empty?
+    events = events.within(search[:distance], :origin => user) unless search[:distance].empty?
     events = events.where(date: time) if time.present?
     events = events.where(category_id: cat_ids) if cat_ids.present?
-    events = events.where(gender: gender) unless gender.empty?
-    events = events.where(ethnicity_id: ethnicity) unless ethnicity.empty?
-    events_by_min = events.where(age_min: age_min..age_max)
-    events_by_max = events.where(age_max: age_min..age_max)
+    events = events.where(gender: search[:gen]) unless search[:gen].empty?
+    events = events.where(ethnicity_id: search[:ethn]) unless search[:ethn].empty?
+    events_by_min = events.where(age_min: search[:age_min]..search[:age_max])
+    events_by_max = events.where(age_max: search[:age_min]..search[:age_max])
     events = (events_by_min + events_by_max).uniq
     events
   end
