@@ -44,16 +44,20 @@
 
         <div id="tabs-2">
           <div class="password">
-            <form role="form">
+            <%= simple_form_for(current_user, :url => registration_path(current_user), :html => { :method => :put, role: 'form' }) do |f| %>
               <div class="form-group border-bottom">
-                <label for="Email1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="email@domain.com">
+                <%= f.label :email %>
+                <%= f.input_field :email, placeholder: "Your email", autocomplete: :off, class: 'form-control' %>
               </div>
               <div class="form-group border-bottom">
                 <div class="row">
                   <div class="col-md-12"><label for="Password">Change your password</label></div>
-                  <div class="col-md-6"><input type="password" class="form-control" id="Newpassword" placeholder="New Password"></div>
-                  <div class="col-md-6"><input type="password" class="form-control" id="Repeatnewpassword" placeholder="Repeat New Password"></div>
+                  <div class="col-md-6">
+                    <%= f.password_field :password, placeholder: "Password", :autocomplete => "off", class: 'form-control' %>
+                  </div>
+                  <div class="col-md-6">
+                    <%= f.password_field :password_confirmation, placeholder: "Repeat New Password", autocomplete: :off, class: 'form-control' %>
+                  </div>
                 </div>
               </div>
               <div class="form-group border-bottom border-none">
@@ -65,11 +69,11 @@
                     <input type="password" class="form-control" id="Currentassword" placeholder="Current Password">
                   </div>
                   <div class="col-md-4">
-                    <button class="btn btn-default send-m-button" type="submit"> Save Changes</button>
+                    <%= f.submit 'Save Changes', class: 'btn btn-default send-m-button' %>
                   </div>
                 </div>
               </div>
-            </form>
+            <% end %>
           </div>
         </div>
 
