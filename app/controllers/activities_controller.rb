@@ -49,11 +49,8 @@ class ActivitiesController < ApplicationController
     respond_to do |format|
       if @activity.save
         format.html { redirect_to @activity, notice: 'Activity was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @activity }
       else
-        p @activity.errors
         format.html { render action: 'new' }
-        format.json { render json: @activity.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -64,10 +61,8 @@ class ActivitiesController < ApplicationController
     respond_to do |format|
       if @activity.update(activity_params)
         format.html { redirect_to @activity, notice: 'Activity was successfully updated.' }
-        format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @activity.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -78,7 +73,6 @@ class ActivitiesController < ApplicationController
     @activity.destroy
     respond_to do |format|
       format.html { redirect_to activities_url }
-      format.json { head :no_content }
     end
   end
 
