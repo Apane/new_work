@@ -25,8 +25,8 @@ class Event < ActiveRecord::Base
   has_many :categories
   has_many :reports, as: :reportable
 
-  before_save :set_min_max_age
-  after_create :update_event_date, :add_owner_to_participants
+  before_save :update_event_date, :set_min_max_age
+  after_create :add_owner_to_participants
 
   mount_uploader :image, EventImageUploader
 
@@ -36,20 +36,11 @@ class Event < ActiveRecord::Base
   }
 
   def set_min_max_age
-    if self.ages.present?
-      ages = self.ages.split('-')
-      self.age_min = ages[0]
-      self.age_max = ages[1]
-    end
+    Common.set_min_max_age(self)
   end
 
   def update_event_date
-    date = self.date.to_s
-    time = self.time
-
-    hour = Time.parse(time).strftime("%H:%M:%S").to_s
-    event_date = (date + ' ' + hour).to_time
-    self.update_attributes(event_date: event_date)
+    Common.update_event_date(self)
   end
 
   def owner_is?(user)
