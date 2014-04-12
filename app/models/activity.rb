@@ -80,16 +80,11 @@ class Activity < ActiveRecord::Base
     ethnicity = search[:ethn]
     age_min = search[:age_min]
     age_max = search[:age_max]
-
     if time.present?
-      if time == '1'
-        time = Date.today
-      else
-        time = DateTime.now.tomorrow.to_date
-      end
+      (time == '1') ? (time = Date.today) : (time = DateTime.now.tomorrow.to_date)
     end
 
-    #acts = activities
+    #TODO find a way to replace .all
     acts = self.all
     acts = acts.within(distance, :origin => user) unless distance.empty?
     acts = acts.where(date: time) if time.present?

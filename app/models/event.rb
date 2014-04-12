@@ -81,16 +81,11 @@ class Event < ActiveRecord::Base
     ethnicity = search[:ethn]
     age_min = search[:age_min]
     age_max = search[:age_max]
-
-
     if time.present?
-      if time == '1'
-        time = Date.today
-      else
-        time = DateTime.now.tomorrow.to_date
-      end
+      (time == '1') ? (time = Date.today) : (time = DateTime.now.tomorrow.to_date)
     end
 
+    #TODO find a way to replace .all
     events = all
     events = events.within(distance, :origin => user) unless distance.empty?
     events = events.where(date: time) if time.present?
