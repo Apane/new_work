@@ -12,8 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if @zip_codes.include?(resource.zip)
       create_resource
     else
-      TempEmail.create(email: params[:user][:email], first_name: params[:user][:first_name],
-        last_name: params[:user][:last_name], zip: params[:user][:zip])
+      TempEmail.create_temp_user(params[:user])
       notice = "Sorry #{params[:user][:first_name]}, we are not accepting sign-ups from outside of New York City Metro Area at the moment, however, we will notify you when we launch in your area!"
       redirect_to root_path, notice: notice
     end
